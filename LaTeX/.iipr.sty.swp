@@ -1,0 +1,21 @@
+%     _______________________________________________________
+%    |                                                       |
+%    |                       iipr.sty                        |
+%    |  Style file with mathematical commands, among others  |
+%    |                 May 2016, Version 1.0                 |
+%    |               Ignacio Iker Prado Rujas                |
+%    |_______________________________________________________|
+%
+
+%________________MATHEMATICAL PACKAGES________________
+
+\usepackage{amsmath}    % Amercian Mathematics Society
+\usepackage{amsthm}	    % AMS theorem
+\usepackage{dsfont}     % For using "mathds"
+\usepackage{amssymb}	% mathbb typography (Natural numbers...)
+%\usepackage{thmtools}	% For improving the style in theorem-like enviroments (must be loaded after amsthm)
+
+
+%________________HEADINGS & FOOTNOTES STYLE________________
+
+\usepackage{fancyhdr}		% Fancy headings and footnotes
