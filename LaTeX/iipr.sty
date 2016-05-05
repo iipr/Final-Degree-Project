@@ -17,6 +17,7 @@
 \usepackage{xfrac}		% Fractions, such as the little ones
 \usepackage{etextools}	% Macros in math mode
 \usepackage{mathtools,etoolbox}    % For defining \set, \abs...
+\usepackage{mathrsfs}   % For curled fancy letters
 
 %________________SOME MATH COMMANDS________________
 
@@ -28,6 +29,7 @@
 \newcommand{\C}{\mathds{C}}    % Complex
 \newcommand{\eps}{\varepsilon} % Nice epsilon
 \renewcommand{\P}{\mathcal{P}} % P for parts of a set, intead of paragraph
+\renewcommand{\S}{\mathscr{S}} % Fancy S, requires mathrsfs package
 
 % Note about the following commands: change size of the braces/whatever typing something like: $$\set[\Big]{\sum_{i=0}^n a_i}$$
 \DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\ifblank{#1}{{}\cdot{}}{#1}}   % Set braces
@@ -67,8 +69,11 @@
 %________________HYPERREFERENCES________________
 
 \usepackage[colorlinks]{hyperref}		% Hyperreferences (sometimes causes problems, load last)
-\definecolor{linkcolour}{rgb}{0,0.2,0.6} % Link colour
-%\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour} % Set link colors throughout the document
+\definecolor{myblue}{rgb}{0,0.2,0.6} % Link colour: My own blue
+\definecolor{mygreen}{rgb}{0,0.6,0.2} % Link colour: My own green
+\hypersetup{colorlinks,breaklinks,urlcolor=myblue,linkcolor=mygreen} % Set link colors throughout the document
+%Two ways to make references: \hyperrref[teoremaFundamental]{teorema visto antes} o \ref{teoremaFundamental}
+%For hyperlinks: \href{https://www.google.es/}{here}
 
 %________________THEOREM-LIKE ENVIROMENTS________________
 
@@ -81,7 +86,7 @@
 \declaretheorem[numbered=no,style=remark,name=Note,refname={note,notes},Refname={Note,Notes}]{note}    %Note
 \declaretheorem[numberwithin=chapter,name=Lemma,refname={lemma,lemmas},Refname={Lemma,Lemmas},style=defn]{lemma}    % Lemma
 \declaretheorem[numberwithin=chapter,name=Definition,refname={definition,definitions},Refname={Definition,Definitions},style=defn]{definition}    % Definition
-\declaretheorem[numbered=no,name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems},style=defn]{theorem}    %Theorem
+\declaretheorem[numberwithin=chapter,name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems},style=defn]{theorem}    %Theorem
 \declaretheorem[numberwithin=chapter,name=Observation,refname={observation,observations},Refname={Observation,Observations}]{observation}    % Observation
 \declaretheorem[numbered=no,name=Consequence,refname={consequence,consequences},Refname={Consequence,Consequences}, style=remark]{consequence}    %Consequence
 \declaretheorem[numbered=no,name=Notation,refname={notation,notations},Refname={Notation,Notations},style=remark]{notation}    % Notation

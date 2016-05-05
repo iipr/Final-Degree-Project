@@ -55,26 +55,103 @@
 
 \begin{section}{Introduction}
 	\begin{definition}\label{polyMap}
-	Let $R$ be a real closed field (see definition \ref{realCField}) and $m, n \in \N_{>0}$. A map $f = (f_1, \dots, f_n): R^m \longrightarrow R^n$ is said to be polynomial if $f_i \in R[x_1, \dots, x_m], i = 1,\dots, n$. 
+	Let $R$ be a \hyperref[realCField]{real closed field} and $m, n \in \N_{>0}$. A map $f = (f_1, \dots, f_n): R^m \longrightarrow R^n$ is said to be polynomial if $f_i \in R[x_1, \dots, x_m], i = 1,\dots, n$. 
 	\end{definition}
 	
 	A very famous theorem by Tarski and Seidenberg states:
 	\begin{theorem}[Tarski-Seidenberg]\label{tarskiSeidenberg}
-	The image of any polynomial map $f: R^m \longrightarrow R^n$ is a semialgebraic subset (see definition \ref{semialgSet}) of $R^n$.
+	The image of any polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$.
 	\end{theorem}
 	
 	In this work we are studying sort of a converse of this statement. In an \emph{Oberwolfach} week, J.M. Gamboa proposed to characterize the semialgebraic subsets of $R^n$ that are polynomial images of $R^m$.
-	%Comentar lo de los abiertos en relación con la conjetura Jacobiana?
+	
+	% Comentar lo de los abiertos en relación con la conjetura Jacobiana?
+	
 	\begin{notation}
-	We need to mention to which topology we refer when we talk about closures, boundaries, etc. More specifically, the \textbf{exterior boundary} of a set $S$ is $\delta S := \bar{S} \backslash S$, with $\bar{S}$ being the \textbf{closure} of $S$ in $R^n$ in the usual topology. $\bar{S}^{\text{zar}}$ is the closure of $S$ with respect to the Zariski topology (see definition \ref{zariski}). $A\subset R^n$ is \textbf{irreducible} if its Zariski closure $\bar{A}^{\text{zar}}$ is an irreducible algebraic set.
+	We need to mention to which topology we refer when we talk about closures, boundaries, etc. More specifically, the \textbf{exterior boundary} of a set $S$ is $\delta S := \overline{S} \backslash S$, with $\overline{S}$ being the \textbf{closure} of $S$ in $R^n$ in the usual topology. $\overline{S}^{\text{zar}}$ is the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology}. $A\subset R^n$ is \textbf{irreducible} if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
 	\end{notation}
 	
-	\begin{subsection}{Neccesary conditions and examples}
-	To begin working on this idea, we provide some neccesary conditions for a set $S\subset R^n$ to be polynomial image of $R^m$. 
+	\begin{subsection}{Necessary conditions and examples}
+	To begin working on this idea, we provide some necessary conditions for a set $S\subset R^n$ to be polynomial image of $R^m$. 
 	
 	It is trivial that for $m = n = 1$ (so $f: R \rightarrow R$), the images of polynomial maps are either a set of one point or singletons (if the map is constant), or unbounded closed intervals (think of $f(x) = x^2$), or the whole $R$ (think of $f(x) = x$).
 	
-	In the general case, by theorem \ref{tarskiSeidenberg}, .
+	In the general case, by \hyperref[tarskiSeidenberg]{Tarski-Seidenberg}, $S$ must be a semialgebraic set and, moreover, semialgebraically connected. Even more, by the identity principle for polynomials, $S$ is irreducible and \hyperref[pureDim]{pure dimensional}.
+	
+	% Añadir el teorema de Shiota y la definición de Nash map?
+	
+	In the polynomial case there are more constrains.
+	
+	\begin{definition}
+		
+		A polynomial map $f: R^m \longrightarrow R^n$ is said to be \textbf{semialgebraically proper at a point} $p \in R^n$ if there exists an open neighbourhood $K$ of $p$ such that the restriction 
+		\begin{align*}
+			f^{-1}(K) & \longrightarrow K\\
+			x & \longmapsto f(x)
+		\end{align*}
+		is a \hyperref[properMap]{semialgebraically proper map}.
+		
+	\end{definition}
+	
+	\begin{definition}
+		
+		A parametric semiline  of $R^n$ is a non-constant polynomial image of $R$.
+		
+	\end{definition}
+	
+	It is clear that every parametric semiline is semialgebraically closed, since every polynomial map from $R$ to $R^n$ is semialgebraically proper. Let $\S_f$ denote the set of points $p \in R^n$ at which $f$ is \textbf{not} semialgebraically proper.
+	
+	\begin{theorem}[Jelonek]\label{jelonek}
+		
+		Let $f: R^2 \longrightarrow R^2$ be a \hyperref[dominant]{dominant} polynomial map. Then $\S_f$ is a finite union of parametric semilines.
+		
+	\end{theorem}
+	
+	With all these ideas in mind, we can get some conclusions in the following proposition:
+	
+	\begin{proposition}\label{propIntro}
+			
+	Let $f: R^m \longrightarrow R^n$ be a polynomial map and $S = f(R^m)$.
+		\begin{enumerate}[(1)]
+			\item $\delta S \subset \S_f$.
+				\begin{Proof}
+					Suppose $p \in \delta S \backslash \S_f$. Because $p \notin \S_f$, there exists an open neighbourhood $K$ of $p$ such that the restriction $f^{-1}(K) \rightarrow K$ of $f$ is proper, and thus its image $K \cap S$ is a closed subset of $K$. Hence, $p \in K\cap \overline{S} = K \cap (\overline{K\cap S}) = K \cap S$, which yields in a contradiction.
+				\end{Proof}
+			
+			\item Let $m = n = 2$ and $\Gamma$ be a 1-dimensional irreducible component of $\overline{S}^{\text{zar}}$. $\Gamma$ is the Zariski closure of a parametric semiline of $R^2$.
+				\begin{Proof}
+					Since $f$ is a dominant map, we can apply \hyperref[jelonek]{Jelonek} and get that $\S_f$ is a finite union of parametric semilines, say $M_1, \dots, M_s$ in $R^2$. Then, using (1) we get: $\Gamma \subset \overline{\delta S}^{\text{zar}} \subset \overline{\S_f}^{\text{zar}} = \cup_{i=1}^s  \overline{M_i}^{\text{zar}}$. Lastly, using that both $\Gamma$ and the $\overline{M_i}^{\text{zar}}$'s are irreducible, we must have that for some $i = 1, \dots, s: \Gamma = \overline{M_i}^{\text{zar}}$.
+				\end{Proof}
+			
+			\item Let $p:R^n \rightarrow R$ be a polynomial map which is non-constant on $S$. Then $p(S)$ is unbounded.
+				\begin{Proof}
+					If $a \in R^m$, let us define $\varphi_a:R \rightarrow R$ as $\varphi_a(t) := p(f(ta))$. Then, $\forall a \in R^m,\ p(S)$ would contain the image $\varphi_a(R):\ \varphi_a(R) \subset p(S)$. Now suppose that $\varphi_a(R)$ is bounded $\forall a$. Then $\varphi_a(R)$ would be a point $r_a$, and given $a, b \in R^m: \ \varphi_a(1) = p(f(ta)) = r_a = \varphi_a(0) = \varphi_b(0) = r_b = p(f(tb)) = \varphi_b(1)$. This implies that $p$ would be constant on $S$, which is a contradiction.
+				\end{Proof}
+			
+		\end{enumerate}
+		
+	\end{proposition}	
+	
+	\begin{corolary}
+		Because of (3) in proposition \ref{propIntro}, all linear projections of $S$ are either a point or unbounded. Consequently, S is also unbounded or a point.
+	\end{corolary}
+	
+	\begin{example}
+		\
+		\begin{enumerate}[(i)]
+			
+			\item One.
+			
+			%\item 
+			
+			%\item 
+			
+			%\item 
+			
+		\end{enumerate}
+		
+	\end{example}
+	
 	
 	\end{subsection}
 	
@@ -84,7 +161,7 @@
 
 
 \appendix
-\begin{chapter}{Auxiliar definitions and results}
+\begin{chapter}{Auxiliary definitions and results}
 
 \begin{definition}\label{realCField}
 A \textbf{real closed field} is a field $R$ that has the $1\textsuperscript{st}$ order properties as the field of real numbers $\R$.
@@ -106,6 +183,19 @@ A \textbf{semialgebraic set} is a subset $S \subset R^n$ (for some real closed f
 \begin{definition}[Zariski topology]\label{zariski}
 It is a topology on algebraic varieties whose closed sets are the algebraic subsets of the variety. Its sets are defined as the set of solutions of a system of polynomial equations over a field $R$. In this topology, when we talk about the irreducibility of a element, we mean that it is not the union of two smaller sets that are closed under the Zariski topology.
 \end{definition}
+
+\begin{definition}\label{pureDim}
+A set $S \subset R^n$ is said to be \textbf{pure dimensional} if its irreducible components are of the same dimension.
+\end{definition}
+
+\begin{definition}\label{properMap}
+A map $f$ is called \textbf{proper} if the preimage of every compact set is compact. A semialgebraic map $f: f^{-1}(K) \longrightarrow K$ is called \textbf{semialgebraically proper} if the preimage $f^{-1}(C)$ of a compact and semialgebraic subset $C \subset K$ is compact. This condition is weaker than the previous one.
+\end{definition}
+
+\begin{definition}\label{dominant}
+A polynomial map is said to be \textbf{dominant} if it has a dense image. 
+\end{definition}
+
 
 \end{chapter}
 
