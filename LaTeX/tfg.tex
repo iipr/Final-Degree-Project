@@ -50,25 +50,70 @@
 \thispagestyle{empty}    % White page
 \newpage
 
-\begin{chapter}{Introduction}
+\begin{chapter}{Polynomial images of $R^n$}
 \pagenumbering{arabic}    % Numbering from 1
 
-%\lipsum
-\lipsum[14-18]
-\lipsum[15]
-
-\lipsum[16]
-aslnal
-\begin{section}{Hola}
-\lipsum[16]
+\begin{section}{Introduction}
+	\begin{definition}\label{polyMap}
+	Let $R$ be a real closed field (see definition \ref{realCField}) and $m, n \in \N_{>0}$. A map $f = (f_1, \dots, f_n): R^m \longrightarrow R^n$ is said to be polynomial if $f_i \in R[x_1, \dots, x_m], i = 1,\dots, n$. 
+	\end{definition}
+	
+	A very famous theorem by Tarski and Seidenberg states:
+	\begin{theorem}[Tarski-Seidenberg]\label{tarskiSeidenberg}
+	The image of any polynomial map $f: R^m \longrightarrow R^n$ is a semialgebraic subset (see definition \ref{semialgSet}) of $R^n$.
+	\end{theorem}
+	
+	In this work we are studying sort of a converse of this statement. In an \emph{Oberwolfach} week, J.M. Gamboa proposed to characterize the semialgebraic subsets of $R^n$ that are polynomial images of $R^m$.
+	%Comentar lo de los abiertos en relación con la conjetura Jacobiana?
+	\begin{notation}
+	We need to mention to which topology we refer when we talk about closures, boundaries, etc. More specifically, the \textbf{exterior boundary} of a set $S$ is $\delta S := \bar{S} \backslash S$, with $\bar{S}$ being the \textbf{closure} of $S$ in $R^n$ in the usual topology. $\bar{S}^{\text{zar}}$ is the closure of $S$ with respect to the Zariski topology (see definition \ref{zariski}). $A\subset R^n$ is \textbf{irreducible} if its Zariski closure $\bar{A}^{\text{zar}}$ is an irreducible algebraic set.
+	\end{notation}
+	
+	\begin{subsection}{Neccesary conditions and examples}
+	To begin working on this idea, we provide some neccesary conditions for a set $S\subset R^n$ to be polynomial image of $R^m$. 
+	
+	It is trivial that for $m = n = 1$ (so $f: R \rightarrow R$), the images of polynomial maps are either a set of one point or singletons (if the map is constant), or unbounded closed intervals (think of $f(x) = x^2$), or the whole $R$ (think of $f(x) = x$).
+	
+	In the general case, by theorem \ref{tarskiSeidenberg}, .
+	
+	\end{subsection}
+	
 \end{section}
-\lipsum[16]
-\begin{Proof}
-ljasjajsd $$\ceil[\Big]{\sum_{i=0}^n a_i}$$ \qed 
-
-\end{Proof}
 
 \end{chapter}
 
+
+\appendix
+\begin{chapter}{Auxiliar definitions and results}
+
+\begin{definition}\label{realCField}
+A \textbf{real closed field} is a field $R$ that has the $1\textsuperscript{st}$ order properties as the field of real numbers $\R$.
+\end{definition}
+
+\begin{definition}\label{semialgSet}
+A \textbf{semialgebraic set} is a subset $S \subset R^n$ (for some real closed field $R$) defined by a finite sequence of polynomial equations of the form:
+\begin{align*}
+	P_1(x_1, \dots&, x_n) = 0\\
+	\vdots &\\
+	P_r(x_1, \dots&, x_n) = 0 \\
+	Q_1(x_1, \dots&, x_n) > 0 \\
+	\vdots &\\
+	Q_l(x_1, \dots&, x_n) > 0 \\
+\end{align*}
+. A \textbf{semialgebraic map} is a map that has semialgebraic graph. Moreover, the finite union, intersection and complement of semialgebraic sets is still a semialgebraic set.
+\end{definition}
+
+\begin{definition}[Zariski topology]\label{zariski}
+It is a topology on algebraic varieties whose closed sets are the algebraic subsets of the variety. Its sets are defined as the set of solutions of a system of polynomial equations over a field $R$. In this topology, when we talk about the irreducibility of a element, we mean that it is not the union of two smaller sets that are closed under the Zariski topology.
+\end{definition}
+
+\end{chapter}
+
+
+\begin{thebibliography}{10}
+
+%\bibitem{...}
+
+\end{thebibliography}
 
 \end{document}
