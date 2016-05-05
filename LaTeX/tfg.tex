@@ -1,41 +1,74 @@
-\documentclass[11pt, a4paper, english, twoside]{article}
+\documentclass[11pt, a4paper, english, twoside, notitlepage]{report}
 
 \usepackage{iipr}
-\fancyhead[LO]{\thesection}	% Heading on odd pages: Section name on the left
-\fancyhead[RE]{\thetitle} % Heading on even pages: Tittle on the right
+\fancyhead[RO, LE]{ }
+\fancyhead[LO]{\nouppercase \leftmark}	% Heading on odd pages: Chapter name on the left
+\fancyhead[RE]{\nouppercase \rightmark} % Heading on even pages: Section on the right
 \fancyfoot[LE,RO]{\thepage} % Roman numbering, foot left on even, foot right on odd pages
 \fancyfoot[CE]{Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica} %Foot: Center, even pages
 \fancyfoot[CO]{Universidad Complutense de Madrid (UCM)} %Foot: Center, odd pages
 \renewcommand{\footrulewidth}{0.4pt} % Rule on top of foot
-\renewcommand{\headrulewidth}{0pt} % No rule on headings
+\renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
-
+% ________Pruebas________
 \usepackage{lipsum}
+% _______________________
 
 \begin{document}
 
-\title{\Large \bf Complexity analysis of polynomial algorithms}
+\title{\huge{\textsc{Complexity analysis of polynomial algorithms}} \\
+	\protect\includegraphics[scale=0.2]{ucm.pdf}}
 \author{Ignacio Iker Prado Rujas \\
 	Universidad Complutense de Madrid (UCM) \\
 	Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica}
+\date{\today}
 \maketitle
-\date
+\begin{center}
+	Tutors: \\
+	Jos\'e F. Fernando \textit{\&} J.M. Gamboa \\
+	\
+\end{center}
+
+\thispagestyle{empty}	
 	
 \begin{abstract}
+	This work is about three different proofs of the same fact and a computational comparison between them, looking for the best one.
+
 	Let $R$ be a real closed field and $n\geq 2$. We prove that: (1) for every finite subset $F$ of $R^n$,
 	the semialgebraic set $R^n\setminus F$ is a polynomial image of $R^n$; and (2) for any
 	independent linear forms $l_1,\ldots,l_r$ of $R^n$, the semialgebraic set
 	$\{l_1>0,\ldots,l_r>0\}\subset R^n$ is a polynomial image of $R^n$.
+	
+	The key proof here is that $Q = \{x > 0, y > 0\}$ is a polynomial image of $\R^2$. This assert is proved in three different ways: a first approach using real algebraic geometry; a second and shorter one, using the composition of 3 rather simple maps; and a third one that applies topology with no computer computations.
+	
+	(...)
 \end{abstract}
 
-\begin{section}{Introduction}
+\newpage
+\mbox{}
+\thispagestyle{empty}    % White page
+\newpage
 
-\lipsum
-\lipsum
+\begin{chapter}{Introduction}
+\pagenumbering{arabic}    % Numbering from 1
 
+%\lipsum
+\lipsum[14-18]
+\lipsum[15]
 
+\lipsum[16]
+aslnal
+\begin{section}{Hola}
+\lipsum[16]
 \end{section}
+\lipsum[16]
+\begin{Proof}
+ljasjajsd $$\ceil[\Big]{\sum_{i=0}^n a_i}$$ \qed 
+
+\end{Proof}
+
+\end{chapter}
 
 
 \end{document}
