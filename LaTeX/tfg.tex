@@ -60,7 +60,7 @@
 	
 	A very famous theorem by Tarski and Seidenberg states:
 	\begin{theorem}[Tarski-Seidenberg]\label{tarskiSeidenberg}
-	The image of any polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$.
+	The image of every polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$.
 	\end{theorem}
 	
 	In this work we are studying sort of a converse of this statement. In an \emph{Oberwolfach} week, J.M. Gamboa proposed to characterize the semialgebraic subsets of $R^n$ that are polynomial images of $R^m$.
@@ -68,7 +68,7 @@
 	% Comentar lo de los abiertos en relación con la conjetura Jacobiana?
 	
 	\begin{notation}
-	We need to mention to which topology we refer when we talk about closures, boundaries, etc. More specifically, the \textbf{exterior boundary} of a set $S$ is $\delta S := \overline{S} \backslash S$, with $\overline{S}$ being the \textbf{closure} of $S$ in $R^n$ in the usual topology. $\overline{S}^{\text{zar}}$ is the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology}. $A\subset R^n$ is \textbf{irreducible} if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
+	We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \textbf{exterior boundary} of a set $S$ is $\delta S := \overline{S} \backslash S$, with $\overline{S}$ being the \textbf{closure} of $S$ in $R^n$ in the usual topology. $\overline{S}^{\text{zar}}$ is the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology}. $A\subset R^n$ is \textbf{irreducible} if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
 	\end{notation}
 	
 	\begin{subsection}{Necessary conditions and examples}
@@ -118,7 +118,7 @@
 					Suppose $p \in \delta S \backslash \S_f$. Because $p \notin \S_f$, there exists an open neighbourhood $K$ of $p$ such that the restriction $f^{-1}(K) \rightarrow K$ of $f$ is proper, and thus its image $K \cap S$ is a closed subset of $K$. Hence, $p \in K\cap \overline{S} = K \cap (\overline{K\cap S}) = K \cap S$, which yields in a contradiction.
 				\end{Proof}
 			
-			\item Let $m = n = 2$ and $\Gamma$ be a 1-dimensional irreducible component of $\overline{S}^{\text{zar}}$. $\Gamma$ is the Zariski closure of a parametric semiline of $R^2$.
+			\item Let $m = n = 2$ and $\Gamma$ be a 1-dimensional irreducible component of $\overline{\delta S}^{\text{zar}}$. $\Gamma$ is the Zariski closure of a parametric semiline of $R^2$.
 				\begin{Proof}
 					Since $f$ is a dominant map, we can apply \hyperref[jelonek]{Jelonek} and get that $\S_f$ is a finite union of parametric semilines, say $M_1, \dots, M_s$ in $R^2$. Then, using (1) we get: $\Gamma \subset \overline{\delta S}^{\text{zar}} \subset \overline{\S_f}^{\text{zar}} = \cup_{i=1}^s  \overline{M_i}^{\text{zar}}$. Lastly, using that both $\Gamma$ and the $\overline{M_i}^{\text{zar}}$'s are irreducible, we must have that for some $i = 1, \dots, s: \Gamma = \overline{M_i}^{\text{zar}}$.
 				\end{Proof}
@@ -140,13 +140,14 @@
 		\
 		\begin{enumerate}[(i)]
 			
-			\item One.
+			\item The exterior of the closed unit disc $S = \set{u^2 + v^2 > 1}$ \textbf{is not} a polynomial image of $R^2$. This is because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is $\set{u^2 + v^2 = 1}$ and this set is not a parametric semiline because it is bounded.
 			
-			%\item 
+			\item Let $S_1 = \set{uv < 1}$ and $S_2 = \set{uv < 1, u > 0}$. %Incluir graficas coloreadas.
+			They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of the exterior boundary is the hyperbola $uv = 1$, which is not a parametric semiline.
 			
-			%\item 
+			\item Let $S = R^2 \backslash \set{(0, 0)}$ be the puntured plane. Then $S$ is the image of $(x, y) \mapsto (xy - 1, (xy - 1)x^2 - y)$.
 			
-			%\item 
+			\item Let $\mathbb{H} = \set{v > 0}$ be the upper half plane. Then $\mathbb{H}$ is the image of $(x, y) \mapsto (y(xy - 1), (xy - 1)^2 + x^2)$. This is possibly the simplest polynomial map whose image is $\mathbb{H}$.
 			
 		\end{enumerate}
 		
@@ -181,7 +182,7 @@ A \textbf{semialgebraic set} is a subset $S \subset R^n$ (for some real closed f
 \end{definition}
 
 \begin{definition}[Zariski topology]\label{zariski}
-It is a topology on algebraic varieties whose closed sets are the algebraic subsets of the variety. Its sets are defined as the set of solutions of a system of polynomial equations over a field $R$. In this topology, when we talk about the irreducibility of a element, we mean that it is not the union of two smaller sets that are closed under the Zariski topology.
+It is a topology on algebraic varieties whose closed sets are the algebraic subsets of the variety. Its sets are defined as the set of solutions of a system of polynomial equations over a field $R$. In this topology, when we talk about the irreducibility of an element, we mean that it is not the union of two smaller sets that are closed under the Zariski topology.
 \end{definition}
 
 \begin{definition}\label{pureDim}
