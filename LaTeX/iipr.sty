@@ -18,18 +18,23 @@
 \usepackage{etextools}	% Macros in math mode
 \usepackage{mathtools,etoolbox}    % For defining \set, \abs...
 \usepackage{mathrsfs}   % For curled fancy letters
+\usepackage[makeroom]{cancel}    % For crossing out in equations
 
 %________________SOME MATH COMMANDS________________
 
 \newcommand{\N}{\mathds{N}}    % Naturals
-\newcommand{\Z}{\mathds{Z}}    % Integers
+\newcommand{\Z}{\mathds{Z}}     % Integers
 \newcommand{\Q}{\mathds{Q}}    % Rationals
-\newcommand{\I}{\mathds{I}}    % Irrationals
-\newcommand{\R}{\mathds{R}}    % Reals
-\newcommand{\C}{\mathds{C}}    % Complex
-\newcommand{\eps}{\varepsilon} % Nice epsilon
+\newcommand{\I}{\mathds{I}}        % Irrationals
+\newcommand{\R}{\mathds{R}}     % Reals
+\newcommand{\C}{\mathds{C}}     % Complex
+\newcommand{\eps}{\varepsilon}  % Nice epsilon
 \renewcommand{\P}{\mathcal{P}} % P for parts of a set, intead of paragraph
 \renewcommand{\S}{\mathscr{S}} % Fancy S, requires mathrsfs package
+\newcommand{\imp}{\Rightarrow} % Short $\implies$
+\newcommand{\Qu}{\mathcal{Q}}  % Nice Q for denoting the first open quadrant
+\newcommand{\F}{\mathcal{F}}     % Nice F for a map name
+\newcommand{\G}{\mathcal{G}}    % Nice G for a map name
 
 % Note about the following commands: change size of the braces/whatever typing something like: $$\set[\Big]{\sum_{i=0}^n a_i}$$
 \DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\ifblank{#1}{{}\cdot{}}{#1}}   % Set braces
@@ -53,11 +58,13 @@
 %________________GRAPHICS TOOLS________________
 
 \usepackage{pdfpages}    % For inserting PDFs
-\usepackage{graphicx}    % Inserting graphics
+\usepackage{graphicx}     % Inserting graphics
+\usepackage{subcaption} % Nestin on figure enviroments: subfigures
 
 %________________HELPFUL TOOLS________________
 \usepackage{titling}     % On 'reports', allow abstract to be on the same page of the title
-\usepackage[Bjornstrup]{fncychap}    % Chapter style
+\usepackage[Bjornstrup]{fncychap}    % Chapter style. Other style options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+%\usepackage[kpfonts]{quotchap}    %Style of the chapter. Other font options: palatino, avantgarde, beramono, berasans, bookman, courier, helvetica, kpfonts, lmodern, newcentury, times, utopia
 \usepackage{enumerate}    % Easier enumerate styles
 \usepackage{emptypage}		% Empty page style on las page of a chapter
 
@@ -68,12 +75,14 @@
 
 %________________HYPERREFERENCES________________
 
-\usepackage[colorlinks]{hyperref}		% Hyperreferences (sometimes causes problems, load last)
-\definecolor{myblue}{rgb}{0,0.2,0.6} % Link colour: My own blue
-\definecolor{mygreen}{rgb}{0,0.6,0.2} % Link colour: My own green
-\hypersetup{colorlinks,breaklinks,urlcolor=myblue,linkcolor=mygreen} % Set link colors throughout the document
+\usepackage[colorlinks]{hyperref}        % Hyperreferences (sometimes causes problems, load last)
+\definecolor{myblue}{rgb}{0,0.2,0.6}    % Link colour: My own blue
+\definecolor{mygreen}{rgb}{0,0.6,0.1} % Link colour: My own green
+\definecolor{myred}{rgb}{0.9,0,0.2}     % Link colour: My own red
+\hypersetup{colorlinks,breaklinks,urlcolor=myblue,linkcolor=mygreen, citecolor=myred} % Set link colors throughout the document
 %Two ways to make references: \hyperrref[teoremaFundamental]{teorema visto antes} o \ref{teoremaFundamental}
 %For hyperlinks: \href{https://www.google.es/}{here}
+%For the bibliography: \cite{FerGam}
 
 %________________THEOREM-LIKE ENVIROMENTS________________
 
@@ -95,4 +104,5 @@
 \declaretheorem[numberwithin=chapter,name=Principle,refname={principle,principles},Refname={Principle,Principles}]{principio}    % Principle
 \declaretheorem[numbered=yes,name=Exercise,refname={exercise,exercises},Refname={Exercise,Exercises},style=defn,thmbox=L]{exercise}    % Exercise
 \declaretheorem[numbered=no,name=Assertion,refname={assertion,assertion},Refname={Assertion,Assertions}]{aserto}    % Assertion
+\declaretheorem[numberwithin=chapter,name=Remark,refname={remark,remarks},Refname={Remark,Remarks},style=defn]{remark}    % Remark
 \declaretheorem[numbered=no,name=Proof,style=prove]{Proof}    % Proof
