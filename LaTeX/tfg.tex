@@ -15,6 +15,7 @@
 \usepackage{lipsum}
 % _______________________
 
+\usepackage{amsmath}
 \begin{document}
 
 \pagenumbering{Alph}
@@ -441,8 +442,122 @@
 		
 		\begin{Proof}(of theorem \ref{openQuad})
 			
-			We are going to see that $\Qu \subset \P(\R^2)$, and to do this it is enough to see that if $v > 0$ and $\G = v$, then the image of $\F$ contains the whole positive interval $(0, +\infty)$.
+			We are going to see that $\Qu \subset \P(\R^2)$, and to do this it is enough to fix $v > 0$, and if $\G = v$ then the image of $\F$ must contain the whole positive interval $(0, +\infty)$.
+			\begin{center}
+				\fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
+			\end{center}
+
+			We start by solving the equation $\G-v= 0 = (1 - xy + x - x^4 y)^2 + (x^2 y)^2 - v$. It has degree $2$ on $y$, so we obtain the roots $y^+(x,v),\ y^-(x,v)$:
+			\begin{equation*}
+				\begin{aligned}
+				y^+(x,v) & =\frac{1 + x + x^3 + x^4 + \sqrt{\Delta(x,v)}}{x(x^2 + (x^3 + 1)^2)}\\
+				y^-(x,v) & =\frac{1 + x + x^3 + x^4 - \sqrt{\Delta(x,v)}}{x(x^2 + (x^3 + 1)^2)}\\
+				\end{aligned}
+			\end{equation*}
+where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta) = 6$.
+%Pintado en Sage, añadir gráfica. Remarcar que se aprecia que y- es acotada para v = 1.
+
+			The common domain of these two functions is defined by $D_v=\{x \in \R :\ \Delta(x,v) \geq 0, x \neq 0\}$. Let
+			$$\begin{matrix}
+				\begin{aligned}
+					\gamma_v^+: D_v & \longrightarrow \R\\
+					x &\longmapsto \F(x,y^+(x,v))\\
+					\end{aligned}
+ 				& \qquad
+				\begin{aligned}
+					\gamma_v^-:D_v & \longrightarrow \R\\
+					x &\longmapsto \F(x,y^-(x,v))\\
+				\end{aligned}
+			\end{matrix}$$
 			
+			Notice that $\text{im}(\F(\set{\G = v})) = \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$, so our aim is to prove that $\text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$.
+			
+			\begin{center}
+				\fbox{\textbf{Step 2}} \emph{Main properties of $\gamma_v^+ \text{ and } \gamma_v^-$.}
+			\end{center}
+			
+			In this section we are going to prove that:
+			$$\text{(i)} \lim_{x\rightarrow \pm\infty}\gamma_v^+(x)=\lim_{x\rightarrow \pm\infty}\gamma_v^-(x)=0.$$
+			$$\text{(ii)} \lim_{x\rightarrow 0}\gamma_v^+(x)=+\infty
+				\quad 
+				\lim_{x\rightarrow 0}\gamma_v^-(x) =
+				\left\{\begin{array}{ll}
+					+\infty & \text{ for $v\neq 1$}\\
+					4 & \text{for $v=1$}
+				\end{array} \right.
+			$$
+
+			With Sage, we can symbolically check how $\gamma_v^+ \text{ and } \gamma_v^-$ look like, getting polynomials $A_1,A_2,B_1,B_2\in\R[x,v]$ and $C\in \R[x]$ such that:
+			$$\text{(a) } \gamma_v^+(x)=\dfrac{A_1(x,v)+B_1(x,v)\sqrt{\Delta(x,v)}}{C(x)}, \ \ 
+			\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)}$$
+			$$\text{(b)}\ \ 
+				\arraycolsep=1.4pt\def\arraystretch{1.5}
+				\begin{array}{cclr}
+					A_1(x, v) & = &\ \ A_2(x, v)\, , & \text{deg}_x(A_1) = \text{deg}_x(A_2) = 24\\
+					B_1(x, v) & = & - B_2(x, v)\, , & \text{deg}_x(B_1) = \text{deg}_x(B_2) = 21\\
+					C(x) & = & x^2(x^2+(x^3+1)^2)^4\, , & \text{deg}_x(C) = 26
+				\end{array}
+			$$
+			
+			We proceed to study $\gamma_v^+$ and $\gamma_v^-$ at the origin. Since $\Delta$ has even degree and positive leading coefficient on $x$, it is positive for $\abs{x}$ large enough, so (i) holds.
+			
+			Now, for $x = 0$, we get $\Delta(0, v) = v > 0 \imp 0 \in \overline{D_v}$. Also:
+			\begin{itemize}
+				\item $A_1(0,v) + B_1(0,v) \sqrt{\Delta(0,v)} = v(1+\sqrt{v})^2 > 0$.
+				
+				\item $A_2(0,v) + B_2(0,v) \sqrt{\Delta(0,v)} = v(1-\sqrt{v})^2 \geq 0$, and it is $0$ $\siff v = 1$.
+				%Añadir aquí la gráfica amarilla y morada, y referencia despues del "Also"
+			\end{itemize}
+			Thus, (ii) holds (we also checked with Sage).
+
+			\begin{center}
+				\fbox{\textbf{Step 3}} \emph{When $v \geq 0.28^2$ we have that $\text{im}(\gamma_v^+) \supset (0, +\infty)$.}
+			\end{center}
+			
+			We are now going to study the domain $D_v$, in order to see whether $ (\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$ or not. Taking into account the definition of $D_v$, we need to study when $\Delta(x, v) = 0$, so it seems convinient to define:
+			$$v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}$$
+			%, whose graph can be seen in figure \ref{}.
+			
+			If $x \in (-\infty, 0)$, using Laguerre's method\footnote{Implemented with Python 2.7.} we checked that $\Delta(x, 0.28^2)$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2$ comes from a careful observation of the plots figure \ref{}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in Step 2, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
+			
+			\begin{center}
+				\fbox{\textbf{Step 4}} \emph{When $0 < v < 0.28^2$ we have that $\text{im}(\gamma_v^-) \supset (0, +\infty)$.}
+			\end{center} 
+			
+			To prove that for $0 < v < 0.28^2$ we have that $(0, +\infty) \subset \text{im}(\gamma_v^-)$ it is enough to prove the existence of real numbers $N_v < \delta_v$ verifying
+			
+			\begin{equation*}
+				\boxed{
+					\begin{aligned}
+					(-\infty, N_v] \cup [\delta_v, +\infty) \subset D_v \text{ and } \gamma_v^-(N_v) > \gamma_v^+(\delta_v)\\
+					\end{aligned}
+				}\qquad (\spadesuit)
+			\end{equation*}
+			%Incluir gráfica de lo que estamos diciendo con esta condicion
+			
+			To prove the existance of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v(x)$ in the field of Puiseux series %incluir referencia en el apendice
+			$\C\left(\set{v^*}\right)$, because $\overline{\R[x, v]} = \C\left(\set{v^*}\right) = \C\left(\set{x^*}\right)$. %<--- Entiendo yo, no?
+			Such roots are power series in $\C\left(\set{w}\right)$ with $w = \sqrt{v}$, and we can take the most and the less negative roots of $\Delta_v$ in $\R\left(\set{v^*}\right)$ that makes the infinitesimal $v$ greater than 0, namely:
+			
+			\begin{equation*}\left\{
+				\begin{split}
+					\eta_v=&-\frac{1}{w}+1+w+w^2+\frac{5}{2}w^3+\cdots\\
+					\xi_v=&-w-w^2-\frac{5}{2}w^3-6w^4+\cdots
+				\end{split}\right.
+			\end{equation*}
+			
+			Considering the infinitesimal $v$, it is clear that the first coefficient of the series is the most meaningful (order wise) $\imp \eta_v < \xi_v$. Thus, and to be able to make calculations, we need to find a finite number of coefficients of the series, and relevant ones. Let
+			
+			\begin{equation*}\left\{
+				\begin{split}
+					N_v=&-\frac{1}{w}+1+w+w^2=\eta_v-(\frac{5}{2}w^3+\cdots)<\eta_v\\
+					\delta_v=&-w-w^2-\frac{5}{2}w^3=\xi_v-(-6w^4+\cdots)>\xi_v
+				\end{split}\right.
+			\end{equation*}
+			
+			We can check on Sage that $-\infty<N_v<\delta_v<0$ for $0<v<0.28^2$.
+
+
 		\end{Proof}
 		
 	\end{subsection}
@@ -465,12 +580,12 @@
 	\begin{equation*}
 	\left\{
 	\begin{aligned}
-		P_1(x_1, .&.., x_n) = 0\\
+		P_1(x_1,\, .\,&.\,.\, , x_n) = 0\\
 		&\vdots\\
-		P_r(x_1, .&.., x_n) = 0 \\
-		Q_1(x_1, .&.., x_n) > 0 \\
+		P_r(x_1, .\,&.\,.\, , x_n) = 0 \\
+		Q_1(x_1, .\,&.\,.\, , x_n) > 0 \\
 		&\vdots\\
-		Q_l(x_1, .&.., x_n) > 0 \\
+		Q_l(x_1, .\,&.\,.\, , x_n) > 0 \\
 	\end{aligned}
 	\right.
 	\end{equation*}
