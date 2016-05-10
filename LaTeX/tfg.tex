@@ -333,23 +333,23 @@
 			$$f(P_1, P_2): \R^2 \longrightarrow \R^2$$
 			satisfying $f(\R^2) = \Qu$ and $P_1(x, y) = (xy - 1)^2 + x^2$.
 		\end{remark}
-		The proof of this remark use the Curve Selection Lemma (\cite{abr}, VIII.2.6) to approach a point $(\lambda^2, 0) \in \overline{\Qu}$ with $\lambda > 0$, to get a contradiction.
+		The proof of this remark uses the Curve Selection Lemma (\cite{abr}, VIII.2.6) to approach a point $(\lambda^2, 0) \in \overline{\Qu}$ with $\lambda > 0$, to get a contradiction.
 		
 		On the topic of finding a polynomial map $\Phi: \R^2 \longrightarrow \R^2$ that satisfies $\Phi(\R^2) = \Qu$, the mayor difficulty is:
 		
 		\begin{center}
 			\begin{tabular}{rr}
-				$\qquad$ \fbox{\textit{The closure of its image contains the positive half-axes.}} & $\quad$ ($\clubsuit$)
+				$\qquad \ \, $ \fbox{\textit{The closure of its image contains the positive half-axes.}} & $\quad$ ($\clubsuit$)
 			\end{tabular}
 		\end{center}
 		
 		\begin{remark}
-			Using theorem \ref{finSetTh}, we just need to find a polynomial map $$\P = (\F, \G): \R^2 \longrightarrow \R^2$$ such that $\P(\R^2)$ is the disjoint union of $\Qu$ and a set with finite preimage, say $F$: $\P(\R^2) = \Qu\ \sqcup F$. This way we could apply the theorem and transform $\R^2$ into  $\R^2 \setminus F$ with a map $\varphi$, and then use $\P$ to get $\Qu \rightsquigarrow\Phi = \P \circ \varphi$. 
+			Using theorem \ref{finSetTh}, we just need to find a polynomial map $$\P = (\F, \G): \R^2 \longrightarrow \R^2$$ such that $\P(\R^2)$ is the disjoint union of $\Qu$ and a set with finite preimage, say $F \rightsquigarrow \P(\R^2) = \Qu\ \sqcup F$. This way we could apply the theorem and transform $\R^2$ into  $\R^2 \setminus F$ with a map $\varphi$, and then use $\P$ to get $\Qu \rightsquigarrow\Phi = \P \circ \varphi$. 
 		\end{remark}
 		
-		We are going to give a map $\P = (\F , \G)$ that accomplish this task, with $\F$ being the set $\set{(-1, 0), (0, -1)}$. If we are able to find such $\P$, then ($\clubsuit$) will immediately be satisfied. 
+		We are going to give a map $\P = (\F , \G)$ that accomplish this task, with $F$ being the set $\set{(-1, 0), (0, -1)}$. If we are able to find such $\P$, then ($\clubsuit$) will immediately be satisfied. 
 		
-		Thus, for every $\lambda, \mu \ge 0$ there will exist \hyperref[curveGerms]{analytic half branch curve germs} $\alpha_{\lambda}(s),\beta_{\mu}(s)$ which can not be extended to $0$ and such that:
+		Thus, for every $\lambda, \mu \ge 0$ there will exist \hyperref[curveGerms]{analytic half branch curve germs} $\alpha_{\lambda}(s),\beta_{\mu}(s)$ which cannot be extended to $0$ and such that:
 		$$
 		\lim_{s\rightarrow 0} P(\alpha_{\lambda}(s))=(\lambda^2,0)\qquad \text{and} \qquad
 		\lim_{s\rightarrow 0} P(\beta_{\mu}(s))=(0,\mu^2).
@@ -385,6 +385,18 @@
 		\end{equation*}
 		
 		have a good behavior along these curves, meaning:
+		
+		\begin{figure}[h]\hspace{-0.5cm}
+			\begin{subfigure}{.54\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
+				\caption{$\F(x, y) = (1 - x^3 y + y - x y^2)^2 + (x^2 y)^2$.\label{fig:F}}
+			\end{subfigure}
+			\begin{subfigure}{.55\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_05_G.png}
+				\caption{$\G(x, y) = (1 - xy + x - x^4 y)^2 + (x^2 y)^2$.\label{fig:G}}
+			\end{subfigure}\\[1ex]
+			\caption{Plots of the polynomials $\F, \G: \R^2 \longrightarrow \R$.\label{fig:plotFG}}
+		\end{figure}
 		
 		\begin{enumerate}[(a)]
 		
@@ -424,13 +436,27 @@
 		
 			\item $\cdot$ $P\circ\alpha_{\lambda}=(F\circ\alpha_{\lambda },G\circ\alpha_{\lambda})=$
 			
-					$\left(\right.a_{\lambda}^{2}-2 \, a_{\lambda}+1+2 \, {(a_{\lambda}^{3} - a_{\lambda}^{2})} s+{(a_{\lambda}^{4} + 2 \, a_{\lambda} - 1)} s^{2}+4 \, a_{\lambda}^{2} s^{3}+{(2 \, a_{\lambda}^{3} + a_{\lambda}^{2} + 1)} s^{4}+2 \, a_{\lambda} s^{5}+a_{\lambda}^{2} s^{6},$				
-					$\qquad  {(a_{\lambda}^{2} - 2 \, a_{\lambda} + 2)} s^{2}+2 \, a_{\lambda} s^{3}+{(a_{\lambda}^{2} + 2 \, a_{\lambda} - 2)} s^{4}+\, 2 \, {(a_{\lambda}^{2} - a_{\lambda})} s^{5}+s^{6}+2 \, a_{\lambda} s^{7}+a_{\lambda}^{2} s^{8}\left.\right)$.
-			
+				$\arraycolsep=2pt\def\arraystretch{1.2}
+				\begin{array}{l}
+					\left(\right.a_{\lambda}^{2}-2 \, a_{\lambda}+1+2 \, {(a_{\lambda}^{3} - a_{\lambda}^{2})} s+{(a_{\lambda}^{4} + 2 \, a_{\lambda} - 1)} s^{2}+4 \, a_{\lambda}^{2} s^{3}+\\
+					\quad {(2 \, a_{\lambda}^{3} + a_{\lambda}^{2} + 1)} s^{4}+2 \, a_{\lambda} s^{5}+a_{\lambda}^{2} s^{6},	\\		
+					\ {(a_{\lambda}^{2} - 2 \, a_{\lambda} + 2)} s^{2}+2 \, a_{\lambda} s^{3}+{(a_{\lambda}^{2} + 2 \, a_{\lambda} - 2)} s^{4} + \\
+					\quad \, 2 \, {(a_{\lambda}^{2} - a_{\lambda})} s^{5}+s^{6}+2 \, a_{\lambda} s^{7}+a_{\lambda}^{2} s^{8}\left.\right).
+				\end{array}
+				$
+				
 				$\cdot$ $P\circ\beta_{\mu}=(F\circ\beta_{\mu},G\circ\beta_{\mu})=$
 				
-					$\left(\right.{(9 \, b_{\mu}^{2} + 1)} s^{2}+2 \, {(9 \, b_{\mu}^{3} + 2 \,b_{\mu})} s^{3}+3 \, {(5 \, b_{\mu}^{4} + 2 \, b_{\mu}^{2} - 2 \, b_{\mu})}s^{4}+2 \, {(3 \, b_{\mu}^{5} + 2 \, b_{\mu}^{3} - 3 \, b_{\mu}^{2})}s^{5}+{(b_{\mu}^{6} + b_{\mu}^{4} - 2 \, b_{\mu}^{3} + 6 \, b_{\mu} + 1)} s^{6}+12 \,b_{\mu}^{2} s^{7}+2 \, {(4 \, b_{\mu}^{3} - 1)} s^{8}+2 \, {(b_{\mu}^{4} -b_{\mu})} s^{9} + s^{10} + 2 \, b_{\mu} s^{11}+b_{\mu}^{2} s^{12},$				
-					$\qquad  9 \, b_{\mu}^{2}-6 \, b_{\mu}+1+12 \, {(3 \, b_{\mu}^{3} - b_{\mu}^{2})} s+{(60\, b_{\mu}^{4} - 8 \, b_{\mu}^{3} + 6 \, b_{\mu} - 1)} s^{2}+2 \, {(27 \, b_{\mu}^{5}- b_{\mu}^{4} + 9 \, b_{\mu}^{2} + b_{\mu})} s^{3}+{(28 \, b_{\mu}^{6} + 20 \, b_{\mu}^{3}+ 6 \, b_{\mu}^{2} + 1)} s^{4}+2 \, {(4 \, b_{\mu}^{7} + 5 \, b_{\mu}^{4} + 2\, b_{\mu}^{3} + b_{\mu})} s^{5}+{(b_{\mu}^{8} + 2 \, b_{\mu}^{5} + b_{\mu}^{4} +b_{\mu}^{2})} s^{6}\left.\right)$.
+				$\arraycolsep=2pt\def\arraystretch{1.2}
+				\begin{array}{l}
+					\left(\right.{(9 \, b_{\mu}^{2} + 1)} s^{2}+2 \, {(9 \, b_{\mu}^{3} + 2 \,b_{\mu})} s^{3}+3 \, {(5 \, b_{\mu}^{4} + 2 \, b_{\mu}^{2} - 2 \, b_{\mu})}s^{4}+\\
+					\quad 2 \, {(3 \, b_{\mu}^{5} + 2 \, b_{\mu}^{3} - 3 \, b_{\mu}^{2})}s^{5}+{(b_{\mu}^{6} + b_{\mu}^{4} - 2 \, b_{\mu}^{3} + 6 \, b_{\mu} + 1)} s^{6}+\\
+					\quad 12 \,b_{\mu}^{2} s^{7}+2 \, {(4 \, b_{\mu}^{3} - 1)} s^{8}+2 \, {(b_{\mu}^{4} -b_{\mu})} s^{9} + s^{10} + 2 \, b_{\mu} s^{11}+b_{\mu}^{2} s^{12},\\
+					\ 9 \, b_{\mu}^{2}-6 \, b_{\mu}+1+12 \, {(3 \, b_{\mu}^{3} - b_{\mu}^{2})} s+{(60\, b_{\mu}^{4} - 8 \, b_{\mu}^{3} + 6 \, b_{\mu} - 1)} s^{2} + \\
+					\quad 2 \, {(27 \, b_{\mu}^{5}- b_{\mu}^{4} + 9 \, b_{\mu}^{2} + b_{\mu})} s^{3}+{(28 \, b_{\mu}^{6} + 20 \, b_{\mu}^{3}+ 6 \, b_{\mu}^{2} + 1)} s^{4}+\\
+					\quad 2 \, {(4 \, b_{\mu}^{7} + 5 \, b_{\mu}^{4} + 2\, b_{\mu}^{3} + b_{\mu})} s^{5}+{(b_{\mu}^{8} + 2 \, b_{\mu}^{5} + b_{\mu}^{4} +b_{\mu}^{2})} s^{6}\left.\right).
+					\end{array}
+				$
 					
 		\end{enumerate}
 		
@@ -442,22 +468,33 @@
 		
 		\begin{Proof}(of theorem \ref{openQuad})
 			
-			We are going to see that $\Qu \subset \P(\R^2)$, and to do this it is enough to fix $v > 0$, and if $\G = v$ then the image of $\F$ must contain the whole positive interval $(0, +\infty)$.
+			We are going to prove that $\Qu \subset \P(\R^2)$, and to do this it is enough to fix $v > 0$, and if $\G = v$ then the image of $\F$ must contain the whole positive interval $(0, +\infty)$.
 			\begin{center}
 				\fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
 			\end{center}
 
-			We start by solving the equation $\G-v= 0 = (1 - xy + x - x^4 y)^2 + (x^2 y)^2 - v$. It has degree $2$ on $y$, so we obtain the roots $y^+(x,v),\ y^-(x,v)$:
+			We start by solving the equation $\G-v= 0 = (1 - xy + x - x^4 y)^2 + (x^2 y)^2 - v$. It has degree $2$ on $y$, so we obtain roots $y^+(x,v),\ y^-(x,v)$:
 			\begin{equation*}
 				\begin{aligned}
 				y^+(x,v) & =\frac{1 + x + x^3 + x^4 + \sqrt{\Delta(x,v)}}{x(x^2 + (x^3 + 1)^2)}\\
 				y^-(x,v) & =\frac{1 + x + x^3 + x^4 - \sqrt{\Delta(x,v)}}{x(x^2 + (x^3 + 1)^2)}\\
 				\end{aligned}
 			\end{equation*}
-where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta) = 6$.
-%Pintado en Sage, añadir gráfica. Remarcar que se aprecia que y- es acotada para v = 1.
+			where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta) = 6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v = 0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v = 1$ there are no singularities on $y^-$. This observation is used later, in Step 2.
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_06_sols.png}
+				\caption{$y^+(x,v)$ and $y^+(x,v)$ for $v = 0.8$.\label{fig:plotYs_1}}
+			\end{figure}
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_07_sols_1.png}
+				\caption{$y^+(x,v)$ and $y^+(x,v)$ for $v = 1$.\label{fig:plotYs_2}}
+			\end{figure}
 
-			The common domain of these two functions is defined by $D_v=\{x \in \R :\ \Delta(x,v) \geq 0, x \neq 0\}$. Let
+			The common domain of these two functions is defined by $D_v=\{x \in \R :\ \Delta(x,v) \geq 0, x \neq 0\}$, notice that the only real root of the denominator is $x_0 = 0$\footnote{We did check with Laguerre's method (implemented with Python 2.7.) that $x^7 + 2x^4 + x^3 + x$ has 6 complex roots.}. Let
 			$$\begin{matrix}
 				\begin{aligned}
 					\gamma_v^+: D_v & \longrightarrow \R\\
@@ -479,7 +516,7 @@ where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\De
 			In this section we are going to prove that:
 			$$\text{(i)} \lim_{x\rightarrow \pm\infty}\gamma_v^+(x)=\lim_{x\rightarrow \pm\infty}\gamma_v^-(x)=0.$$
 			$$\text{(ii)} \lim_{x\rightarrow 0}\gamma_v^+(x)=+\infty
-				\quad 
+				,\quad 
 				\lim_{x\rightarrow 0}\gamma_v^-(x) =
 				\left\{\begin{array}{ll}
 					+\infty & \text{ for $v\neq 1$}\\
@@ -506,38 +543,47 @@ where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\De
 				\item $A_1(0,v) + B_1(0,v) \sqrt{\Delta(0,v)} = v(1+\sqrt{v})^2 > 0$.
 				
 				\item $A_2(0,v) + B_2(0,v) \sqrt{\Delta(0,v)} = v(1-\sqrt{v})^2 \geq 0$, and it is $0$ $\siff v = 1$.
-				%Añadir aquí la gráfica amarilla y morada, y referencia despues del "Also"
 			\end{itemize}
-			Thus, (ii) holds (we also checked with Sage).
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.65\textwidth]{plots/ch1_08_numerators.png}
+				\caption{Numerators of $\gamma_v^+$ and $\gamma_v^+$ for $x = 0$.\label{fig:numerators}}
+			\end{figure}
+			
+			Thus, (ii) holds (we also checked with Sage). The result for $v = 1$ on (ii) is not relevant here (see figure \ref{fig:limit}).
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_09_limit.png}
+				\caption{Notice the value of $\gamma_1^-$ at $x = 0$.\label{fig:limit}}
+			\end{figure}
 
 			\begin{center}
-				\fbox{\textbf{Step 3}} \emph{When $v \geq 0.28^2$ we have that $\text{im}(\gamma_v^+) \supset (0, +\infty)$.}
+				\fbox{\textbf{Step 3}} \emph{When $v \geq 0.28^2$ we have that} $\text{im}(\gamma_v^+) \supset (0, +\infty)$.
 			\end{center}
 			
 			We are now going to study the domain $D_v$, in order to see whether $ (\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$ or not. Taking into account the definition of $D_v$, we need to study when $\Delta(x, v) = 0$, so it seems convinient to define:
 			$$v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}$$
 			%, whose graph can be seen in figure \ref{}.
 			
-			If $x \in (-\infty, 0)$, using Laguerre's method\footnote{Implemented with Python 2.7.} we checked that $\Delta(x, 0.28^2)$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2$ comes from a careful observation of the plots figure \ref{}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in Step 2, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
+			If $x \in (-\infty, 0)$, using Laguerre's method we checked that $\Delta(x, 0.28^2)$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2$ comes from a careful observation of the plots figure \ref{}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in Step 2, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
 			
 			\begin{center}
-				\fbox{\textbf{Step 4}} \emph{When $0 < v < 0.28^2$ we have that $\text{im}(\gamma_v^-) \supset (0, +\infty)$.}
+				\fbox{\textbf{Step 4}} \emph{When $0 < v < 0.28^2$ we have that} $\text{im}(\gamma_v^-) \supset (0, +\infty)$.
 			\end{center} 
 			
-			To prove that for $0 < v < 0.28^2$ we have that $(0, +\infty) \subset \text{im}(\gamma_v^-)$ it is enough to prove the existence of real numbers $N_v < \delta_v$ verifying
-			
-			\begin{equation*}
+			To prove that for $0 < v < 0.28^2$ we have that $(0, +\infty) \subset \text{im}(\gamma_v^-)$ it is enough to prove the existence of $N_v, \delta_v\in \R$ verifying			
+			\begin{equation*}\qquad \quad
 				\boxed{
-					\begin{aligned}
-					(-\infty, N_v] \cup [\delta_v, +\infty) \subset D_v \text{ and } \gamma_v^-(N_v) > \gamma_v^+(\delta_v)\\
-					\end{aligned}
+					 N_v < \delta_v,\ \ (-\infty, N_v] \cup [\delta_v, +\infty) \subset D_v \text{ and } \gamma_v^-(N_v) > \gamma_v^+(\delta_v)\\
 				}\qquad (\spadesuit)
 			\end{equation*}
 			%Incluir gráfica de lo que estamos diciendo con esta condicion
 			
 			To prove the existance of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v(x)$ in the field of Puiseux series %incluir referencia en el apendice
 			$\C\left(\set{v^*}\right)$, because $\overline{\R[x, v]} = \C\left(\set{v^*}\right) = \C\left(\set{x^*}\right)$. %<--- Entiendo yo, no?
-			Such roots are power series in $\C\left(\set{w}\right)$ with $w = \sqrt{v}$, and we can take the most and the less negative roots of $\Delta_v$ in $\R\left(\set{v^*}\right)$ that makes the infinitesimal $v$ greater than 0, namely:
+			Such roots are power series in $\C\left(\set{w}\right)$ with $w = \sqrt{v}$, and we can take the most and the least negative roots of $\Delta_v$ in $\R\left(\set{v^*}\right)$ that makes the infinitesimal $v$ greater than 0, namely:
 			
 			\begin{equation*}\left\{
 				\begin{split}
@@ -555,7 +601,50 @@ where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\De
 				\end{split}\right.
 			\end{equation*}
 			
-			We can check on Sage that $-\infty<N_v<\delta_v<0$ for $0<v<0.28^2$.
+			We can check on Sage that $-\infty<N_v<\delta_v<0$ for $v \in (0, 0.28^2) \siff w \in (0, 0.28)$. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive for $w \in (0, 0.28)$, we get that $\N_v, \delta_v\in D_v$.
+			
+			For first part, let $D=\bigcup_{v>0} D_v=\bigcup_{v>0}\set{x\in \R: \Delta(x,v)\geq 0,x\neq 0}$. Its boundary is the union of the axis $x=0$ and the curve given by the equation 
+			$$
+			\Delta(x, v) = 0 \imp v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}
+			$$
+			. The latter graph $\left(x, v(x)\right)$ is over the axis $v = 0$. Then, $(-\infty, N_v]$ and $[\delta_v, 0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves $\set{(\delta_v, v): 0 < v < 0.28^2}$ and $\set{(N_v, v): 0 < v < 0.28^2}$ are contained in $D$, they are curves above the vertical axis $x = 0$, and $\delta_v < \xi_v$ and $N_v < \eta_v$ as we saw before. 
+			
+			So the only thing left to do is checking that $\gamma_v^-(N_v) > \gamma_v^-(\delta_v)$. Recall that 
+			$$\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)}$$
+			, with $\text{deg}_x(A_2) = 24, \text{deg}_x(B_2) = 21, \text{deg}_x(\Delta) = 6, \text{ and deg}_x(C) = 26$. Consider:
+			
+			$$
+			\arraycolsep=2pt\def\arraystretch{1.5}
+			\begin{array}{rclcrcl}
+				\cdot\ f_1(w)&=&A_2(N_{w^2},w^2)\cdot w^{24}& \qquad &\cdot\ f_2(w)&=& A_2(\delta_{w^2},w^2)\\
+				\cdot\ g_1(w)&=&B_2(N_{w^2},w^2)\cdot w^{21}& \qquad &\cdot\ g_2(w)&=&B_2(\delta_{w^2},w^2)\\
+				\cdot\ q_1(w)&=&\Delta(N_{w^2},w^2)& \qquad &\cdot\ q_2(w)&=&\Delta(\delta_{w^2},w^2)\\
+				\cdot\ h_1(w)&=&C(N_{w^2})\cdot w^{26}& \qquad &\cdot\ h_2(w)&=&C(\delta_{w^2})
+			\end{array}
+			$$
+			. Consequently, we neew to prove that for $w \in (0, 0.28)$:
+			$$
+			\frac{f_1 \cdot (w^{24})^{-1} + g_1\cdot (w^{21})^{-1}\sqrt{q_1}}{h_1 \cdot (w^{26})^{-1}}
+			> 
+			\frac{f_2+g_2\sqrt{q_2}}{h_2} \iff
+			$$
+
+			$$
+			\frac{w^2h_2f_1-f_2h_1}{h_1h_2}+\frac{w^5g_1\sqrt{q_1}}{h_1}-\frac{g_2\sqrt{q_2}}{h_2}>0
+			$$
+
+			, and we are going to prove that 
+			$$
+			\Lambda_1 := \frac{w^2h_2f_1-f_2h_1}{h_1h_2},\quad\Lambda_2 := \frac{w^5g_1\sqrt{q_1}}{h_1},\quad \Lambda_3 := -\frac{g_2\sqrt{q_2}}{h_2}
+			$$
+			are positive in the given interval, which only contains positive values. Thus and because $q_1, q_2$ are positive, we can clear away $w^5$ and $\sqrt{q_1}$ from $\Lambda_2$, $\sqrt{q_2}$ from $\Lambda_3$. Furthermore, $C(x) = x^2(x^2+(x^3+1)^2)^4 > 0$, so we can also remove $h_1$ and $h_2$ from $\Lambda_1, \Lambda_2, \Lambda_3$. It suffices to see that
+			$$
+			L:=\frac{w^2h_2f_1-f_2h_1}{w^4},\quad g_1,\quad K:=-\frac{g_2}{w^3}
+			$$ 
+			are positive for $w \in (0,0.28)$. 
+			
+			
+			Thus, $(\spadesuit)$ holds and we have proved the result. \qed
 
 
 		\end{Proof}
