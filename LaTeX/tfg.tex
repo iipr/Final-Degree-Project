@@ -471,7 +471,7 @@
 			We are going to prove that $\Qu \subset \P(\R^2)$, and to do this it is enough to fix $v > 0$, and if $\G = v$ then the image of $\F$ must contain the whole positive interval $(0, +\infty)$.
 			\begin{center}
 				\fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
-			\end{center}
+			\end{center}\label{step1}
 
 			We start by solving the equation $\G-v= 0 = (1 - xy + x - x^4 y)^2 + (x^2 y)^2 - v$. It has degree $2$ on $y$, so we obtain roots $y^+(x,v),\ y^-(x,v)$:
 			\begin{equation*}
@@ -480,18 +480,18 @@
 				y^-(x,v) & =\frac{1 + x + x^3 + x^4 - \sqrt{\Delta(x,v)}}{x(x^2 + (x^3 + 1)^2)}\\
 				\end{aligned}
 			\end{equation*}
-			where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta) = 6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v = 0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v = 1$ there are no singularities on $y^-$. This observation is used later, in Step 2.
+			where $\Delta(x,v) = \Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta) = 6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v = 0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v = 1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0} y^-(x, 1) = 1$. This observation is used later, in \hyperref[step2]{Step 2}.
 			
 			\begin{figure}
 				\centering
 				\includegraphics[width=1\textwidth]{plots/ch1_06_sols.png}
-				\caption{$y^+(x,v)$ and $y^+(x,v)$ for $v = 0.8$.\label{fig:plotYs_1}}
+				\caption{$y^+(x,v)$ and $y^-(x,v)$ for $v = 0.8$.\label{fig:plotYs_1}}
 			\end{figure}
 			
 			\begin{figure}
 				\centering
 				\includegraphics[width=1\textwidth]{plots/ch1_07_sols_1.png}
-				\caption{$y^+(x,v)$ and $y^+(x,v)$ for $v = 1$.\label{fig:plotYs_2}}
+				\caption{$y^+(x,v)$ and $y^-(x,v)$ for $v = 1$.\label{fig:plotYs_2}}
 			\end{figure}
 
 			The common domain of these two functions is defined by $D_v=\{x \in \R :\ \Delta(x,v) \geq 0, x \neq 0\}$, notice that the only real root of the denominator is $x_0 = 0$\footnote{We did check with Laguerre's method (implemented with Python 2.7.) that $x^7 + 2x^4 + x^3 + x$ has 6 complex roots.}. Let
@@ -511,7 +511,7 @@
 			
 			\begin{center}
 				\fbox{\textbf{Step 2}} \emph{Main properties of $\gamma_v^+ \text{ and } \gamma_v^-$.}
-			\end{center}
+			\end{center}\label{step2}
 			
 			In this section we are going to prove that:
 			$$\text{(i)} \lim_{x\rightarrow \pm\infty}\gamma_v^+(x)=\lim_{x\rightarrow \pm\infty}\gamma_v^-(x)=0.$$
@@ -548,7 +548,7 @@
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width=0.65\textwidth]{plots/ch1_08_numerators.png}
-				\caption{Numerators of $\gamma_v^+$ and $\gamma_v^+$ for $x = 0$.\label{fig:numerators}}
+				\caption{Numerators of $\gamma_v^+$ and $\gamma_v^-$ for $x = 0$.\label{fig:numerators}}
 			\end{figure}
 			
 			Thus, (ii) holds (we also checked with Sage). The result for $v = 1$ on (ii) is not relevant here (see figure \ref{fig:limit}).
@@ -556,22 +556,33 @@
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width=1\textwidth]{plots/ch1_09_limit.png}
-				\caption{Notice the value of $\gamma_1^-$ at $x = 0$.\label{fig:limit}}
+				\caption{Notice the value of $\gamma_1^-(x)$ at $x = 0$.\label{fig:limit}}
 			\end{figure}
 
 			\begin{center}
 				\fbox{\textbf{Step 3}} \emph{When $v \geq 0.28^2$ we have that} $\text{im}(\gamma_v^+) \supset (0, +\infty)$.
-			\end{center}
+			\end{center}\label{step3}
 			
 			We are now going to study the domain $D_v$, in order to see whether $ (\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$ or not. Taking into account the definition of $D_v$, we need to study when $\Delta(x, v) = 0$, so it seems convinient to define:
-			$$v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}$$
-			%, whose graph can be seen in figure \ref{}.
+			$$v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}$$, whose graph can be seen in figure \ref{fig:v(x)}.
 			
-			If $x \in (-\infty, 0)$, using Laguerre's method we checked that $\Delta(x, 0.28^2)$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2$ comes from a careful observation of the plots figure \ref{}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in Step 2, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
+		\begin{figure}[h]\hspace{-1.5cm}
+			\begin{subfigure}{.6\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_10_uve.png}
+				\caption{Plot of $v(x)$.\label{fig:uve}}
+			\end{subfigure}
+			\begin{subfigure}{.6\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_11_uve_detail.png}
+				\caption{Detail of the function when $x \in (-4, 0)$.\label{fig:uveDetail}}
+			\end{subfigure}\\[1ex]
+			\caption{Plot of the univariate function $v(x)$.\label{fig:v(x)}}
+		\end{figure}
+		
+			If $x \in (-\infty, 0)$, using Laguerre's method we checked that $\Delta(x, 0.28^2)= 0.0784 \, x^{6} - x^{4} - 1.8432 \, x^{3} - 0.9216 \, x^{2} + 0.0784$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2 $ comes from a careful observation of the plots figure \ref{fig:uveDetail}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
 			
 			\begin{center}
 				\fbox{\textbf{Step 4}} \emph{When $0 < v < 0.28^2$ we have that} $\text{im}(\gamma_v^-) \supset (0, +\infty)$.
-			\end{center} 
+			\end{center}\label{step4}
 			
 			To prove that for $0 < v < 0.28^2$ we have that $(0, +\infty) \subset \text{im}(\gamma_v^-)$ it is enough to prove the existence of $N_v, \delta_v\in \R$ verifying			
 			\begin{equation*}\qquad \quad
@@ -579,9 +590,14 @@
 					 N_v < \delta_v,\ \ (-\infty, N_v] \cup [\delta_v, +\infty) \subset D_v \text{ and } \gamma_v^-(N_v) > \gamma_v^+(\delta_v)\\
 				}\qquad (\spadesuit)
 			\end{equation*}
-			%Incluir gráfica de lo que estamos diciendo con esta condicion
 			
-			To prove the existance of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v(x)$ in the field of Puiseux series %incluir referencia en el apendice
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_12_idea.png}
+				\caption{Idea of what we are saying with $(\spadesuit)$ Here $v = 0.1$.\label{fig:idea}}
+			\end{figure}
+			
+			See figure \ref{fig:idea} to get an idea of what we are saying here. To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v(x)$ in the field of Puiseux series %incluir referencia en el apendice
 			$\C\left(\set{v^*}\right)$, because $\overline{\R[x, v]} = \C\left(\set{v^*}\right) = \C\left(\set{x^*}\right)$. %<--- Entiendo yo, no?
 			Such roots are power series in $\C\left(\set{w}\right)$ with $w = \sqrt{v}$, and we can take the most and the least negative roots of $\Delta_v$ in $\R\left(\set{v^*}\right)$ that makes the infinitesimal $v$ greater than 0, namely:
 			
@@ -601,7 +617,19 @@
 				\end{split}\right.
 			\end{equation*}
 			
-			We can check on Sage that $-\infty<N_v<\delta_v<0$ for $v \in (0, 0.28^2) \siff w \in (0, 0.28)$. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive for $w \in (0, 0.28)$, we get that $\N_v, \delta_v\in D_v$.
+			We can check on Sage that $-\infty<N_v<\delta_v<0$ for $v \in (0, 0.28^2) \siff w \in (0, 0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive (see fig. \ref{fig:positive}) for $w \in (0, 0.28)$, we get that $N_v, \delta_v\in D_v$.
+		\begin{figure}[h]\hspace{-1cm}
+			\begin{subfigure}{.56\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_13_comp.png}
+				\caption{$-\infty<N_v<\delta_v<0$.\label{fig:comp}}
+			\end{subfigure}
+			\begin{subfigure}{.6\linewidth}\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_14_positive.png}
+				\caption{$\Delta(N_{v}, v), \Delta(\delta_{v},v) > 0$.\label{fig:positive}}
+			\end{subfigure}\\[1ex]
+			\caption{Plots of $N_v,\ \delta_v,\ \Delta(N_{v}, v),\ \Delta(\delta_{v},v) > 0$ for $v \in (0, 0.28^2)$.\label{fig:N_delta}}
+		\end{figure}
+
 			
 			For first part, let $D=\bigcup_{v>0} D_v=\bigcup_{v>0}\set{x\in \R: \Delta(x,v)\geq 0,x\neq 0}$. Its boundary is the union of the axis $x=0$ and the curve given by the equation 
 			$$
