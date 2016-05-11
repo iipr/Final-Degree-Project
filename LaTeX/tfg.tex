@@ -11,14 +11,10 @@
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
-% ________Pruebas________
-\usepackage{lipsum}
-% _______________________
 
-\usepackage{amsmath}
 \begin{document}
 
-\pagenumbering{Alph}
+\pagenumbering{roman}
 \begin{titlepage}
 
 \title{\huge{\textsc{Complexity Analysis of Polynomial Algorithms}} \\
@@ -37,14 +33,14 @@
 \end{center}
 	
 \begin{abstract}
-	This work is about three different proofs of the same fact and a computational comparison between them, looking for the best one.
+	This work is about different proofs of the same fact and a computational comparison between them, looking for the best one.
 
 	Let $R$ be a real closed field and $n\geq 2$. We prove that: (1) for every finite subset $F$ of $R^n$,
 	the semialgebraic set $R^n\setminus F$ is a polynomial image of $R^n$; and (2) for any
 	independent linear forms $l_1,\dots,l_r$ of $R^n$, the semialgebraic set
 	$\{l_1>0,\dots,l_r>0\}\subset R^n$ is a polynomial image of $R^n$.
 	
-	The key proof here is that $\Qu = \{x > 0, y > 0\}$ is a polynomial image of $\R^2$. This assert is proved in three different ways: a first approach using real algebraic geometry; a second and shorter one, using the composition of 3 rather simple maps; and a third one that applies topology with no computer computations.
+	The key proof here is that $\Qu = \{x > 0, y > 0\}$ is a polynomial image of $\R^2$. This assert is proved in three different ways: a first approach using real algebraic geometry; a second and shorter one, using the composition of 3 rather simple maps; and a third one that applies topology, with no computer computations.
 	
 	(...)
 \end{abstract}
@@ -208,21 +204,21 @@
 		
 	\end{theorem}
 	
-	The proof of theorem \ref{openQuad} will consist in two parts:
+	The proof of theorem \ref{openQuad} will consist of two parts:
 	
 	\begin{itemize}
 	
 		\item Choosing a ``good'' candidate to be the polynomial map, and giving the reasons behind this choice (see subsection \ref{quadReasons}). 
 	
-		\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this will reduce to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the polynomials involved, the actual check of non-existence of root is done with a Maple package that performs Sturm algorithm (\cite[1.2.10]{bcr}) and a Python program that implements Laguerre's method.
+		\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this will be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the polynomials involved, the actual check of non-existence of roots is done with a Maple package that performs Sturm algorithm (\cite[1.2.10]{bcr}) and a Python program that implements Laguerre's method.
 				
 	\end{itemize}
 
-		Now, it is really important that provided we are proved theorem \ref{openQuad}, then theorem \ref{openQuadGen} is proved as follows:
+		Now, it is really important that provided we have proved theorem \ref{openQuad}, then theorem \ref{openQuadGen} is proved as follows:
 		
 		\begin{Proof}(of theorem \ref{openQuadGen})
 			
-			Clearly, that after a linear change of coordinates we can suppose that $l_1=x_1,\dots,l_r=x_r$, and so, we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $ R^n$. This is reduced to prove the following two steps:
+			Clearly, after a linear change of coordinates we can suppose that $l_1=x_1,\dots,l_r=x_r$, and so, we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $ R^n$. This is reduced to prove the following two steps:
 			
 			\begin{itemize}
 				
@@ -254,7 +250,7 @@
 		
 		Let $F=\{p_1,\dots,p_k\}$. We are going to see that it suffices to prove the result for points of the form $p_j=(a_j,\vec{0})\in\R\times\R^{n-1}$:
 
-		After a linear change of coordinates we can assume that each pair of points have non-equal first components, that is, if we denote $p_j:=(a_{1j},\dots,a_{nj})$ then $a_{1j}\neq a_{1l}$ if $j\neq l$. Then, $\exists P_1\in\R[T]$ such that $P_1(a_{1j})=a_{nj}, j = 1,\dots, n$, so denoting $x'=(x_1,\dots,x_{n-1})$, we can define the polynomial map 
+		After a linear change of coordinates we can assume that each pair of points have non-equal first components, that is, if we denote $p_j:=(a_{1j},\dots,a_{nj})$ then $a_{1j}\neq a_{1l}$ when $j\neq l$. Then, $\exists P_1\in\R[T]$ such that $P_1(a_{1j})=a_{nj}$, with $j = 1,\dots, n$, so denoting $x'=(x_1,\dots,x_{n-1})$, we can define the polynomial map 
 		\begin{align*}
 			h_1: \R^n & \longrightarrow \R^n \\
 			(x',x_n) & \longmapsto (x',x_n+P_1(x_1))
@@ -266,7 +262,7 @@
 			h_2: \R^n & \longrightarrow \R^n \\
 			(x'',x_{n-1},x_n) & \longmapsto (x'',x_{n-1}+P_2(x_1),x_n)
 		\end{align*}
-		, where $x'' = (x_1, \dots, x_{n-2})$. Then $h_2(p_j'')=p_j'$ for $p_j'' = (a_{1j},\dots,a_{(n-2)j}, 0, 0)$. Then it is clear that the polynomial bijection 
+		, where $x'' = (x_1, \dots, x_{n-2})$. Then $h_2(p_j'')=p_j'$ for $p_j'' = (a_{1j},\dots,a_{(n-2)j}, 0, 0)$. Then it is clear that we can construct the polynomial bijection 
 		$$(h_1\circ h_2)(p_j'') = h_1(h_2(p_j'')) = h_1(p_j') = p_j$$
 		, so we can inductively construct a polynomial bijection $h:\R^n\rightarrow\R^n$ such that $h(q_j)=p_j$ for $q_j=(a_{1j},\vec{0}) \in \R\times\R^{n-1}$.  Now let $G=\{q_1,\dots,q_k\}$ and $g:\R^n\rightarrow\R^n$ be a polynomial map such that $g(\R^n)=\R^n\setminus G$. Then $(h\circ g)(\R^n) = \R^n \setminus F$, which concludes the first part of the proof. Now, in what follows, we can suppose that $p_j=(a_j,\vec{0})$.
 		
@@ -282,8 +278,8 @@
 		. First, suppose that $\exists b=(b_{1},\dots,b_{n}) \in R^n$ such that $f(b)=p_\ell$ for some $\ell=1, \dots, k$. Then $f_1(b)=b_1b_2 - r + a_1 = a_\ell \imp$ for $j = \ell$ we get on $\rho$: $b_1b_2 - r + a_1 + a_\ell = a_\ell - a_\ell \imp \rho(b) = 0$. On top of that, $f_i(b)=0$ for $i = 2, \dots, n$. Thus, since $f_i \equiv \text{id}$ for $i = 3, \dots, n$ we get that $b_i = 0$ when $i = 3, \dots, n \imp \sigma(b) = 0$. Now, since $\sigma$ and $\rho$ are null: $f_2(b) = b_2$, and $f_2(b) = 0$, so $b_2 = 0 \imp$ looking to $f_1(b)$: $a_1 - r = a_\ell$, or $r = a_1-a_\ell$, which is a contradiction. So $\text{im}(f)\subset \R^n\setminus F$.
 				
 		Conversely, let $u=(u_1,\dots,u_n)\in\R^n\setminus F$. We need to find a solution for the system of polynomial equations:
-		\[ \left\{ 
-		\begin{array}{ll} 	
+		\[ \left\{ \def\arraystretch{1.2}
+		\begin{array}{ll} 
 			f_1(x) & = x_1 x_2 - r + a_1 = u_1 \\
 			f_2(x) & = x_1^4 \rho(x) + x_1^2 \sigma(x) + x_2 = u_2 \\
 			f_j(x) & = x_j = u_j, \quad j \geq 3
@@ -297,7 +293,7 @@
 			\begin{align*}
 				x_1^4\rho(x) + x_1^2\sigma(x) - u_2 = - x_2 = - \frac{u_1 - a_1 + r}{x_1} & \implies \\
 				x_1^5\rho(x) + x_1^3\sigma(x) - u_2 x_1 + (u_1 - a_1 + r) = 0, \\
-				\text{but then we get }  \prod_{j = 1}^k(u_1 - a_j) \text{ and } \sigma(x) = \sigma(u&). \\
+				\text{but then we get } \rho(x) =  \prod_{j = 1}^k(u_1 - a_j) \text{ and } \sigma(x) = &\sigma(u). \\
 			\end{align*}
 			Now it is clear that $x_1$ must be a nonzero root of the polynomial:
 			$$
@@ -434,7 +430,7 @@
 			
 				 $\cdot$ $\G^{-1}(0)=\G_1^{-1}(0)\cap \G_2^{-1}(0)\ =\, \{(-1,0)\} \xmapsto{\ \P\ } \set{(1,0)}$.
 		
-			\item $\cdot$ $P\circ\alpha_{\lambda}=(F\circ\alpha_{\lambda },G\circ\alpha_{\lambda})=$
+			\item $\cdot$ $\P\circ\alpha_{\lambda}=(\F\circ\alpha_{\lambda },\G\circ\alpha_{\lambda})=$
 			
 				$\arraycolsep=2pt\def\arraystretch{1.2}
 				\begin{array}{l}
@@ -445,7 +441,7 @@
 				\end{array}
 				$
 				
-				$\cdot$ $P\circ\beta_{\mu}=(F\circ\beta_{\mu},G\circ\beta_{\mu})=$
+				$\cdot$ $\P\circ\beta_{\mu}=(\F\circ\beta_{\mu},\G\circ\beta_{\mu})=$
 				
 				$\arraycolsep=2pt\def\arraystretch{1.2}
 				\begin{array}{l}
@@ -460,7 +456,7 @@
 					
 		\end{enumerate}
 		
-		The polynomials $F\circ\alpha_{\lambda }, G\circ\alpha_{\lambda} \in \R[s,a_{\lambda}]$ and $F\circ\beta_{\mu},G\circ\beta_{\mu} \in\R[s,b_{\mu}]$ were computed with Sage. As we anticipated before, by (ii) $F = \set{(-1, 0), (0, -1)}$.
+		The polynomials $\F\circ\alpha_{\lambda },\ \G\circ\alpha_{\lambda} \in \R[s,a_{\lambda}]$ and $\F\circ\beta_{\mu},\ \G\circ\beta_{\mu} \in\R[s,b_{\mu}]$ were computed with Sage. As we anticipated before, by (ii) $F = \set{(-1, 0), (0, -1)}$.
 		
 	\end{subsection}
 	
@@ -563,7 +559,7 @@
 				\fbox{\textbf{Step 3}} \emph{When $v \geq 0.28^2$ we have that} $\text{im}(\gamma_v^+) \supset (0, +\infty)$.
 			\end{center}\label{step3}
 			
-			We are now going to study the domain $D_v$, in order to see whether $ (\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$ or not. Taking into account the definition of $D_v$, we need to study when $\Delta(x, v) = 0$, so it seems convinient to define:
+			We are now going to study the domain $D_v$, in order to see whether $ \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-) \supset (0, +\infty)$ or not. Taking into account the definition of $D_v$, we need to study when $\Delta(x, v) = 0$, so it seems convenient to define:
 			$$v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}$$, whose graph can be seen in figure \ref{fig:v(x)}.
 			
 		\begin{figure}[h]\hspace{-1.5cm}
@@ -578,7 +574,7 @@
 			\caption{Plot of the univariate function $v(x)$.\label{fig:v(x)}}
 		\end{figure}
 		
-			If $x \in (-\infty, 0)$, using Laguerre's method we checked that $\Delta(x, 0.28^2)= 0.0784 \, x^{6} - x^{4} - 1.8432 \, x^{3} - 0.9216 \, x^{2} + 0.0784$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2 $ comes from a careful observation of the plots figure \ref{fig:uveDetail}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
+			If $x \in (-\infty, 0)$, using Laguerre's method we checked that $\Delta(x, 0.28^2)= 0.0784 \, x^{6} - x^{4} - 1.8432 \, x^{3} - 0.9216 \, x^{2} + 0.0784$ has 4 complex roots and 2 real ones\footnote{The value $v_0 = 0.28^2 $ comes from a careful observation of the plot from figure \ref{fig:uveDetail}.}, with the real ones being $\delta_0 \approx 0.236$ and $\delta_1 \approx 4.336$. Thus, we get that when $v \ge 0.28^2$, $\Delta(x, v)$ has no negative roots, and moreover, it is positive $\imp (-\infty, 0) \subset D_v$. But then, since $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get that $(0, +\infty) \subset \text{im}(\gamma_v^+) \subset \text{im}(\gamma_v^+) \cup \text{im}(\gamma_v^-)$.
 			
 			\begin{center}
 				\fbox{\textbf{Step 4}} \emph{When $0 < v < 0.28^2$ we have that} $\text{im}(\gamma_v^-) \supset (0, +\infty)$.
@@ -627,15 +623,21 @@
 				\includegraphics[width=1\textwidth]{plots/ch1_14_positive.png}
 				\caption{$\Delta(N_{v}, v), \Delta(\delta_{v},v) > 0$.\label{fig:positive}}
 			\end{subfigure}\\[1ex]
-			\caption{Plots of $N_v,\ \delta_v,\ \Delta(N_{v}, v),\ \Delta(\delta_{v},v) > 0$ for $v \in (0, 0.28^2)$.\label{fig:N_delta}}
+			\caption{Plots of $N_v,\delta_v < 0$ and $\Delta(N_{v}, v),\ \Delta(\delta_{v},v) > 0$ for $v \in (0, 0.28^2)$.\label{fig:N_delta}}
 		\end{figure}
 
 			
-			For first part, let $D=\bigcup_{v>0} D_v=\bigcup_{v>0}\set{x\in \R: \Delta(x,v)\geq 0,x\neq 0}$. Its boundary is the union of the axis $x=0$ and the curve given by the equation 
+			For the first part, let $D=\bigcup_{v>0} D_v=\bigcup_{v>0}\set{x\in \R: \Delta(x,v)\geq 0,x\neq 0}$. Its boundary is the union of the axis $x=0$ and the curve given by the equation 
 			$$
 			\Delta(x, v) = 0 \imp v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}
 			$$
-			. The latter graph $\left(x, v(x)\right)$ is over the axis $v = 0$. Then, $(-\infty, N_v]$ and $[\delta_v, 0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves $\set{(\delta_v, v): 0 < v < 0.28^2}$ and $\set{(N_v, v): 0 < v < 0.28^2}$ are contained in $D$, they are curves above the vertical axis $x = 0$, and $\delta_v < \xi_v$ and $N_v < \eta_v$ as we saw before. 
+			. The latter graph $\left(x, v(x)\right)$ is above the axis $v = 0$. Then, $(-\infty, N_v]$ and $[\delta_v, 0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves $\set{(\delta_v, v): 0 < v < 0.28^2}$ and $\set{(N_v, v): 0 < v < 0.28^2}$ are contained in $D$, they are curves above the vertical axis $x = 0$, and $\delta_v < \xi_v$ and $N_v < \eta_v$ as we saw before. Look at figure \ref{fig:nice_plot}.
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.png}
+				\caption{Plot of $\set{(N_v, v)}, \set{(\delta_v, v)} \subset D_v$, for $0 < v < 0.28^2$.\label{fig:nice_plot}}
+			\end{figure}
 			
 			So the only thing left to do is checking that $\gamma_v^-(N_v) > \gamma_v^-(\delta_v)$. Recall that 
 			$$\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)}$$
@@ -650,7 +652,7 @@
 				\cdot\ h_1(w)&=&C(N_{w^2})\cdot w^{26}& \qquad &\cdot\ h_2(w)&=&C(\delta_{w^2})
 			\end{array}
 			$$
-			. Consequently, we neew to prove that for $w \in (0, 0.28)$:
+			. Consequently, we need to prove that for $w \in (0, 0.28)$:
 			$$
 			\frac{f_1 \cdot (w^{24})^{-1} + g_1\cdot (w^{21})^{-1}\sqrt{q_1}}{h_1 \cdot (w^{26})^{-1}}
 			> 
@@ -671,8 +673,13 @@
 			$$ 
 			are positive for $w \in (0,0.28)$. 
 			
+			\hspace{-3cm}
+			\includegraphics[width=0.5\linewidth]{plots/ch1_16_L.png}
+			\includegraphics[width=0.5\linewidth]{plots/ch1_17_g_1.png}
+			\includegraphics[width=0.5\linewidth]{plots/ch1_18_K.png}
+			\vspace{0.5cm}			
 			
-			Thus, $(\spadesuit)$ holds and we have proved the result. \qed
+			As we see in the figures they indeed are. It was also checked with Sturm's algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and we have proved the result. \qed
 
 
 		\end{Proof}
