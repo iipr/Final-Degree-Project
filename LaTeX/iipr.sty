@@ -1,9 +1,9 @@
 %     _______________________________________________________
-%    |                                                       |
-%    |                       iipr.sty                        |
-%    |  Style file with mathematical commands, among others  |
-%    |                 May 2016, Version 1.0                 |
-%    |               Ignacio Iker Prado Rujas                |
+%    |                                                                                                              |
+%    |                                                 iipr.sty                                                   |
+%    |            Style file with mathematical commands, among others             |
+%    |                                     May 2016, Version 1.0                                     |
+%    |                                   Ignacio Iker Prado Rujas                                    |
 %    |_______________________________________________________|
 %
 
@@ -14,6 +14,7 @@
 \usepackage{dsfont}     % For using "mathds"
 \usepackage{amssymb}	% mathbb typography (Natural numbers...)
 \usepackage{thmtools}	% For improving the style in theorem-like enviroments (must be loaded after amsthm)
+%\usepackage[nothm]{thmbox}    % Nice boxes for theorem-like enviroments
 \usepackage{xfrac}		% Fractions, such as the little ones
 \usepackage{etextools}	% Macros in math mode
 \usepackage{mathtools,etoolbox}    % For defining \set, \abs...
@@ -90,20 +91,36 @@
 \declaretheoremstyle[bodyfont=\normalfont]{defn}
 \declaretheoremstyle[headfont=\normalfont\itshape]{prove}    %Style for proofs
 
-\declaretheorem[numberwithin=chapter,style=defn,name=Example,refname={example,example},Refname={Example,Examples}]{example}    % Example
-\declaretheorem[numberwithin=chapter,name=Corolary,refname={corolary},Refname={Corolary}]{corolary}    % Corolary
-\declaretheorem[numberwithin=chapter,name=Proposition,refname={proposition,propositions},Refname={Proposition,Proposition}]{proposition}    % Proposition
+\declaretheorem[numberwithin=chapter,name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems},style=defn,thmbox={style=M}]{theorem}    %Theorem. Doesnt work: bodystyle=\normalfont,titlestyle=$\ \ $(\bfseries\boldmath #1)
+\declaretheorem[numberlike=theorem,style=defn,name=Example,refname={example,example},Refname={Example,Examples}]{example}    % Example
+\declaretheorem[numberlike=theorem,name=Corollary,refname={corollary},Refname={Corollary}]{corollary}    % Corollary
+\declaretheorem[numberlike=theorem,name=Proposition,refname={proposition,propositions},Refname={Proposition,Proposition}]{proposition}    % Proposition
 \declaretheorem[numbered=no,style=remark,name=Note,refname={note,notes},Refname={Note,Notes}]{note}    %Note
-\declaretheorem[numberwithin=chapter,name=Lemma,refname={lemma,lemmas},Refname={Lemma,Lemmas},style=defn]{lemma}    % Lemma
-\declaretheorem[numberwithin=chapter,name=Definition,refname={definition,definitions},Refname={Definition,Definitions},style=defn]{definition}    % Definition
-\declaretheorem[numberwithin=chapter,name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems},style=defn]{theorem}    %Theorem
-\declaretheorem[numberwithin=chapter,name=Observation,refname={observation,observations},Refname={Observation,Observations}]{observation}    % Observation
+\declaretheorem[numberlike=theorem,name=Lemma,refname={lemma,lemmas},Refname={Lemma,Lemmas},style=defn]{lemma}    % Lemma
+\declaretheorem[numberlike=theorem,name=Definition,refname={definition,definitions},Refname={Definition,Definitions},style=defn]{definition}    % Definition
 \declaretheorem[numbered=no,name=Consequence,refname={consequence,consequences},Refname={Consequence,Consequences}, style=remark]{consequence}    %Consequence
-\declaretheorem[numbered=no,name=Notation,refname={notation,notations},Refname={Notation,Notations},style=remark]{notation}    % Notation
+\declaretheorem[numbered=no,name=Notation,refname={notation,notations},Refname={Notation,Notations},style=defn]{notation}    % Notation
 \declaretheorem[numbered=no,name=Solution,style=defn]{solution}	   % Solution
 \declaretheorem[numbered=no,name=Counterexample,refname={counterexample,counterexamples},Refname={Counterexample,Counterexamples},style=remark]{contraejemplo}    % Counterexample
-\declaretheorem[numberwithin=chapter,name=Principle,refname={principle,principles},Refname={Principle,Principles}]{principio}    % Principle
+\declaretheorem[numberlike=theorem,name=Principle,refname={principle,principles},Refname={Principle,Principles}]{principio}    % Principle
 \declaretheorem[numbered=yes,name=Exercise,refname={exercise,exercises},Refname={Exercise,Exercises},style=defn,thmbox=L]{exercise}    % Exercise
-\declaretheorem[numbered=no,name=Assertion,refname={assertion,assertion},Refname={Assertion,Assertions}]{aserto}    % Assertion
-\declaretheorem[numberwithin=chapter,name=Remark,refname={remark,remarks},Refname={Remark,Remarks},style=defn]{remark}    % Remark
+\declaretheorem[numbered=no,name=Assertion,refname={assertion,assertion},Refname={Assertion,Assertions}]{assertion}    % Assertion
+\declaretheorem[numberlike=theorem,name=Remark,refname={remark,remarks},Refname={Remark,Remarks},style=defn]{remark}    % Remark
 \declaretheorem[numbered=no,name=Proof,style=prove]{Proof}    % Proof
+\declaretheorem[numberlike=theorem,name={Proposition and Definition}]{prodef}    % Proposition and Definition
+\declaretheorem[numberlike=theorem,name={Comment}]{comm}    % Comment
+\declaretheorem[numberlike=theorem,name={Definition and Remark}]{defrem}    % Definition and Remark
+\declaretheorem[numberlike=theorem,name={Definition and Example}]{defex}    % Definition and Example
+\declaretheorem[numberlike=theorem,name={Definition and Examples}]{defexs}    % Definition and Examples
+\declaretheorem[numberlike=theorem,name={Definition and Remarks}]{defrems}    % Definition and Remarks
+\declaretheorem[numberlike=theorem,name={Definitions and Remarks}]{defsrems}    % Definitions and Remarks
+\declaretheorem[numberlike=theorem,name={Definitions}]{definitions}    % Definitions
+\declaretheorem[numberlike=theorem,name={Notation and Remarks}]{notobs}    % Notation and Remarks
+\declaretheorem[numberlike=theorem,name={Definition and Comment}]{defcomm}    % Definition and Comment
+\declaretheorem[numberlike=theorem,name={Definition and Comments}]{defcomms}    % Definition and Comments
+\declaretheorem[numberlike=theorem,name={Definitions and Notations}]{defnots}    % Definitions and Notations
+\declaretheorem[numberlike=theorem,name={Definitions and Proposition}]{defspro}    % Definitions and Proposition
+\declaretheorem[numberlike=theorem,name={Examples}]{examples}    % Examples
+\declaretheorem[numberlike=theorem,name={Open Question}]{quest}    % Open Question
+\declaretheorem[numberlike=theorem,name={Open Questions}]{quests}    % Open Questions
+\declaretheorem[numberlike=theorem,name={Construction}]{constr}    % Construction
