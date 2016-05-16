@@ -44,7 +44,7 @@ Let $R$ be a real closed field and $n\geq 2$. Then:
 	
 (2) Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the semialgebraic set $\{h_1>0,\dots,h_r>0\}\subset R^n$ is a polynomial image of $R^n$.
 	
-The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results inreal algebraic geometry as Sturm's theorem and the Curve Selection Lemma and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
+The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry as Sturm's theorem and the Curve Selection Lemma and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
 	
 	(...)
 \end{abstract}
@@ -68,7 +68,7 @@ A very famous theorem by Tarski and Seidenberg states the following:
 	
 In this work we study a sort of converse of this statement. In an \emph{Oberwolfach} week, J.M. Gamboa \cite{g} proposed to characterize the semialgebraic subsets of $R^n$ that are polynomial images of some $R^m$. Particularly interesting seems to be the study of those open semialgebraic subsets of $R^n$ that are polynomial images of $R^n$, because this is related with the real jacobian conjecture.
 	
-\begin{notation} We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \em exterior boundary \em of a subset $S\subset R^n$ is $\delta S:=\overline{S}\setminus S$, with $\overline{S}$ being the \em closure \em of $S$ in the usual topology of $R^n$. In addition we will denote $\overline{S}^{\text{zar}}$ the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology} of $R^n$. We will say that a semialgebraic subset $A\subset R^n$ is \em Zariski-irreducible \em if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
+\begin{notation} We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \em exterior boundary \em of a subset $S\subset R^n$ is $\delta S:=\overline{S}\setminus S$, with $\overline{S}$ being the \em closure \em of $S$ in the usual topology of $R^n$. In addition we will denote by $\overline{S}^{\text{zar}}$ the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology} of $R^n$. We will say that a semialgebraic subset $A\subset R^n$ is \em Zariski-irreducible \em if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
 \end{notation}
 	
 \begin{subsection}{Necessary conditions and examples} To begin working on this idea, we provide some necessary conditions for a set $S\subset R^n$ to be a polynomial image of $R^m$. 
@@ -113,12 +113,12 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \begin{corollary} Because of \em (3) \em in Proposition \em \ref{propIntro}, \em all linear projections of $S$ are either a point or unbounded. Thus, $S$ is also unbounded or a point.
 \end{corollary}
 	
-\begin{example}\label{introExample}
+\begin{examples}\label{introExample}
 \
 \begin{enumerate}[(i)]
 \item The exterior of the closed unit disc $S:=\set{u^2+v^2>1}$ \textbf{is not} a polynomial image of $R^2$. This is so because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is $\set{u^2+v^2=1}$ and this set is not a parametric semiline because it is bounded.
 			
-\item Let $S_1:=\set{uv<1}$ and $S_2:=\set{uv>1,u>0}$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$) is the hyperbola $\{uv=1\}$, which is not a parametric semiline.
+\item Let $S_1:=\set{uv<1}$ and $S_2:=\set{uv>1,u>0}$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}$, which is not a parametric semiline.
 \begin{figure}[h]\hspace{-0.5cm}
 \begin{subfigure}{.55\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_01_S_1.png}
@@ -133,19 +133,20 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \item Let $S:=R^2\setminus\set{(0, 0)}$ be the punctured plane. Then $S$ is the image of the polynomial map $(x,y) \mapsto (xy-1,(xy-1)x^2-y)$.
 \item Let $\mathbb{H}:=\set{v>0}$ be the open upper half-plane. Then $\mathbb{H}$ is the image of $(x,y) \mapsto (y(xy-1),(xy-1)^2+x^2)$. This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\mathbb{H}$.
 \end{enumerate}
-\end{example}
+\end{examples}
 \end{subsection}
 	
 \begin{subsection}{Statement of the main results}
 	
-The main results of this chapter are generalizations of examples (iii) and (iv) from Proposition \ref{introExample}.
+The main results of this chapter are generalizations of examples (iii) and (iv) from Examples \ref{introExample}.
 	
 \begin{theorem}\label{finSetTh}\em Let $n\ge2$. For every finite set $F\subset R^n$, the semialgebraic set $R^n\setminus F\subset R^n$ is a polynomial image of $R^n$.\em
 \end{theorem}
+%\newpage
 \begin{theorem}\label{openQuadGen}\em Let $n\ge 2$. For any independent linear forms $h_1,\dots,h_r$ of $R^n$, the open semialgebraic set $\set{h_1>0,\dots,h_r>0}$ is a polynomial image of $R^n$.\em
 \end{theorem}
 	
-Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\mathbb{H}$. J.M. Gamboa outlined the problem of finding if $\Qu=\set{x>0,y>0}$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to loof for a solution of this problem was the transformation
+Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\mathbb{H}$. J.M. Gamboa outlined the problem of finding if $\Qu=\set{x>0,y>0}$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to look for a solution of this problem was the transformation
 $$
 \psi:R^2 \to R^2,\, (x,y)\mapsto(x^4y^2,x^2y^4)
 $$	
@@ -157,7 +158,7 @@ whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem 
 \begin{itemize}
 \item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see subsection \ref{quadReasons}). 
 	
-\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs Sturm algorithm (\cite[1.2.10]{bcr}) and a Python programme that implements Laguerre's method.
+\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements Laguerre's method. %Comentar el método de Laguerre en el apéndice
 \end{itemize}
 \end{remark}
 
@@ -182,11 +183,11 @@ Once the case $n=3$ is solved the case of arbitrary $n$ follows straightforwardl
 
 \vspace{1mm}
 		
-The original proofs of Theorems \ref{finSetTh} and \ref{openQuad} are written for $R:=\R$. As for both theorems explicit polynomial maps are given, the results can be extended to arbitrary real closed field $R$ by the Transfer Principle \ref{TP}
+The original proofs of Theorems \ref{finSetTh} and \ref{openQuad} are written for $R:=\R$. As for both theorems explicit polynomial maps are given, the results can be extended to arbitrary real closed field $R$ by the \hyperref[TP]{Transfer Principle}.
 \end{subsection}
 \end{section}
 
-\begin{section}{Complementary set of a finite set (Thm. \ref{finSetTh})}
+\begin{section}{Complementary set of a finite set}
 	
 We proceed to prove theorem \ref{finSetTh}:
 	
@@ -220,7 +221,7 @@ f(x)=\left(x_1x_2-r+a_1,\ x_1^{4}\rho(x)+x_1^{2}\sigma(x)+x_2,\ x_3,\dots,\ x_n\
 $$
 is $\R^n\setminus F$, where $r$ is an integer such that $r\neq a_1-a_j$ for $j=1,\dots,k$,  
 $$
-\sigma(x):=\sum_{j=3}^n x_j^2 \text{ and } \rho(x):=\prod_{j=1}^k(x_1x_2-r+a_1-a_j)
+\sigma(x):=\sum_{j=3}^n x_j^2 \text{ and } \rho(x):=\prod_{j=1}^k(x_1x_2-r+a_1-a_j).
 $$
 First, suppose that there exists $b:=(b_{1},\dots,b_{n})\in R^n$ such that $f(b)=p_\ell$ for some $\ell=1,\dots,k$. Then $f_1(b)=b_1b_2-r+a_1=a_\ell$. Thus the $\ell^{th}$-factor of the polynomial $\rho$ evaluated at $x:=b$ is
 $$
@@ -267,7 +268,7 @@ as required.
 \begin{section}{The open quadrant problem}
 \begin{subsection}{Reasons behind the choice}\label{quadReasons}
 		
-It is remarkable that even though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}), the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
+It is remarkable that even though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plots/ch1_03_f(x,y).png}
@@ -279,7 +280,7 @@ However, although $h(\R^2)=I$, the polynomial $h$ does not help to obtain $\Qu$ 
 \begin{remark}
 There is no polynomial map $f:=(P_1, P_2):\R^2\to\R^2$ satisfying $f(\R^2)=\Qu$ and $P_1(x,y)=(xy-1)^2+x^2$.
 \end{remark}
-The proof of this remark relies on a suitable use of the Curve Selection Lemma (\cite{abr}, VIII.2.6) to approach a point $(\lambda^2,0)\in\overline{\Qu}$ with $\lambda>0$, to get a contradiction.
+The proof of this remark relies on a suitable use of the Curve Selection Lemma (\cite[VIII.2.6]{abr}) to approach a point $(\lambda^2,0)\in\overline{\Qu}$ with $\lambda>0$, to get a contradiction.
 		
 On the topic of finding a polynomial map $\Phi:\R^2\to\R^2$ that satisfies $\Phi(\R^2)=\Qu$, ``a major difficulty" is the following:
 \begin{center}
@@ -326,6 +327,7 @@ The following pair of polynomials:
 }
 \end{equation*}
 enjoy a nice behavior along these curves, as the following images show:
+
 \begin{figure}[h]\hspace{-0.5cm}
 \begin{subfigure}{.54\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
@@ -340,8 +342,8 @@ enjoy a nice behavior along these curves, as the following images show:
 Next, notice that
 \begin{enumerate}[(a)]
 \item $\cdot$ $\F_1\circ\alpha_\lambda=1-a_{\lambda}-a_{\lambda}^{2} s-s^{2}-a_{\lambda} s^{3}\in\R[s,a_{\lambda}]$,
-$\, \F_1\circ\alpha_{\lambda }(0)=1-a_{\lambda. }$
-$\F_1\circ\beta_{\mu}=-3\,b_{\mu}s-3 \,b_{\mu}^{2} s^{2}-{\left(b_{\mu}^{3}-1\right)}s^{3}-s^{5}-b_{\mu}s^{6}\in\R[s,b_{\mu}]$,
+$\, \F_1\circ\alpha_{\lambda }(0)=1-a_{\lambda. }$ \newline
+$\cdot$ $\F_1\circ\beta_{\mu}=-3\,b_{\mu}s-3 \,b_{\mu}^{2} s^{2}-{\left(b_{\mu}^{3}-1\right)}s^{3}-s^{5}-b_{\mu}s^{6}\in\R[s,b_{\mu}]$,
 $\, \F_1\circ\beta_{\mu}(0)=0$.
 				
 \item $\cdot$ $ \G_1\circ\alpha_{\lambda } = {\left(1-a_{\lambda} \right)}s-s^{3}-a_{\lambda} s^{4} \in\R[s,a_{\lambda}]$,
@@ -424,7 +426,7 @@ The common domain of these two functions is the set
 $$
 D_v:=\{x\in R:\, \Delta(x,v)\geq 0,\,x\neq 0\}.
 $$ 
-Notice that the only real root of the denominator is $x_0:=0$\footnote{We checked with Laguerre's method, implemented with Python 2.7., that the polynomial $x^7+2x^4+x^3+x$ has 6 complex roots.} Let
+Notice that the only real root of the denominator is $x_0:=0$\footnote{We checked with Laguerre's method, implemented with Python 2.7, that the polynomial $x^7+2x^4+x^3+x$ has 6 complex roots.} Let
 $$
 \gamma_v^+: D_v\to\R,\, x\mapsto\F(x,y^+(x,v))\quad\text{ and }\quad\gamma_v^-:D_v\to\R,\, x\mapsto\F(x,y^-(x,v))
 $$
@@ -609,7 +611,7 @@ As we see in the figures they indeed are. This has been also checked with Sturm'
 	A \em real closed field \em is an ordered field $R$ such that $R(\sqrt{-1})$ is an algebraically closed field. There exist many characterizations of real closed fields. A very enlightening is the following one: $R$ is a real closed field if it is an ordered field that shares with the field $\R$ of real numbers its properties of the first-order language of ordered fields. 
 \end{definition}
 
-Indeed, Tarski-Seidenberg Theorem admits a useful formulation in model theory that explains accurately our last sentence.
+Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful formulation in model theory that explains accurately our last sentence.
 
 \begin{theorem}[\em Transfer Principle\em]\label{TP} \em Let ${\mathcal L}(R)$ be the first-order language of ordered fields with parameters in the real closed field $R$ and let $\Phi$ be a formula of ${\mathcal L}(R)$. Then, there exists a quantifier-free formula $\Psi$ of ${\mathcal L}(R)$ with the same free variables $x_1,\dots,x_n$ as $\Phi$ such that, for every real closed field extension $K$ of $R$ and every $x\in K^n$, the sentence $\Phi(x)$ holds true if and only if $\Psi(x)$ holds true.\em
 
@@ -673,15 +675,34 @@ Observe that, by its very definition, it makes sense to define the germs $C_{i,p
 \begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}t\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
 \end{definition}
 
- \textbf{\underline{Método de Sturm:}} Se utiliza para obtener el número de raíces reales distintas de $P$ en cualquier intervalo. Consiste en construir una secuencia de polinomios mediante el cálculo del máximo común divisor de $P$ y $P'$ mediante el algoritmo de Euclides, obteniendo lo que se conoce como \textit{secuencia de Sturm}, para después utilizar propiedades de dicha secuencia (que luego veremos). Llamamos $P_1(x) = P'(x)$, dividimos $P$ entre $P_1$, luego, llamando $P_2$ al resto de esa división (cambiado de signo), dividimos $P_1$ entre $P_2$... Hasta obtener una división exacta. Nos quedamos con el último divisor, $P_m$:
-	\begin{itemize}
-	\item \textit{i)} Si $P_m$ es una constante, todas las raíces de $P$ son simples. 
-	\item \textit{ii)} Si $P_m(x) = c(x-\xi_1)^{m_1}\cdots (x-\xi_r)^{m_r}$, entonces $\forall \xi_k$ es raíz de multiplicidad $m_k + 1$ y $P(x) = (x-\xi_1)^{m_1+1}\cdots (x-\xi_r)^{m_r+1}Q(x)$ con $Q(\xi) \ne 0$ y las raíces de $Q$ son las raíces simples de $P$.
-	\end{itemize}
+Sturm method is used to obtain the number of different real roots of a polynomial in a given interval.
 
-Denotamos $N(\alpha)$ al número de cambios de signo de la secuencia de Sturm de $P$, evaluando en $x=\alpha$. También llamamos $N(a, b)$ al número de raíces de $P$ en $(a, b)$ (sin contar su multiplicidad). Con estas definiciones, el Teorema de Sturm dice que si $P(a)P(b) \ne 0$ entonces $N(a, b) = N(a) - N(b)$. Lo bueno es que lo podemos utilizar con $a = -\infty$ y/o con $b = \infty$.
+\begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and $f,g\in\R[x]$ be polynomials. A  \emph{Sturm sequence} (or \emph{Sturm chain}) is a finite sequence of polynomials $(f_0, f_1, \dots, f_k)$ where 
+\begin{equation*}
+\begin{aligned}
+f_0 &:= f\\
+f_1 &:= f'g\\
+& \dots\\
+f_i &:= f_{i-1}q_i - f_{i-2}, \text{ with } q_{i}\in R[x] \text{ and } \text{deg}(f_{i}) < \text{deg}(f_{i-1}) \text{ for } i = 2, \dots, k.\\
+\end{aligned}
+\end{equation*}
+	Then, by Euclid's Algorithm, there is an integer $k$ verifying $f_k = \text{gcd}(f, f'g)$.
+	
+(ii) Given a sequence $(a_0, a_1, \dots, a_k)$ of elements of $R$ with $a_0 \ne 0$, we define the \emph{number of sign changes in the sequence} $(a_0, \dots, a_k)$ as follows: count one sign change every time $a_ia_{\ell} < 0$, with 
+\begin{equation*}
+\begin{aligned}
+&\ell = i + 1 \text{, or }\\
+&\ell > i + 1 \text{ and } a_j = 0 \text{ for every } j \text{ verifying  } i < j < \ell.\\ 
+\end{aligned}
+\end{equation*}
 
-Nota: Para simplificar cálculos en la secuencia de Sturm, en cada iteración podemos multiplicar a $P_k$ por una constante positiva si nos simplifica los cálculos de la división.
+(iii) If $a \in R$ is not a root of $f$ and $(f_0, \dots, f_k)$ is the Sturm sequence of $f$ and $g$, we define $v(f, g, a)$ to be the number of sign changes in $(f_0(a), \dots, f_k(a))$.
+\end{definitions}
+\begin{proposition}[Sturm's Theorem]\label{sturm} 
+Let $R$ be a real closed field and $f \in R[x]$. Let $a, b \in R$ be such that $a < b$ and neither $a$ nor $b$ are roots of $f$. Then the number of roots of $f$ in the interval $(a, b)$ is equal to $v(f, 1, a) - v(f, 1, b)$.
+
+\em The proof of this proposition can be studied in \cite[1.2.10]{bcr}. \em
+\end{proposition}
 
 
 \end{chapter}
