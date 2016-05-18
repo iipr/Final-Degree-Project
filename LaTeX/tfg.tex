@@ -12,9 +12,6 @@
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
-\usepackage{tikz}
-\usetikzlibrary{calc}
-
 \begin{document}
 
 \pagenumbering{roman}
@@ -123,11 +120,11 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \item Let $S_1:=\set{uv<1}$ and $S_2:=\set{uv>1,u>0}$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}$, which is not a parametric semiline.
 \begin{figure}[h]\hspace{-0.5cm}
 \begin{subfigure}{.55\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_01_S_1.png}
+\includegraphics[width=1\textwidth]{plots/ch1_01_S_1.pdf}
 \caption{$S_1:=\set{uv<1}$.\label{fig:S_1}}
 \end{subfigure}
 \begin{subfigure}{.55\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_02_S_2.png}
+\includegraphics[width=1\textwidth]{plots/ch1_02_S_2.pdf}
 \caption{$S_2:=\set{uv>1,u>0}$.\label{fig:S_2}}
 \end{subfigure}\\[1ex]
 \caption{Plots of the regions defined in Example \ref{introExample} (ii).\label{fig:introExampleii}}
@@ -415,12 +412,12 @@ y^-(x,v)&:=\frac{1+x+x^3+x^4-\sqrt{\Delta(x,v)}}{x(x^2+(x^3+1)^2)}\\
 where $\Delta(x,v)=\Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta)=6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v:=0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v:=1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0}y^-(x,1)=1$. This observation is used later, in \hyperref[step2]{Step 2}.
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{plots/ch1_06_sols.png}
+\includegraphics[width=1\textwidth]{plots/ch1_06_sols.pdf}
 \caption{$y^+(x,v)$ and $y^-(x,v)$ for $v:= 0.8$.\label{fig:plotYs_1}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{plots/ch1_07_sols_1.png}
+\includegraphics[width=1\textwidth]{plots/ch1_07_sols_1.pdf}
 \caption{$y^+(x,v)$ and $y^-(x,v)$ for $v:=1$.\label{fig:plotYs_2}}
 \end{figure}
 
@@ -468,14 +465,14 @@ Now, for $x=0$, we get $\Delta(0,v)=v>0$, so $0\in\overline{D_v}$. Also:
 			
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.75\textwidth]{plots/ch1_08_numerators.png}
+\includegraphics[width=0.75\textwidth]{plots/ch1_08_numerators.pdf}
 \caption{Numerators of $\gamma_v^+$ and $\gamma_v^-$ for $x:=0$.\label{fig:numerators}}
 \end{figure}
 			
 Thus, (ii) holds (we also checked it with Sage). The result for $v:=1$ in (ii) is not relevant here (see figure \ref{fig:limit}).
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{plots/ch1_09_limit.png}
+\includegraphics[width=1\textwidth]{plots/ch1_09_limit.pdf}
 \caption{Notice the value of $\gamma_1^-(x)$ at $x=0$.\label{fig:limit}}
 \end{figure}
 
@@ -489,11 +486,11 @@ $$
 whose graph can be seen in figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checked using Laguerre's method that the polynomial
 \begin{figure}[h]\hspace{-1.75cm}
 \begin{subfigure}{.6\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_10_uve.png}
+\includegraphics[width=1\textwidth]{plots/ch1_10_uve.pdf}
 \caption{Plot of $v(x)$.\label{fig:uve}}
 \end{subfigure}
 \begin{subfigure}{.6\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_11_uve_detail.png}
+\includegraphics[width=1\textwidth]{plots/ch1_11_uve_detail.pdf}
 \caption{Detail of the function when $x\in(-4,0)$.\label{fig:uveDetail}}
 \end{subfigure}\\[1ex]
 \caption{Plot of the univariate function $v(x)$.\label{fig:v(x)}}
@@ -516,7 +513,7 @@ To prove that for $0<v<0.28^2$ the inclusion $(0,+\infty)\subset\text{im}(\gamma
 \end{equation*}
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{plots/ch1_12_idea.png}
+\includegraphics[width=1\textwidth]{plots/ch1_12_idea.pdf}
 \caption{Idea of what we are saying with $(\spadesuit)$. Here $v:=0.1$.\label{fig:idea}}
 \end{figure}
 See figure \ref{fig:idea} to get an idea of what we are saying here. 
@@ -538,11 +535,11 @@ N_v:=&-\frac{1}{w}+1+w+w^2=\eta_v-\Big(\frac{5}{2}w^3+\cdots\Big)<\eta_v\\
 We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see fig. \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
 \begin{figure}[h]\hspace{-1.25cm}
 \begin{subfigure}{.56\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_13_comp.png}
+\includegraphics[width=1\textwidth]{plots/ch1_13_comp.pdf}
 \caption{$-\infty<N_v<\delta_v<0$.\label{fig:comp}}
 \end{subfigure}
 \begin{subfigure}{.6\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch1_14_positive.png}
+\includegraphics[width=1\textwidth]{plots/ch1_14_positive.pdf}
 \caption{$\Delta(N_{v}, v), \Delta(\delta_{v},v) > 0$.\label{fig:positive}}
 \end{subfigure}\\[1ex]
 \caption{Plots of $N_v,\delta_v<0$ and $\Delta(N_{v},v),\ \Delta(\delta_{v},v)>0$ for $v\in(0, 0.28^2)$.\label{fig:N_delta}}
@@ -562,7 +559,7 @@ are contained in $D$, they are graphs above the vertical axis $\{x=0\}$, and $\d
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.png}
+\includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.pdf}
 \caption{Plot of $\set{(N_v, v)}, \set{(\delta_v,v)}\subset D_v$, for $0<v<0.28^2$.\label{fig:nice_plot}}
 \end{figure}
 So the only thing left to do is checking that $\gamma_v^-(N_v)>\gamma_v^-(\delta_v)$. Recall that 
@@ -597,9 +594,9 @@ $$
 are positive for $w\in(0,0.28)$. 
 
 \hspace{-2.75cm}
-\includegraphics[width=0.4\linewidth]{plots/ch1_16_L.png}
-\includegraphics[width=0.4\linewidth]{plots/ch1_17_g_1.png}
-\includegraphics[width=0.4\linewidth]{plots/ch1_18_K.png}
+\includegraphics[width=0.4\linewidth]{plots/ch1_16_L.pdf}
+\includegraphics[width=0.4\linewidth]{plots/ch1_17_g_1.pdf}
+\includegraphics[width=0.4\linewidth]{plots/ch1_18_K.pdf}
 \vspace{0.5cm}			
 			
 As we see in the figures they indeed are. This has been also checked with Sturm algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and the result is proved. \qed
@@ -616,7 +613,7 @@ Hello world...
 \begin{figure}[h]
 %\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.png}};
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
 \foreach \xx in {0,1,2,...,9}{
 \draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
 \draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
