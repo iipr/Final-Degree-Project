@@ -12,6 +12,8 @@
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
+\usepackage{tikz}
+\usetikzlibrary{calc}
 
 \begin{document}
 
@@ -131,7 +133,7 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \caption{Plots of the regions defined in Example \ref{introExample} (ii).\label{fig:introExampleii}}
 \end{figure}
 \item Let $S:=R^2\setminus\set{(0, 0)}$ be the punctured plane. Then $S$ is the image of the polynomial map $(x,y) \mapsto (xy-1,(xy-1)x^2-y)$.
-\item Let $\mathbb{H}:=\set{v>0}$ be the open upper half-plane. Then $\mathbb{H}$ is the image of $(x,y) \mapsto (y(xy-1),(xy-1)^2+x^2)$. This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\mathbb{H}$.
+\item Let $\H:=\set{v>0}$ be the open upper half-plane. Then $\H$ is the image of $(x,y) \mapsto (y(xy-1),(xy-1)^2+x^2)$. This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\H$.
 \end{enumerate}
 \end{examples}
 \end{subsection}
@@ -146,7 +148,7 @@ The main results of this chapter are generalizations of examples (iii) and (iv) 
 \begin{theorem}\label{openQuadGen}\em Let $n\ge 2$. For any independent linear forms $h_1,\dots,h_r$ of $R^n$, the open semialgebraic set $\set{h_1>0,\dots,h_r>0}$ is a polynomial image of $R^n$.\em
 \end{theorem}
 	
-Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\mathbb{H}$. J.M. Gamboa outlined the problem of finding if $\Qu=\set{x>0,y>0}$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to look for a solution of this problem was the transformation
+Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\H$. J.M. Gamboa outlined the problem of finding if $\Qu=\set{x>0,y>0}$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to look for a solution of this problem was the transformation
 $$
 \psi:R^2 \to R^2,\, (x,y)\mapsto(x^4y^2,x^2y^4)
 $$	
@@ -168,13 +170,13 @@ Let us see how Theorem \ref{openQuadGen} follows from Theorem \ref{openQuad}.
 		
 [Proof of theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:=x_1,\dots,h_r:=x_r$,  so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
 \begin{itemize}
-\item $\mathbb{H}:=\{x_1>0\}$ and $\Qu:=\{x_1>0,\, x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
-\item This implies that $\mathcal{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $H_1,H_2:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\mathbb{H}$ and $\Qu$. Let us define:
+\item $\H:=\{x_1>0\}$ and $\Qu:=\{x_1>0,\, x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
+\item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $H_1,H_2:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
 \begin{align*}
 (H_1,\text{id}_R): R^3=R^2\times R\longrightarrow R^3= R^2\times R\\
 (\text{id}_R,H_2): R^3=R\times R^2\longrightarrow R^3= R\times R^2.
 \end{align*}
-Then, $\mathcal{O}$ is the image of the polynomial map 
+Then, $\mathscr{O}$ is the image of the polynomial map 
 $$
 H:=(\text{id}_R,H_2)\circ(H_1,\text{id}_R):R^3\rightarrow R^3
 $$ 
@@ -265,7 +267,7 @@ as required.
 \qed
 \end{section}
 
-\begin{section}{The open quadrant problem}
+\begin{section}{The open quadrant $\Qu$ problem}
 \begin{subsection}{Reasons behind the choice}\label{quadReasons}
 		
 It is remarkable that even though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
@@ -450,10 +452,10 @@ $$\text{(a) }\gamma_v^+(x)=\dfrac{A_1(x,v)+B_1(x,v)\sqrt{\Delta(x,v)}}{C(x)}, \ 
 $$
 \text{(b)}\ \ 
 \arraycolsep=1.4pt\def\arraystretch{1.5}
-\begin{array}{cclr}
-A_1(x,v)&=&\ \ A_2(x,v)\, , & \text{deg}_x(A_1)=\text{deg}_x(A_2)=24\\
-B_1(x,v)&=&-B_2(x,v)\, , &\text{deg}_x(B_1)=\text{deg}_x(B_2)=21\\
-C(x)&=&x^2(x^2+(x^3+1)^2)^4\, , & \text{deg}_x(C)=26.
+\begin{array}{cclrl}
+A_1(x,v)&=&\ \ A_2(x,v)\, , & \text{deg}_x(A_1)=\text{deg}_x(A_2)=24& \\
+B_1(x,v)&=&-B_2(x,v)\, , &\text{deg}_x(B_1)=\text{deg}_x(B_2)=21& \\
+C(x)&=&x^2(x^2+(x^3+1)^2)^4\, , & \text{deg}_x(C)=26&.
 \end{array}
 $$
 We proceed to study $\gamma_v^+$ and $\gamma_v^-$ at the origin. Since $\Delta$ has even degree and positive leading coefficient with respect to $x$, it is positive for $\abs{x}$ large enough, so (i) holds.
@@ -526,14 +528,14 @@ To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots o
 \xi_v:=&-w-w^2-\frac{5}{2}w^3-6w^4+\cdots
 \end{split}\right.
 \end{equation*}
-Notice that, by the definition of the ordering in $\R\left(\set{v^*}\right)$, the first coefficient of a series is the ``most meaningful orderwise". In particular $\eta_v<\xi_v$. To performance calculations, we handle suitable truncations of the involved series. Here the word suitable means ``as short as possible but order preserving"; in other words, we look for $N_v$ and $\delta_v$ with $N_v<\eta_v<\xi_v<\delta_v$, and in fact we choose
+Notice that, by the definition of the ordering in $\R\left(\set{v^*}\right)$, the first coefficient of a series is the ``most meaningful orderwise". In particular $\eta_v<\xi_v$. To perform calculations, we handle suitable truncations of the involved series. Here the word suitable means ``as short as possible but order preserving"; in other words, we look for $N_v$ and $\delta_v$ with $N_v<\eta_v<\xi_v<\delta_v$, and in fact we choose
 \begin{equation*}\left\{
 \begin{split}
 N_v:=&-\frac{1}{w}+1+w+w^2=\eta_v-\Big(\frac{5}{2}w^3+\cdots\Big)<\eta_v\\
 \delta_v:=&-w-w^2-\frac{5}{2}w^3=\xi_v-(-6w^4+\cdots)>\xi_v
 \end{split}\right.
 \end{equation*}
-We checked on Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see fig. \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
+We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see fig. \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
 \begin{figure}[h]\hspace{-1.25cm}
 \begin{subfigure}{.56\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_13_comp.png}
@@ -550,13 +552,14 @@ D:=\bigcup_{v>0}D_v=\bigcup_{v>0}\set{x\in\R:\Delta(x,v)\geq 0,\,x\neq 0},
 $$ 
 whose boundary is the union of the axis $\{x=0\}$ and the curve given by the equation $\Delta(x,v)=0$, that is, the graph of the regular function
 $$
-v(x):=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}.
+v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}.
 $$
 This graph is above the axis $\{v=0\}$. Then, $(-\infty,N_v]$ and $[\delta_v,0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves 
 $$
 \set{(\delta_v,v):0<v<0.28^2} \quad\text{ and }\quad \set{(N_v,v):0<v<0.28^2}
 $$ 
 are contained in $D$, they are graphs above the vertical axis $\{x=0\}$, and $\delta_v<\xi_v$ and $N_v<\eta_v$ as we saw before. Look at figure \ref{fig:nice_plot}.
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.png}
@@ -564,7 +567,7 @@ are contained in $D$, they are graphs above the vertical axis $\{x=0\}$, and $\d
 \end{figure}
 So the only thing left to do is checking that $\gamma_v^-(N_v)>\gamma_v^-(\delta_v)$. Recall that 
 $$
-\gamma_v^-(x):=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)},
+\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)},
 $$
 with $\text{deg}_x(A_2)=24,\text{deg}_x(B_2)=21, \text{deg}_x(\Delta)=6 \text{ and }\text{deg}_x(C)=26$. Consider:
 $$
@@ -587,7 +590,7 @@ and we are going to prove that
 $$
 \Lambda_1:= \frac{w^2h_2f_1-f_2h_1}{h_1h_2},\quad\Lambda_2:=\frac{w^5g_1\sqrt{q_1}}{h_1}\text{ and } \Lambda_3 := -\frac{g_2\sqrt{q_2}}{h_2}
 $$
-are positive in the given interval, which only contains positive values. Since $q_1,q_2$ are positive, we can clear away $w^5$ and $\sqrt{q_1}$ from $\Lambda_2$, $\sqrt{q_2}$ from $\Lambda_3$. Furthermore, $C(x):=x^2(x^2+(x^3+1)^2)^4>0$, so we can also remove $h_1$ and $h_2$ from $\Lambda_1,\Lambda_2, \Lambda_3$. Thus it suffices to see that
+are positive in the given interval, which only contains positive values. Since $q_1,q_2$ are positive, we can clear away $w^5$ and $\sqrt{q_1}$ from $\Lambda_2$, $\sqrt{q_2}$ from $\Lambda_3$. Furthermore, $C(x)=x^2(x^2+(x^3+1)^2)^4>0$, so we can also remove $h_1$ and $h_2$ from $\Lambda_1,\Lambda_2, \Lambda_3$. Thus it suffices to see that
 $$
 L:=\frac{w^2h_2f_1-f_2h_1}{w^4},\quad g_1,\quad K:=-\frac{g_2}{w^3}
 $$ 
@@ -599,8 +602,34 @@ are positive for $w\in(0,0.28)$.
 \includegraphics[width=0.4\linewidth]{plots/ch1_18_K.png}
 \vspace{0.5cm}			
 			
-As we see in the figures they indeed are. This has been also checked with Sturm's algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and the result is proved. \qed
+As we see in the figures they indeed are. This has been also checked with Sturm algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and the result is proved. \qed
 \end{subsection}
+\end{section}
+\end{chapter}
+
+\begin{chapter}{A short proof for the open quadrant $\Qu$ problem}
+\begin{section}{Introduction}
+Hello world...
+
+
+%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
+\begin{figure}[h]
+%\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.png}};
+\foreach \xx in {0,1,2,...,9}{
+\draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
+\draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
+}
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c1)($(img.south east)!0.3!(img.north east)$);% c1: first corner
+\path ($(img.north west)!0.82!(img.north east)$)|-coordinate(c2)($(img.south east)!0.77!(img.north east)$);   %c2 : second corner
+\draw[red,ultra thick,rounded corners] (c1)         rectangle (c2);
+\draw (c1) node {\huge{$\mathscr{A}$}};
+\draw (c2) node[below] {\huge{$\mathscr{B}$}};
+\end{tikzpicture}
+\caption{M1} \label{fig:M1}
+\end{figure}
+
 \end{section}
 \end{chapter}
 
@@ -618,7 +647,7 @@ Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful f
 \end{theorem}
 
 
-\begin{definitions}\label{semialgSet} \em (i) Let $R$ be a real closed field. A subset $S\subset R^n$ is \em semialgebraic \em if it is defined as a finite union of sets defined by a conjunction of polynomial equalities and inequalities: 
+\begin{definitions}\label{semialgSet} (i) Let $R$ be a real closed field. A subset $S\subset R^n$ is \em semialgebraic \em if it is defined as a finite union of sets defined by a conjunction of polynomial equalities and inequalities: 
 	\begin{equation*}
 	\left\{
 	\begin{aligned}
@@ -652,7 +681,7 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 	It is said that $S$ is \em pure dimensional \em if $\dim(S_p)=\dim(S_q)$ for every pair of points $p,q\in S$.
 \end{definition}
 
-\begin{definitions}\label{properMap} \em 
+\begin{definitions}\label{properMap}
 	  (i) A continuous map $f:X\to Y$ between topological spaces $X$ and $Y$ is said to be \em proper \em if $f^{-1}(K)$ is a compact subspace of $X$ for every compact subspace $K$ of $Y$. 
 	  
 	  (ii) A semialgebraic map $f:S\to T$ between semialgebraic sets $S\subset R^n$ and $T\subset R^m$ is said to be \em semialgebraically proper \em if $f^{-1}(K)$ is bounded and closed in $S$ for every bounded and closed in $T$ subset $K$ of $T$.  
@@ -663,16 +692,17 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 \end{definition}
 
 \begin{definitions}\label{curveGerms}
-	\em (i) A function $f:U\to\R$ defined in an open semialgebraic subset $U\subset\R^n$ is a \em Nash function \em if it is analytic and semialgebraic. A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
+	(i) A function $f:U\to\R$ defined in an open semialgebraic subset $U\subset\R^n$ is a \em Nash function \em if it is analytic and semialgebraic. A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
 	
-	(ii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\varepsilon>0$ the intersection $B_{\varepsilon}\cap\Gamma\setminus\{a\}$, where $B_{\varepsilon}\subset\R^n$ is the open ball of radius $\varepsilon$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
+	(ii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\varepsilon>0$ the intersection $B_{\varepsilon}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
+where $B_{\varepsilon}\subset\R^n$ is the open ball of radius $\varepsilon$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
 
 Indeed, this result is a particular case of the local conic structure theorem of semialgebraic sets. 
 	
-Observe that, by its very definition, it makes sense to define the germs $C_{i,p}$ of $C_i$ at the point $p$ for $i=1,\dots,k$ as they are independent of the radius $\varepsilon$. These germs  $C_{i,p}$ are called the \em germ Nash half-banches \em of the curve $\Gamma$ centered at $p$. For more details see \cite{bcr}, IX.5.2. 
+Observe that, by its very definition, it makes sense to define the germs $C_{i,p}$ of $C_i$ at the point $p$ for $i=1,\dots,k$ as they are independent of the radius $\varepsilon$. These germs  $C_{i,p}$ are called the \em germ Nash half-banches \em of the curve $\Gamma$ centered at $p$. For more details see \cite[IX.5.2]{bcr}. 
 \end{definitions}
 
-\begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}t\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
+\begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
 \end{definition}
 
 Sturm method is used to obtain the number of different real roots of a polynomial in a given interval.

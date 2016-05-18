@@ -19,6 +19,8 @@
 \usepackage{etextools}	% Macros in math mode
 \usepackage{mathtools,etoolbox}    % For defining \set, \abs...
 \usepackage{mathrsfs}   % For curled fancy letters
+\DeclareSymbolFontAlphabet{\mathrsfs}{rsfs}    % For avoiding clash between mathscr command from mathrsfs and eucal
+\usepackage[mathscr]{eucal}    % For a nice smooth math typography
 \usepackage[makeroom]{cancel}    % For crossing out in equations
 
 %________________SOME MATH COMMANDS________________
@@ -31,12 +33,13 @@
 \newcommand{\C}{\mathds{C}}     % Complex
 \newcommand{\eps}{\varepsilon}  % Nice epsilon
 \renewcommand{\P}{\mathcal{P}} % P for parts of a set, intead of paragraph
-\renewcommand{\S}{\mathscr{S}} % Fancy S, requires mathrsfs package
+\renewcommand{\S}{\mathrsfs{S}} % Fancy S, requires mathrsfs package
 \newcommand{\imp}{\Rightarrow} % Short $\implies$
 \newcommand{\siff}{\Leftrightarrow} % Short $\iff$
 \newcommand{\Qu}{\mathcal{Q}}  % Nice Q for denoting the first open quadrant
 \newcommand{\F}{\mathcal{F}}     % Nice F for a map name
 \newcommand{\G}{\mathcal{G}}    % Nice G for a map name
+\renewcommand{\H}{\mathscr{H}}    % Nice H for the open upper half plane
 
 % Note about the following commands: change size of the braces/whatever typing something like: $$\set[\Big]{\sum_{i=0}^n a_i}$$
 \DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\ifblank{#1}{{}\cdot{}}{#1}}   % Set braces
