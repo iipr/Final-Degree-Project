@@ -605,8 +605,192 @@ As we see in the figures they indeed are. This has been also checked with Sturm 
 \end{chapter}
 
 \begin{chapter}{A short proof for the open quadrant $\Qu$ problem}
-\begin{section}{Introduction}
-Hello world...
+\begin{section}{A new approach}
+In the previous chapter, we proved that $\Qu$ is a polynomial image of $\R^2$ by the polynomial map $\P = (\F, \G)$. This fact alongside theorem \ref{finSetTh} were key for proving theorem \ref{openQuadGen}. To achieve this result \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials didn't have roots or that they were positive on particular intervals. Although this procedure is legit, the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
+
+In this second chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
+
+\begin{subsection}{The new polynomial maps}
+In this subsection we introduce the new polynomial maps that meet the requirements to prove theorem \ref{openQuad} in a different fashion. To be more precise, we define 
+$$
+f:= \HH \circ \GG \circ \FF: \R^2\longrightarrow \R^2,
+$$
+where
+\begin{equation*}
+\boxed{
+\begin{aligned}
+\FF: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto ((xy - 1)^2 + x^2,\ (xy - 1)^2 + y^2), \\
+\GG: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto (x,\ y(xy - 2)^2 + x (xy - 1)^2), \\
+\HH: \R^2\longrightarrow \R^2,\ (x, y)& \longmapsto (x(xy - 2)^2 + \sfrac{1}{2}\, xy^2,\ y). \\
+\end{aligned}
+}
+\end{equation*}
+
+We can see how these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
+
+In the next section we proceed with the proof, which is split into three different lemmas.
+
+\begin{figure}
+\hspace{-2.65cm}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_01_F_1.png}};
+\path ($(img.north west)!0.28!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
+\path ($(img.north west)!0.85!(img.north east)$)|-coordinate(c2)($(img.south east)!0.15!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\FF_1(x, y) = (xy - 1)^2 + x^2$.\label{fig:FF_1}}
+\end{subfigure}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_02_F_2.png}};
+\path ($(img.north west)!0.28!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
+\path ($(img.north west)!0.85!(img.north east)$)|-coordinate(c2)($(img.south east)!0.15!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\FF_2(x, y) = (xy - 1)^2 + y^2$.\label{fig:FF_2}}
+\end{subfigure}\\[1ex]
+	
+\hspace{-2.65cm}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_03_G_1.png}};
+\path ($(img.north west)!0.67!(img.north east)$)|-coordinate(c1)($(img.south east)!0.055!(img.north east)$);
+\path ($(img.north west)!0.72!(img.north east)$)|-coordinate(c2)($(img.south east)!0.26!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\GG_1(x, y) = x$.\label{fig:GG_1}}
+\end{subfigure}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_04_G_2.png}};
+\path ($(img.north west)!0.2!(img.north east)$)|-coordinate(c1)($(img.south east)!0.15!(img.north east)$);
+\path ($(img.north west)!0.81!(img.north east)$)|-coordinate(c2)($(img.south east)!0.14!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\GG_2(x, y) = y(xy - 2)^2 + x (xy - 1)^2$.\label{fig:GG_2}}
+\end{subfigure}\\[1ex]
+
+\hspace{-2.65cm}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_05_H_1.png}};
+\path ($(img.north west)!0.29!(img.north east)$)|-coordinate(c1)($(img.south east)!0.08!(img.north east)$);
+\path ($(img.north west)!0.85!(img.north east)$)|-coordinate(c2)($(img.south east)!0.14!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\HH_1(x, y) = x(xy - 2)^2 + \frac{1}{2}xy^2$.\label{fig:HH_1}}
+\end{subfigure}
+\begin{subfigure}{.63\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_06_H_2.png}};
+\path ($(img.north west)!0.2!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
+\path ($(img.north west)!0.78!(img.north east)$)|-coordinate(c2)($(img.south east)!0.11!(img.north east)$);
+\draw (c1) node {$x$};
+\draw (c2) node {$y$};
+\end{tikzpicture}
+\caption{$\HH_2(x, y) = y$.\label{fig:HH_2}}
+\end{subfigure}
+\vspace{0.5cm}\caption{The polynomial maps from the second proof: $\HH \circ \GG \circ \FF (\R ^2) = \Qu$.\label{fig:ch2Maps}}
+\end{figure}
+\end{subsection}
+\end{section}
+
+\begin{section}{The new proof}
+As we have anticipated before, $\Qu$ is the image of the composition $\HH \circ \GG \circ \FF$, but before proving theorem \ref{openQuad} we need three auxiliar lemmas in order to shed some light on what properties the images of $\FF,\, \GG \text { and }\HH$ have.
+
+\begin{subsection}{The first lemma}
+\begin{lemma}\label{lemma1}
+Let $\mathscr{A} := \set{xy \ge 1}\ \cap\, \Qu$. Then the image of 
+$$
+\FF := (\FF_1, \FF_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto ((xy - 1)^2 + x^2,\ (xy - 1)^2 + y^2)
+$$
+satisfies that $\mathscr{A} \subset \FF(\R^2) \subset \Qu$.
+\begin{Proof}
+Since $\FF_1$ and $\FF_2$ are clearly positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is trivial. To prove the other inclusion, we show that for $a,b \in \mathscr{A}$ the system of polynomial equations
+\begin{equation}\label{eq:systemF}
+\left\{
+\begin{aligned}
+(xy - 1)^2 + x^2 = a\\
+(xy - 1)^2 + y^2 = b\\
+\end{aligned}
+\right.
+\end{equation}
+has a solution $(x_0, y_0) \in \R^2$. Set $z := xy - 1$ in order to rewrite the system \ref{eq:systemF} in terms of $x$ and $z$. Since $y = \frac{z + 1}{x}$ we get:
+\begin{equation}\label{eq:system2F}
+\left\{
+\begin{aligned}
+&z^2 + x^2 &= a\\
+&z^2 + \frac{(z + 1)^2}{x^2} &= b&.\\
+\end{aligned}
+\right.
+\end{equation}
+By eliminating $x$ on the system \ref{eq:system2F} we deduce that $z$ must be a root of the polynomial
+$$
+P(z) := z^4 - (a + b - 1)z^2 - 2z + (ab - 1) = 0.
+$$
+Taking into account that $a, b \in \mathscr{A}$ satisfy that $a, b > 0$ and $ab \ge 1$, notice that $P$ is a monic polynomial of even degree satisfying
+$$
+P(0) = ab - 1 \ge 0\quad \text{ and }\quad P(\sqrt{a}) = -2 \sqrt{a} - a - 1 < 0.
+$$
+Thus, $P$ has a real root $z_0$ such that...
+\end{Proof}
+\end{lemma}
+\end{subsection}
+
+\begin{figure}[h]
+\hspace{-2cm}
+\begin{subfigure}{.75\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_07_A.pdf}};
+\path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{A}
+\draw (c1) node {\huge{$\mathscr{A}$}};
+\end{tikzpicture}
+\caption{$\mathscr{A} = \set{xy \ge 1}\ \cap\, \Qu$.\label{fig:setA}}
+\end{subfigure}
+\hspace{-3.4cm}
+\begin{subfigure}{.75\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_08_B.pdf}};
+\path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
+\draw (c1) node {\huge{$\mathscr{B}$}};
+\end{tikzpicture}
+\caption{$\mathscr{B} = \mathscr{A} \cup \set{y \ge x > 0}$.\label{fig:setB}}
+\end{subfigure}
+\caption{Relevant sets for lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}.\label{fig:setsAB}}
+\end{figure}
+
+\begin{subsection}{The second lemma}
+\begin{lemma}\label{lemma2}
+Let $\mathscr{B} :=  \mathscr{A} \cup \set{y \ge x > 0}$. Then the image of 
+$$
+\GG := (\GG_1, \GG_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x,\ y(xy - 2)^2 + x (xy - 1)^2)
+$$
+satisfies that $\mathscr{B} \subset \GG(\mathscr{A}) \subset \GG(\Qu) \subset \Qu$.
+\begin{Proof}
+
+\end{Proof}
+\end{lemma}
+\end{subsection}
+
+\begin{subsection}{The third lemma}
+\begin{lemma}\label{lemma3}
+The polynomial map 
+$$
+\HH := (\HH_1, \HH_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x(xy - 2)^2 + \sfrac{1}{2}\, xy^2,\ y)
+$$
+satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
+\begin{Proof}
+
+\end{Proof}
+\end{lemma}
+\end{subsection}
+
 
 
 %Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
