@@ -621,7 +621,7 @@ where
 \begin{aligned}
 \FF: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto ((xy - 1)^2 + x^2,\ (xy - 1)^2 + y^2), \\
 \GG: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto (x,\ y(xy - 2)^2 + x (xy - 1)^2), \\
-\HH: \R^2\longrightarrow \R^2,\ (x, y)& \longmapsto (x(xy - 2)^2 + \sfrac{1}{2}\, xy^2,\ y). \\
+\HH: \R^2\longrightarrow \R^2,\ (x, y)& \longmapsto (x(xy - 2)^2 + \tfrac{1}{2} xy^2,\ y). \\
 \end{aligned}
 }
 \end{equation*}
@@ -683,7 +683,7 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\HH_1(x, y) = x(xy - 2)^2 + \frac{1}{2}xy^2$.\label{fig:HH_1}}
+\caption{$\HH_1(x, y) = x(xy - 2)^2 + \tfrac{1}{2}xy^2$.\label{fig:HH_1}}
 \end{subfigure}
 \begin{subfigure}{.63\linewidth}\centering
 \begin{tikzpicture}
@@ -777,7 +777,7 @@ $$
 $$
 satisfies that $\mathscr{B} \subset \GG(\mathscr{A}) \subset \GG(\Qu) \subset \Qu$.
 \begin{Proof}
-The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial since $\mathscr{A} \subset \Qu$. The last inclusion $\GG(\Qu) \subset \Qu$ also holds because $\GG$ is strictly positive on $\Qu$: if $x_0, y_0 > 0$ then $\GG_1(x_0, y_0) = x_0 > 0$ and $\GG_2(x_0, y_0) = y_0(x_0y_0 - 2)^2 + x_0 (x_0y_0 - 1)^2 > 0$. Notice that $\GG_2(x_0, y_0) \ne 0$ because if not there would exists a solution to the system:
+The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial since $\mathscr{A} \subset \Qu$. The last inclusion $\GG(\Qu) \subset \Qu$ also holds because $\GG$ is strictly positive on $\Qu$: if $x_0, y_0 > 0$ then $\GG_1(x_0, y_0) = x_0 > 0$ and $\GG_2(x_0, y_0) = y_0(x_0y_0 - 2)^2 + x_0 (x_0y_0 - 1)^2 > 0$. Notice that $\GG_2(x_0, y_0) \ne 0$ because if not there would exists a solution to the system of equations
 \begin{equation*}
 \left\{
 \begin{aligned}
@@ -788,28 +788,36 @@ The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial since $\mathscr{A} 
 \end{equation*}
 which is not possible.
 
-Now we cand focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ in the following way:
+Now we can focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ in the following way:
 $$
 \mathscr{B} = \bigsqcup_{x>0}(\set{x} \times [y_x, +\infty)) := \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x),
 $$
-where $y_x := \text{min}\set{x, 1/x}$. Intuitively, we are ``slicing'' the set $\mathscr{B}$ vertically, depending on $x$. Now look at the definition of $\GG_2$ and consider for each $x > 0$ the polynomial map $\phi$ dependent on the variable ${\tt y}$:
+where $y_x := \text{min}\set{x, 1/x}$. Intuitively, we are ``slicing'' the set $\mathscr{B}$ vertically, depending on $x$. Now look at the definition of $\GG_2$ and consider for each $x > 0$ the polynomial map $\phi_x$ dependent on the variable ${\tt y}$:
 $$
 \phi_x({\tt y}) := {\tt y}(x{\tt y} - 2)^2 + x (x{\tt y} - 1)^2 = x^2{\tt y}^3 + (x^3 - 4x){\tt y}^2 + (4 - 2x^2){\tt y} + x.
 $$
-The polynomials $\phi_x({\tt y})$ have odd degree and positive leading coefficient since $x > 0$. Now, notice that
+The polynomials $\phi_x({\tt y})$ have odd degree and positive leading coefficient since $x > 0$. Now notice that if we fix $x_0 > 0$ then we get the following sequence of inclusions:
 \begin{equation*}
 \begin{aligned}
-\phi_x\left(\frac{1}{x}\right)& = \frac{1}{x} + \left((x^3 - 4x)\frac{1}{x^2} + (4 - 2x^2)\frac{1}{x} + x\right) = \frac{1}{x}\\
-\phi_x\left(\frac{2}{x}\right)& = \left(\frac{8}{x} + (x^3 - 4x)\frac{4}{x^2} + (4 - 2x^2)\frac{2}{x}\right) + x = x.\\
+\phi_x(&[1/x_0, +\infty))\ \supset ^1 \  \phi_x([2/x_0, +\infty))\\
+&\quad \quad \ \rotatebox[origin=c]{90}{$\subset$}\, ^2  \hspace{3cm} \rotatebox[origin=c]{90}{$\subset$}\, ^3\\
+&[1/x_0, +\infty) \hspace{1.9cm} [x_0, +\infty) \\
 \end{aligned}
 \end{equation*}
-So if we fix $x_0$ and taking into account $[1/x_0, +\infty) \supset [2/x_0, +\infty)$ we get that $\phi_x([1/x_0, +\infty)) \supset \phi_x([2/x_0, +\infty))$. Since the leading coeefficient of $\phi_x$ is positive we obtain that $\phi_x([1/x_0, +\infty)) = [1/x_0, +\infty)$ and $\phi_x([2/x_0, +\infty)) = [x_0, +\infty)$. So now it is clear that:
+Inclusion $^1$ is followed from the fact that $[1/x_0, +\infty) \supset [2/x_0, +\infty)$ (notice that for $x>0$ the graph of the map $2/x$ is ``above'' the one of $1/x$). Inclusion $^2$ and $^3$ are followed from the fact that $\phi_{x_0}({\tt y})$ has positive leading coefficient and the computation of the images of $1/x_0$ and $2/x_0$ through $\phi_{x_0}({\tt y})$:
+\begin{equation*}
+\begin{aligned}
+\phi_x\left(\frac{1}{x_0}\right)& = \frac{1}{x_0} + \left((x_0^3 - 4x_0)\frac{1}{x_0^2} + (4 - 2x_0^2)\frac{1}{x_0} + x_0\right) = \frac{1}{x_0}\\
+\phi_x\left(\frac{2}{x_0}\right)& = \left(\frac{8}{x_0} + (x_0^3 - 4x_0)\frac{4}{x_0^2} + (4 - 2x_0^2)\frac{2}{x_0}\right) + x_0 = x_0.\\
+\end{aligned}
+\end{equation*}
+Now it is clear that:
 $$
 \mathscr{B}_x = [y_x, +\infty) \subset \phi_x([1/x, +\infty)).
 $$
 Then we can prove the desired inclusion in this way:
 $$
-\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x) \subset \bigsqcup_{x>0}(\set{x} \times \phi_x([1/x, +\infty)) = \bigsqcup_{x>0}\GG(\set{x} \times [1/x, +\infty)) = \GG(\mathscr{A}),
+\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x) \subset \bigsqcup_{x>0}(\set{x} \times \phi_x([1/x, +\infty))) = \bigsqcup_{x>0}\GG(\set{x} \times [1/x, +\infty)) = \GG(\mathscr{A}),
 $$
 which concludes the proof.
 \qed
@@ -821,10 +829,28 @@ which concludes the proof.
 \begin{lemma}\label{lemma3}
 The polynomial map 
 $$
-\HH := (\HH_1, \HH_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x(xy - 2)^2 + \sfrac{1}{2}\, xy^2,\ y)
+\HH := (\HH_1, \HH_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x(xy - 2)^2 + \tfrac{1}{2} xy^2,\ y)
 $$
 satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
 \begin{Proof}
+The inclusion $\HH(\mathscr{B}) \subset \HH(\Qu)$ is trivial since $\mathscr{B} \subset \Qu$. As for $\HH(\Qu) \subset \Qu$, since $\HH_1$ and $\HH_2$ are strictly positive on $\Qu$ the inclusion holds.
+
+We procced now to prove that $\Qu \subset \HH(\mathscr{B})$ and therefore get $\Qu \subset \HH(\mathscr{B}) \subset \HH(\Qu) \subset \Qu$, which implies that $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
+
+Firstly, notice that the set $\mathscr{B}$ can be expressed as follows:
+$$
+\mathscr{B} = \bigsqcup_{x>0}(\mathscr{B}_y \times \set{y}), \quad \text{ where } \mathscr{B}_y := 
+\left\{
+\begin{array}{ll}
+(0, +\infty) & \text{ if } y \ge 1,\\
+(0, y] \cup [1/y, +\infty) & \text { if } 0 < y < 1.
+\end{array}
+\right.
+$$
+Now, looking at the definition of $\HH_1$ we can define for each $y > 0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
+$$
+\psi_y({\tt x}) := {\tt x}({\tt x}y - 2)^2 + \tfrac{1}{2}{\tt x}y^2 = y^2{\tt x}^3 - 4y{\tt x}^2 + (4 + \tfrac{1}{2}y^2){\tt x}.
+$$
 
 \end{Proof}
 \end{lemma}
@@ -834,21 +860,21 @@ satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
 
 %%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
 %--------------------------------------------------------------------%
-\begin{figure}[h]
-\begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
-\foreach \xx in {0,1,2,...,9}{
-\draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
-\draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
-}
-\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c1)($(img.south east)!0.3!(img.north east)$);% c1: first corner
-\path ($(img.north west)!0.82!(img.north east)$)|-coordinate(c2)($(img.south east)!0.77!(img.north east)$);   %c2 : second corner
-\draw[red,ultra thick,rounded corners] (c1)         rectangle (c2);
-\draw (c1) node {\huge{$\mathscr{A}$}};
-\draw (c2) node[below] {\huge{$\mathscr{B}$}};
-\end{tikzpicture}
-\caption{M1} \label{fig:M1}
-\end{figure}
+%\begin{figure}[h]
+%\begin{tikzpicture}
+%\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
+%\foreach \xx in {0,1,2,...,9}{
+%\draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
+%\draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
+%}
+%\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c1)($(img.south east)!0.3!(img.north east)$);% c1: first corner
+%\path ($(img.north west)!0.82!(img.north east)$)|-coordinate(c2)($(img.south east)!0.77!(img.north east)$);   %c2 : second corner
+%\draw[red,ultra thick,rounded corners] (c1)         rectangle (c2);
+%\draw (c1) node {\huge{$\mathscr{A}$}};
+%\draw (c2) node[below] {\huge{$\mathscr{B}$}};
+%\end{tikzpicture}
+%\caption{M1} \label{fig:M1}
+%\end{figure}
 %--------------------------------------------------------------------%
 
 \end{section}
