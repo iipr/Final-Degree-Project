@@ -606,7 +606,7 @@ As we see in the figures they indeed are. This has been also checked with Sturm 
 
 \begin{chapter}{A short proof for the open quadrant $\Qu$ problem}
 \begin{section}{A new approach}
-In the previous chapter, we proved that $\Qu$ is a polynomial image of $\R^2$ by the polynomial map $\P = (\F, \G)$. This fact alongside theorem \ref{finSetTh} were key for proving theorem \ref{openQuadGen}. To achieve this result \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials didn't have roots or that they were positive on particular intervals. Although this procedure is legit, the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
+In the previous chapter, we proved that $\Qu$ is a polynomial image of $\R^2$ by the polynomial map $\P = (\F, \G)$. This fact alongside theorem \ref{finSetTh} were key for proving theorem \ref{openQuadGen}. To achieve the result \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials didn't have roots on particular intervals or that they were positive on them. Although this procedure is legit, the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
 
 In this second chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
 
@@ -625,10 +625,9 @@ where
 \end{aligned}
 }
 \end{equation*}
-
 We can see how these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
 
-In the next section we proceed with the proof, which is split into three different lemmas.
+In the next section we proceed to develop the proof, which is split into three different lemmas.
 
 \begin{figure}
 \hspace{-2.65cm}
@@ -712,7 +711,7 @@ $$
 $$
 satisfies that $\mathscr{A} \subset \FF(\R^2) \subset \Qu$.
 \begin{Proof}
-Since $\FF_1$ and $\FF_2$ are clearly positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is trivial. To prove the other inclusion, we show that for $a,b \in \mathscr{A}$ the system of polynomial equations
+Since $\FF_1$ and $\FF_2$ are clearly positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is trivial. To prove the other inclusion, we show that for $(a,b) \in \mathscr{A}$ the system of polynomial equations
 \begin{equation}\label{eq:systemF}
 \left\{
 \begin{aligned}
@@ -732,13 +731,18 @@ has a solution $(x_0, y_0) \in \R^2$. Set $z := xy - 1$ in order to rewrite the 
 \end{equation}
 By eliminating $x$ on the system \ref{eq:system2F} we deduce that $z$ must be a root of the polynomial
 $$
-P(z) := z^4 - (a + b - 1)z^2 - 2z + (ab - 1) = 0.
+P(z) := z^4 - (a + b + 1)z^2 - 2z + (ab - 1) = 0.
 $$
-Taking into account that $a, b \in \mathscr{A}$ satisfy that $a, b > 0$ and $ab \ge 1$, notice that $P$ is a monic polynomial of even degree satisfying
+Taking into account that $(a, b) \in \mathscr{A}$ satisfy that $a, b > 0$ and $ab \ge 1$, we notice that $P$ is a monic polynomial of even degree satisfying
 $$
 P(0) = ab - 1 \ge 0\quad \text{ and }\quad P(\sqrt{a}) = -2 \sqrt{a} - a - 1 < 0.
 $$
-Thus, $P$ has a real root $z_0$ such that...
+Thus, $P$ has a real root $z_0$ such that $0 \le z_0 < \sqrt{a}$, so we set:
+$$
+x_0 := \sqrt{a - z_0^2} \quad \text{ and } \quad y_0 := \frac{z_0 + 1}{x_0}.
+$$
+Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as required.
+\qed
 \end{Proof}
 \end{lemma}
 \end{subsection}
@@ -773,7 +777,42 @@ $$
 $$
 satisfies that $\mathscr{B} \subset \GG(\mathscr{A}) \subset \GG(\Qu) \subset \Qu$.
 \begin{Proof}
+The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial since $\mathscr{A} \subset \Qu$. The last inclusion $\GG(\Qu) \subset \Qu$ also holds because $\GG$ is strictly positive on $\Qu$: if $x_0, y_0 > 0$ then $\GG_1(x_0, y_0) = x_0 > 0$ and $\GG_2(x_0, y_0) = y_0(x_0y_0 - 2)^2 + x_0 (x_0y_0 - 1)^2 > 0$. Notice that $\GG_2(x_0, y_0) \ne 0$ because if not there would exists a solution to the system:
+\begin{equation*}
+\left\{
+\begin{aligned}
+&xy - 1 = 0\\
+&xy - 2 = 0,\\
+\end{aligned}
+\right.
+\end{equation*}
+which is not possible.
 
+Now we cand focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ in the following way:
+$$
+\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times [y_x, +\infty)) := \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x),
+$$
+where $y_x := \text{min}\set{x, 1/x}$. Intuitively, we are ``slicing'' the set $\mathscr{B}$ vertically, depending on $x$. Now look at the definition of $\GG_2$ and consider for each $x > 0$ the polynomial map $\phi$ dependent on the variable ${\tt y}$:
+$$
+\phi_x({\tt y}) := {\tt y}(x{\tt y} - 2)^2 + x (x{\tt y} - 1)^2 = x^2{\tt y}^3 + (x^3 - 4x){\tt y}^2 + (4 - 2x^2){\tt y} + x.
+$$
+The polynomials $\phi_x({\tt y})$ have odd degree and positive leading coefficient since $x > 0$. Now, notice that
+\begin{equation*}
+\begin{aligned}
+\phi_x\left(\frac{1}{x}\right)& = \frac{1}{x} + \left((x^3 - 4x)\frac{1}{x^2} + (4 - 2x^2)\frac{1}{x} + x\right) = \frac{1}{x}\\
+\phi_x\left(\frac{2}{x}\right)& = \left(\frac{8}{x} + (x^3 - 4x)\frac{4}{x^2} + (4 - 2x^2)\frac{2}{x}\right) + x = x.\\
+\end{aligned}
+\end{equation*}
+So if we fix $x_0$ and taking into account $[1/x_0, +\infty) \supset [2/x_0, +\infty)$ we get that $\phi_x([1/x_0, +\infty)) \supset \phi_x([2/x_0, +\infty))$. Since the leading coeefficient of $\phi_x$ is positive we obtain that $\phi_x([1/x_0, +\infty)) = [1/x_0, +\infty)$ and $\phi_x([2/x_0, +\infty)) = [x_0, +\infty)$. So now it is clear that:
+$$
+\mathscr{B}_x = [y_x, +\infty) \subset \phi_x([1/x, +\infty)).
+$$
+Then we can prove the desired inclusion in this way:
+$$
+\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x) \subset \bigsqcup_{x>0}(\set{x} \times \phi_x([1/x, +\infty)) = \bigsqcup_{x>0}\GG(\set{x} \times [1/x, +\infty)) = \GG(\mathscr{A}),
+$$
+which concludes the proof.
+\qed
 \end{Proof}
 \end{lemma}
 \end{subsection}
@@ -793,9 +832,9 @@ satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
 
 
 
-%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
+%%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
+%--------------------------------------------------------------------%
 \begin{figure}[h]
-%\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
 \foreach \xx in {0,1,2,...,9}{
@@ -810,6 +849,7 @@ satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
 \end{tikzpicture}
 \caption{M1} \label{fig:M1}
 \end{figure}
+%--------------------------------------------------------------------%
 
 \end{section}
 \end{chapter}
