@@ -12,6 +12,7 @@
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
+\usepackage{amsmath}
 \begin{document}
 
 \pagenumbering{roman}
@@ -851,7 +852,27 @@ Now, looking at the definition of $\HH_1$ we can define for each $y > 0$ the pol
 $$
 \psi_y({\tt x}) := {\tt x}({\tt x}y - 2)^2 + \tfrac{1}{2}{\tt x}y^2 = y^2{\tt x}^3 - 4y{\tt x}^2 + (4 + \tfrac{1}{2}y^2){\tt x}.
 $$
-
+Notice first that $\psi_y({\tt x})$ has odd degree, positive leading coefficient and the following properties:
+$$
+\begin{array}{llcll}
+\text{(i)}& \lim_{x\rightarrow+\infty}\psi_y(x) = +\infty. & &
+\text{(iii)}& \psi_y(y) = y((y^2 - 2)^2 + \tfrac{1}{2}y^2) > y \text{ for } 0 < y < 1.\\
+\text{(ii)}& \psi_y(0) = 0. & &
+\text{(iv)}& \psi_y\left(\tfrac{2}{y}\right) = y.\\
+\end{array}
+$$
+Property (iii) holds because $(y^2 - 2)^2 + \tfrac{1}{2}y^2 > 1$ when $0 < y < 1$. Next, we are going to show that:
+$$
+\psi_y(\mathscr{B}_y) = 
+\left\{
+\begin{array}{ll}
+\psi_y((0, +\infty)) =^1 (0, +\infty) & \text{ if } y \ge 1,\\
+\psi_y((0, y] \cup [1/y, +\infty)) \supset^2 (0, \psi_y(y)) \cup [\psi_y(2/y), +\infty) =^3 (0, +\infty) & \text { if } 0 < y < 1.
+\end{array}
+\right.
+$$
+Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$ is followed from the fact that $[1/y_0, +\infty) \supset [2/y_0, +\infty)$ for $y_0$ fixed. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\left(\tfrac{2}{y}\right)$.
+\qed
 \end{Proof}
 \end{lemma}
 \end{subsection}
