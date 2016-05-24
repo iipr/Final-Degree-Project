@@ -158,7 +158,7 @@ whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem 
 \begin{itemize}
 \item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see subsection \ref{quadReasons}). 
 	
-\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements Laguerre's method. %Comentar el método de Laguerre en el apéndice
+\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre]{Laguerre's method}.
 \end{itemize}
 \end{remark}
 
@@ -826,6 +826,66 @@ which concludes the proof.
 \end{lemma}
 \end{subsection}
 
+\begin{figure}[h]
+\hspace{-2cm}
+\begin{subfigure}{.75\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_09_B_vert.pdf}};
+\path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c2)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_0
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c3)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_1
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c4)($(img.south east)!0.105!(img.north east)$); % Para [
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c5)($(img.south east)!0.101!(img.north east)$); % Para [
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c6)($(img.south east)!0.01!(img.north east)$); % Para x_0
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c7)($(img.south east)!0.01!(img.north east)$); % Para x_1
+\path ($(img.north west)!0.25!(img.north east)$)|-coordinate(c8)($(img.south east)!0.55!(img.north east)$); % Para B_{x_0}
+\path ($(img.north west)!0.76!(img.north east)$)|-coordinate(c9)($(img.south east)!0.35!(img.north east)$); % Para B_{x_1}
+\draw (c1) node {\huge{$\mathscr{B}$}};
+\draw (c2) node {\Large{\color[rgb]{0,0.392157,0}{$\uparrow$}}};
+\draw (c3) node {\Large{\color[rgb]{1,0,0}{$\uparrow$}}};
+\draw (c4) node {\large{\color[rgb]{0,0.392157,0}{\rotatebox[origin=c]{90}{[}}}};
+\draw (c5) node {\large{\color[rgb]{1,0,0}{\rotatebox[origin=c]{90}{[}}}};
+\draw (c6) node {\large{\color[rgb]{0,0.392157,0}{$x_0$}}};
+\draw (c7) node {\large{\color[rgb]{1,0,0}{$x_1$}}};
+\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\set{x_0} \times \mathscr{B}_{x_0})$}}};
+\draw (c9) node {\large{\color[rgb]{1,0,0}{$(\set{x_1} \times \mathscr{B}_{x_1})$}}};
+\end{tikzpicture}
+\caption{$\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_{x})$.\label{fig:Bvert}}
+\end{subfigure}
+\hspace{-3.4cm}
+\begin{subfigure}{.75\linewidth}\centering
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_10_B_hor.pdf}};
+\path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
+\path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
+\path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c2)($(img.south east)!0.604!(img.north east)$); % Para la flecha de y_0
+\path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c3)($(img.south east)!0.1495!(img.north east)$); % Para la flecha de y_1
+\path ($(img.north west)!0.045!(img.north east)$)|-coordinate(c4)($(img.south east)!0.61!(img.north east)$); % Para (
+\path ($(img.north west)!0.045!(img.north east)$)|-coordinate(c5)($(img.south east)!0.154!(img.north east)$); % Para (
+\path ($(img.north west)!0.146!(img.north east)$)|-coordinate(c10)($(img.south east)!0.154!(img.north east)$); % Para ]
+\path ($(img.north west)!0.335!(img.north east)$)|-coordinate(c11)($(img.south east)!0.154!(img.north east)$); % Para [
+\path ($(img.north west)!0.008!(img.north east)$)|-coordinate(c6)($(img.south east)!0.61!(img.north east)$); % Para y_0
+\path ($(img.north west)!0.008!(img.north east)$)|-coordinate(c7)($(img.south east)!0.154!(img.north east)$); % Para y_1
+\path ($(img.north west)!0.25!(img.north east)$)|-coordinate(c8)($(img.south east)!0.66!(img.north east)$); % Para B_{y_0}
+\path ($(img.north west)!0.65!(img.north east)$)|-coordinate(c9)($(img.south east)!0.2!(img.north east)$); % Para B_{y_1}
+\draw (c1) node {\huge{$\mathscr{B}$}};
+\draw (c2) node {\Large{\color[rgb]{0,0.392157,0}{$\rightarrow$}}};
+\draw (c3) node {\Large{\color[rgb]{1,0,0}{$\rightarrow$}}};
+\draw (c4) node {\large{\color[rgb]{0,0.392157,0}{(}}};
+\draw (c5) node {\large{\color[rgb]{1,0,0}{(}}};
+\draw (c10) node {\large{\color[rgb]{1,0,0}{]}}};
+\draw (c11) node {\large{\color[rgb]{1,0,0}{[}}};
+\draw (c6) node {\large{\color[rgb]{0,0.392157,0}{$y_0$}}};
+\draw (c7) node {\large{\color[rgb]{1,0,0}{$y_1$}}};
+\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\mathscr{B}_{y_0} \times \set{y_0})$}}};
+\draw (c9) node {\large{\color[rgb]{1,0,0}{$(\mathscr{B}_{y_1} \times \set{y_1})$}}};
+\draw (c1) node {\huge{$\mathscr{B}$}};
+\end{tikzpicture}
+\caption{$\mathscr{B} = \bigsqcup_{y>0}(\mathscr{B}_{y} \times \set{y})$.\label{fig:Bhor}}
+\end{subfigure}
+\caption{Idea of how we represent the set $\mathscr{B}$ in lemmas \ref{lemma2} and \ref{lemma3}.\label{fig:sliceB}}
+\end{figure}
+
 \begin{subsection}{The third lemma}
 \begin{lemma}\label{lemma3}
 The polynomial map 
@@ -840,7 +900,7 @@ We procced now to prove that $\Qu \subset \HH(\mathscr{B})$ and therefore get $\
 
 Firstly, notice that the set $\mathscr{B}$ can be expressed as follows:
 $$
-\mathscr{B} = \bigsqcup_{x>0}(\mathscr{B}_y \times \set{y}), \quad \text{ where } \mathscr{B}_y := 
+\mathscr{B} = \bigsqcup_{y>0}(\mathscr{B}_y \times \set{y}), \quad \text{ where } \mathscr{B}_y := 
 \left\{
 \begin{array}{ll}
 (0, +\infty) & \text{ if } y \ge 1,\\
@@ -848,7 +908,7 @@ $$
 \end{array}
 \right.
 $$
-Now, looking at the definition of $\HH_1$ we can define for each $y > 0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
+Intuitively, we are ``slicing'' the set $\mathscr{B}$ horizontally, depending on $y$. Now, looking at the definition of $\HH_1$ we can define for each $y > 0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
 $$
 \psi_y({\tt x}) := {\tt x}({\tt x}y - 2)^2 + \tfrac{1}{2}{\tt x}y^2 = y^2{\tt x}^3 - 4y{\tt x}^2 + (4 + \tfrac{1}{2}y^2){\tt x}.
 $$
@@ -867,16 +927,38 @@ $$
 \left\{
 \begin{array}{ll}
 \psi_y((0, +\infty)) =^1 (0, +\infty) & \text{ if } y \ge 1,\\
-\psi_y((0, y] \cup [1/y, +\infty)) \supset^2 (0, \psi_y(y)) \cup [\psi_y(2/y), +\infty) =^3 (0, +\infty) & \text { if } 0 < y < 1.
+\psi_y((0, y] \cup [1/y, +\infty)) \supset^2 (0, \psi_y(y)] \cup [\psi_y(2/y), +\infty) =^3 (0, +\infty) & \text { if } 0 < y < 1.
 \end{array}
 \right.
 $$
 Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$ is followed from the fact that $[1/y_0, +\infty) \supset [2/y_0, +\infty)$ for $y_0$ fixed. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\left(\tfrac{2}{y}\right)$.
+
+We are now in conditions of writting:
+$$
+\Qu = \bigsqcup_{y>0}((0, +\infty) \times \set{y}) \subset \bigsqcup_{y>0}(\psi_y(\mathscr{B}_y) \times \set{y}) = \bigsqcup_{y>0}\HH(\mathscr{B}_y \times \set{y}) = \HH(\mathscr{B}_y),
+$$
+which concludes the proof.
 \qed
 \end{Proof}
 \end{lemma}
 \end{subsection}
 
+\begin{subsection}{The proof}
+To wrap up this chapter, we can now write the proof of theorem \ref{openQuad} relying on lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}:
+
+\vspace{1mm}
+
+[Proof of theorem \ref{openQuad}] Appliying the lemmas, we deduce that
+$$
+\Qu \overset{\ref{lemma3}}{=} \HH(\mathscr{B}) \overset{\ref{lemma2}}{\subset} (\HH \circ \GG)(\mathscr{A}) \overset{\ref{lemma1}}{\subset} (\HH \circ \GG \circ \FF)(\R^2) \overset{\ref{lemma1}}{\subset} (\HH \circ \GG)(\Qu) \overset{\ref{lemma2}}{\subset} \HH(\Qu) \overset{\ref{lemma3}}{=} \Qu,
+$$
+which means 
+$$
+(\HH \circ \GG \circ \FF)(\R^2) = \Qu
+$$
+as required.
+\qed
+\end{subsection}
 
 
 %%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
@@ -973,7 +1055,7 @@ Observe that, by its very definition, it makes sense to define the germs $C_{i,p
 \begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
 \end{definition}
 
-Sturm method is used to obtain the number of different real roots of a polynomial in a given interval.
+Sturm's method is used to obtain the number of different real roots of a polynomial in a given interval.
 
 \begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and $f,g\in\R[x]$ be polynomials. A  \emph{Sturm sequence} (or \emph{Sturm chain}) is a finite sequence of polynomials $(f_0, f_1, \dots, f_k)$ where 
 \begin{equation*}
@@ -1002,6 +1084,28 @@ Let $R$ be a real closed field and $f \in R[x]$. Let $a, b \in R$ be such that $
 \em The proof of this proposition can be studied in \cite[1.2.10]{bcr}. \em
 \end{proposition}
 
+Laguerre's method differs from Sturm's method in that it is a numerical algorithm, rather than algebraic. It is remarkable that it converges to a root, with very few exceptions, from any starting value.
+
+\begin{proposition}[Laguerre's method]\label{laguerre}
+Let $f \in \R[x]$ with degree $n$ such that
+\begin{equation}\label{eq:lagPol}
+	f(x) = (x - r)(x - q)^{n-1},
+\end{equation}
+for $r, q \in \C$ unknown. Let 
+$$
+g(x) := \frac{f'(x)}{f(x)} = \frac{1}{x - r} + \frac{n - 1}{x - q} \ \text{ and } \ h(x) := g^2(x) - \frac{f''(x)}{f(x)} = \frac{1}{(x - r)^2} + \frac{n - 1}{(x - q)^2}.
+$$
+If we solve for $x - q$ in $g(x)$ and substitute the result on $h(x)$, we get a quadratic equation for $x - r$, and its solution is named Laguerre's formula:
+\begin{equation}\label{eq:lagEq}
+x - r = n \left(g(x) \pm \sqrt{ (n - 1) (n h(x) - g^2(x))} \right)^{-1}.
+\end{equation}
+
+Then, the equation given by \ref{eq:lagEq} defines a numerical method by choosing on each step the sign that results in the larger magnitude of the denominator and taking the new root to be:
+$$
+x_{k+1} = x_k - n \left(g(x_k) \pm \sqrt{ (n - 1) (n h(x_k) - g^2(x_k))} \right)^{-1}.
+$$
+Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \ref{eq:lagPol}.
+\end{proposition}
 
 \end{chapter}
 
