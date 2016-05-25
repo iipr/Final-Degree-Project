@@ -20,7 +20,9 @@
 
 \title{\huge{\textsc{Complexity Analysis of\\
 Polynomial Algorithms}} \\
-\protect\includegraphics[scale=0.2]{ucm.pdf}}
+\vspace{1.5cm}
+\protect\includegraphics[scale=0.35]{ucm.pdf}
+\vspace{1.5cm}}
 \author{Ignacio Iker Prado Rujas \\
 Universidad Complutense de Madrid (UCM) \\
 Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica}
@@ -30,12 +32,16 @@ Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica}
 
 \begin{center}
 Tutors: \\
-Juan Ram\'on Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa \\
+Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa \\
 \
 \end{center}
 
-%\newpage	
-%\thispagestyle{empty}
+\end{titlepage}
+
+\mbox{}
+\thispagestyle{empty}
+\newpage	
+\thispagestyle{empty}
 \begin{abstract} This work is about different proofs of the same fact and a computational comparison between them, looking for the most efficient one.
 
 Let $R$ be a real closed field and $n\geq 2$. Then: 
@@ -44,18 +50,31 @@ Let $R$ be a real closed field and $n\geq 2$. Then:
 	
 (2) Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the semialgebraic set $\{h_1>0,\dots,h_r>0\}\subset R^n$ is a polynomial image of $R^n$.
 	
-The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry as Sturm's theorem and the Curve Selection Lemma and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
+The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry (such as Sturm's theorem and the Curve Selection Lemma) and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
+
+(...)
+
+\begin{center}
+\textbf{Resumen}
+\end{center}
+
+Este trabajo contiene distintas pruebas del mismo hecho y pretende hacer una comparación computacional entre ellas, tratando de encontrar la m\'as eficiente.
+
+Sea $R$ un cuerpo real cerrado y $n\geq 2$. Entonces: 
 	
-	(...)
+(1) Para cada subconjunto finito $F$ de $R^n$, el conjunto semialgebraico $R^n\setminus F$ es imagen polinomial de $R^n$. 
+	
+(2) Dadas unas formas linealmente independientes $h_1,\dots,h_r$ de $R^n$, el conjunto semialgebraico $\{h_1>0,\dots,h_r>0\}\subset R^n$ es imagen polinomial de $R^n$.
+	
+El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}$ es imagen polinomial de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de la geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un odenador; una segunda forma m\'as corta, usando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima que comprende argumentos de la rama de la topolog\'ia algebraica, sin la necesidad de realizar computaciones en un ordenador. 
+
+(...)
 \end{abstract}
-
-\end{titlepage}
-
 
 \tableofcontents
 \thispagestyle{empty}
 
-\begin{chapter}{Polynomial images of $R^n$}
+\begin{chapter}{Introduction to polynomial images of $R^n$}
 \pagenumbering{arabic}    % Numbering from 1
 
 \begin{section}{Introduction}
@@ -65,8 +84,12 @@ The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. T
 A very famous theorem by Tarski and Seidenberg states the following:
 \begin{theorem}[\em Tarski-Seidenberg\em]\label{tarskiSeidenberg} \em The image of every polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$. \em
 \end{theorem}
-	
-In this work we study a sort of converse of this statement. In an \emph{Oberwolfach} week, J.M. Gamboa \cite{g} proposed to characterize the semialgebraic subsets of $R^n$ that are polynomial images of some $R^m$. Particularly interesting seems to be the study of those open semialgebraic subsets of $R^n$ that are polynomial images of $R^n$, because this is related with the real jacobian conjecture.
+
+In this work we study a sort of converse of this statement. In the 1990 \emph{Oberwolfach Reelle algebraische Geometrie} week, J.M. Gamboa \cite{g} proposed the following
+\begin{problem}
+Characterize the semialgebraic subsets of $R^n$ that are polynomial images of some $R^m$.
+\end{problem}
+Particularly interesting seems to be the study of those open semialgebraic subsets of $R^n$ that are polynomial images of $R^n$, because this is related with the real jacobian conjecture.
 	
 \begin{notation} We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \em exterior boundary \em of a subset $S\subset R^n$ is $\delta S:=\overline{S}\setminus S$, with $\overline{S}$ being the \em closure \em of $S$ in the usual topology of $R^n$. In addition we will denote by $\overline{S}^{\text{zar}}$ the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology} of $R^n$. We will say that a semialgebraic subset $A\subset R^n$ is \em Zariski-irreducible \em if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
 \end{notation}
@@ -119,12 +142,12 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \item The exterior of the closed unit disc $S:=\set{u^2+v^2>1}$ \textbf{is not} a polynomial image of $R^2$. This is so because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is $\set{u^2+v^2=1}$ and this set is not a parametric semiline because it is bounded.
 			
 \item Let $S_1:=\set{uv<1}$ and $S_2:=\set{uv>1,u>0}$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}$, which is not a parametric semiline.
-\begin{figure}[h]\hspace{-0.5cm}
-\begin{subfigure}{.55\linewidth}\centering
+\begin{figure}[h]\hspace{0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_01_S_1.pdf}
 \caption{$S_1:=\set{uv<1}$.\label{fig:S_1}}
 \end{subfigure}
-\begin{subfigure}{.55\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_02_S_2.pdf}
 \caption{$S_2:=\set{uv>1,u>0}$.\label{fig:S_2}}
 \end{subfigure}\\[1ex]
@@ -139,10 +162,10 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \begin{subsection}{Statement of the main results}
 	
 The main results of this chapter are generalizations of examples (iii) and (iv) from Examples \ref{introExample}.
-	
+%\vspace{0.35cm}
 \begin{theorem}\label{finSetTh}\em Let $n\ge2$. For every finite set $F\subset R^n$, the semialgebraic set $R^n\setminus F\subset R^n$ is a polynomial image of $R^n$.\em
 \end{theorem}
-%\newpage
+%\vspace{0.35cm}
 \begin{theorem}\label{openQuadGen}\em Let $n\ge 2$. For any independent linear forms $h_1,\dots,h_r$ of $R^n$, the open semialgebraic set $\set{h_1>0,\dots,h_r>0}$ is a polynomial image of $R^n$.\em
 \end{theorem}
 	
@@ -156,7 +179,7 @@ whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem 
 	
 \begin{remark} The first proof of Theorem \ref{openQuad} consists of two parts:
 \begin{itemize}
-\item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see subsection \ref{quadReasons}). 
+\item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see section \ref{quadReasons}). 
 	
 \item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre]{Laguerre's method}.
 \end{itemize}
@@ -264,9 +287,10 @@ as required.
 \end{enumerate}
 \qed
 \end{section}
+\end{chapter}
 
-\begin{section}{The open quadrant $\Qu$ problem}
-\begin{subsection}{Reasons behind the choice}\label{quadReasons}
+\begin{chapter}{The open quadrant $\Qu$ problem: First proof}
+\begin{section}{Reasons behind the choice}\label{quadReasons}
 		
 It is remarkable that even though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
 \begin{figure}[h]
@@ -328,12 +352,12 @@ The following pair of polynomials:
 \end{equation*}
 enjoy a nice behavior along these curves, as the following images show:
 
-\begin{figure}[h]\hspace{-0.5cm}
-\begin{subfigure}{.54\linewidth}\centering
+\begin{figure}[h]\hspace{-0.15cm}
+\begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
 \caption{$\F(x,y):=(1-x^3y+y-xy^2)^2+(x^2y)^2$.\label{fig:F}}
 \end{subfigure}
-\begin{subfigure}{.55\linewidth}\centering
+\begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_05_G.png}
 \caption{$\G(x,y)=(1-xy+x-x^4y)^2+(x^2y)^2$.\label{fig:G}}
 \end{subfigure}\\[1ex]
@@ -393,8 +417,8 @@ $
 $
 \end{enumerate}
 The polynomials $\F\circ\alpha_{\lambda },\ \G\circ\alpha_{\lambda}\in\R[s,a_{\lambda}]$ and $\F\circ\beta_{\mu},\ \G\circ\beta_{\mu}\in\R[s,b_{\mu}]$ were computed with Sage. As we anticipated before, by condition (ii) the set $F=\set{(-1, 0),(0,-1)}$.
-\end{subsection}
-\begin{subsection}{The proof} [Proof of theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
+\end{section}
+\begin{section}{The first proof} [Proof of theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
 \begin{center}
 \fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
 \end{center}\label{step1}
@@ -485,12 +509,12 @@ $$
 v(x):=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2},
 $$
 whose graph can be seen in figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checked using Laguerre's method that the polynomial
-\begin{figure}[h]\hspace{-1.75cm}
-\begin{subfigure}{.6\linewidth}\centering
+\begin{figure}[h]\hspace{-0.2cm}
+\begin{subfigure}{.5\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_10_uve.pdf}
 \caption{Plot of $v(x)$.\label{fig:uve}}
 \end{subfigure}
-\begin{subfigure}{.6\linewidth}\centering
+\begin{subfigure}{.5\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_11_uve_detail.pdf}
 \caption{Detail of the function when $x\in(-4,0)$.\label{fig:uveDetail}}
 \end{subfigure}\\[1ex]
@@ -534,12 +558,12 @@ N_v:=&-\frac{1}{w}+1+w+w^2=\eta_v-\Big(\frac{5}{2}w^3+\cdots\Big)<\eta_v\\
 \end{split}\right.
 \end{equation*}
 We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see fig. \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
-\begin{figure}[h]\hspace{-1.25cm}
-\begin{subfigure}{.56\linewidth}\centering
+\begin{figure}[h]\hspace{-0.25cm}
+\begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_13_comp.pdf}
 \caption{$-\infty<N_v<\delta_v<0$.\label{fig:comp}}
 \end{subfigure}
-\begin{subfigure}{.6\linewidth}\centering
+\begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_14_positive.pdf}
 \caption{$\Delta(N_{v}, v), \Delta(\delta_{v},v) > 0$.\label{fig:positive}}
 \end{subfigure}\\[1ex]
@@ -592,16 +616,18 @@ are positive in the given interval, which only contains positive values. Since $
 $$
 L:=\frac{w^2h_2f_1-f_2h_1}{w^4},\quad g_1,\quad K:=-\frac{g_2}{w^3}
 $$ 
-are positive for $w\in(0,0.28)$. 
+are positive for $w\in(0,0.28)$.
 
-\hspace{-2.75cm}
-\includegraphics[width=0.4\linewidth]{plots/ch1_16_L.pdf}
-\includegraphics[width=0.4\linewidth]{plots/ch1_17_g_1.pdf}
-\includegraphics[width=0.4\linewidth]{plots/ch1_18_K.pdf}
-\vspace{0.5cm}			
-			
-As we see in the figures they indeed are. This has been also checked with Sturm algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and the result is proved. \qed
-\end{subsection}
+\vspace{2cm}
+
+As we see in the figures they indeed are. This has been also checked with Sturm algorithm and numerically with Sage. Thus, $(\spadesuit)$ holds and the result is proved.
+
+\begin{center}
+\includegraphics[width=0.45\linewidth]{plots/ch1_16_L.pdf}
+\includegraphics[width=0.45\linewidth]{plots/ch1_17_g_1.pdf} \\
+\includegraphics[width=0.45\linewidth]{plots/ch1_18_K.pdf}		
+\end{center}
+\qed
 \end{section}
 \end{chapter}
 
@@ -631,8 +657,8 @@ We can see how these maps look like in figure \ref{fig:ch2Maps}, and appreciate 
 In the next section we proceed to develop the proof, which is split into three different lemmas.
 
 \begin{figure}
-\hspace{-2.65cm}
-\begin{subfigure}{.63\linewidth}\centering
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_01_F_1.png}};
 \path ($(img.north west)!0.28!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
@@ -640,9 +666,9 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\FF_1(x, y) = (xy - 1)^2 + x^2$.\label{fig:FF_1}}
+\vspace{0.15cm}\caption{$\FF_1(x, y) = (xy - 1)^2 + x^2$.\label{fig:FF_1}}
 \end{subfigure}
-\begin{subfigure}{.63\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_02_F_2.png}};
 \path ($(img.north west)!0.28!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
@@ -650,11 +676,12 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\FF_2(x, y) = (xy - 1)^2 + y^2$.\label{fig:FF_2}}
+\vspace{0.15cm}\caption{$\FF_2(x, y) = (xy - 1)^2 + y^2$.\label{fig:FF_2}}
 \end{subfigure}\\[1ex]
+\vspace{0.4cm}
 	
-\hspace{-2.65cm}
-\begin{subfigure}{.63\linewidth}\centering
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_03_G_1.png}};
 \path ($(img.north west)!0.67!(img.north east)$)|-coordinate(c1)($(img.south east)!0.055!(img.north east)$);
@@ -662,9 +689,9 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\GG_1(x, y) = x$.\label{fig:GG_1}}
+\vspace{0.15cm}\caption{$\GG_1(x, y) = x$.\label{fig:GG_1}}
 \end{subfigure}
-\begin{subfigure}{.63\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_04_G_2.png}};
 \path ($(img.north west)!0.2!(img.north east)$)|-coordinate(c1)($(img.south east)!0.15!(img.north east)$);
@@ -672,11 +699,12 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\GG_2(x, y) = y(xy - 2)^2 + x (xy - 1)^2$.\label{fig:GG_2}}
+\vspace{0.15cm}\caption{$\GG_2(x, y) = y(xy - 2)^2 + x (xy - 1)^2$.\label{fig:GG_2}}
 \end{subfigure}\\[1ex]
+\vspace{0.4cm}
 
-\hspace{-2.65cm}
-\begin{subfigure}{.63\linewidth}\centering
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_05_H_1.png}};
 \path ($(img.north west)!0.29!(img.north east)$)|-coordinate(c1)($(img.south east)!0.08!(img.north east)$);
@@ -684,9 +712,9 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\HH_1(x, y) = x(xy - 2)^2 + \tfrac{1}{2}xy^2$.\label{fig:HH_1}}
+\vspace{0.15cm}\caption{$\HH_1(x, y) = x(xy - 2)^2 + \tfrac{1}{2}xy^2$.\label{fig:HH_1}}
 \end{subfigure}
-\begin{subfigure}{.63\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_06_H_2.png}};
 \path ($(img.north west)!0.2!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
@@ -694,9 +722,9 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\caption{$\HH_2(x, y) = y$.\label{fig:HH_2}}
+\vspace{0.15cm}\caption{$\HH_2(x, y) = y$.\label{fig:HH_2}}
 \end{subfigure}
-\vspace{0.5cm}\caption{The polynomial maps from the second proof: $\HH \circ \GG \circ \FF (\R ^2) = \Qu$.\label{fig:ch2Maps}}
+\vspace{0.7cm}\caption{The polynomial maps from the second proof: $\HH \circ \GG \circ \FF (\R ^2) = \Qu$.\label{fig:ch2Maps}}
 \end{figure}
 \end{subsection}
 \end{section}
@@ -749,8 +777,8 @@ Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as req
 \end{subsection}
 
 \begin{figure}[h]
-\hspace{-2cm}
-\begin{subfigure}{.75\linewidth}\centering
+\hspace{-1.9cm}
+\begin{subfigure}{.73\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_07_A.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{A}
@@ -759,7 +787,7 @@ Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as req
 \caption{$\mathscr{A} = \set{xy \ge 1}\ \cap\, \Qu$.\label{fig:setA}}
 \end{subfigure}
 \hspace{-3.4cm}
-\begin{subfigure}{.75\linewidth}\centering
+\begin{subfigure}{.73\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_08_B.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
@@ -827,8 +855,8 @@ which concludes the proof.
 \end{subsection}
 
 \begin{figure}[h]
-\hspace{-2cm}
-\begin{subfigure}{.75\linewidth}\centering
+\hspace{-1.9cm}
+\begin{subfigure}{.73\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_09_B_vert.pdf}};
 \path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
@@ -853,7 +881,7 @@ which concludes the proof.
 \caption{$\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_{x})$.\label{fig:Bvert}}
 \end{subfigure}
 \hspace{-3.4cm}
-\begin{subfigure}{.75\linewidth}\centering
+\begin{subfigure}{.73\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_10_B_hor.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
@@ -943,7 +971,7 @@ which concludes the proof.
 \end{lemma}
 \end{subsection}
 
-\begin{subsection}{The proof}
+\begin{subsection}{The second proof}
 To wrap up this chapter, we can now write the proof of theorem \ref{openQuad} relying on lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}:
 
 \vspace{1mm}
@@ -986,16 +1014,15 @@ as required.
 \appendix
 \begin{chapter}{Auxiliary definitions and results}
 
+\begin{section}{Real algebraic geometry basics}
+In this section we give a basic insight into the required concepts, definitions and results from real algebraic geometry. They are mostly used on the first chapter.
+
+We begin with some definitions like \emph{real closed field} and \emph{semialgebraic set}. The \emph{Transfer Principle} allows us to move our results from $\R$ to an arbitrary real closed field $R$. We also give an overview of the \emph{Zariski topology}, in order to talk about concepts like closure or \emph{reducibility} in this topology. Finally, after defining other concepts like \emph{proper maps} and \emph{germ Nash half-branch curves}, we finish the section with \emph{Puiseux series}, which guarantees us a solution of $\Delta_v(x)$ in the first proof of theorem \ref{openQuad}.
 \begin{definition}\label{realCField}
 	A \em real closed field \em is an ordered field $R$ such that $R(\sqrt{-1})$ is an algebraically closed field. There exist many characterizations of real closed fields. A very enlightening is the following one: $R$ is a real closed field if it is an ordered field that shares with the field $\R$ of real numbers its properties of the first-order language of ordered fields. 
 \end{definition}
 
 Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful formulation in model theory that explains accurately our last sentence.
-
-\begin{theorem}[\em Transfer Principle\em]\label{TP} \em Let ${\mathcal L}(R)$ be the first-order language of ordered fields with parameters in the real closed field $R$ and let $\Phi$ be a formula of ${\mathcal L}(R)$. Then, there exists a quantifier-free formula $\Psi$ of ${\mathcal L}(R)$ with the same free variables $x_1,\dots,x_n$ as $\Phi$ such that, for every real closed field extension $K$ of $R$ and every $x\in K^n$, the sentence $\Phi(x)$ holds true if and only if $\Psi(x)$ holds true.\em
-
-\end{theorem}
-
 
 \begin{definitions}\label{semialgSet} (i) Let $R$ be a real closed field. A subset $S\subset R^n$ is \em semialgebraic \em if it is defined as a finite union of sets defined by a conjunction of polynomial equalities and inequalities: 
 	\begin{equation*}
@@ -1018,6 +1045,9 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 
 (iii) A \em semialgebraic homeomorphism \em between two semialgebraic subsets $S\subset R^n$ and $T\subset R^m$ is a continuous and bijective semialgebraic map $f:S\to T$. It is easily seen that in such a case its inverse $f^{-1}:T\to S$ is also semialgebraic.
 
+\begin{theorem}[\em Transfer Principle\em]\label{TP} \em Let ${\mathcal L}(R)$ be the first-order language of ordered fields with parameters in the real closed field $R$ and let $\Phi$ be a formula of ${\mathcal L}(R)$. Then, there exists a quantifier-free formula $\Psi$ of ${\mathcal L}(R)$ with the same free variables $x_1,\dots,x_n$ as $\Phi$ such that, for every real closed field extension $K$ of $R$ and every $x\in K^n$, the sentence $\Phi(x)$ holds true if and only if $\Psi(x)$ holds true.\em
+
+\end{theorem}
 
 \begin{definition}[Zariski topology]\label{zariski} (i) Let $K$ be a field. A subset $X\subset K^n$ is \em algebraic \em if it is the set of common zeros of a finite family of polynomials $f_1,\dots,f_m\in K[x_1,\dots, x_n]$. 
 
@@ -1054,8 +1084,12 @@ Observe that, by its very definition, it makes sense to define the germs $C_{i,p
 
 \begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
 \end{definition}
+\end{section}
 
-Sturm's method is used to obtain the number of different real roots of a polynomial in a given interval.
+\begin{section}{Root finding algorithms}
+In the first proof of theorem \ref{openQuad} many times we require to check wether a given polynomial has any root on a certain interval. Some other times we want to check that a polynomial is positive or negative on an interval, which is done by checking that it does not have a root in the interval and evaluating on a value that belongs to the interval to check the positiveness/negativeness.
+
+Sturm's method is used to obtain the number of different real roots of a polynomial in a given interval. Note that it is an algebraic method that doesn't rely on approximations.
 
 \begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and $f,g\in\R[x]$ be polynomials. A  \emph{Sturm sequence} (or \emph{Sturm chain}) is a finite sequence of polynomials $(f_0, f_1, \dots, f_k)$ where 
 \begin{equation*}
@@ -1106,6 +1140,14 @@ x_{k+1} = x_k - n \left(g(x_k) \pm \sqrt{ (n - 1) (n h(x_k) - g^2(x_k))} \right)
 $$
 Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \ref{eq:lagPol}.
 \end{proposition}
+\end{section}
+\end{chapter}
+
+\begin{chapter}{Sage code}
+
+\end{chapter}
+
+\begin{chapter}{Python code}
 
 \end{chapter}
 
