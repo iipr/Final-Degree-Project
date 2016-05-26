@@ -1,0 +1,21 @@
+\begin{tikzpicture}[transform shape]
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_09_B_vert.pdf}};
+\path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c2)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_0
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c3)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_1
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c4)($(img.south east)!0.105!(img.north east)$); % Para [
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c5)($(img.south east)!0.101!(img.north east)$); % Para [
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c6)($(img.south east)!0.01!(img.north east)$); % Para x_0
+\path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c7)($(img.south east)!0.01!(img.north east)$); % Para x_1
+\path ($(img.north west)!0.26!(img.north east)$)|-coordinate(c8)($(img.south east)!0.55!(img.north east)$); % Para B_{x_0}
+\path ($(img.north west)!0.77!(img.north east)$)|-coordinate(c9)($(img.south east)!0.35!(img.north east)$); % Para B_{x_1}
+\draw (c1) node {\huge{$\mathscr{B}$}};
+\draw (c2) node {\Large{\color[rgb]{0,0.392157,0}{$\uparrow$}}};
+\draw (c3) node {\Large{\color[rgb]{1,0,0}{$\uparrow$}}};
+\draw (c4) node {\large{\color[rgb]{0,0.392157,0}{\rotatebox[origin=c]{90}{[}}}};
+\draw (c5) node {\large{\color[rgb]{1,0,0}{\rotatebox[origin=c]{90}{[}}}};
+\draw (c6) node {\large{\color[rgb]{0,0.392157,0}{$x_0$}}};
+\draw (c7) node {\large{\color[rgb]{1,0,0}{$x_1$}}};
+\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\set{x_0} \times \mathscr{B}_{x_0})$}}};
+\draw (c9) node {\large{\color[rgb]{1,0,0}{$(\set{x_1} \times \mathscr{B}_{x_1})$}}};
+\end{tikzpicture}

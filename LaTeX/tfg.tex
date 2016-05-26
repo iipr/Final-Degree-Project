@@ -1,18 +1,19 @@
 \documentclass[11pt, a4paper, english, twoside, notitlepage, openright]{report}
 
+%\overfullrule=1cm
 \usepackage[a4paper, total={15cm, 22cm}]{geometry}
 \usepackage{iipr}
 \fancyhead[RO, LE]{ }
 \fancyhead[LO]{\nouppercase \leftmark}	% Heading on odd pages: Chapter name on the left
 \fancyhead[RE]{\nouppercase \rightmark} % Heading on even pages: Section on the right
 \fancyfoot[LE,RO]{\thepage} % Roman numbering, foot left on even, foot right on odd pages
-\fancyfoot[CE]{Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica} %Foot: Center, even pages
-\fancyfoot[CO]{Universidad Complutense de Madrid (UCM)} %Foot: Center, odd pages
+\fancyfoot[CE]{Double Degree in Mathematics and Computer Science} %Foot: Center, even pages
+\fancyfoot[CO]{Complutense University of Madrid (UCM)} %Foot: Center, odd pages
 \renewcommand{\footrulewidth}{0.4pt} % Rule on top of foot
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
-\usepackage{amsmath}
+
 \begin{document}
 
 \pagenumbering{roman}
@@ -23,17 +24,18 @@ Polynomial Algorithms}} \\
 \vspace{1.5cm}
 \protect\includegraphics[scale=0.35]{ucm.pdf}
 \vspace{1.5cm}}
-\author{Ignacio Iker Prado Rujas \\
-Universidad Complutense de Madrid (UCM) \\
-Doble Grado en Matem\'aticas e Ingenier\'ia Inform\'atica}
+\author{\textbf{Ignacio Iker Prado Rujas} \\
+Complutense University of Madrid (UCM) \\
+Double Degree in Mathematics and Computer Science}
 \date{\today}
 \maketitle
 \thispagestyle{empty}
 
 \begin{center}
-Tutors: \\
-Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa \\
-\
+\textbf{Tutors:} \\
+\textbf{Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa} \\
+\vspace{0.1cm}
+Algebra Department
 \end{center}
 
 \end{titlepage}
@@ -54,6 +56,7 @@ The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. T
 
 (...)
 
+\vspace{0.3cm}
 \begin{center}
 \textbf{Resumen}
 \end{center}
@@ -317,7 +320,7 @@ $$
 \Phi(\R^2)=\P(\varphi(\R^2))=\P(\R^2\setminus\P^{-1}(F))=\P(\R^2)\setminus F=(\Qu\ \sqcup F)\setminus F=\Qu.
 $$ 
 \end{remark}
-We are going to define a map $\P:=(\F,\G)$ that accomplish this task, with $F:=\set{(-1,0),(0,-1)}$. If we were able to find such map $\P$, then condition ($\clubsuit$) will immediately be satisfied. 
+We are going to define a map $\P:=(\F,\G)$ that accomplish this task, with the set $F$ being $F:=\set{(-1,0),(0,-1)}$. If we were able to find such map $\P$, then condition ($\clubsuit$) will immediately be satisfied. 
 		
 Suppose for a while that such a map $\P$ exists. Then, for every $\lambda,\mu\ge 0$ there will exist \hyperref[curveGerms]{Nash half-branch curve germs} $\alpha_{\lambda}(s),\beta_{\mu}(s)$ which cannot be extended to $0$ and such that:
 $$
@@ -350,10 +353,9 @@ The following pair of polynomials:
 \end{aligned}
 }
 \end{equation*}
-enjoy a nice behavior along these curves, as the following images show:
-
+enjoy a nice behavior along these curves, as figure \ref{fig:plotFG} show.
 \begin{figure}[h]\hspace{-0.15cm}
-\begin{subfigure}{.50\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
 \caption{$\F(x,y):=(1-x^3y+y-xy^2)^2+(x^2y)^2$.\label{fig:F}}
 \end{subfigure}
@@ -777,19 +779,18 @@ Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as req
 \end{subsection}
 
 \begin{figure}[h]
-\hspace{-1.9cm}
-\begin{subfigure}{.73\linewidth}\centering
+\begin{subfigure}{.5\linewidth}\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_07_A.pdf}};
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_07_A.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{A}
 \draw (c1) node {\huge{$\mathscr{A}$}};
 \end{tikzpicture}
 \caption{$\mathscr{A} = \set{xy \ge 1}\ \cap\, \Qu$.\label{fig:setA}}
 \end{subfigure}
-\hspace{-3.4cm}
-\begin{subfigure}{.73\linewidth}\centering
+\hspace{-0.2cm}
+\begin{subfigure}{.5\linewidth}\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_08_B.pdf}};
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_08_B.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
 \draw (c1) node {\huge{$\mathscr{B}$}};
 \end{tikzpicture}
@@ -846,7 +847,7 @@ $$
 $$
 Then we can prove the desired inclusion in this way:
 $$
-\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x) \subset \bigsqcup_{x>0}(\set{x} \times \phi_x([1/x, +\infty))) = \bigsqcup_{x>0}\GG(\set{x} \times [1/x, +\infty)) = \GG(\mathscr{A}),
+\mathscr{B} = \bigsqcup_{x>0}\big(\set{x} \times \mathscr{B}_x\big) \subset \bigsqcup_{x>0}\big(\set{x} \times \phi_x([1/x, +\infty))\big) = \bigsqcup_{x>0}\GG\big(\set{x} \times [1/x, +\infty)\big) = \GG(\mathscr{A}),
 $$
 which concludes the proof.
 \qed
@@ -855,10 +856,9 @@ which concludes the proof.
 \end{subsection}
 
 \begin{figure}[h]
-\hspace{-1.9cm}
-\begin{subfigure}{.73\linewidth}\centering
+\begin{subfigure}{.5\linewidth}\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_09_B_vert.pdf}};
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_09_B_vert.pdf}};
 \path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
 \path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c2)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_0
 \path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c3)($(img.south east)!0.89!(img.north east)$); % Para la flecha de x_1
@@ -866,8 +866,8 @@ which concludes the proof.
 \path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c5)($(img.south east)!0.101!(img.north east)$); % Para [
 \path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c6)($(img.south east)!0.01!(img.north east)$); % Para x_0
 \path ($(img.north west)!0.613!(img.north east)$)|-coordinate(c7)($(img.south east)!0.01!(img.north east)$); % Para x_1
-\path ($(img.north west)!0.25!(img.north east)$)|-coordinate(c8)($(img.south east)!0.55!(img.north east)$); % Para B_{x_0}
-\path ($(img.north west)!0.76!(img.north east)$)|-coordinate(c9)($(img.south east)!0.35!(img.north east)$); % Para B_{x_1}
+\path ($(img.north west)!0.26!(img.north east)$)|-coordinate(c8)($(img.south east)!0.55!(img.north east)$); % Para B_{x_0}
+\path ($(img.north west)!0.77!(img.north east)$)|-coordinate(c9)($(img.south east)!0.35!(img.north east)$); % Para B_{x_1}
 \draw (c1) node {\huge{$\mathscr{B}$}};
 \draw (c2) node {\Large{\color[rgb]{0,0.392157,0}{$\uparrow$}}};
 \draw (c3) node {\Large{\color[rgb]{1,0,0}{$\uparrow$}}};
@@ -880,10 +880,9 @@ which concludes the proof.
 \end{tikzpicture}
 \caption{$\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_{x})$.\label{fig:Bvert}}
 \end{subfigure}
-\hspace{-3.4cm}
-\begin{subfigure}{.73\linewidth}\centering
+\begin{subfigure}{.5\linewidth}\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=0.7\textwidth]{plots/ch2_10_B_hor.pdf}};
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_10_B_hor.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
 \path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
 \path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c2)($(img.south east)!0.604!(img.north east)$); % Para la flecha de y_0
@@ -907,7 +906,6 @@ which concludes the proof.
 \draw (c7) node {\large{\color[rgb]{1,0,0}{$y_1$}}};
 \draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\mathscr{B}_{y_0} \times \set{y_0})$}}};
 \draw (c9) node {\large{\color[rgb]{1,0,0}{$(\mathscr{B}_{y_1} \times \set{y_1})$}}};
-\draw (c1) node {\huge{$\mathscr{B}$}};
 \end{tikzpicture}
 \caption{$\mathscr{B} = \bigsqcup_{y>0}(\mathscr{B}_{y} \times \set{y})$.\label{fig:Bhor}}
 \end{subfigure}
@@ -951,19 +949,19 @@ $$
 $$
 Property (iii) holds because $(y^2 - 2)^2 + \tfrac{1}{2}y^2 > 1$ when $0 < y < 1$. Next, we are going to show that:
 $$
-\psi_y(\mathscr{B}_y) = 
-\left\{
-\begin{array}{ll}
-\psi_y((0, +\infty)) =^1 (0, +\infty) & \text{ if } y \ge 1,\\
-\psi_y((0, y] \cup [1/y, +\infty)) \supset^2 (0, \psi_y(y)] \cup [\psi_y(2/y), +\infty) =^3 (0, +\infty) & \text { if } 0 < y < 1.
+\! \psi_y(\mathscr{B}_y) \! = \!
+\left\{ \def\arraystretch{1.5}
+\begin{array}{ll} 
+\! \! \psi_y((0, +\infty)) =^1 (0, +\infty) & \!\!\! \text{ if } y \ge 1,\\
+\! \! \psi_y\big((0, y] \cup \big[\frac{1}{y}, +\infty\big)\big) \supset^2 (0, \psi_y(y)] \cup \big[\psi_y\big(\tfrac{2}{y}\big), +\infty\big) =^3 (0, +\infty) & \!\!\! \text{ if } 0 < y < 1.
 \end{array}
 \right.
 $$
-Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$ is followed from the fact that $[1/y_0, +\infty) \supset [2/y_0, +\infty)$ for $y_0$ fixed. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\left(\tfrac{2}{y}\right)$.
+Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$ is followed from the fact that $[1/y_0, +\infty) \supset [2/y_0, +\infty)$ for $y_0$ fixed. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\big(\tfrac{2}{y}\big)$.
 
 We are now in conditions of writting:
 $$
-\Qu = \bigsqcup_{y>0}((0, +\infty) \times \set{y}) \subset \bigsqcup_{y>0}(\psi_y(\mathscr{B}_y) \times \set{y}) = \bigsqcup_{y>0}\HH(\mathscr{B}_y \times \set{y}) = \HH(\mathscr{B}_y),
+\Qu = \bigsqcup_{y>0}\big((0, +\infty) \times \set{y}\big) \subset \bigsqcup_{y>0}\big(\psi_y(\mathscr{B}_y) \times \set{y}\big) = \bigsqcup_{y>0}\HH\big(\mathscr{B}_y \times \set{y}\big) = \HH(\mathscr{B}_y),
 $$
 which concludes the proof.
 \qed
