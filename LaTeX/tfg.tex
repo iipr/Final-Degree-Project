@@ -1,6 +1,5 @@
 \documentclass[11pt, a4paper, english, twoside, notitlepage, openright]{report}
 
-%\overfullrule=1cm
 \usepackage[a4paper, total={15cm, 22cm}]{geometry}
 \usepackage{iipr}
 \fancyhead[RO, LE]{ }
@@ -50,9 +49,9 @@ Let $R$ be a real closed field and $n\geq 2$. Then:
 	
 (1) For every finite subset $F$ of $R^n$, the semialgebraic set $R^n\setminus F$ is a polynomial image of $R^n$. 
 	
-(2) Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the semialgebraic set $\{h_1>0,\dots,h_r>0\}\subset R^n$ is a polynomial image of $R^n$.
+(2) Given linearly independent linear forms $h_1,\dots,h_r$ of $R^n$, the semialgebraic set $\{h_1>0,\dots,h_r>0\}\subset R^n$ is a polynomial image of $R^n$.
 	
-The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry (such as Sturm's theorem and the Curve Selection Lemma) and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
+The key result here is that $\Qu:=\{x>0,y>0\}\subset R^2$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry (such as Sturm's theorem and the Curve Selection Lemma) and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
 
 (...)
 
@@ -61,15 +60,15 @@ The key result here is that $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$. T
 \textbf{Resumen}
 \end{center}
 
-Este trabajo contiene distintas pruebas del mismo hecho y pretende hacer una comparación computacional entre ellas, tratando de encontrar la m\'as eficiente.
+Este trabajo contiene distintas pruebas del mismo hecho y pretende hacer una comparaci\'on computacional entre ellas, tratando de encontrar la m\'as eficiente.
 
-Sea $R$ un cuerpo real cerrado y $n\geq 2$. Entonces: 
+Sean $R$ un cuerpo real cerrado y $n\geq 2$. Entonces: 
 	
-(1) Para cada subconjunto finito $F$ de $R^n$, el conjunto semialgebraico $R^n\setminus F$ es imagen polinomial de $R^n$. 
+(1) Para cada subconjunto finito $F$ de $R^n$, el conjunto semialgebraico $R^n\setminus F$ es imagen polin\'omica de $R^n$. 
 	
-(2) Dadas unas formas linealmente independientes $h_1,\dots,h_r$ de $R^n$, el conjunto semialgebraico $\{h_1>0,\dots,h_r>0\}\subset R^n$ es imagen polinomial de $R^n$.
+(2) Dadas formas linealmente independientes $h_1,\dots,h_r$ de $R^n$, el conjunto semialgebraico $\{h_1>0,\dots,h_r>0\}\subset R^n$ es imagen polin\'omica de $R^n$.
 	
-El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}$ es imagen polinomial de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de la geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un odenador; una segunda forma m\'as corta, usando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima que comprende argumentos de la rama de la topolog\'ia algebraica, sin la necesidad de realizar computaciones en un ordenador. 
+El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'omica de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un ordenador; una segunda forma m\'as breve, empleando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima en la que se utilizan  argumentos de topolog\'ia algebraica, que evitan efectuar c\'alculos en un ordenador. 
 
 (...)
 \end{abstract}
@@ -81,7 +80,7 @@ El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}$ es imagen polinomial de $R^2
 \pagenumbering{arabic}    % Numbering from 1
 
 \begin{section}{Introduction}
-\begin{definition}\label{polyMap} Let $R$ be a \hyperref[realCField]{real closed field} and $m,n\in\N_{>0}$. A map $f:=(f_1,\dots,f_n):R^m\to R^n$ is said to be \em polynomial \em if $f_i\in R[x_1,\dots,x_m]$ for $i=1,\dots,n$. 
+\begin{definition}\label{polyMap} Given a \hyperref[realCField]{real closed field} $R$ and positive integers $m,n$ it is said that $f:=(f_1,\dots,f_n):R^m\to R^n$ is a \em polynomial map \em if $f_i\in R[{\tt x}_1,\dots,{\tt x}_m]$ for $i=1,\dots,n$. 
 \end{definition}
 	
 A very famous theorem by Tarski and Seidenberg states the following:
@@ -99,9 +98,9 @@ Particularly interesting seems to be the study of those open semialgebraic subse
 	
 \begin{subsection}{Necessary conditions and examples} To begin working on this idea, we provide some necessary conditions for a set $S\subset R^n$ to be a polynomial image of $R^m$. 
 	
-If $m=n=1$, that is, for a polynomial function $f:R\to R$, its image $f(R)$ is either a \em singleton, \em that is, a set with a unique point if the function $f$ is constant, or an unbounded closed interval, for example if $f(x)=x^2$, or $f(R)=R$ if $f$ is a polynomial of odd degree.
+If $m=n=1$, that is, for a polynomial function $f:R\to R$, its image $f(R)$ is either a \em singleton, \em that is, a set with a unique point if the function $f$ is constant, or an unbounded closed interval. For example if $f({\tt x})={\tt x}^2$ we have $f(R)=[0,+\infty)$, and $f(R)=R$ if $f$ is a polynomial of odd degree.
 	
-In the general case, by \hyperref[tarskiSeidenberg]{Tarski-Seidenberg}, $S$ must be a semialgebraic set and, as $R^n$ is semialgebraically connected, $S$ is semialgebraically connected too. Even more, by the identity principle for polynomials, $S$ is Zariski-irreducible and \hyperref[pureDim]{pure dimensional}.
+In the general case, by \hyperref[tarskiSeidenberg]{Tarski-Seidenberg}, $S$ must be a semialgebraic set and, as $R^n$ is semialgebraically connected, $S$ is semialgebraically connected too. In addition, by the identity principle for polynomials, $S$ is Zariski-irreducible and \hyperref[pureDim]{pure dimensional}.
 	
 	% Añadir el teorema de Shiota y la definición de Nash map? NO
 	
@@ -125,26 +124,26 @@ With these ideas in mind, we present in the following proposition some obstructi
 \begin{Proof} Suppose $p\in\delta S\setminus \S_f$. Since $p\notin\S_f$, there exists an open neighbourhood $K$ of $p$ such that the restriction $f|_{f^{-1}(K)}:f^{-1}(K)\to K$ of $f$ is proper. Thus its image $K\cap S$ is a closed subset of $K$. Hence, $p\in K\cap\overline{S}=K\cap(\overline{K\cap S})=K\cap S$, which yields in a contradiction.
 \end{Proof}
 \item Let $m=n=2$ and $\Gamma$ be a $1$-dimensional irreducible component of $\overline{\delta S}^{\text{zar}}$. Then $\Gamma$ is the Zariski closure of a parametric semiline of $R^2$.
-\begin{Proof} As $f$ is a dominant map, it follows from Theorem \ref{jelonek} that $\S_f$ is a finite union of parametric semilines, say $M_1,\dots, M_s$ in $R^2$. Then, using (1) we get: $\Gamma\subset\overline{\delta S}^{\text{zar}}\subset \overline{\S_f}^{\text{zar}}=\bigcup_{i=1}^s\overline{M_i}^{\text{zar}}$. Lastly, using that both $\Gamma$ and the $\overline{M_i}^{\text{zar}}$'s are irreducible, $\Gamma=\overline{M_i}^{\text{zar}}$ for some $i=1,\dots,s$.
+\begin{Proof} As $f$ is a dominant map, $\S_f$ is, by Theorem \ref{jelonek}, a finite union of parametric semilines, say $M_1,\dots, M_s$ in $R^2$. Using (1) we get: $\Gamma\subset\overline{\delta S}^{\text{zar}}\subset \overline{\S_f}^{\text{zar}}=\bigcup_{i=1}^s\overline{M_i}^{\text{zar}}$. Lastly, using that both $\Gamma$ and the $\overline{M_i}^{\text{zar}}$'s are irreducible, $\Gamma=\overline{M_i}^{\text{zar}}$ for some index $i=1,\dots,s$.
 \end{Proof}
 \item Let $p:R^n\to R$ be a polynomial map which is non-constant on $S$. Then $p(S)$ is unbounded.
 \begin{Proof} For each $a \in R^m$ let $\varphi_a:R\to R$ defined as $\varphi_a(t):=p(f(ta))$. Then $p(S)$ would contain the image $\varphi_a(R)$ for all $a\in R^m$. Suppose now that $\varphi_a(R)$ is bounded. Then $\varphi_a(R)$ would be a point $r_a$, and given two points $a,b\in R^m$ we would have
 $$ 
-\varphi_a(1)=p(f(ta))=r_a=\varphi_a(0)=\varphi_b(0)=r_b=p(f(tb))=\varphi_b(1).
+\varphi_a(1)=p(f(a))=r_a=\varphi_a(0)=\varphi_b(0)=r_b=p(f(b))=\varphi_b(1).
 $$ 
 Then $p$ would be constant on $S$, which is a contradiction.
 \end{Proof}
 \end{enumerate}
 \end{proposition}	
-\begin{corollary} Because of \em (3) \em in Proposition \em \ref{propIntro}, \em all linear projections of $S$ are either a point or unbounded. Thus, $S$ is also unbounded or a point.
+\begin{corollary} Because of statement \em (3) \em in Proposition \em \ref{propIntro}, \em all linear projections of a polynomial image $S=f(R^m)$ are either a point or unbounded. Thus, $S$ is also unbounded or a point.
 \end{corollary}
 	
 \begin{examples}\label{introExample}
 \
 \begin{enumerate}[(i)]
-\item The exterior of the closed unit disc $S:=\set{u^2+v^2>1}$ \textbf{is not} a polynomial image of $R^2$. This is so because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is $\set{u^2+v^2=1}$ and this set is not a parametric semiline because it is bounded.
+\item The exterior of the closed unit disc $S:=\set{u^2+v^2>1}\subset R^2$ \textbf{is not} a polynomial image of $R^2$. This is so because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is the circle $\set{u^2+v^2=1}\subset R^2$ and this set is not a parametric semiline because it is bounded.
 			
-\item Let $S_1:=\set{uv<1}$ and $S_2:=\set{uv>1,u>0}$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}$, which is not a parametric semiline.
+\item Let $S_1:=\set{uv<1}\subset R^2$ and $S_2:=\set{uv>1,u>0}\subset R^2$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}\subset R^2$, which is not a parametric semiline.
 \begin{figure}[h]\hspace{0.1cm}
 \begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_01_S_1.pdf}
@@ -156,23 +155,27 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \end{subfigure}\\[1ex]
 \caption{Plots of the regions defined in Example \ref{introExample} (ii).\label{fig:introExampleii}}
 \end{figure}
-\item Let $S:=R^2\setminus\set{(0, 0)}$ be the punctured plane. Then $S$ is the image of the polynomial map $(x,y) \mapsto (xy-1,(xy-1)x^2-y)$.
-\item Let $\H:=\set{v>0}$ be the open upper half-plane. Then $\H$ is the image of $(x,y) \mapsto (y(xy-1),(xy-1)^2+x^2)$. This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\H$.
+\item Let $S:=R^2\setminus\set{(0,0)}$ be the punctured plane. Then $S$ is the image of the polynomial map $(x,y) \mapsto (xy-1,(xy-1)x^2-y)$.
+\item The open upper half-plane $\H:=\set{v>0}\subset R^2$ is the image of the polynomial map 
+$$
+R^2\to R^2,\, (x,y)\mapsto (y(xy-1),(xy-1)^2+x^2),
+$$
+This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\H$.
 \end{enumerate}
 \end{examples}
 \end{subsection}
 	
 \begin{subsection}{Statement of the main results}
 	
-The main results of this chapter are generalizations of examples (iii) and (iv) from Examples \ref{introExample}.
+The main results of this chapter are generalizations of items (iii) and (iv) from Examples \ref{introExample}.
 %\vspace{0.35cm}
-\begin{theorem}\label{finSetTh}\em Let $n\ge2$. For every finite set $F\subset R^n$, the semialgebraic set $R^n\setminus F\subset R^n$ is a polynomial image of $R^n$.\em
+\begin{theorem}\label{finSetTh}\em Let $n\ge2$. For every finite set $F\subset R^n$, the semialgebraic set $R^n\setminus F$ is a polynomial image of $R^n$.\em
 \end{theorem}
 %\vspace{0.35cm}
-\begin{theorem}\label{openQuadGen}\em Let $n\ge 2$. For any independent linear forms $h_1,\dots,h_r$ of $R^n$, the open semialgebraic set $\set{h_1>0,\dots,h_r>0}$ is a polynomial image of $R^n$.\em
+\begin{theorem}\label{openQuadGen}\em Let $n\ge 2$. Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the open semialgebraic set $\set{h_1>0,\dots,h_r>0}$ is a polynomial image of $R^n$.\em
 \end{theorem}
 	
-Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\H$. J.M. Gamboa outlined the problem of finding if $\Qu=\set{x>0,y>0}$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to look for a solution of this problem was the transformation
+Before the paper \cite{fg} was published, the exterior boundary of all open sets that were known to be polynomial images of $R^2$ was Zariski-irreducible, and all of them were deformations of $\H$. J.M. Gamboa outlined the problem of finding if the open quadrant $\Qu:=\set{x>0,y>0}\subset R^2$ is a polynomial image of $R^2$ or not, since its exterior boundary is Zariski-reducible. The solution of this problem is a key particular case of the content of Theorem \ref{openQuadGen}. Before that, the closest known approach to look for a solution of this problem was the transformation
 $$
 \psi:R^2 \to R^2,\, (x,y)\mapsto(x^4y^2,x^2y^4)
 $$	
@@ -192,9 +195,9 @@ Let us see how Theorem \ref{openQuadGen} follows from Theorem \ref{openQuad}.
 		
 \vspace{1mm}		
 		
-[Proof of theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:=x_1,\dots,h_r:=x_r$,  so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
+[Proof of theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:={\tt x}_1,\dots,h_r:={\tt x}_r$, so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
 \begin{itemize}
-\item $\H:=\{x_1>0\}$ and $\Qu:=\{x_1>0,\, x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
+\item $\H:=\{x_1>0\}\subset R^2$ and $\Qu:=\{x_1>0,\,x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
 \item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $H_1,H_2:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
 \begin{align*}
 (H_1,\text{id}_R): R^3=R^2\times R\longrightarrow R^3= R^2\times R\\
@@ -221,7 +224,7 @@ We proceed to prove theorem \ref{finSetTh}:
 	
 [Proof of theorem \ref{finSetTh}] Let $F:=\{p_1,\dots,p_k\}$. Let us see that it suffices to prove the result for points of the form $p_j:=(a_j,\vec{0})\in\R\times\R^{n-1}$. After a linear change of coordinates we can assume that the first coordinates of the given points are pairwise distinct. 
 
-In other words, we denote $p_j:=(a_{1j},\dots,a_{nj})$ and we may suppose that $a_{1j}\neq a_{1\ell}$ when $j\neq\ell$. Then, there exists a polynomial $P_1\in\R[T]$ such that $P_1(a_{1j})=a_{nj}$, with $j = 1,\dots, n$, and denoting $x':=(x_1,\dots,x_{n-1})$, we  define the polynomial map 
+In other words, we denote $p_j:=(a_{1j},\dots,a_{nj})$ and we may suppose that $a_{1j}\neq a_{1\ell}$ when $j\neq\ell$. Then, there exists a polynomial $P_1\in\R[{\tt t}]$ such that $P_1(a_{1j})=a_{nj}$, with $j = 1,\dots, n$, and denoting $x':=(x_1,\dots,x_{n-1})$, we  define the polynomial map 
 $$
 h_1:\R^n\to\R^n,\, (x',x_n)\mapsto (x',x_n+P_1(x_1)).
 $$
@@ -231,63 +234,68 @@ h_1(x)=(x_1,\dots,x_n+ P_1(x_1))=(y_1,\dots,y_n+ P_1(y_1))=h_1(y).
 $$ 
 Then $x_i=y_i$ for $i=1,\dots,n-1$. Also $x_n+P_1(x_1)=y_n+P_1(y_1)$ and $P_1(x_1)=P_1(y_1)$ because $x_1= y_1$. Therefore $x_n=y_n$ and $x=y$.
 		
-Now, for $p_j':=(a_{1j},\dots,a_{(n-1)j},0)$ we have $h_1(p_j')=p_j$. Analogously, there exists $P_2\in\R[T]$ such that $P_2(a_{1j}) = a_{(n-1)j}$, and define the polynomial bijection
+Now, for $p_j':=(a_{1j},\dots,a_{(n-1)j},0)$ we have $h_1(p_j')=p_j$. Analogously, there exists $P_2\in\R[{\tt t}]$ such that $P_2(a_{1j}) = a_{(n-1)j}$, and define the polynomial bijection
 $$
 h_2:\R^n\longrightarrow \R^n,\,(x'',x_{n-1},x_n)\mapsto (x'',x_{n-1}+P_2(x_1),x_n),
 $$
-where $x''=(x_1,\dots,x_{n-2})$. Then $h_2(p_j'')=p_j'$ for $p_j''= (a_{1j},\dots,a_{(n-2)j},0,0)$. In this way the polynomial bijection $h_1\circ h_2:\R^n\to\R^n$ satisfies
+where $x'':=(x_1,\dots,x_{n-2})$. Then $h_2(p_j'')=p_j'$ for $p_j''= (a_{1j},\dots,a_{(n-2)j},0,0)$. In this way the polynomial bijection $h_1\circ h_2:\R^n\to\R^n$ satisfies
 $$
 (h_1\circ h_2)(p_j'')=h_1(h_2(p_j''))=h_1(p_j')=p_j,
 $$
-and we can inductively construct a polynomial bijection $h:\R^n\rightarrow\R^n$ such that $h(q_j)=p_j$ for $q_j:=(a_{1j},\vec{0})\in\R\times\R^{n-1}$. Now let $G:=\{q_1,\dots,q_k\}$ and suppose that there exists a polynomial map $g:\R^n\rightarrow\R^n$ such that $g(\R^n)=\R^n\setminus G$. Then $(h\circ g)(\R^n) = \R^n \setminus F$, which concludes the first part of the proof. Thus in what follows we suppose that $p_j=(a_j,\vec{0})$.
+and we can inductively construct a polynomial bijection $h:\R^n\rightarrow\R^n$ such that $h(q_j)=p_j$ for $q_j:=(a_{1j},\vec{0})\in\R\times\R^{n-1}$. Now let $G:=\{q_1,\dots,q_k\}$ and suppose that there exists a polynomial map $g:\R^n\rightarrow\R^n$ such that $g(\R^n)=\R^n\setminus G$. Then $(h\circ g)(\R^n) = \R^n \setminus F$, which concludes the first part of the proof. Thus in what follows we suppose that $p_j:=(a_j,\vec{0})$.
 		
-We claim that the image of the polynomial map $f:=(f_1,\dots,f_n)$:
+We claim that the image of the polynomial map $f:=(f_1,\dots,f_n)$ defined as:
 $$
 f(x)=\left(x_1x_2-r+a_1,\ x_1^{4}\rho(x)+x_1^{2}\sigma(x)+x_2,\ x_3,\dots,\ x_n\right)
 $$
 is $\R^n\setminus F$, where $r$ is an integer such that $r\neq a_1-a_j$ for $j=1,\dots,k$,  
 $$
-\sigma(x):=\sum_{j=3}^n x_j^2 \text{ and } \rho(x):=\prod_{j=1}^k(x_1x_2-r+a_1-a_j).
+\sigma({\tt x}):=\sum_{j=3}^n{\tt x}_j^2 \, \, \text{ and } \, \, \rho({\tt x}):=\prod_{j=1}^k({\tt x}_1{\tt x}_2-r+a_1-a_j).
 $$
-First, suppose that there exists $b:=(b_{1},\dots,b_{n})\in R^n$ such that $f(b)=p_\ell$ for some $\ell=1,\dots,k$. Then $f_1(b)=b_1b_2-r+a_1=a_\ell$. Thus the $\ell^{th}$-factor of the polynomial $\rho$ evaluated at $x:=b$ is
+First, suppose that there exists $b:=(b_{1},\dots,b_{n})\in R^n$ with $f(b)=p_\ell$ for some $\ell=1,\dots,k$. Then $f_1(b)=b_1b_2-r+a_1=a_\ell$. Thus the $\ell^{th}$-factor of the polynomial $\rho$ evaluated at $x:=b$ is
 $$
 b_1b_2-r+a_1-a_\ell=a_\ell-a_\ell=0,
 $$		 
-and $\rho(b)=0$. In addition, the equality $f(b)=p_\ell=(a_{_\ell},\vec{0})$ implies that $f_i(b)=0$ for $i=2,\dots,n$. In particular, since $f_i\equiv\text{id}$ for $i=3,\dots,n$ we get $b_i=0$ for $i=3,\dots,n$. Hence $\sigma(b)=0$. As $\sigma(b)=\rho(b)=0$ we get $b_2=f_2(b)= 0$, so $b_2=0$ and $a_{\ell}=f_1(b)=a_1-r$, that is, $r=a_1-a_\ell$, which is a contradiction. So $\text{im}(f)\subset \R^n\setminus F$.
+and $\rho(b)=0$. In addition, the equality $f(b)=p_\ell=(a_{_\ell},\vec{0})$ implies that $f_i(b)=0$ for $i=2,\dots,n$. In particular, as $f_i\equiv\text{id}$ for $i=3,\dots,n$ we get $b_i=0$ for $i=3,\dots,n$. Consequently $\sigma(b)=0$. Since $\sigma(b)=\rho(b)=0$ we get $b_2=f_2(b)= 0$, so $b_2=0$ and $a_{\ell}=f_1(b)=a_1-r$, that is, $r=a_1-a_\ell$, which is a contradiction. So $\text{im}(f)\subset \R^n\setminus F$.
 Conversely, let $u:=(u_1,\dots,u_n)\in\R^n\setminus F$. We must prove that the system of polynomial equations:
 \[ \left\{ \def\arraystretch{1.2}
 \begin{array}{ll} 
-f_1(x)&=x_1x_2-r+a_1=u_1 \\
-f_2(x)&=x_1^4\rho(x)+x_1^2\sigma(x)+x_2=u_2 \\
-f_j(x)&=x_j=u_j,\quad j\geq 3
+f_1({\tt x})&={\tt x}_1{\tt x}_2-r+a_1=u_1 \\
+f_2({\tt x})&={\tt x}_1^4\rho({\tt x})+{\tt x}_1^2\sigma({\tt x})+{\tt x}_2=u_2 \\
+f_j({\tt x})&={\tt x}_j=u_j,\quad j\geq 3
 \end{array} 
 \right.  \]
 has a solution.
 \begin{enumerate}[(i)]
 \item If $u_1=a_1-r$ then $f(0,u_2,\dots,u_n)=u$.
-\item If $u_1\neq a_1-r$ we use the first equation to substitute $$x_2=\frac{u_1-a_1+r}{x_1} \quad \text{ and } \quad x_j=u_j \quad \text{ for } j\geq 3.$$ Now, we expand $f_2(x)$:
+\item If $u_1\neq a_1-r$ we use the first equation to substitute 
+\end{enumerate}
 $$
-x_1^4\rho(x)+x_1^2\sigma(x)-u_2=-x_2=-\frac{u_1-a_1+r}{x_1}
+{\tt x}_2=\frac{u_1-a_1+r}{{\tt x}_1} \quad \text{ and } \quad {\tt x}_j=u_j \quad \text{ for } j\geq 3.
 $$ 
-and multiplying by $x_1$ we get 
+Next, we expand $f_2({\tt x})$:
 $$
-x_1^5\rho(x)+x_1^3\sigma(x)-u_2x_1+(u_1-a_1+r)=0.
+{\tt x}_1^4\rho({\tt x})+x_1^2\sigma({\tt x})-u_2=-{\tt x}_2=-\frac{u_1-a_1+r}{{\tt x}_1},
 $$ 
-Then, $\rho(x)=\prod_{j=1}^k(u_1-a_j) \text{ and } \sigma(x)=\sigma(u)$. Now it is clear that $x_1$ must be a nonzero root of the polynomial:
+and multiplying by ${\tt x}_1$ we get 
+\begin{equation}\label{quintica}
+{\tt x}_1^5\rho({\tt x})+{\tt x}_1^3\sigma({\tt x})-u_2{\tt x}_1+(u_1-a_1+r)=0.
+\end{equation}
+Then, $\rho({\tt x})=\prod_{j=1}^k(u_1-a_j) \text{ and } \sigma({\tt x})=\sigma(u)$. Now it is clear that each solution $x_1$ of equation \eqref{quintica} must be a nonzero root of the polynomial:
 $$
-Q(T)=\Big(\prod_{j=1}^k(u_1-a_j)\Big)T^{5}+\sigma(u)T^{3}-u_2T+(r-a_1+u_1),
+Q({\tt t})=\Big(\prod_{j=1}^k(u_1-a_j)\Big){\tt t}^{5}+\sigma(u){\tt t}^{3}-u_2{\tt t}+(r-a_1+u_1),
 $$
-which has odd degree, and so a real root, unless 
+which has odd degree, and so it has a real root, unless 
 $$
 \prod_{j=1}^k(u_1-a_j)=\sigma(u)=u_2=0.
 $$ 
-If this were the case, then $u_1=a_j$ for some $j= 1,\dots,k$ and $u_2=u_3=\cdots=u_k=0$. This is not possible because $u\not\in F$. Thus, $Q(T)$ has a real root $b_1$, and in fact $b_1\neq0$ because $Q(0)=r-a_1+u_1\neq 0$.
+If this were the case, then $u_1=a_j$ for some $j= 1,\dots,k$ and $u_2=u_3=\cdots=u_k=0$. This is not possible because $u\not\in F$. Thus, $Q({\tt t})$ has a real root, say $b_1$, and in fact $b_1\neq0$ because $Q(0)=r-a_1+u_1\neq 0$.
 Finally, 
 $$
 f\left(b_1,\ \frac{u_1-a_1+r}{b_1},\ u_3,\ \dots,\ u_n\right)=u,
 $$
 as required.
-\end{enumerate}
+
 \qed
 \end{section}
 \end{chapter}
@@ -295,7 +303,7 @@ as required.
 \begin{chapter}{The open quadrant $\Qu$ problem: First proof}
 \begin{section}{Reasons behind the choice}\label{quadReasons}
 		
-It is remarkable that even though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
+It is remarkable that though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plots/ch1_03_f(x,y).png}
@@ -305,7 +313,7 @@ It is remarkable that even though the open interval $I:=(0,+\infty)$ is the imag
 		
 However, although $h(\R^2)=I$, the polynomial $h$ does not help to obtain $\Qu$ at all:
 \begin{remark}
-There is no polynomial map $f:=(P_1, P_2):\R^2\to\R^2$ satisfying $f(\R^2)=\Qu$ and $P_1(x,y)=(xy-1)^2+x^2$.
+There is no polynomial map $f:=(P_1, P_2):\R^2\to\R^2$ satisfying $f(\R^2)=\Qu$ and $P_1({\tt x},{\tt y})=({\tt x}{\tt y}-1)^2+{\tt x}^2$.
 \end{remark}
 The proof of this remark relies on a suitable use of the Curve Selection Lemma (\cite[VIII.2.6]{abr}) to approach a point $(\lambda^2,0)\in\overline{\Qu}$ with $\lambda>0$, to get a contradiction.
 		
@@ -315,7 +323,7 @@ On the topic of finding a polynomial map $\Phi:\R^2\to\R^2$ that satisfies $\Phi
 $\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad \quad$ ($\clubsuit$)
 \end{tabular}
 \end{center}
-\begin{remark} Using Theorem \ref{finSetTh}, we just need to find a polynomial map $$\P=(\F,\G):\R^2\to\R^2$$ such that $\P(\R^2)$ is the disjoint union of $\Qu$ and a set with finite preimage, say $\P(\R^2)=\Qu\ \sqcup F$ with $\P^{-1}(F)$ a finite set. By Theorem \ref{finSetTh} there exists a polynomial map $\varphi:\R^2\to\R^2$ such that $\varphi(\R^2)=\R^2\setminus\P^{-1}(F)$ and the polynomial map $\Phi:=\P\circ\varphi$ satisfies
+\begin{remark} Using Theorem \ref{finSetTh}, we just need to find a polynomial map $$\P=(\F,\G):\R^2\to\R^2$$ such that $\P(\R^2)$ is the disjoint union of $\Qu$ and a set with finite preimage, say $\P(\R^2)=\Qu\ \sqcup F$ with $\P^{-1}(F)$ a finite set. Suppose for a while this is proved. Then, by Theorem \ref{finSetTh}, there exists a polynomial map $\varphi:\R^2\to\R^2$ such that $\varphi(\R^2)=\R^2\setminus\P^{-1}(F)$ and the polynomial map $\Phi:=\P\circ\varphi$ satisfies
 $$
 \Phi(\R^2)=\P(\varphi(\R^2))=\P(\R^2\setminus\P^{-1}(F))=\P(\R^2)\setminus F=(\Qu\ \sqcup F)\setminus F=\Qu.
 $$ 
@@ -348,8 +356,8 @@ The following pair of polynomials:
 \begin{equation*}
 \boxed{
 \begin{aligned}
-\F(x,y)&:=(1-x^3y+y-x y^2)^2+(x^2 y)^2&=&\ \F_1^2+\F_2^2 \\
-\G(x,y)&:=(1-xy+x-x^4y)^2+(x^2y)^2&=&\ \G_1^2+\G_2^2\\
+\F({\tt x},{\tt y})&:=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2&=&\ \F_1^2+\F_2^2 \\
+\G({\tt x},{\tt y})&:=(1-{\tt x}y+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2&=&\ \G_1^2+\G_2^2\\
 \end{aligned}
 }
 \end{equation*}
@@ -357,25 +365,25 @@ enjoy a nice behavior along these curves, as figure \ref{fig:plotFG} show.
 \begin{figure}[h]\hspace{-0.15cm}
 \begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
-\caption{$\F(x,y):=(1-x^3y+y-xy^2)^2+(x^2y)^2$.\label{fig:F}}
+\caption{$\F({\tt x},{\tt y}):=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2$.\label{fig:F}}
 \end{subfigure}
 \begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_05_G.png}
-\caption{$\G(x,y)=(1-xy+x-x^4y)^2+(x^2y)^2$.\label{fig:G}}
+\caption{$\G({\tt x},{\tt y})=(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2$.\label{fig:G}}
 \end{subfigure}\\[1ex]
 \caption{Plots of the polynomials $\F,\G:\R^2\longrightarrow\R$.\label{fig:plotFG}}
 \end{figure}
 Next, notice that
 \begin{enumerate}[(a)]
 \item $\cdot$ $\F_1\circ\alpha_\lambda=1-a_{\lambda}-a_{\lambda}^{2} s-s^{2}-a_{\lambda} s^{3}\in\R[s,a_{\lambda}]$,
-$\, \F_1\circ\alpha_{\lambda }(0)=1-a_{\lambda. }$ \newline
+$\qquad\qquad\qquad \,\, \, \,   \F_1\circ\alpha_{\lambda }(0)=1-a_{\lambda. }$ \newline
 $\cdot$ $\F_1\circ\beta_{\mu}=-3\,b_{\mu}s-3 \,b_{\mu}^{2} s^{2}-{\left(b_{\mu}^{3}-1\right)}s^{3}-s^{5}-b_{\mu}s^{6}\in\R[s,b_{\mu}]$,
 $\, \F_1\circ\beta_{\mu}(0)=0$.
 				
 \item $\cdot$ $ \G_1\circ\alpha_{\lambda } = {\left(1-a_{\lambda} \right)}s-s^{3}-a_{\lambda} s^{4} \in\R[s,a_{\lambda}]$,
-$\, \G_1\circ\alpha_{\lambda }(0)=0$.
+$\qquad\qquad\qquad\qquad\, \, \, \, \,\G_1\circ\alpha_{\lambda }(0)=0$.
 
-$\cdot$ $\G_1\circ\beta_{\mu}=1-3\, b_{\mu}-6\,b_{\mu}^{2}s-{\left(4\,b_{\mu}^{3}+1\right)}s^{2}-{\left(b_{\mu}^{4}+ b_{\mu}\right)}s^{3}\in\R[s,b_{\mu}]$, \text{ and } $\ \ \G_1\circ\beta_{\mu}(0)=1-3b_{\mu}$.
+$\cdot$ $\G_1\circ\beta_{\mu}=1-3\, b_{\mu}-6\,b_{\mu}^{2}s-{\left(4\,b_{\mu}^{3}+1\right)}s^{2}-{\left(b_{\mu}^{4}+ b_{\mu}\right)}s^{3}\in\R[s,b_{\mu}], \, \, \G_1\circ\beta_{\mu}(0)=1-3b_{\mu}$.
 		
 \item $\cdot$ $\F_2\circ\alpha_{\lambda }= s+a_{\lambda} s^{2} = \G_2\circ\alpha_{\lambda}\in\R[s,a_{\lambda }]$.
 			
@@ -420,7 +428,7 @@ $
 \end{enumerate}
 The polynomials $\F\circ\alpha_{\lambda },\ \G\circ\alpha_{\lambda}\in\R[s,a_{\lambda}]$ and $\F\circ\beta_{\mu},\ \G\circ\beta_{\mu}\in\R[s,b_{\mu}]$ were computed with Sage. As we anticipated before, by condition (ii) the set $F=\set{(-1, 0),(0,-1)}$.
 \end{section}
-\begin{section}{The first proof} [Proof of theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
+\begin{section}{The first proof} [Proof of Theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and to see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
 \begin{center}
 \fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
 \end{center}\label{step1}
@@ -452,11 +460,14 @@ The common domain of these two functions is the set
 $$
 D_v:=\{x\in R:\, \Delta(x,v)\geq 0,\,x\neq 0\}.
 $$ 
-Notice that the only real root of the denominator is $x_0:=0$\footnote{We checked with Laguerre's method, implemented with Python 2.7, that the polynomial $x^7+2x^4+x^3+x$ has 6 complex roots.} Let
+Notice that the only real root of the denominator is $x_0:=0$.\footnote{We checked with Laguerre's method, implemented with Python 2.7, that the polynomial $x^7+2x^4+x^3+x$ has 6 complex roots.} Let
 $$
 \gamma_v^+: D_v\to\R,\, x\mapsto\F(x,y^+(x,v))\quad\text{ and }\quad\gamma_v^-:D_v\to\R,\, x\mapsto\F(x,y^-(x,v))
 $$
-Notice that $\F(\set{\G=v})=\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-)$, so our aim is to prove that $(0,+\infty)\subset\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-)$.
+Note that $\F(\set{\G=v})=\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-)$, so all reduce to prove the inclusion 
+$$
+(0,+\infty)\subset\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-).
+$$
 \begin{center}
 \fbox{\textbf{Step 2}} \emph{Main properties of $\gamma_v^+ \text{ and } \gamma_v^-$.}
 \end{center}\label{step2}
@@ -472,7 +483,7 @@ $$\text{(ii)} \lim_{x\rightarrow 0}\gamma_v^+(x)=+\infty
 $$
 Using Sage we can symbolically check how $\gamma_v^+\text{ and }\gamma_v^-$ look like, getting polynomials $A_1,A_2,B_1,B_2\in\R[x,v]$ and $C\in \R[x]$ such that:
 $$\text{(a) }\gamma_v^+(x)=\dfrac{A_1(x,v)+B_1(x,v)\sqrt{\Delta(x,v)}}{C(x)}, \ \ 
-\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)}$$
+\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)},$$
 $$
 \text{(b)}\ \ 
 \arraycolsep=1.4pt\def\arraystretch{1.5}
@@ -484,7 +495,7 @@ C(x)&=&x^2(x^2+(x^3+1)^2)^4\, , & \text{deg}_x(C)=26&.
 $$
 We proceed to study $\gamma_v^+$ and $\gamma_v^-$ at the origin. Since $\Delta$ has even degree and positive leading coefficient with respect to $x$, it is positive for $\abs{x}$ large enough, so (i) holds.
 			
-Now, for $x=0$, we get $\Delta(0,v)=v>0$, so $0\in\overline{D_v}$. Also:
+Now, for $x=0$, we get $\Delta(0,v)=v>0$, thus $0\in\overline{D_v}$. Also:
 \begin{itemize}
 \item $A_1(0,v)+B_1(0,v) \sqrt{\Delta(0,v)}= v(1+\sqrt{v})^2>0$.
 				\item $A_2(0,v)+B_2(0,v)\sqrt{\Delta(0,v)}=v(1-\sqrt{v})^2\geq 0$, and equality holds if and only if $v=1$.
@@ -525,7 +536,7 @@ whose graph can be seen in figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checke
 $$
 \Delta(x,0.28^2)=0.0784\,x^{6}-x^{4}-1.8432\,x^{3}-0.9216\,x^{2}+0.0784
 $$ 
-has 4 complex roots and 2 real ones\footnote{The value $v_0:=0.28^2$ comes from a careful observation of the plot from figure \ref{fig:uveDetail}.}, with the real ones being $\delta_0\approx 0.236$ and $\delta_1\approx 4.336$. Thus $\Delta(x,v)$ has no negative roots when $v\ge 0.28^2$ and, in addition, it is positive. Therefore $(-\infty,0)\subset D_v$. But then, as $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get  
+has 4 complex roots and 2 real ones\footnote{The value $v_0:=0.28^2$ comes from a careful observation of the plot from figure \ref{fig:uveDetail}.}. These last are $\delta_0\approx 0.236$ and $\delta_1\approx 4.336$. Thus $\Delta({\tt x},v)$ has no negative roots for $v\ge 0.28^2$ and, in addition, it only attains positive values. Therefore $(-\infty,0)\subset D_v$. But then, as $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get  
 $$
 (0,+\infty)\subset\text{im}(\gamma_v^+)\subset\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-).
 $$
@@ -545,7 +556,7 @@ To prove that for $0<v<0.28^2$ the inclusion $(0,+\infty)\subset\text{im}(\gamma
 \end{figure}
 See figure \ref{fig:idea} to get an idea of what we are saying here. 
 
-To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v(x)$ in an algebraic closure of the field of rational functions $\R(v)$. Such an algebraic closure is the field of Puiseux series $\C\left(\set{v^*}\right)$, see \ref{puiseux}. These roots are power series in $\C\left(\set{w^*}\right)$ with $w:=\sqrt{v}$, and we consider the largest and the smallest negative roots $\eta_v,\xi_v\in\R\left(\set{v^*}\right)$ of $\Delta_v$ with respect to the unique ordering in $\R\left(\set{v^*}\right)$ that makes $v$ positive and infinitesimal with respect to $\R$. These roots are:
+To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v({\tt x})$ in an algebraic closure of the field of rational functions $\R(v)$. Such an algebraic closure is the field of Puiseux series $\C\left(\set{v^*}\right)$, see \ref{puiseux}. These roots are power series in $\C\left(\set{w^*}\right)$ with $w:=\sqrt{v}$, and we consider the largest and the smallest negative roots $\eta_v,\xi_v\in\R\left(\set{v^*}\right)$ of $\Delta_v$ with respect to the unique ordering in $\R\left(\set{v^*}\right)$ that makes $v$ positive and infinitesimal with respect to $\R$. These roots are:
 			
 \begin{equation*}\left\{\begin{split}
 \eta_v:=&-\frac{1}{w}+1+w+w^2+\frac{5}{2}w^3+\cdots\\
@@ -574,26 +585,26 @@ We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is
 $$
 D:=\bigcup_{v>0}D_v=\bigcup_{v>0}\set{x\in\R:\Delta(x,v)\geq 0,\,x\neq 0},
 $$ 
-whose boundary is the union of the axis $\{x=0\}$ and the curve given by the equation $\Delta(x,v)=0$, that is, the graph of the regular function
+whose boundary is the union of the axis $\{x=0\}\subset\R^2$ and the curve given by the equation $\Delta(x,v)=0$, that is, the graph of the regular function
 $$
 v(x)=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2}.
 $$
-This graph is above the axis $\{v=0\}$. Then, $(-\infty,N_v]$ and $[\delta_v,0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves 
+This graph is above the axis $\{v=0\}\subset R^2$. Then, $(-\infty,N_v]$ and $[\delta_v,0)$ are contained in the interior of $D_v$ for $v\in (0, 0.28^2)$, because the curves 
 $$
-\set{(\delta_v,v):0<v<0.28^2} \quad\text{ and }\quad \set{(N_v,v):0<v<0.28^2}
+\set{(\delta_v,v):0<v<0.28^2}\, \, \, \text{and}\, \, \, \set{(N_v,v):0<v<0.28^2}
 $$ 
-are contained in $D$, they are graphs above the vertical axis $\{x=0\}$, and $\delta_v<\xi_v$ and $N_v<\eta_v$ as we saw before. Look at figure \ref{fig:nice_plot}.
+are contained in $D$, they are graphs above the vertical axis $\{x=0\}\subset R^2$, and $\delta_v<\xi_v$ and $N_v<\eta_v$ as we saw before. Look at figure \ref{fig:nice_plot}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.pdf}
-\caption{Plot of $\set{(N_v, v)}, \set{(\delta_v,v)}\subset D_v$, for $0<v<0.28^2$.\label{fig:nice_plot}}
+\caption{Plot of $\set{(N_v,v)}, \set{(\delta_v,v)}\subset D_v$, for $0<v<0.28^2$.\label{fig:nice_plot}}
 \end{figure}
 So the only thing left to do is checking that $\gamma_v^-(N_v)>\gamma_v^-(\delta_v)$. Recall that 
 $$
-\gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)},
+\gamma_v^-({\tt x})=\dfrac{A_2({\tt x},v)+B_2({\tt x},v)\sqrt{\Delta({\tt x},v)}}{C({\tt x})},
 $$
-with $\text{deg}_x(A_2)=24,\text{deg}_x(B_2)=21, \text{deg}_x(\Delta)=6 \text{ and }\text{deg}_x(C)=26$. Consider:
+with $\text{deg}_{\tt x}(A_2)=24,\, \, \text{deg}_{\tt x}(B_2)=21,\, \, \text{deg}_{\tt x}(\Delta)=6\, \, \text{ and }\text{deg}_{\tt x}(C)=26$. Consider:
 $$
 \arraycolsep=2pt\def\arraystretch{1.5}
 \begin{array}{rclcrcl}
@@ -612,9 +623,9 @@ $$
 $$
 and we are going to prove that 
 $$
-\Lambda_1:= \frac{w^2h_2f_1-f_2h_1}{h_1h_2},\quad\Lambda_2:=\frac{w^5g_1\sqrt{q_1}}{h_1}\text{ and } \Lambda_3 := -\frac{g_2\sqrt{q_2}}{h_2}
+\Lambda_1:= \frac{w^2h_2f_1-f_2h_1}{h_1h_2},\, \, \, \Lambda_2:=\frac{w^5g_1\sqrt{q_1}}{h_1} \, \text{ and } \Lambda_3 := -\frac{g_2\sqrt{q_2}}{h_2}
 $$
-are positive in the given interval, which only contains positive values. Since $q_1,q_2$ are positive, we can clear away $w^5$ and $\sqrt{q_1}$ from $\Lambda_2$, $\sqrt{q_2}$ from $\Lambda_3$. Furthermore, $C(x)=x^2(x^2+(x^3+1)^2)^4>0$, so we can also remove $h_1$ and $h_2$ from $\Lambda_1,\Lambda_2, \Lambda_3$. Thus it suffices to see that
+are positive in the given interval, which only contains positive values. As $q_1,q_2$ are positive, we can clear away $w^5$ and $\sqrt{q_1}$ from $\Lambda_2$, and $\sqrt{q_2}$ from $\Lambda_3$. Furthermore, the polynomial $C({\tt x})={\tt x}^2({\tt x}^2+({\tt x}^3+1)^2)^4>0$, so we can also remove $h_1$ and $h_2$ from $\Lambda_1,\Lambda_2, \Lambda_3$. Thus it suffices to see that
 $$
 L:=\frac{w^2h_2f_1-f_2h_1}{w^4},\quad g_1,\quad K:=-\frac{g_2}{w^3}
 $$ 
@@ -635,28 +646,28 @@ As we see in the figures they indeed are. This has been also checked with Sturm 
 
 \begin{chapter}{A short proof for the open quadrant $\Qu$ problem}
 \begin{section}{A new approach}
-In the previous chapter, we proved that $\Qu$ is a polynomial image of $\R^2$ by the polynomial map $\P = (\F, \G)$. This fact alongside theorem \ref{finSetTh} were key for proving theorem \ref{openQuadGen}. To achieve the result \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials didn't have roots on particular intervals or that they were positive on them. Although this procedure is legit, the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
+In the previous chapter, we proved that $\Qu$ is the image of $\R^2$ under the polynomial map $\P:=(\F,\G)$. This fact alongside Theorem \ref{finSetTh} were key for proving Theorem \ref{openQuadGen}. To achieve Theorem \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials do not have roots on particular intervals or that they are positive on them. Although legit, this procedure is controversial, and the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
 
-In this second chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
+In this second chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of Theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
 
 \begin{subsection}{The new polynomial maps}
-In this subsection we introduce the new polynomial maps that meet the requirements to prove theorem \ref{openQuad} in a different fashion. To be more precise, we define 
+In this subsection we introduce new polynomial maps that satisfy the requirements to prove Theorem \ref{openQuad} in a different way. To be more precise, we define 
 $$
-f:= \HH \circ \GG \circ \FF: \R^2\longrightarrow \R^2,
+f:=\HH\circ\GG\circ\FF:\R^2\longrightarrow \R^2,
 $$
 where
 \begin{equation*}
 \boxed{
 \begin{aligned}
-\FF: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto ((xy - 1)^2 + x^2,\ (xy - 1)^2 + y^2), \\
-\GG: \R^2\longrightarrow \R^2,\ (x,y)& \longmapsto (x,\ y(xy - 2)^2 + x (xy - 1)^2), \\
-\HH: \R^2\longrightarrow \R^2,\ (x, y)& \longmapsto (x(xy - 2)^2 + \tfrac{1}{2} xy^2,\ y). \\
+\FF:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto((xy-1)^2+x^2,\ (xy-1)^2+y^2), \\
+\GG:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto(x,\ y(xy-2)^2+x(xy-1)^2), \\
+\HH:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto(x(xy-2)^2+\tfrac{1}{2}xy^2,\ y). \\
 \end{aligned}
 }
 \end{equation*}
-We can see how these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
+We can see how the graphs of the components of these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
 
-In the next section we proceed to develop the proof, which is split into three different lemmas.
+In the next section we proceed to develop the proof, which splits into three lemmas.
 
 \begin{figure}
 \hspace{-0.1cm}
@@ -668,17 +679,17 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\FF_1(x, y) = (xy - 1)^2 + x^2$.\label{fig:FF_1}}
+\vspace{0.15cm}\caption{$\FF_1(x,y)=(xy-1)^2+x^2$.\label{fig:FF_1}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
-\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_02_F_2.png}};
+\node[anchor=south west,inner sep=0] (img)at (0,0){\includegraphics[width=1\textwidth]{plots/ch2_02_F_2.png}};
 \path ($(img.north west)!0.28!(img.north east)$)|-coordinate(c1)($(img.south east)!0.1!(img.north east)$);
 \path ($(img.north west)!0.85!(img.north east)$)|-coordinate(c2)($(img.south east)!0.15!(img.north east)$);
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\FF_2(x, y) = (xy - 1)^2 + y^2$.\label{fig:FF_2}}
+\vspace{0.15cm}\caption{$\FF_2(x,y)=(xy-1)^2+y^2$.\label{fig:FF_2}}
 \end{subfigure}\\[1ex]
 \vspace{0.4cm}
 	
@@ -701,7 +712,7 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\GG_2(x, y) = y(xy - 2)^2 + x (xy - 1)^2$.\label{fig:GG_2}}
+\vspace{0.15cm}\caption{$\GG_2(x,y)=y(xy-2)^2+x(xy-1)^2$.\label{fig:GG_2}}
 \end{subfigure}\\[1ex]
 \vspace{0.4cm}
 
@@ -714,7 +725,7 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\HH_1(x, y) = x(xy - 2)^2 + \tfrac{1}{2}xy^2$.\label{fig:HH_1}}
+\vspace{0.15cm}\caption{$\HH_1(x,y)=x(xy-2)^2+\tfrac{1}{2}xy^2$.\label{fig:HH_1}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
@@ -724,55 +735,55 @@ In the next section we proceed to develop the proof, which is split into three d
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\HH_2(x, y) = y$.\label{fig:HH_2}}
+\vspace{0.15cm}\caption{$\HH_2(x,y)=y$.\label{fig:HH_2}}
 \end{subfigure}
-\vspace{0.7cm}\caption{The polynomial maps from the second proof: $\HH \circ \GG \circ \FF (\R ^2) = \Qu$.\label{fig:ch2Maps}}
+\vspace{0.7cm}\caption{The polynomial maps from the second proof: $(\HH\circ\GG\circ\FF)(\R^2)=\Qu$.\label{fig:ch2Maps}}
 \end{figure}
 \end{subsection}
 \end{section}
 
 \begin{section}{The new proof}
-As we have anticipated before, $\Qu$ is the image of the composition $\HH \circ \GG \circ \FF$, but before proving theorem \ref{openQuad} we need three auxiliar lemmas in order to shed some light on what properties the images of $\FF,\, \GG \text { and }\HH$ have.
+As we have anticipated before, $\Qu$ is the image of the composition $\HH\circ\GG\circ \FF$, but before proving this fact we need three auxiliar lemmas in order to shed some light on the properties that the images of $\FF,\,\GG\text { and }\HH$ enjoy.
 
 \begin{subsection}{The first lemma}
 \begin{lemma}\label{lemma1}
-Let $\mathscr{A} := \set{xy \ge 1}\ \cap\, \Qu$. Then the image of 
+Let $\mathscr{A}:=\set{xy\ge1}\ \cap\, \Qu$. Then the image of the map
 $$
-\FF := (\FF_1, \FF_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto ((xy - 1)^2 + x^2,\ (xy - 1)^2 + y^2)
+\FF:=(\FF_1,\FF_2):\R^2\to\R^2,(x,y)\mapsto((xy-1)^2+x^2,(xy-1)^2+y^2)
 $$
-satisfies that $\mathscr{A} \subset \FF(\R^2) \subset \Qu$.
+satisfies that $\mathscr{A}\subset\FF(\R^2)\subset\Qu$.
 \begin{Proof}
-Since $\FF_1$ and $\FF_2$ are clearly positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is trivial. To prove the other inclusion, we show that for $(a,b) \in \mathscr{A}$ the system of polynomial equations
+Since $\FF_1$ and $\FF_2$ are positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is evident. To prove the other inclusion, we must show that for $(a,b)\in\mathscr{A}$ the system of polynomial equations
 \begin{equation}\label{eq:systemF}
 \left\{
 \begin{aligned}
-(xy - 1)^2 + x^2 = a\\
-(xy - 1)^2 + y^2 = b\\
+({\tt x}{\tt y}-1)^2+{\tt x}^2=a\\
+({\tt x}{\tt y}-1)^2+{\tt y}^2=b\\
 \end{aligned}
 \right.
 \end{equation}
-has a solution $(x_0, y_0) \in \R^2$. Set $z := xy - 1$ in order to rewrite the system \ref{eq:systemF} in terms of $x$ and $z$. Since $y = \frac{z + 1}{x}$ we get:
+has a solution $(x_0,y_0)\in\R^2$. Set ${\tt z}:={\tt x}{\tt y}-1$ in order to rewrite the system \ref{eq:systemF} in terms of ${\tt x}$ and ${\tt z}$. Since ${\tt y}=\frac{{\tt z}+1}{{\tt x}}$ we get:
 \begin{equation}\label{eq:system2F}
 \left\{
 \begin{aligned}
-&z^2 + x^2 &= a\\
-&z^2 + \frac{(z + 1)^2}{x^2} &= b&.\\
+&{\tt z}^2+{\tt x}^2&=a\\
+&{\tt z}^2+\frac{({\tt z}+1)^2}{{\tt x}^2}&=b&.\\
 \end{aligned}
 \right.
 \end{equation}
-By eliminating $x$ on the system \ref{eq:system2F} we deduce that $z$ must be a root of the polynomial
+By eliminating ${\tt x}$ on the system \ref{eq:system2F} we deduce that ${\tt z}$ must be a root of the polynomial
 $$
-P(z) := z^4 - (a + b + 1)z^2 - 2z + (ab - 1) = 0.
+P({\tt z}):={\tt z}^4-(a+b+1){\tt z}^2-2{\tt z}+(ab-1)=0.
 $$
-Taking into account that $(a, b) \in \mathscr{A}$ satisfy that $a, b > 0$ and $ab \ge 1$, we notice that $P$ is a monic polynomial of even degree satisfying
+Taking into account that $(a,b)\in\mathscr{A}$ satisfy that $a,b>0$ and $ab\ge1$, we notice that $P$ is a monic polynomial of even degree satisfying
 $$
-P(0) = ab - 1 \ge 0\quad \text{ and }\quad P(\sqrt{a}) = -2 \sqrt{a} - a - 1 < 0.
+P(0)=ab-1\ge0\quad\text{ and }\quad P(\sqrt{a})=-2\sqrt{a}-a-1<0.
 $$
-Thus, $P$ has a real root $z_0$ such that $0 \le z_0 < \sqrt{a}$, so we set:
+Thus, $P$ has a real root $z_0$ such that $0\le z_0<\sqrt{a}$, so we set:
 $$
-x_0 := \sqrt{a - z_0^2} \quad \text{ and } \quad y_0 := \frac{z_0 + 1}{x_0}.
+x_0:=\sqrt{a-z_0^2}\quad \text{ and } \quad y_0: \frac{z_0+1}{x_0}.
 $$
-Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as required.
+Then $F(x_0,y_0)=(a,b)$ and $\mathscr{A}\subset\FF(\R^2)$, as required.
 \qed
 \end{Proof}
 \end{lemma}
@@ -785,7 +796,7 @@ Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as req
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{A}
 \draw (c1) node {\huge{$\mathscr{A}$}};
 \end{tikzpicture}
-\caption{$\mathscr{A} = \set{xy \ge 1}\ \cap\, \Qu$.\label{fig:setA}}
+\caption{$\mathscr{A}=\set{xy\ge 1}\ \cap\, \Qu$.\label{fig:setA}}
 \end{subfigure}
 \hspace{-0.2cm}
 \begin{subfigure}{.5\linewidth}\centering
@@ -794,60 +805,60 @@ Then, we have $F(x_0, y_0) = (a, b)$ and $\mathscr{A} \subset \FF(\R^2)$, as req
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
 \draw (c1) node {\huge{$\mathscr{B}$}};
 \end{tikzpicture}
-\caption{$\mathscr{B} = \mathscr{A} \cup \set{y \ge x > 0}$.\label{fig:setB}}
+\caption{$\mathscr{B}=\mathscr{A}\cup\set{y\ge x>0}$.\label{fig:setB}}
 \end{subfigure}
-\caption{Relevant sets for lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}.\label{fig:setsAB}}
+\caption{Relevant sets for Lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}.\label{fig:setsAB}}
 \end{figure}
 
 \begin{subsection}{The second lemma}
 \begin{lemma}\label{lemma2}
-Let $\mathscr{B} :=  \mathscr{A} \cup \set{y \ge x > 0}$. Then the image of 
+Let $\mathscr{B}:=\mathscr{A}\cup\set{y\ge x>0}$. Then, the map
 $$
-\GG := (\GG_1, \GG_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x,\ y(xy - 2)^2 + x (xy - 1)^2)
+\GG:=(\GG_1,\GG_2):\R^2\to\R^2,(x,y)\mapsto (x,\ y(xy-2)^2+x(xy-1)^2)
 $$
-satisfies that $\mathscr{B} \subset \GG(\mathscr{A}) \subset \GG(\Qu) \subset \Qu$.
+satisfies that $\mathscr{B}\subset\GG(\mathscr{A})\subset\GG(\Qu)\subset\Qu$.
 \begin{Proof}
-The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial since $\mathscr{A} \subset \Qu$. The last inclusion $\GG(\Qu) \subset \Qu$ also holds because $\GG$ is strictly positive on $\Qu$: if $x_0, y_0 > 0$ then $\GG_1(x_0, y_0) = x_0 > 0$ and $\GG_2(x_0, y_0) = y_0(x_0y_0 - 2)^2 + x_0 (x_0y_0 - 1)^2 > 0$. Notice that $\GG_2(x_0, y_0) \ne 0$ because if not there would exists a solution to the system of equations
+The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial because $\mathscr{A}\subset\Qu$. The last inclusion $\GG(\Qu) \subset\Qu$ also holds since $\GG_1$ and $\GG_2$ are strictly positive on $\Qu$: if $x_0,y_0>0$ then $\GG_1(x_0,y_0)=x_0> 0$ and $\GG_2(x_0,y_0)=y_0(x_0y_0-2)^2+x_0(x_0y_0-1)^2>0$. Notice that $\GG_2(x_0,y_0)\ne0$. Otherwise there would exists a solution of the system of equations
 \begin{equation*}
 \left\{
 \begin{aligned}
-&xy - 1 = 0\\
-&xy - 2 = 0,\\
+&{\tt x}{\tt y}-1=0\\
+&{\tt x}{\tt y}-2=0,\\
 \end{aligned}
 \right.
 \end{equation*}
 which is not possible.
 
-Now we can focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ in the following way:
+Now we can focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ as a union of closed half-lines. Precisely, for each $x>0$ let $\mathscr{B}_x:=[y_x,+\infty)$, where $y_x:=\text{min}\set{x,1/x}$ and notice that
 $$
-\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times [y_x, +\infty)) := \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_x),
+\mathscr{B}=\bigsqcup_{x>0}(\set{x}\times\mathscr{B}_x).
 $$
-where $y_x := \text{min}\set{x, 1/x}$. Intuitively, we are ``slicing'' the set $\mathscr{B}$ vertically, depending on $x$. Now look at the definition of $\GG_2$ and consider for each $x > 0$ the polynomial map $\phi_x$ dependent on the variable ${\tt y}$:
+That is, we are ``slicing'' the set $\mathscr{B}$ vertically, depending on $x$. Now look at the definition of the polynomial $\GG_2$ and consider for each $x>0$ the polynomial $\phi_x\in\R[{\tt y}]$ (dependent on the variable ${\tt y})$:
 $$
-\phi_x({\tt y}) := {\tt y}(x{\tt y} - 2)^2 + x (x{\tt y} - 1)^2 = x^2{\tt y}^3 + (x^3 - 4x){\tt y}^2 + (4 - 2x^2){\tt y} + x.
+\phi_x({\tt y}):={\tt y}(x{\tt y}-2)^2+x(x{\tt y}-1)^2=x^2{\tt y}^3+(x^3-4x){\tt y}^2+(4-2x^2){\tt y}+x.
 $$
 The polynomials $\phi_x({\tt y})$ have odd degree and positive leading coefficient since $x > 0$. Now notice that if we fix $x_0 > 0$ then we get the following sequence of inclusions:
 \begin{equation*}
 \begin{aligned}
-\phi_x(&[1/x_0, +\infty))\ \supset ^1 \  \phi_x([2/x_0, +\infty))\\
-&\quad \quad \ \rotatebox[origin=c]{90}{$\subset$}\, ^2  \hspace{3cm} \rotatebox[origin=c]{90}{$\subset$}\, ^3\\
-&[1/x_0, +\infty) \hspace{1.9cm} [x_0, +\infty) \\
+\phi_{x_0}(&[1/x_0,+\infty))\ \supset ^1 \ \phi_{x_0}([2/x_0,+\infty))\\
+&\quad \quad \ \rotatebox[origin=c]{90}{$\subset$}\,^2 \hspace{3cm} \rotatebox[origin=c]{90}{$\subset$}\,^3\\
+&[1/x_0,+\infty) \hspace{1.9cm}[x_0, +\infty) \\
 \end{aligned}
 \end{equation*}
-Inclusion $^1$ is followed from the fact that $[1/x_0, +\infty) \supset [2/x_0, +\infty)$ (notice that for $x>0$ the graph of the map $2/x$ is ``above'' the one of $1/x$). Inclusion $^2$ and $^3$ are followed from the fact that $\phi_{x_0}({\tt y})$ has positive leading coefficient and the computation of the images of $1/x_0$ and $2/x_0$ through $\phi_{x_0}({\tt y})$:
+Inclusion $^1$ follows from the fact that $[1/x_0, +\infty) \supset [2/x_0, +\infty)$ (notice that for $x>0$ the graph of the map $2/x$ is ``above'' the one of $1/x$). Inclusion $^2$ and $^3$ follow from the fact that $\phi_{x_0}({\tt y})$ has positive leading coefficient and the computation of the images of $1/x_0$ and $2/x_0$ through $\phi_{x_0}({\tt y})$:
 \begin{equation*}
 \begin{aligned}
-\phi_x\left(\frac{1}{x_0}\right)& = \frac{1}{x_0} + \left((x_0^3 - 4x_0)\frac{1}{x_0^2} + (4 - 2x_0^2)\frac{1}{x_0} + x_0\right) = \frac{1}{x_0}\\
-\phi_x\left(\frac{2}{x_0}\right)& = \left(\frac{8}{x_0} + (x_0^3 - 4x_0)\frac{4}{x_0^2} + (4 - 2x_0^2)\frac{2}{x_0}\right) + x_0 = x_0.\\
+\phi_{x_0}\left(\frac{1}{x_0}\right)&=\frac{1}{x_0}+\left((x_0^3-4x_0)\frac{1}{x_0^2}+(4-2x_0^2)\frac{1}{x_0}+x_0\right)= \frac{1}{x_0}\\
+\phi_{x_0}\left(\frac{2}{x_0}\right)&=\left(\frac{8}{x_0}+(x_0^3-4x_0)\frac{4}{x_0^2}+(4-2x_0^2)\frac{2}{x_0}\right)+x_0= x_0.\\
 \end{aligned}
 \end{equation*}
 Now it is clear that:
 $$
-\mathscr{B}_x = [y_x, +\infty) \subset \phi_x([1/x, +\infty)).
+\mathscr{B}_x=[y_x,+\infty)\subset\phi_x([1/x, +\infty)).
 $$
 Then we can prove the desired inclusion in this way:
 $$
-\mathscr{B} = \bigsqcup_{x>0}\big(\set{x} \times \mathscr{B}_x\big) \subset \bigsqcup_{x>0}\big(\set{x} \times \phi_x([1/x, +\infty))\big) = \bigsqcup_{x>0}\GG\big(\set{x} \times [1/x, +\infty)\big) = \GG(\mathscr{A}),
+\mathscr{B}=\bigsqcup_{x>0}\big(\set{x}\times\mathscr{B}_x\big)\subset\bigsqcup_{x>0}\big(\set{x}\times\phi_x([1/x,+\infty))\big)=\bigsqcup_{x>0}\GG\big(\set{x}\times[1/x,+\infty)\big)=\GG(\mathscr{A}),
 $$
 which concludes the proof.
 \qed
@@ -907,61 +918,61 @@ which concludes the proof.
 \draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\mathscr{B}_{y_0} \times \set{y_0})$}}};
 \draw (c9) node {\large{\color[rgb]{1,0,0}{$(\mathscr{B}_{y_1} \times \set{y_1})$}}};
 \end{tikzpicture}
-\caption{$\mathscr{B} = \bigsqcup_{y>0}(\mathscr{B}_{y} \times \set{y})$.\label{fig:Bhor}}
+\caption{$\mathscr{B}=\bigsqcup_{y>0}(\mathscr{B}_{y}\times\set{y})$.\label{fig:Bhor}}
 \end{subfigure}
-\caption{Idea of how we represent the set $\mathscr{B}$ in lemmas \ref{lemma2} and \ref{lemma3}.\label{fig:sliceB}}
+\caption{Idea of how we represent the set $\mathscr{B}$ in Lemmas \ref{lemma2} and \ref{lemma3}.\label{fig:sliceB}}
 \end{figure}
 
 \begin{subsection}{The third lemma}
 \begin{lemma}\label{lemma3}
 The polynomial map 
 $$
-\HH := (\HH_1, \HH_2): \R^2 \longrightarrow \R^2, (x, y) \longmapsto (x(xy - 2)^2 + \tfrac{1}{2} xy^2,\ y)
+\HH:=(\HH_1,\HH_2):\R^2\to\R^2,(x,y)\mapsto(x(xy-2)^2+\tfrac{1}{2}xy^2,\ y)
 $$
-satisfies $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
+satisfies $\HH(\mathscr{B})=\HH(\Qu)=\Qu$.
 \begin{Proof}
-The inclusion $\HH(\mathscr{B}) \subset \HH(\Qu)$ is trivial since $\mathscr{B} \subset \Qu$. As for $\HH(\Qu) \subset \Qu$, since $\HH_1$ and $\HH_2$ are strictly positive on $\Qu$ the inclusion holds.
+The inclusion $\HH(\mathscr{B})\subset\HH(\Qu)$ is trivial because $\mathscr{B}\subset\Qu$. As for $\HH(\Qu)\subset\Qu$, since $\HH_1$ and $\HH_2$ are strictly positive on $\Qu$ the inclusion holds.
 
-We procced now to prove that $\Qu \subset \HH(\mathscr{B})$ and therefore get $\Qu \subset \HH(\mathscr{B}) \subset \HH(\Qu) \subset \Qu$, which implies that $\HH(\mathscr{B}) = \HH(\Qu) = \Qu$.
+We proceed now to prove that $\Qu\subset\HH(\mathscr{B})$ and therefore get $\Qu\subset\HH(\mathscr{B})\subset\HH(\Qu) \subset\Qu$, which implies that $\HH(\mathscr{B})=\HH(\Qu)=\Qu$.
 
 Firstly, notice that the set $\mathscr{B}$ can be expressed as follows:
 $$
-\mathscr{B} = \bigsqcup_{y>0}(\mathscr{B}_y \times \set{y}), \quad \text{ where } \mathscr{B}_y := 
+\mathscr{B}=\bigsqcup_{y>0}(\mathscr{C}_y\times\set{y}),\quad\text{ where } \mathscr{C}_y:= 
 \left\{
 \begin{array}{ll}
-(0, +\infty) & \text{ if } y \ge 1,\\
-(0, y] \cup [1/y, +\infty) & \text { if } 0 < y < 1.
+(0,+\infty)&\text{ if } y \ge 1,\\
+(0,y]\cup[1/y,+\infty) & \text { if } 0<y<1.
 \end{array}
 \right.
 $$
-Intuitively, we are ``slicing'' the set $\mathscr{B}$ horizontally, depending on $y$. Now, looking at the definition of $\HH_1$ we can define for each $y > 0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
+Intuitively, we are ``slicing'' the set $\mathscr{C}$ horizontally, depending on $y$. Looking at the definition of $\HH_1$ we define for each $y>0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
 $$
-\psi_y({\tt x}) := {\tt x}({\tt x}y - 2)^2 + \tfrac{1}{2}{\tt x}y^2 = y^2{\tt x}^3 - 4y{\tt x}^2 + (4 + \tfrac{1}{2}y^2){\tt x}.
+\psi_y({\tt x}):={\tt x}(y{\tt x}-2)^2+\tfrac{1}{2}y^2{\tt x}=y^2{\tt x}^3-4y{\tt x}^2+(4+\tfrac{1}{2}y^2){\tt x}.
 $$
 Notice first that $\psi_y({\tt x})$ has odd degree, positive leading coefficient and the following properties:
 $$
 \begin{array}{llcll}
-\text{(i)}& \lim_{x\rightarrow+\infty}\psi_y(x) = +\infty. & &
-\text{(iii)}& \psi_y(y) = y((y^2 - 2)^2 + \tfrac{1}{2}y^2) > y \text{ for } 0 < y < 1.\\
-\text{(ii)}& \psi_y(0) = 0. & &
-\text{(iv)}& \psi_y\left(\tfrac{2}{y}\right) = y.\\
+\text{(i)}&\lim_{x\rightarrow+\infty}\psi_y(x)=+\infty. & &
+\text{(iii)}&\psi_y(y)=y((y^2-2)^2+\tfrac{1}{2}y^2)>y\text{ for } 0<y<1.\\
+\text{(ii)}&\psi_y(0)=0. & &
+\text{(iv)}&\psi_y\left(\tfrac{2}{y}\right)=y.\\
 \end{array}
 $$
-Property (iii) holds because $(y^2 - 2)^2 + \tfrac{1}{2}y^2 > 1$ when $0 < y < 1$. Next, we are going to show that:
+Property (iii) holds because $(y^2-2)^2+\tfrac{1}{2}y^2>1$ when $0<y<1$. Next, we are going to show that:
 $$
-\! \psi_y(\mathscr{B}_y) \! = \!
+\!\psi_y(\mathscr{C}_y) \!=\!
 \left\{ \def\arraystretch{1.5}
 \begin{array}{ll} 
-\! \! \psi_y((0, +\infty)) =^1 (0, +\infty) & \!\!\! \text{ if } y \ge 1,\\
-\! \! \psi_y\big((0, y] \cup \big[\frac{1}{y}, +\infty\big)\big) \supset^2 (0, \psi_y(y)] \cup \big[\psi_y\big(\tfrac{2}{y}\big), +\infty\big) =^3 (0, +\infty) & \!\!\! \text{ if } 0 < y < 1.
+\! \! \psi_y((0,+\infty))=^1(0,+\infty) & \!\!\! \text{ if } y \ge 1,\\
+\! \! \psi_y\big((0,y]\cup \big[\frac{1}{y}, +\infty\big)\big) \supset^2 (0, \psi_y(y)] \cup \big[\psi_y\big(\tfrac{2}{y}\big),+\infty\big)=^3(0,+\infty)& \!\!\! \text{ if } 0<y<1.
 \end{array}
 \right.
 $$
-Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$ is followed from the fact that $[1/y_0, +\infty) \supset [2/y_0, +\infty)$ for $y_0$ fixed. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\big(\tfrac{2}{y}\big)$.
+Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$  follows from the fact that $[1/y_0,+\infty)\supset[2/y_0,+\infty)$ for each fixed $y_0$. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\big(\tfrac{2}{y}\big)$.
 
-We are now in conditions of writting:
+Then we can write:
 $$
-\Qu = \bigsqcup_{y>0}\big((0, +\infty) \times \set{y}\big) \subset \bigsqcup_{y>0}\big(\psi_y(\mathscr{B}_y) \times \set{y}\big) = \bigsqcup_{y>0}\HH\big(\mathscr{B}_y \times \set{y}\big) = \HH(\mathscr{B}_y),
+\Qu=\bigsqcup_{y>0}\big((0,+\infty)\times\set{y}\big)\subset \bigsqcup_{y>0}\big(\psi_y(\mathscr{C}_y)\times\set{y}\big)= \bigsqcup_{y>0}\HH\big(\mathscr{C}_y\times\set{y}\big)=\HH(\mathscr{C}_y),
 $$
 which concludes the proof.
 \qed
@@ -970,17 +981,17 @@ which concludes the proof.
 \end{subsection}
 
 \begin{subsection}{The second proof}
-To wrap up this chapter, we can now write the proof of theorem \ref{openQuad} relying on lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}:
+To wrap up this chapter, we can now write the proof of Theorem \ref{openQuad} relying on Lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}:
 
 \vspace{1mm}
 
-[Proof of theorem \ref{openQuad}] Appliying the lemmas, we deduce that
+[Proof of Theorem \ref{openQuad}] Applying the lemmas, we deduce that
 $$
-\Qu \overset{\ref{lemma3}}{=} \HH(\mathscr{B}) \overset{\ref{lemma2}}{\subset} (\HH \circ \GG)(\mathscr{A}) \overset{\ref{lemma1}}{\subset} (\HH \circ \GG \circ \FF)(\R^2) \overset{\ref{lemma1}}{\subset} (\HH \circ \GG)(\Qu) \overset{\ref{lemma2}}{\subset} \HH(\Qu) \overset{\ref{lemma3}}{=} \Qu,
+\Qu \overset{\ref{lemma3}}{=}\HH(\mathscr{B})\overset{\ref{lemma2}}{\subset}(\HH\circ\GG)(\mathscr{A}) \overset{\ref{lemma1}}{\subset}(\HH\circ\GG\circ\FF)(\R^2)\overset{\ref{lemma1}}{\subset}(\HH\circ\GG)(\Qu) \overset{\ref{lemma2}}{\subset}\HH(\Qu)\overset{\ref{lemma3}}{=}\Qu,
 $$
 which means 
 $$
-(\HH \circ \GG \circ \FF)(\R^2) = \Qu
+(\HH\circ\GG\circ\FF)(\R^2)=\Qu,
 $$
 as required.
 \qed
@@ -1015,9 +1026,9 @@ as required.
 \begin{section}{Real algebraic geometry basics}
 In this section we give a basic insight into the required concepts, definitions and results from real algebraic geometry. They are mostly used on the first chapter.
 
-We begin with some definitions like \emph{real closed field} and \emph{semialgebraic set}. The \emph{Transfer Principle} allows us to move our results from $\R$ to an arbitrary real closed field $R$. We also give an overview of the \emph{Zariski topology}, in order to talk about concepts like closure or \emph{reducibility} in this topology. Finally, after defining other concepts like \emph{proper maps} and \emph{germ Nash half-branch curves}, we finish the section with \emph{Puiseux series}, which guarantees us a solution of $\Delta_v(x)$ in the first proof of theorem \ref{openQuad}.
+We begin with some definitions like \emph{real closed field} and \emph{semialgebraic set}. The \emph{Transfer Principle} allows us to move our results from $\R$ to an arbitrary real closed field $R$. We also give an overview of the \emph{Zariski topology}, in order to talk about concepts like closure or \emph{reducibility} in this topology. Finally, after defining other notions as \emph{proper maps} and \emph{germ Nash half-branch curves}, we finish the section recalling \emph{Puiseux series}, since this is the nature of the solutions of the equation $\Delta_v(x)=0$ in the first proof of Theorem \ref{openQuad}.
 \begin{definition}\label{realCField}
-	A \em real closed field \em is an ordered field $R$ such that $R(\sqrt{-1})$ is an algebraically closed field. There exist many characterizations of real closed fields. A very enlightening is the following one: $R$ is a real closed field if it is an ordered field that shares with the field $\R$ of real numbers its properties of the first-order language of ordered fields. 
+	A \em real closed field \em is an ordered field $R$ such that $R(\sqrt{-1})$ is an algebraically closed field. There exist many characterizations of real closed fields. A very enlightening one is the following: $R$ is a real closed field if it is an ordered field that shares with the field $\R$ of real numbers its properties of the first-order language of ordered fields. 
 \end{definition}
 
 Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful formulation in model theory that explains accurately our last sentence.
@@ -1026,12 +1037,12 @@ Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful f
 	\begin{equation*}
 	\left\{
 	\begin{aligned}
-		P_1(x_1,\, .\,&.\,.\, , x_n) = 0\\
+		P_1({\tt x}_1,\, .\,&.\,.\,,{\tt x}_n)=0\\
 		&\vdots\\
-		P_r(x_1, .\,&.\,.\, , x_n) = 0 \\
-		Q_1(x_1, .\,&.\,.\, , x_n) > 0 \\
+		P_r({\tt x}_1,\, .\,&.\,.\,,{\tt x}_n)=0\\
+		Q_1({\tt x}_1,\, .\,&.\,.\,,{\tt x}_n)>0 \\
 		&\vdots\\
-		Q_{\ell}(x_1, .\,&.\,.\, , x_n) > 0 \\
+		Q_{\ell}({\tt x}_1,\, .\,&.\,.\,,{\tt x}_n)>0\\
 	\end{aligned}
 	\right.
 	\end{equation*}
@@ -1043,11 +1054,11 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 
 (iii) A \em semialgebraic homeomorphism \em between two semialgebraic subsets $S\subset R^n$ and $T\subset R^m$ is a continuous and bijective semialgebraic map $f:S\to T$. It is easily seen that in such a case its inverse $f^{-1}:T\to S$ is also semialgebraic.
 
-\begin{theorem}[\em Transfer Principle\em]\label{TP} \em Let ${\mathcal L}(R)$ be the first-order language of ordered fields with parameters in the real closed field $R$ and let $\Phi$ be a formula of ${\mathcal L}(R)$. Then, there exists a quantifier-free formula $\Psi$ of ${\mathcal L}(R)$ with the same free variables $x_1,\dots,x_n$ as $\Phi$ such that, for every real closed field extension $K$ of $R$ and every $x\in K^n$, the sentence $\Phi(x)$ holds true if and only if $\Psi(x)$ holds true.\em
+\begin{theorem}[\em Transfer Principle\em]\label{TP} \em Let ${\mathcal L}(R)$ be the first-order language of ordered fields with parameters in the real closed field $R$ and let $\Phi$ be a formula of ${\mathcal L}(R)$. Then, there exists a quantifier-free formula $\Psi$ of ${\mathcal L}(R)$ with the same free variables ${\tt x}_1,\dots,{\tt x}_n$ as $\Phi$ such that, for every real closed field extension $K$ of $R$ and every $x\in K^n$, the sentence $\Phi(x)$ holds true if and only if $\Psi(x)$ holds true.\em
 
 \end{theorem}
 
-\begin{definition}[Zariski topology]\label{zariski} (i) Let $K$ be a field. A subset $X\subset K^n$ is \em algebraic \em if it is the set of common zeros of a finite family of polynomials $f_1,\dots,f_m\in K[x_1,\dots, x_n]$. 
+\begin{definition}[Zariski topology]\label{zariski} (i) Let $K$ be a field. A subset $X\subset K^n$ is \em algebraic \em if it is the set of common zeros of a finite family of polynomials $f_1,\dots,f_m\in K[{\tt x}_1,\dots,{\tt x}_n]$. 
 
 (ii) The \em Zariski topology \em of an algebraic set $X\subset K^n$ is the topology whose closed sets are the algebraic subsets of $K^n$ contained in $X$. It is indeed a topology, that is, the arbitrary intersection of algebraic sets is also an algebraic set as an straightforward consequence of Hilbert's basis theorem.
 
@@ -1070,12 +1081,14 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 \end{definition}
 
 \begin{definitions}\label{curveGerms}
-	(i) A function $f:U\to\R$ defined in an open semialgebraic subset $U\subset\R^n$ is a \em Nash function \em if it is analytic and semialgebraic. A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
+	(i) A function $f:U\to\R$ defined in an open semialgebraic subset $U\subset\R^n$ is a \em Nash function \em if it is analytic and semialgebraic. 
 	
-	(ii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\varepsilon>0$ the intersection $B_{\varepsilon}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
+	(ii) A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
+	
+	(iii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\varepsilon>0$ the intersection $B_{\varepsilon}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
 where $B_{\varepsilon}\subset\R^n$ is the open ball of radius $\varepsilon$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
 
-Indeed, this result is a particular case of the local conic structure theorem of semialgebraic sets. 
+Indeed, this result is a particular case of the local conic structure theorem of semialgebraic sets, \cite[IX.3.6]{bcr}. 
 	
 Observe that, by its very definition, it makes sense to define the germs $C_{i,p}$ of $C_i$ at the point $p$ for $i=1,\dots,k$ as they are independent of the radius $\varepsilon$. These germs  $C_{i,p}$ are called the \em germ Nash half-banches \em of the curve $\Gamma$ centered at $p$. For more details see \cite[IX.5.2]{bcr}. 
 \end{definitions}
@@ -1085,59 +1098,63 @@ Observe that, by its very definition, it makes sense to define the germs $C_{i,p
 \end{section}
 
 \begin{section}{Root finding algorithms}
-In the first proof of theorem \ref{openQuad} many times we require to check wether a given polynomial has any root on a certain interval. Some other times we want to check that a polynomial is positive or negative on an interval, which is done by checking that it does not have a root in the interval and evaluating on a value that belongs to the interval to check the positiveness/negativeness.
+The first proof of Theorem \ref{openQuad} requires frequently to check whether a given polynomial $f$ has some root on a certain interval $I$. Sometimes we want to check that $f$ is positive or negative on $I$. To that end it suffices to evaluate it at an arbitrary point $a\in I$ and to check that $f$ has no root on $I$.
 
-Sturm's method is used to obtain the number of different real roots of a polynomial in a given interval. Note that it is an algebraic method that doesn't rely on approximations.
+Sturm's method is used to compute the number of different real roots of a polynomial in a given interval. Note that it is an algebraic method that doesn't rely on approximations.
 
-\begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and $f,g\in\R[x]$ be polynomials. A  \emph{Sturm sequence} (or \emph{Sturm chain}) is a finite sequence of polynomials $(f_0, f_1, \dots, f_k)$ where 
+\begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and let $f\in\R[{\tt t}]$. The \emph{Sturm sequence} (or \emph{Sturm chain}) of $f$ is the finite sequence of polynomials $(f_0,f_1,\dots,f_k)$ defined as follows: 
 \begin{equation*}
 \begin{aligned}
-f_0 &:= f\\
-f_1 &:= f'g\\
-& \dots\\
-f_i &:= f_{i-1}q_i - f_{i-2}, \text{ with } q_{i}\in R[x] \text{ and } \text{deg}(f_{i}) < \text{deg}(f_{i-1}) \text{ for } i = 2, \dots, k.\\
+f_0&:=f\\
+f_1&:=f'\\
+&\dots\\
+f_i&:=f_{i-1}q_i-f_{i-2}, \text{ with }q_{i}\in R[{\tt x}] \text{ and } \text{deg}(f_{i})<\text{deg}(f_{i-1}) \text{ for } i=2\dots,k.\\
 \end{aligned}
 \end{equation*}
-	Then, by Euclid's Algorithm, there is an integer $k$ verifying $f_k = \text{gcd}(f, f'g)$.
+Then, by Euclid's Algorithm, there is an integer $k$ satisfying $f_k=\text{gcd}(f,f')$.
 	
 (ii) Given a sequence $(a_0, a_1, \dots, a_k)$ of elements of $R$ with $a_0 \ne 0$, we define the \emph{number of sign changes in the sequence} $(a_0, \dots, a_k)$ as follows: count one sign change every time $a_ia_{\ell} < 0$, with 
 \begin{equation*}
 \begin{aligned}
-&\ell = i + 1 \text{, or }\\
-&\ell > i + 1 \text{ and } a_j = 0 \text{ for every } j \text{ verifying  } i < j < \ell.\\ 
+&\ell=i+1 \text{, or }\\
+&\ell>i+1 \text{ and }a_j=0 \text{ for every } j \text{ satisfying  } i<j<\ell.\\ 
 \end{aligned}
 \end{equation*}
 
-(iii) If $a \in R$ is not a root of $f$ and $(f_0, \dots, f_k)$ is the Sturm sequence of $f$ and $g$, we define $v(f, g, a)$ to be the number of sign changes in $(f_0(a), \dots, f_k(a))$.
+(iii) If $a\in R$ is not a root of $f$ and $(f_0,\dots,f_k)$ is the Sturm sequence of $f$, we define $v(f;a)$ to be the number of sign changes in $(f_0(a),\dots,f_k(a))$.
 \end{definitions}
 \begin{proposition}[Sturm's Theorem]\label{sturm} 
-Let $R$ be a real closed field and $f \in R[x]$. Let $a, b \in R$ be such that $a < b$ and neither $a$ nor $b$ are roots of $f$. Then the number of roots of $f$ in the interval $(a, b)$ is equal to $v(f, 1, a) - v(f, 1, b)$.
+Let $R$ be a real closed field and $f\in R[{\tt t}]$. Let $a,b\in R$ be such that $a<b$ and neither $a$ nor $b$ are roots of $f$. Then the number of roots of $f$ in the interval $(a,b)$ equals $v(f;a)-v(f;b)$.
 
 \em The proof of this proposition can be studied in \cite[1.2.10]{bcr}. \em
 \end{proposition}
 
-Laguerre's method differs from Sturm's method in that it is a numerical algorithm, rather than algebraic. It is remarkable that it converges to a root, with very few exceptions, from any starting value.
+Laguerre's method differs from Sturm's method in that it is a numerical algorithm, rather than algebraic, to decide if a polynomial with real coefficients has a real root. It is remarkable that it converges to a root, with very few exceptions, from any initial value.
 
 \begin{proposition}[Laguerre's method]\label{laguerre}
-Let $f \in \R[x]$ with degree $n$ such that
+Let $f\in\R[{\tt x}]$ be a polynomial of degree $n$ and write it as
 \begin{equation}\label{eq:lagPol}
-	f(x) = (x - r)(x - q)^{n-1},
+f({\tt x})=({\tt x}-r)({\tt x}-q)^{n-1},
 \end{equation}
-for $r, q \in \C$ unknown. Let 
+where $r,q\in\C$ represent unknowns. Let 
 $$
-g(x) := \frac{f'(x)}{f(x)} = \frac{1}{x - r} + \frac{n - 1}{x - q} \ \text{ and } \ h(x) := g^2(x) - \frac{f''(x)}{f(x)} = \frac{1}{(x - r)^2} + \frac{n - 1}{(x - q)^2}.
+g({\tt x}):=\frac{f'({\tt x})}{f({\tt x})}=\frac{1}{{\tt x}-r}+\frac{n-1}{{\tt x}-q} \ \text{ and } \ h({\tt x}):=g^2({\tt x})-\frac{f''({\tt x})}{f({\tt x})}=\frac{1}{({\tt x}-r)^2}+\frac{n-1}{({\tt x}-q)^2}.
 $$
-If we solve for $x - q$ in $g(x)$ and substitute the result on $h(x)$, we get a quadratic equation for $x - r$, and its solution is named Laguerre's formula:
+If we solve for ${\tt x}-q$ in $g({\tt x})$ and substitute the result on $h({\tt x})$, we get a quadratic equation for ${\tt x}-r$, whose solution is named \em Laguerre's formula\em:
 \begin{equation}\label{eq:lagEq}
-x - r = n \left(g(x) \pm \sqrt{ (n - 1) (n h(x) - g^2(x))} \right)^{-1}.
+{\tt x}-r=n\left(g({\tt x})\pm\sqrt{(n-1)(nh({\tt x})-g^2({\tt x}))}\right)^{-1}.
 \end{equation}
 
-Then, the equation given by \ref{eq:lagEq} defines a numerical method by choosing on each step the sign that results in the larger magnitude of the denominator and taking the new root to be:
+Equation \em \ref{eq:lagEq} \em defines a numerical method by choosing on each step the sign that results in the larger magnitude of the denominator and taking the new root to be:
 $$
-x_{k+1} = x_k - n \left(g(x_k) \pm \sqrt{ (n - 1) (n h(x_k) - g^2(x_k))} \right)^{-1}.
+x_{k+1}=x_k-n\left(g(x_k)\pm\sqrt{ (n-1)(nh(x_k)-g^2(x_k))}\right)^{-1}.
 $$
-Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \ref{eq:lagPol}.
+Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \em \ref{eq:lagPol}. \em 
 \end{proposition}
+
+{\bf El algoritmo, tal y como se describe, parece fuertemente ligado al hecho de que $f$ tenga una ra\'iz, tal vez compleja, de multiplicidad $n-1$. Por eso no entiendo qu\'e significa que la f\'ormula funciona para polinomios cualesquiera!!!}
+
+
 \end{section}
 \end{chapter}
 
