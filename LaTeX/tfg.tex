@@ -79,9 +79,11 @@ El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'
 \begin{chapter}{Introduction to polynomial images of $R^n$}
 \pagenumbering{arabic}    % Numbering from 1
 
-\begin{section}{Introduction}
+\begin{section}{Statement of the problem and main results}
 \begin{definition}\label{polyMap} Given a \hyperref[realCField]{real closed field} $R$ and positive integers $m,n$ it is said that $f:=(f_1,\dots,f_n):R^m\to R^n$ is a \em polynomial map \em if $f_i\in R[{\tt x}_1,\dots,{\tt x}_m]$ for $i=1,\dots,n$. 
 \end{definition}
+
+An important example of real closed field (and the only one with the Archimedean property) if the field $\R$ of real numbers. There are several concepts, like the one of real closed field, that appear in the Introduction but that we do not recall until Appendix \ref{AA} in order to lighten the presentation and soften the reading.
 	
 A very famous theorem by Tarski and Seidenberg states the following:
 \begin{theorem}[\em Tarski-Seidenberg\em]\label{tarskiSeidenberg} \em The image of every polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$. \em
@@ -143,7 +145,7 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \begin{enumerate}[(i)]
 \item The exterior of the closed unit disc $S:=\set{u^2+v^2>1}\subset R^2$ \textbf{is not} a polynomial image of $R^2$. This is so because the only irreducible component of $\overline{\delta S}^{\text{zar}}$ is the circle $\set{u^2+v^2=1}\subset R^2$ and this set is not a parametric semiline because it is bounded.
 			
-\item Let $S_1:=\set{uv<1}\subset R^2$ and $S_2:=\set{uv>1,u>0}\subset R^2$ (see fig. \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}\subset R^2$, which is not a parametric semiline.
+\item Let $S_1:=\set{uv<1}\subset R^2$ and $S_2:=\set{uv>1,u>0}\subset R^2$ (see Figure \ref{fig:introExampleii}). They both \textbf{are not} polynomial images of $R^2$ since the Zariski closure of their exterior boundaries $\overline{\delta S_1}^{\text{zar}}=\overline{\delta S_2}^{\text{zar}}$ is the hyperbola $\{uv=1\}\subset R^2$, which is not a parametric semiline.
 \begin{figure}[h]\hspace{0.1cm}
 \begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_01_S_1.pdf}
@@ -195,13 +197,13 @@ Let us see how Theorem \ref{openQuadGen} follows from Theorem \ref{openQuad}.
 		
 \vspace{1mm}		
 		
-[Proof of theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:={\tt x}_1,\dots,h_r:={\tt x}_r$, so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
+[Proof of Theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:={\tt x}_1,\dots,h_r:={\tt x}_r$, so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
 \begin{itemize}
 \item $\H:=\{x_1>0\}\subset R^2$ and $\Qu:=\{x_1>0,\,x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
 \item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $H_1,H_2:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
 \begin{align*}
-(H_1,\text{id}_R): R^3=R^2\times R\longrightarrow R^3= R^2\times R\\
-(\text{id}_R,H_2): R^3=R\times R^2\longrightarrow R^3= R\times R^2.
+(H_1,\text{id}_R)&: R^3=R^2\times R\longrightarrow R^3= R^2\times R\\
+(\text{id}_R,H_2)&: R^3=R\times R^2\longrightarrow R^3= R\times R^2.
 \end{align*}
 Then, $\mathscr{O}$ is the image of the polynomial map 
 $$
@@ -218,11 +220,11 @@ The original proofs of Theorems \ref{finSetTh} and \ref{openQuad} are written fo
 
 \begin{section}{Complementary set of a finite set}
 	
-We proceed to prove theorem \ref{finSetTh}:
+We proceed to prove Theorem \ref{finSetTh}:
 	
 \vspace{1mm}
 	
-[Proof of theorem \ref{finSetTh}] Let $F:=\{p_1,\dots,p_k\}$. Let us see that it suffices to prove the result for points of the form $p_j:=(a_j,\vec{0})\in\R\times\R^{n-1}$. After a linear change of coordinates we can assume that the first coordinates of the given points are pairwise distinct. 
+[Proof of Theorem \ref{finSetTh}] Let $F:=\{p_1,\dots,p_k\}$. Let us see that it suffices to prove the result for points of the form $p_j:=(a_j,\vec{0})\in\R\times\R^{n-1}$. After a linear change of coordinates we can assume that the first coordinates of the given points are pairwise distinct. 
 
 In other words, we denote $p_j:=(a_{1j},\dots,a_{nj})$ and we may suppose that $a_{1j}\neq a_{1\ell}$ when $j\neq\ell$. Then, there exists a polynomial $P_1\in\R[{\tt t}]$ such that $P_1(a_{1j})=a_{nj}$, with $j = 1,\dots, n$, and denoting $x':=(x_1,\dots,x_{n-1})$, we  define the polynomial map 
 $$
@@ -246,7 +248,7 @@ and we can inductively construct a polynomial bijection $h:\R^n\rightarrow\R^n$ 
 		
 We claim that the image of the polynomial map $f:=(f_1,\dots,f_n)$ defined as:
 $$
-f(x)=\left(x_1x_2-r+a_1,\ x_1^{4}\rho(x)+x_1^{2}\sigma(x)+x_2,\ x_3,\dots,\ x_n\right)
+f(x):=\left(x_1x_2-r+a_1,\ x_1^{4}\rho(x)+x_1^{2}\sigma(x)+x_2,\ x_3,\dots,\ x_n\right)\quad\text{for $x:=(x_1,\ldots,x_n)\in\R^n$}
 $$
 is $\R^n\setminus F$, where $r$ is an integer such that $r\neq a_1-a_j$ for $j=1,\dots,k$,  
 $$
@@ -258,13 +260,11 @@ b_1b_2-r+a_1-a_\ell=a_\ell-a_\ell=0,
 $$		 
 and $\rho(b)=0$. In addition, the equality $f(b)=p_\ell=(a_{_\ell},\vec{0})$ implies that $f_i(b)=0$ for $i=2,\dots,n$. In particular, as $f_i\equiv\text{id}$ for $i=3,\dots,n$ we get $b_i=0$ for $i=3,\dots,n$. Consequently $\sigma(b)=0$. Since $\sigma(b)=\rho(b)=0$ we get $b_2=f_2(b)= 0$, so $b_2=0$ and $a_{\ell}=f_1(b)=a_1-r$, that is, $r=a_1-a_\ell$, which is a contradiction. So $\text{im}(f)\subset \R^n\setminus F$.
 Conversely, let $u:=(u_1,\dots,u_n)\in\R^n\setminus F$. We must prove that the system of polynomial equations:
-\[ \left\{ \def\arraystretch{1.2}
-\begin{array}{ll} 
-f_1({\tt x})&={\tt x}_1{\tt x}_2-r+a_1=u_1 \\
-f_2({\tt x})&={\tt x}_1^4\rho({\tt x})+{\tt x}_1^2\sigma({\tt x})+{\tt x}_2=u_2 \\
-f_j({\tt x})&={\tt x}_j=u_j,\quad j\geq 3
-\end{array} 
-\right.  \]
+\[ \begin{cases} 
+f_1({\tt x})={\tt x}_1{\tt x}_2-r+a_1=u_1 \\
+f_2({\tt x})={\tt x}_1^4\rho({\tt x})+{\tt x}_1^2\sigma({\tt x})+{\tt x}_2=u_2 \\
+f_j({\tt x})={\tt x}_j=u_j,\quad j\geq 3
+\end{cases}  \]
 has a solution.
 \begin{enumerate}[(i)]
 \item If $u_1=a_1-r$ then $f(0,u_2,\dots,u_n)=u$.
@@ -301,9 +301,9 @@ as required.
 \end{chapter}
 
 \begin{chapter}{The open quadrant $\Qu$ problem: First proof}
-\begin{section}{Reasons behind the choice}\label{quadReasons}
+\begin{section}{How to find a ``potential'' map to solve the problem}\label{quadReasons}
 		
-It is remarkable that though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see fig. \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
+It is remarkable that though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see Figure \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plots/ch1_03_f(x,y).png}
@@ -428,23 +428,23 @@ $
 \end{enumerate}
 The polynomials $\F\circ\alpha_{\lambda },\ \G\circ\alpha_{\lambda}\in\R[s,a_{\lambda}]$ and $\F\circ\beta_{\mu},\ \G\circ\beta_{\mu}\in\R[s,b_{\mu}]$ were computed with Sage. As we anticipated before, by condition (ii) the set $F=\set{(-1, 0),(0,-1)}$.
 \end{section}
-\begin{section}{The first proof} [Proof of Theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and to see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
+\begin{section}{The first proof for the open quadrant problem} [Proof of Theorem \ref{openQuad}] We are going to prove that $\Qu\subset\P(\R^2)$. To do this it is enough to fix $v>0$ and to see that the image under $\F$ of the curve $\{\G=v\}$ contains the open half-line $(0,+\infty)$.
 \begin{center}
 \fbox{\textbf{Step 1}} \emph{Parametrization of the curve $\{\G-v=0\}$.}
 \end{center}\label{step1}
 
 We start by solving the equation $\G-v=0$, that is, 
 $$
-(1-xy+x-x^4y)^2+(x^2y)^2-v=0
+(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2-v=0
 $$ 
-As it has degree $2$ with respect to $y$, we can compute its roots $y^+(x,v)$ and $y^-(x,v)$ given by:
+As it has degree $2$ with respect to $y$, we can compute its roots $y^+({\tt x},v)$ and $y^-({\tt x},v)$ given by:
 \begin{equation*}
 \begin{aligned}
-y^+(x,v)&:=\frac{1+x+x^3+x^4+\sqrt{\Delta(x,v)}}{x(x^2+(x^3+1)^2)}\\
-y^-(x,v)&:=\frac{1+x+x^3+x^4-\sqrt{\Delta(x,v)}}{x(x^2+(x^3+1)^2)}\\
+y^+({\tt x},v)&:=\frac{1+{\tt x}+{\tt x}^3+{\tt x}^4+\sqrt{\Delta({\tt x},v)}}{{\tt x}({\tt x}^2+({\tt x}^3+1)^2)}\\
+y^-({\tt x},v)&:=\frac{1+{\tt x}+{\tt x}^3+{\tt x}^4-\sqrt{\Delta({\tt x},v)}}{{\tt x}({\tt x}^2+({\tt x}^3+1)^2)}\\
 \end{aligned}
 \end{equation*}
-where $\Delta(x,v)=\Delta_v(x):=v(x^2+(x^3+1)^2)-x^2(x+1)^2,\ \text{deg}_x(\Delta)=6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v:=0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v:=1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0}y^-(x,1)=1$. This observation is used later, in \hyperref[step2]{Step 2}.
+where $\Delta({\tt x},v)=\Delta_v({\tt x}):=v({\tt x}^2+({\tt x}^3+1)^2)-{\tt x}^2({\tt x}+1)^2,\ \text{deg}_{\tt x}(\Delta)=6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v:=0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v:=1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0}y^-(x,1)=1$. This observation is used later, in \hyperref[step2]{Step 2}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{plots/ch1_06_sols.pdf}
@@ -570,7 +570,7 @@ N_v:=&-\frac{1}{w}+1+w+w^2=\eta_v-\Big(\frac{5}{2}w^3+\cdots\Big)<\eta_v\\
 \delta_v:=&-w-w^2-\frac{5}{2}w^3=\xi_v-(-6w^4+\cdots)>\xi_v
 \end{split}\right.
 \end{equation*}
-We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see fig. \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see fig. \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
+We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see Figure \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see Figure \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
 \begin{figure}[h]\hspace{-0.25cm}
 \begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_13_comp.pdf}
@@ -742,7 +742,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \end{subsection}
 \end{section}
 
-\begin{section}{The new proof}
+\begin{section}{The new proof for the open quadrant problem}
 As we have anticipated before, $\Qu$ is the image of the composition $\HH\circ\GG\circ \FF$, but before proving this fact we need three auxiliar lemmas in order to shed some light on the properties that the images of $\FF,\,\GG\text { and }\HH$ enjoy.
 
 \begin{subsection}{The first lemma}
@@ -866,8 +866,9 @@ which concludes the proof.
 \end{lemma}
 \end{subsection}
 
+\begin{center}
 \begin{figure}[h]
-\begin{subfigure}{.5\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_09_B_vert.pdf}};
 \path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
@@ -891,7 +892,7 @@ which concludes the proof.
 \end{tikzpicture}
 \caption{$\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_{x})$.\label{fig:Bvert}}
 \end{subfigure}
-\begin{subfigure}{.5\linewidth}\centering
+\begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
 \node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=1\textwidth]{plots/ch2_10_B_hor.pdf}};
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
@@ -922,6 +923,7 @@ which concludes the proof.
 \end{subfigure}
 \caption{Idea of how we represent the set $\mathscr{B}$ in Lemmas \ref{lemma2} and \ref{lemma3}.\label{fig:sliceB}}
 \end{figure}
+\end{center}
 
 \begin{subsection}{The third lemma}
 \begin{lemma}\label{lemma3}
@@ -945,7 +947,7 @@ $$
 \end{array}
 \right.
 $$
-Intuitively, we are ``slicing'' the set $\mathscr{C}$ horizontally, depending on $y$. Looking at the definition of $\HH_1$ we define for each $y>0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
+Intuitively, we are ``slicing'' the set $\mathscr{B}$ horizontally, depending on $y$. Looking at the definition of $\HH_1$ we define for each $y>0$ the polynomial $\psi_y$ dependent on the variable ${\tt x}$:
 $$
 \psi_y({\tt x}):={\tt x}(y{\tt x}-2)^2+\tfrac{1}{2}y^2{\tt x}=y^2{\tt x}^3-4y{\tt x}^2+(4+\tfrac{1}{2}y^2){\tt x}.
 $$
@@ -968,7 +970,7 @@ $$
 \end{array}
 \right.
 $$
-Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$  follows from the fact that $[1/y_0,+\infty)\supset[2/y_0,+\infty)$ for each fixed $y_0$. Finally, inclusion $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\big(\tfrac{2}{y}\big)$.
+Equality $^1$ holds because of (i), (ii) and the fact that $\psi_y$ is strictly positive on $(0, +\infty)$. Inclusion $^2$  follows from the fact that $[1/y_0,+\infty)\supset[2/y_0,+\infty)$ for each fixed $y_0$. Finally, equality $^3$ holds because of (iii) and (iv): $\psi_y(y) > y = \psi_y\big(\tfrac{2}{y}\big)$.
 
 Then we can write:
 $$
@@ -980,7 +982,7 @@ which concludes the proof.
 \end{lemma}
 \end{subsection}
 
-\begin{subsection}{The second proof}
+\begin{subsection}{The second proof for the open quadrant problem}
 To wrap up this chapter, we can now write the proof of Theorem \ref{openQuad} relying on Lemmas \ref{lemma1}, \ref{lemma2} and \ref{lemma3}:
 
 \vspace{1mm}
@@ -1021,7 +1023,7 @@ as required.
 \end{chapter}
 
 \appendix
-\begin{chapter}{Auxiliary definitions and results}
+\begin{chapter}{Auxiliary definitions and results}\label{AA}
 
 \begin{section}{Real algebraic geometry basics}
 In this section we give a basic insight into the required concepts, definitions and results from real algebraic geometry. They are mostly used on the first chapter.
@@ -1166,7 +1168,7 @@ Furthermore, this iterative formula works with any polynomial, not just with the
 
 \end{chapter}
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{ABR}
 
 \bibitem[ABR]{abr} C. Andradas, L. Br\"ocker, J.M. Ruiz: Constructible 
 sets in real geometry. \em Ergeb. Math. \em{\bf 33}. Berlin, Heidelberg, 
