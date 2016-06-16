@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper, english, twoside, notitlepage, openright]{report}
+ \documentclass[11pt, a4paper, english, twoside, notitlepage, openright]{report}
 
 \usepackage[a4paper, total={15cm, 22cm}]{geometry}
 \usepackage{iipr}
@@ -18,10 +18,12 @@
 \pagenumbering{roman}
 \begin{titlepage}
 
-\title{\huge{\textsc{Complexity Analysis of\\
+\title{\Huge{\textsc{Complexity Analysis of\\
 Polynomial Algorithms}} \\
+\vspace{0.5cm}
+\Large{\textsc{Final Degree Project}}\\
 \vspace{1.5cm}
-\protect\includegraphics[scale=0.35]{ucm.pdf}
+\protect\includegraphics[scale=0.9]{escudo_ucm.pdf}
 \vspace{1.5cm}}
 \author{\textbf{Ignacio Iker Prado Rujas} \\
 Complutense University of Madrid (UCM) \\
@@ -34,7 +36,7 @@ Double Degree in Mathematics and Computer Science}
 \textbf{Tutors:} \\
 \textbf{Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa} \\
 \vspace{0.1cm}
-Algebra Department
+Algebra Department, Mathematics Faculty
 \end{center}
 
 \end{titlepage}
@@ -55,6 +57,10 @@ The key result here is that $\Qu:=\{x>0,y>0\}\subset R^2$ is a polynomial image 
 
 (...)
 
+\vspace{0.2cm}
+\textit{Keywords.} Polynomial map, polynomial image, semialgebraic set, open quadrant, complexity.
+
+
 \vspace{0.3cm}
 \begin{center}
 \textbf{Resumen}
@@ -71,6 +77,11 @@ Sean $R$ un cuerpo real cerrado y $n\geq 2$. Entonces:
 El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'omica de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un ordenador; una segunda forma m\'as breve, empleando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima en la que se utilizan  argumentos de topolog\'ia algebraica, que evitan efectuar c\'alculos en un ordenador. 
 
 (...)
+
+\vspace{0.2cm}
+\textit{Palabras clave.} Aplicaci\'on polinomial, imagen polinomial, conjunto semialgebraico, quadrante abierto, complejidad.
+
+
 \end{abstract}
 
 \tableofcontents
@@ -200,17 +211,20 @@ Let us see how Theorem \ref{openQuadGen} follows from Theorem \ref{openQuad}.
 [Proof of Theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:={\tt x}_1,\dots,h_r:={\tt x}_r$, so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
 \begin{itemize}
 \item $\H:=\{x_1>0\}\subset R^2$ and $\Qu:=\{x_1>0,\,x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
-\item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $H_1,H_2:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
+\item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $f,g:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
 \begin{align*}
-(H_1,\text{id}_R)&: R^3=R^2\times R\longrightarrow R^3= R^2\times R\\
-(\text{id}_R,H_2)&: R^3=R\times R^2\longrightarrow R^3= R\times R^2.
+(f,\text{id}_R): R^3=R^2\times R&\longrightarrow R^3= R^2\times R\\
+(x_1,x_2,x_3) &\longmapsto (f_1(x_1, x_2),\, f_2(x_1, x_2),\, x_3)\\
+(\text{id}_R,g): R^3=R\times R^2&\longrightarrow R^3= R\times R^2\\
+(x_1,x_2,x_3) &\longmapsto (x_1,\, g_1(x_2, x_3),\, g_2(x_2, x_3)).
 \end{align*}
 Then, $\mathscr{O}$ is the image of the polynomial map 
-$$
-H:=(\text{id}_R,H_2)\circ(H_1,\text{id}_R):R^3\rightarrow R^3
-$$ 
+\begin{align*}
+H:=(\text{id}_R,g)\circ(f,\text{id}_R):R^3&\longrightarrow R^3\\
+(x_1,x_2,x_3) &\longmapsto (f_1(x_1, x_2),\, g_1(f_2(x_1, x_2), x_3),\, g_2(f_2(x_1, x_2), x_3)).
+\end{align*}
 \end{itemize} 
-Once the case $n=3$ is solved the case of arbitrary $n$ follows straightforwardly.	\qed		
+Once the case $n=3$ is solved the case of arbitrary $n$ follows straightforwardly, by taking $g \times \overset{k}{\cdots} \times g: R^n \longrightarrow R^n$ when $n=2k$ and $H \times g \times \overset{k-1}{\cdots} \times g: R^n \longrightarrow R^n$ when $n=2k-1$. \qed
 
 \vspace{1mm}
 		
@@ -248,7 +262,7 @@ and we can inductively construct a polynomial bijection $h:\R^n\rightarrow\R^n$ 
 		
 We claim that the image of the polynomial map $f:=(f_1,\dots,f_n)$ defined as:
 $$
-f(x):=\left(x_1x_2-r+a_1,\ x_1^{4}\rho(x)+x_1^{2}\sigma(x)+x_2,\ x_3,\dots,\ x_n\right)\quad\text{for $x:=(x_1,\ldots,x_n)\in\R^n$}
+f({\tt x}):=\left({\tt x}_1{\tt x}_2-r+a_1,\ {\tt x}_1^{4}\rho({\tt x})+{\tt x}_1^{2}\sigma({\tt x})+{\tt x}_2,\ {\tt x}_3,\dots,\ {\tt x}_n\right)\quad\text{for ${\tt x}:=({\tt x}_1,\ldots,{\tt x}_n)\in\R^n$}
 $$
 is $\R^n\setminus F$, where $r$ is an integer such that $r\neq a_1-a_j$ for $j=1,\dots,k$,  
 $$
@@ -307,7 +321,7 @@ It is remarkable that though the open interval $I:=(0,+\infty)$ is the image of 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plots/ch1_03_f(x,y).png}
-\caption{$h(x,y)=(xy-1)^2+x^2$.\label{fig:h(x,y)}}
+\caption{$h({\tt x},{\tt y})=({\tt x}{\tt y}-1)^2+{\tt x}^2$.\label{fig:h(x,y)}}
 \end{center}
 \end{figure}
 		
@@ -357,7 +371,7 @@ The following pair of polynomials:
 \boxed{
 \begin{aligned}
 \F({\tt x},{\tt y})&:=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2&=&\ \F_1^2+\F_2^2 \\
-\G({\tt x},{\tt y})&:=(1-{\tt x}y+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2&=&\ \G_1^2+\G_2^2\\
+\G({\tt x},{\tt y})&:=(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2&=&\ \G_1^2+\G_2^2\\
 \end{aligned}
 }
 \end{equation*}
@@ -648,7 +662,7 @@ As we see in the figures they indeed are. This has been also checked with Sturm 
 \begin{section}{A new approach}
 In the previous chapter, we proved that $\Qu$ is the image of $\R^2$ under the polynomial map $\P:=(\F,\G)$. This fact alongside Theorem \ref{finSetTh} were key for proving Theorem \ref{openQuadGen}. To achieve Theorem \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials do not have roots on particular intervals or that they are positive on them. Although legit, this procedure is controversial, and the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
 
-In this second chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of Theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
+In this third chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of Theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
 
 \begin{subsection}{The new polynomial maps}
 In this subsection we introduce new polynomial maps that satisfy the requirements to prove Theorem \ref{openQuad} in a different way. To be more precise, we define 
@@ -679,7 +693,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\FF_1(x,y)=(xy-1)^2+x^2$.\label{fig:FF_1}}
+\vspace{0.15cm}\caption{$\FF_1({\tt x},{\tt y})=({\tt x}{\tt y}-1)^2+{\tt x}^2$.\label{fig:FF_1}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
@@ -689,7 +703,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\FF_2(x,y)=(xy-1)^2+y^2$.\label{fig:FF_2}}
+\vspace{0.15cm}\caption{$\FF_2({\tt x},{\tt y})=({\tt x}{\tt y}-1)^2+{\tt y}^2$.\label{fig:FF_2}}
 \end{subfigure}\\[1ex]
 \vspace{0.4cm}
 	
@@ -702,7 +716,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\GG_1(x, y) = x$.\label{fig:GG_1}}
+\vspace{0.15cm}\caption{$\GG_1({\tt x}, {\tt y}) = {\tt x}$.\label{fig:GG_1}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
@@ -712,7 +726,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\GG_2(x,y)=y(xy-2)^2+x(xy-1)^2$.\label{fig:GG_2}}
+\vspace{0.15cm}\caption{$\GG_2({\tt x},{\tt y})={\tt y}({\tt x}{\tt y}-2)^2+{\tt x}({\tt x}{\tt y}-1)^2$.\label{fig:GG_2}}
 \end{subfigure}\\[1ex]
 \vspace{0.4cm}
 
@@ -725,7 +739,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\HH_1(x,y)=x(xy-2)^2+\tfrac{1}{2}xy^2$.\label{fig:HH_1}}
+\vspace{0.15cm}\caption{$\HH_1({\tt x},{\tt y})={\tt x}({\tt x}{\tt y}-2)^2+\tfrac{1}{2}{\tt x}{\tt y}^2$.\label{fig:HH_1}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \begin{tikzpicture}
@@ -735,7 +749,7 @@ In the next section we proceed to develop the proof, which splits into three lem
 \draw (c1) node {$x$};
 \draw (c2) node {$y$};
 \end{tikzpicture}
-\vspace{0.15cm}\caption{$\HH_2(x,y)=y$.\label{fig:HH_2}}
+\vspace{0.15cm}\caption{$\HH_2({\tt x},{\tt y})={\tt y}$.\label{fig:HH_2}}
 \end{subfigure}
 \vspace{0.7cm}\caption{The polynomial maps from the second proof: $(\HH\circ\GG\circ\FF)(\R^2)=\Qu$.\label{fig:ch2Maps}}
 \end{figure}
@@ -781,7 +795,7 @@ P(0)=ab-1\ge0\quad\text{ and }\quad P(\sqrt{a})=-2\sqrt{a}-a-1<0.
 $$
 Thus, $P$ has a real root $z_0$ such that $0\le z_0<\sqrt{a}$, so we set:
 $$
-x_0:=\sqrt{a-z_0^2}\quad \text{ and } \quad y_0: \frac{z_0+1}{x_0}.
+x_0:=\sqrt{a-z_0^2}\quad \text{ and } \quad y_0:= \frac{z_0+1}{x_0}.
 $$
 Then $F(x_0,y_0)=(a,b)$ and $\mathscr{A}\subset\FF(\R^2)$, as required.
 \qed
@@ -887,8 +901,8 @@ which concludes the proof.
 \draw (c5) node {\large{\color[rgb]{1,0,0}{\rotatebox[origin=c]{90}{[}}}};
 \draw (c6) node {\large{\color[rgb]{0,0.392157,0}{$x_0$}}};
 \draw (c7) node {\large{\color[rgb]{1,0,0}{$x_1$}}};
-\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\set{x_0} \times \mathscr{B}_{x_0})$}}};
-\draw (c9) node {\large{\color[rgb]{1,0,0}{$(\set{x_1} \times \mathscr{B}_{x_1})$}}};
+\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$\set{x_0} \times \mathscr{B}_{x_0}$}}};
+\draw (c9) node {\large{\color[rgb]{1,0,0}{$\set{x_1} \times \mathscr{B}_{x_1}$}}};
 \end{tikzpicture}
 \caption{$\mathscr{B} = \bigsqcup_{x>0}(\set{x} \times \mathscr{B}_{x})$.\label{fig:Bvert}}
 \end{subfigure}
@@ -898,7 +912,7 @@ which concludes the proof.
 \path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c1)($(img.south east)!0.7!(img.north east)$);% c1: lugar donde poner \mathscr{B}
 \path ($(img.north west)!0.8!(img.north east)$)|-coordinate(c1)($(img.south east)!0.8!(img.north east)$); % Para \mathscr{B}
 \path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c2)($(img.south east)!0.604!(img.north east)$); % Para la flecha de y_0
-\path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c3)($(img.south east)!0.1495!(img.north east)$); % Para la flecha de y_1
+\path ($(img.north west)!0.9!(img.north east)$)|-coordinate(c3)($(img.south east)!0.1492!(img.north east)$); % Para la flecha de y_1
 \path ($(img.north west)!0.045!(img.north east)$)|-coordinate(c4)($(img.south east)!0.61!(img.north east)$); % Para (
 \path ($(img.north west)!0.045!(img.north east)$)|-coordinate(c5)($(img.south east)!0.154!(img.north east)$); % Para (
 \path ($(img.north west)!0.146!(img.north east)$)|-coordinate(c10)($(img.south east)!0.154!(img.north east)$); % Para ]
@@ -916,10 +930,10 @@ which concludes the proof.
 \draw (c11) node {\large{\color[rgb]{1,0,0}{[}}};
 \draw (c6) node {\large{\color[rgb]{0,0.392157,0}{$y_0$}}};
 \draw (c7) node {\large{\color[rgb]{1,0,0}{$y_1$}}};
-\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$(\mathscr{B}_{y_0} \times \set{y_0})$}}};
-\draw (c9) node {\large{\color[rgb]{1,0,0}{$(\mathscr{B}_{y_1} \times \set{y_1})$}}};
+\draw (c8) node {\large{\color[rgb]{0,0.392157,0}{$\mathscr{C}_{y_0} \times \set{y_0}$}}};
+\draw (c9) node {\large{\color[rgb]{1,0,0}{$\mathscr{C}_{y_1} \times \set{y_1}$}}};
 \end{tikzpicture}
-\caption{$\mathscr{B}=\bigsqcup_{y>0}(\mathscr{B}_{y}\times\set{y})$.\label{fig:Bhor}}
+\caption{$\mathscr{B}=\bigsqcup_{y>0}(\mathscr{C}_{y}\times\set{y})$.\label{fig:Bhor}}
 \end{subfigure}
 \caption{Idea of how we represent the set $\mathscr{B}$ in Lemmas \ref{lemma2} and \ref{lemma3}.\label{fig:sliceB}}
 \end{figure}
@@ -1020,6 +1034,115 @@ as required.
 %--------------------------------------------------------------------%
 
 \end{section}
+\end{chapter}
+
+\begin{chapter}{A topological proof for the open quadrant $\Qu$ problem}
+\begin{section}{A topological perspective}
+%Modificad cualquier cosa que no os convenza o que no sea totalmente cierta de esta introduccion:
+Not happy with having proved that $\Qu$ is the image of $\R^2$ under two different polynomial maps using diverse techniques, the authors developed a whole new proof that relies on algebraic topology for a new polynomial map $\FFF: \R^2 \longrightarrow \R^2$. The genesis of this work was their collaboration with C. Ueno while he was writing his Ph.D. Thesis \cite{u}.
+
+In this chapter we will build up the topological machinery that will allow us to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
+\begin{subsection}{The new polynomial map}
+Without further ado, the polynomial map we are going to be working with is $\FFF$ defined in the following way:
+\begin{equation*}
+\boxed{
+\FFF({\tt x}, {\tt y}) := \big(({\tt x}^2{\tt y}^4+{\tt x}^4{\tt y}^2-{\tt y}^2-1)^2+{\tt x}^6{\tt y}^4,\ ({\tt x}^6{\tt y}^2+{\tt x}^2{\tt y}^2-{\tt x}^2-1)^2+{\tt x}^6{\tt y}^4\big).
+}
+\end{equation*}
+
+As we anticipated before, in the next section we will give some topological definitions and proof some facts about a family of topological spaces homeomorphic to a closed disc in $\R^3$, and paths that go through them.
+
+Afterwards, by decomposing $\FFF$ into the composition $\FFF = f_2 \circ (h \circ g)$, it will be clear that we can reduce the proof to check that the boundaries of two certain topological spaces (homeomorphic to a closed disc) have non-empty intersection with the image $g(\overline{\Qu})$, where $\overline{\Qu} = \set{x \ge 0, y \ge 0}$ is the closure of the open quadrant $\Qu$.
+\end{subsection}
+\end{section}
+\begin{section}{Topological tools}
+\begin{subsection}{Some definitions}
+We begin by defining the key topological varieties we are going to be working with:
+\begin{definitions}
+(i) Let ${\mathbb D}_A = \set{(x,y): x^2+y^2 \le A^2} \subset \R^2$ be the closed disc of center the origin and radius $A>0$. A \textit{warped disc} is a subset 
+$$\D_{A,\xi}:=\set{(x,y,z): x^2+y^2\le A^2,\ z=\xi(x,y)}\subset\R^3$$
+where $\xi:\R^2\longrightarrow\R$ is a continuous function. Let $\zeta$ be the homeomorphism
+$$
+\zeta:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto\big(x,\, y,\, z-\xi(x,y)\big).
+$$
+Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$:
+\begin{equation*}
+\begin{aligned}
+\D_{A,\xi}:=\set{(x,y,z): y^2+z^2\le A^2,\ x=\xi(y,z)}& \ \text{ or } \\
+\D_{A,\xi}:=\set{(x,y,z): x^2+z^2\le A^2,\ y=\xi(x,z)}&,
+\end{aligned}
+\end{equation*}
+with $\xi$ defined as above.
+
+(ii) For each $\eps>0$ let us define the open neighborhood of ${\mathbb D}_A$
+$$
+{\mathbb D}_A(\eps):=\set{(x,y):x^2+y^2<(A+\eps)^2}\times(-\eps,\eps)\subset\R^3.
+$$ 
+Clearly, in this way we obtain an open neighborhood of $\D_{A,\xi}$ by defining 
+$$
+\D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big) \subset \R^3,
+$$
+which is guaranteed to be well-defined because $\zeta$ is an homeomorphism.
+\end{definitions}
+
+Next, we define the topological concepts of \emph{path} and \emph{path concatenation}, and we explain what \emph{meeting transversally once a warped disc} means, which is just a formalization of our intuition.
+\begin{definitions}
+(i) Let $X$ be a topological space. A \emph{path} in $X$ is a continuos map $\alpha:[a, b] \to X$, where $[a,b] \subset \R$ is a closed interval. If $\alpha$ verifies $\alpha(a) = \alpha(b) = x_0 \in \R^3$, then we say that $\alpha$ is a \emph{loop} with base point $x_0$. When this is the case, we can consider $\alpha$ as a an map whose domain is the quotient space $[a,b]/\! \sim$ obtained by identifying the end points of $[a,b]$, which is homeomorphic to $\mathbb{S}^1 := \set{(x,y): x^2+y^2=1} \subset \R^2$.
+
+(ii) Given two paths $\alpha:[a, b] \to X$ and $\beta:[c, d] \to X$ verifying $\alpha(b) = \beta(c)$, we define the \emph{composition of paths} in the following way:
+$$
+\alpha * \beta: [a, b+(d-c)] \longrightarrow X,\ t \longmapsto
+\left\{
+\begin{array}{ll}
+\alpha(t) &\text{ if } t\in[a,b],\\
+\beta(t+c-b) &\text{ if } t\in[b, b+(d-c)].
+\end{array}
+\right.
+$$
+
+(iii) A path $\alpha:[a,b]\rightarrow\R^3$ \emph{meets transversally once the warped disc $\D_{A,\xi}$} if there exist $s_0\in(a,b)$ and $\eps>0$ such that
+$$
+J:=\alpha^{-1}(\D_{A,\xi}(\eps))=(s_0-\eps,s_0+\eps)
+$$
+is an open subinterval of $[a,b]$ and 
+$$
+(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0),
+$$
+where obviously $(\zeta\circ\alpha)|_J(t) \subset \mathbb{D}_A(\eps)$ because $\alpha|_J(t) \subset \zeta^{-1}\big(\mathbb{D}_A(\eps)\big) = \D_{A,\xi}(\eps)$.
+
+(iv) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\longrightarrow\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C \cong \mathbb{S}^1$ such that the path $\alpha:=\phi\circ\beta: [a,b] \to \R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
+
+%No tengo muy claro que este bien el inglés de: "quotient space modulo the homotopy relation"
+%Y convendría definir homotopía, no?
+(v) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space modulo the homotopy relation, and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$.
+\end{definitions}
+
+\begin{remark}\label{remPath}
+If the path $\alpha:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$, then $\alpha\big([a,b]\big)\cap\partial\D_{A,\xi}=\varnothing$. This will be helpful in Proposition \ref{propTop}.
+\end{remark}
+\end{subsection}
+\begin{subsection}{Useful results}
+
+\begin{lemma}\label{lemmaFundGr}
+a
+\end{lemma}
+
+\begin{lemma}\label{lemmaZ}
+a
+\end{lemma}
+
+\begin{lemma}\label{lemmaId}
+a
+\end{lemma}
+
+\begin{proposition}\label{propTop}
+a
+\end{proposition}
+
+\end{subsection}
+
+\end{section}
+
 \end{chapter}
 
 \appendix
@@ -1187,8 +1310,10 @@ A topological proof. \textit{Preprint} (2015), 13 pages.
 \bibitem[FU]{fu} J.F. Fernando, C. Ueno: A short proof for the open quadrant problem.
 \textit{Preprint RAAG} (2014, submitted to MEGA 2015), 8 pages.
 
-\bibitem[G]{g} J.M. Gamboa: Reelle algebraische Geometrie, June,
-$10^{\text{th}}-16^{\text{th}}$ (1990), \textit{Oberwolfach}.
+\bibitem[G]{g} J.M. Gamboa: Algebraic images of the real plane. \textit{Reelle algebraische Geometrie}, June,
+$10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
+
+\bibitem[U]{u} C. Ueno: Im\'agenes polin\'omicas y regulares de espacios eucl\'\i deos. {\em Ph.D. Thesis UCM} (2012).
 
 \bibitem[W]{w} R.J. Walker: \em Algebraic curves. \em Berlin, Heidelberg, 
 New York: Springer Verlag, (1978).
