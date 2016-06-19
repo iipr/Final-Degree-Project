@@ -75,6 +75,16 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{tikzscale}
+%Everything after this is from J.Fernando and C.Ueno:
+\usetikzlibrary{arrows,decorations.markings,decorations.pathmorphing,backgrounds,positioning,fit,matrix}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.8}
+\pgfdeclarelayer{backgroundlayer}
+\pgfdeclarelayer{notelayer}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{backgroundlayer,background,main,foreground,notelayer}
 
 %________________HELPFUL TOOLS________________
 \usepackage{titling}     % On 'reports', allow abstract to be on the same page of the title

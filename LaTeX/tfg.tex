@@ -1043,7 +1043,7 @@ Not happy with having proved that $\Qu$ is the image of $\R^2$ under two differe
 
 In this chapter we will build up the topological machinery that will allow us to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
 \begin{subsection}{The new polynomial map}
-Without further ado, the polynomial map we are going to be working with is $\FFF$ defined in the following way:
+Without further ado, the polynomial map we are going to be working with is $\FFF$ and it is defined in the following way:
 \begin{equation*}
 \boxed{
 \FFF({\tt x}, {\tt y}) := \big(({\tt x}^2{\tt y}^4+{\tt x}^4{\tt y}^2-{\tt y}^2-1)^2+{\tt x}^6{\tt y}^4,\ ({\tt x}^6{\tt y}^2+{\tt x}^2{\tt y}^2-{\tt x}^2-1)^2+{\tt x}^6{\tt y}^4\big).
@@ -1052,7 +1052,7 @@ Without further ado, the polynomial map we are going to be working with is $\FFF
 
 As we anticipated before, in the next section we will give some topological definitions and proof some facts about a family of topological spaces homeomorphic to a closed disc in $\R^3$, and paths that go through them.
 
-Afterwards, by decomposing $\FFF$ into the composition $\FFF = f_2 \circ (h \circ g)$, it will be clear that we can reduce the proof to check that the boundaries of two certain topological spaces (homeomorphic to a closed disc) have non-empty intersection with the image $g(\overline{\Qu})$, where $\overline{\Qu} = \set{x \ge 0, y \ge 0}$ is the closure of the open quadrant $\Qu$.
+Afterwards, by decomposing $\FFF$ into the composition $\FFF = f_2 \circ f_1$ with $f_2 = h \circ g$, it will be clear that we can reduce the proof to check that the boundaries of two certain topological spaces (homeomorphic to a closed disc) have non-empty intersection with the image $g(\overline{\Qu})$, where $\overline{\Qu} = \set{x \ge 0, y \ge 0}$ is the closure of the open quadrant $\Qu$.
 \end{subsection}
 \end{section}
 \begin{section}{Topological tools}
@@ -1065,7 +1065,7 @@ where $\xi:\R^2\longrightarrow\R$ is a continuous function. Let $\zeta$ be the h
 $$
 \zeta:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto\big(x,\, y,\, z-\xi(x,y)\big).
 $$
-Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$:
+Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$ is the projection or ``flattening'' of the warped disc $\D_{A,\xi}$ onto the $x-y$ plane. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$:
 \begin{equation*}
 \begin{aligned}
 \D_{A,\xi}:=\set{(x,y,z): y^2+z^2\le A^2,\ x=\xi(y,z)}& \ \text{ or } \\
@@ -1074,22 +1074,22 @@ Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$. We will a
 \end{equation*}
 with $\xi$ defined as above.
 
-(ii) For each $\eps>0$ let us define the open neighborhood of ${\mathbb D}_A$
+(ii) For each $\eps>0$ let us define an open neighborhood of ${\mathbb D}_A$ as follows:
 $$
 {\mathbb D}_A(\eps):=\set{(x,y):x^2+y^2<(A+\eps)^2}\times(-\eps,\eps)\subset\R^3.
 $$ 
-Clearly, in this way we obtain an open neighborhood of $\D_{A,\xi}$ by defining 
+Clearly, in this way we obtain an open neighborhood of $\D_{A,\xi}$ by defining:
 $$
 \D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big) \subset \R^3,
 $$
 which is guaranteed to be well-defined because $\zeta$ is an homeomorphism.
 \end{definitions}
 
-Next, we define the topological concepts of \emph{path} and \emph{path concatenation}, and we explain what \emph{meeting transversally once a warped disc} means, which is just a formalization of our intuition.
+Next, we define the topological concepts of \emph{path} and \emph{path concatenation}, and we explain what \emph{meeting transversally once a warped disc} means, which is just a formalization of our intuition. Finally, we will define the \emph{fundamental group} of a topological space in the usual way.
 \begin{definitions}
-(i) Let $X$ be a topological space. A \emph{path} in $X$ is a continuos map $\alpha:[a, b] \to X$, where $[a,b] \subset \R$ is a closed interval. If $\alpha$ verifies $\alpha(a) = \alpha(b) = x_0 \in \R^3$, then we say that $\alpha$ is a \emph{loop} with base point $x_0$. When this is the case, we can consider $\alpha$ as a an map whose domain is the quotient space $[a,b]/\! \sim$ obtained by identifying the end points of $[a,b]$, which is homeomorphic to $\mathbb{S}^1 := \set{(x,y): x^2+y^2=1} \subset \R^2$.
+(i) Let $X$ be a topological space. A \emph{path} in $X$ is a continuos map $\alpha:[a, b] \to X$, where $[a,b] \subset \R$ is a closed interval. If $\alpha$ verifies that $\alpha(a) = \alpha(b) = x_0 \in \R^3$, then we say that $\alpha$ is a \emph{loop} with base point $x_0$. When this is the case, we can consider $\alpha$ as a an map whose domain is the quotient space $[a,b]/\! \sim$ obtained by identifying the end points of $[a,b]$, which is homeomorphic to $\mathbb{S}^1 := \set{(x,y): x^2+y^2=1} \subset \R^2$.
 
-(ii) Given two paths $\alpha:[a, b] \to X$ and $\beta:[c, d] \to X$ verifying $\alpha(b) = \beta(c)$, we define the \emph{composition of paths} in the following way:
+(ii) Given two paths $\alpha:[a, b] \to X$ and $\beta:[c, d] \to X$ verifying $\alpha(b) = \beta(c)$, we define the \emph{composition (or product) of paths} in the following way:
 $$
 \alpha * \beta: [a, b+(d-c)] \longrightarrow X,\ t \longmapsto
 \left\{
@@ -1099,6 +1099,8 @@ $$
 \end{array}
 \right.
 $$
+
+The composition of paths verifies the associative property. Also, there exists an identity element $e$ such that for every path $\alpha$ we have $\alpha *e = e*\alpha=\alpha$. Lastly, for every path $\alpha$ there exists an inverse element $\alpha^{-1}$ such that $\alpha*\alpha^{-1} = \alpha^{-1}*\alpha =e$.
 
 (iii) A path $\alpha:[a,b]\rightarrow\R^3$ \emph{meets transversally once the warped disc $\D_{A,\xi}$} if there exist $s_0\in(a,b)$ and $\eps>0$ such that
 $$
@@ -1112,20 +1114,156 @@ where obviously $(\zeta\circ\alpha)|_J(t) \subset \mathbb{D}_A(\eps)$ because $\
 
 (iv) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\longrightarrow\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C \cong \mathbb{S}^1$ such that the path $\alpha:=\phi\circ\beta: [a,b] \to \R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
 
+(iv) Let $I:=[0,1]\subset\R,\, s\in I$ and $X, Y$ be two path-connected topological spaces. We say that a \emph{homotopy} is a continuous map $H: X\times I\longrightarrow Y$. We also say that the set $\set[\big]{H_s: X \longrightarrow Y,\ x \longmapsto H(x,s) \text{ where the variable $s$ is fixed}}$ is a family of continuous maps. If $f=H_0:X\longrightarrow Y$ and $g=H_1:X\longrightarrow Y$ are homotopic, we denote it with $f \overset{H}{\simeq}g$, and if $g$ is constant we say that $f$ is \emph{null-homotopic}.
+
 %No tengo muy claro que este bien el inglés de: "quotient space modulo the homotopy relation"
-%Y convendría definir homotopía, no?
-(v) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space modulo the homotopy relation, and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$.
+(vi) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space modulo the homotopy relation, and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$.
 \end{definitions}
 
 \begin{remark}\label{remPath}
 If the path $\alpha:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$, then $\alpha\big([a,b]\big)\cap\partial\D_{A,\xi}=\varnothing$. This will be helpful in Proposition \ref{propTop}.
 \end{remark}
 \end{subsection}
-\begin{subsection}{Useful results}
 
+\begin{subsection}{Useful results}
+We proceed now to prove some facts that later on will be helpful for the proof of Theorem \ref{openQuad}.
 \begin{lemma}\label{lemmaFundGr}
-a
+Let $\D_{A,\xi}$ be a warped disc of $\R^3$ and let $X:=\R^3\setminus\partial\D_{A,\xi}$. Let $\alpha:[a,b]\to X$ be a loop with base point $x_0\in X$ that meets transversally once $\D_{A,\xi}$. Then $[\alpha]$ is a generator of $\pi_1(X,x_0)\cong{\mathbb Z}$.
+\begin{Proof} 
+Keep the notations introduced above. Let $s_0\in(a,b)$ and $\eps>0$ be such that 
+$$
+J:=\alpha^{-1}(\D_{A,\xi}(\eps))=(s_0-\eps,s_0+\eps)
+$$ 
+is an open subinterval of $[a,b]$ and $(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0)$. After a reparameterization of $\alpha$ we may assume $s_0=0$.
+
+As $\zeta$ is a homeomorphism of $\R^3$, we will prove the statement for $\beta:=\zeta\circ\alpha$, $Y:=\R^3\setminus\partial{\mathbb D}_A$ and the base point $y_0:=\beta(-\eps)=(0,0,-\eps)$. Consider the path $\gamma:[0,1]\rightarrow\R^3$ given by
+$$
+\gamma(t):=
+\begin{cases}
+(3(A+\eps)t,0,\eps)&\text{if $0\le t\le\frac{1}{3}$,}\\
+(A+\eps, 0, \eps-(t-\frac{1}{3})6\eps)&\text{if $\frac{1}{3}<t\le \frac{2}{3}$,}\\
+(A+\eps-3(A+\eps)(t-\frac{2}{3}), 0, -\eps)&\text{if $\frac{2}{3}<t\le 1$}.
+\end{cases}
+$$
+Write $\beta_0:=\beta|_{J}$ and $\beta_1:=\beta|_{[\eps,b]}\ast\beta|_{[a,-\eps]}$. We claim:\em
+$$
+\quad[\beta]=[\beta_0\ast\beta_1]=[\beta_0\ast\gamma]\,\cdot\,[\gamma^{-1}\ast\beta_1]=g\,\cdot\,e=g,
+$$
+where $e$ and $g$ are respectively the identity element and a generator of $\pi_1(Y,y_0)\cong{\mathbb Z}$\em.
+
+The loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Consequently, $[\gamma^{-1}*\beta_1]=e$ in $\pi_1(Y,y_0)$. 
+
+The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as deformation retract the set $Z:=\partial{\mathbb D}_A(\eps)\cup I_\eps$ where $I_\eps:=\{(0,0)\}\times\{-\eps\le z\le \eps\}$. It is an exercise of algebraic topology to show that $[\beta_0\ast\gamma]$ is a generator of $\pi_1(Z,y_0)\cong\pi_1(Y,y_0)\cong{\mathbb Z}$, as required.
+\qed 
+\end{Proof}
 \end{lemma}
+
+\begin{figure}[ht!]
+\begin{center}
+\begin{tikzpicture}[scale=0.8,line join=round,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[black!80,opacity=0.6]{>}}}]
+\tikzstyle{estiloejes} = [line width=1pt]
+\tikzstyle{estilodiscos} = [shading=radial]
+\tikzstyle{estiloborde1} = [line width=2pt, draw=gray!70, rounded corners=8pt]
+\tikzstyle{estiloborde2} = [line width=2pt, decorate]
+%Mio
+\tikzstyle{estiloborde3} = [line width=2pt, draw=red!70, rounded corners=8pt]
+\tikzstyle{estiloborde4} = [line width=2pt, draw=green!70, rounded corners=8pt]
+\tikzstyle{estiloborde5} = [line width=2pt, draw=blue!70, rounded corners=8pt]
+%------
+\tikzstyle{estiloborde} = [line width=2pt]
+\draw[estiloejes](-1.164,1.416)--(-1.947,2.368);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-.677,.688)--(-.677,2.214)--(-.203,2.248)--(-.203,.722)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-.203,.722)--(-.203,2.248)--(.277,2.245)--(.277,.719)--cycle;
+\draw[estiloejes](0,-3.816)--(0,3.8);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=black, dashed](-2.839,-1.316)--(-2.982,-1.093)--(-3.051,-.862)--(-3.045,-.628)--(-2.964,-.398)--(-2.81,-.177)--(-2.587,.03)--(-2.301,.217)--(-1.957,.38)--(-1.566,.515)--(-1.136,.618)--(-.677,.688)--(-.203,.722)--(.277,.719)--(.75,.679)--(1.204,.605)--(1.629,.496)--(2.014,.356)--(2.349,.189)--(2.626,-.001)--(2.839,-.211)--(2.982,-.433)--(3.051,-.665)--(3.045,-.898)--(2.964,-1.128)--(2.81,-1.349)--(2.587,-1.556)--(2.301,-1.743)--(1.957,-1.906)--(1.566,-2.041)--(1.136,-2.145)--(.677,-2.214)--(.203,-2.248)--(-.277,-2.245)--(-.75,-2.206)--(-1.204,-2.131)--(-1.629,-2.022)--(-2.014,-1.883)--(-2.349,-1.716)--(-2.626,-1.525)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](.277,.719)--(.277,2.245)--(.75,2.206)--(.75,.679)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-1.136,.618)--(-1.136,2.145)--(-.677,2.214)--(-.677,.688)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](.75,.679)--(.75,2.206)--(1.204,2.131)--(1.204,.605)--cycle;
+\draw[estiloejes](-1.136,1.382)--(-1.164,1.416);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-1.566,.515)--(-1.566,2.041)--(-1.136,2.145)--(-1.136,.618)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](1.204,.605)--(1.204,2.131)--(1.629,2.022)--(1.629,.496)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-1.957,.38)--(-1.957,1.906)--(-1.566,2.041)--(-1.566,.515)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](1.629,.496)--(1.629,2.022)--(2.014,1.883)--(2.014,.356)--cycle;
+\draw[estiloejes](1.136,-1.382)--(-1.136,1.382);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.301,.217)--(-2.301,1.743)--(-1.957,1.906)--(-1.957,.38)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.014,.356)--(2.014,1.883)--(2.349,1.716)--(2.349,.189)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.587,.03)--(-2.587,1.556)--(-2.301,1.743)--(-2.301,.217)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.349,.189)--(2.349,1.716)--(2.626,1.525)--(2.626,-.001)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.81,-.177)--(-2.81,1.349)--(-2.587,1.556)--(-2.587,.03)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.626,-.001)--(2.626,1.525)--(2.839,1.316)--(2.839,-.211)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-3.045,-.628)--(-3.045,.898)--(-2.964,1.128)--(-2.964,-.398)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-3.051,-.862)--(-3.051,.665)--(-3.045,.898)--(-3.045,-.628)--cycle;
+\draw[estiloejes](2.839,.553)--(-2.839,-.553);
+\draw[estiloejes](0,-.763)--(0,.038);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=black,dashed](-2.626,.001)--(-2.349,-.189)--(-2.014,-.356)--(-1.629,-.496)--(-1.204,-.605)--(-.75,-.679)--(-.277,-.719)--(.203,-.722)--(.677,-.688)--(1.136,-.618)--(1.566,-.515)--(1.957,-.38)--(2.301,-.217)--(2.587,-.03)--(2.81,.177)--(2.964,.398)--(3.045,.628)--(3.051,.862)--(2.982,1.093)--(2.839,1.316)--(2.626,1.525)--(2.349,1.716)--(2.014,1.883)--(1.629,2.022)--(1.204,2.131)--(.75,2.206)--(.277,2.245)--(-.203,2.248)--(-.677,2.214)--(-1.136,2.145)--(-1.566,2.041)--(-1.957,1.906)--(-2.301,1.743)--(-2.587,1.556)--(-2.81,1.349)--(-2.964,1.128)--(-3.045,.898)--(-3.051,.665)--(-2.982,.433)--(-2.839,.211)--cycle;
+\draw[estiloborde5,decorate,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[blue!80,opacity=0.6]{>}}}](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
+\draw[estiloborde,draw=blue!70](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
+%Estoy aquí: -------> beta_1
+\draw[estiloborde3, opacity=1](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)--(0,-.763)--(0,.038)--(0,.763)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737)--cycle;
+\filldraw[fill opacity=0.5,line width=1pt,estilodiscos](-.973,1.222)--(-1.342,1.134)--(-1.678,1.018)--(-1.972,.878)--(-2.218,.718)--(-2.409,.541)--(-2.541,.351)--(-2.61,.154)--(-2.615,-.046)--(-2.556,-.244)--(-2.433,-.436)--(-2.251,-.615)--(-2.013,-.778)--(-1.726,-.922)--(-1.396,-1.041)--(-1.032,-1.134)--(-.643,-1.198)--(-.237,-1.232)--(.174,-1.234)--(.581,-1.206)--(.973,-1.146)--(1.342,-1.057)--(1.678,-.942)--(1.972,-.802)--(2.218,-.641)--(2.409,-.464)--(2.541,-.275)--(2.61,-.077)--(2.615,.123)--(2.556,.321)--(2.433,.512)--(2.251,.691)--(2.013,.855)--(1.726,.998)--(1.396,1.117)--(1.032,1.21)--(.643,1.275)--(.237,1.308)--(-.174,1.311)--(-.581,1.282)--cycle;
+\draw[estiloejes,->](0,0)--(0,3.8);
+%Y aquí con el rojo: beta_1
+\draw[estiloborde3,opacity=0.9](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)(0,.038)--(0,.763)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737);
+\draw[estiloborde3,decorate,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[red!80,opacity=0.6]{>}}}]
+(-4.056,1.)--(-4.056,-0.5);
+\draw[estiloborde3,decorate,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[red!80,opacity=0.6]{>}}}]
+(-1.622,-3.368)--(-.811,-3.211);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.964,-.398)--(-2.964,1.128)--(-2.81,1.349)--(-2.81,-.177)--cycle;
+\draw[estiloejes](3.319,.646)--(2.911,.567);
+\draw[estiloejes](2.911,.567)--(2.839,.553);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.839,-.211)--(2.839,1.316)--(2.982,1.093)--(2.982,-.433)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.982,-.433)--(2.982,1.093)--(3.051,.862)--(3.051,-.665)--cycle;
+\draw[estiloborde,draw=blue!70](-.081,.747)--(-2.839,.211)--(-2.839,-.514);
+\draw[estiloborde5,decorate,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[blue!80,opacity=0.6]{>}}}](-.081,.747)--(-2.839,.211)--(-2.839,-.514);
+\draw[fill=black, draw=none, fill opacity=0.5] (0,.747) circle (0.1cm);
+\draw[fill=black, draw=none, fill opacity=0.3] (0,-.77) circle (0.1cm);
+\draw[estiloejes](4.867,.947)--(3.319,.646);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](3.051,-.665)--(3.051,.862)--(3.045,.628)--(3.045,-.898)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.982,-1.093)--(-2.982,.433)--(-3.051,.665)--(-3.051,-.862)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](3.045,-.898)--(3.045,.628)--(2.964,.398)--(2.964,-1.128)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.839,-1.316)--(-2.839,.211)--(-2.982,.433)--(-2.982,-1.093)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.964,-1.128)--(2.964,.398)--(2.81,.177)--(2.81,-1.349)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.626,-1.525)--(-2.626,.001)--(-2.839,.211)--(-2.839,-1.316)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.81,-1.349)--(2.81,.177)--(2.587,-.03)--(2.587,-1.556)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.349,-1.716)--(-2.349,-.189)--(-2.626,.001)--(-2.626,-1.525)--cycle;
+\draw[estiloejes](-2.839,-.553)--(-2.911,-.567);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.587,-1.556)--(2.587,-.03)--(2.301,-.217)--(2.301,-1.743)--cycle;
+\draw[estiloejes](-2.911,-.567)--(-3.063,-.596);
+\draw[estiloejes](-3.063,-.596)--(-3.319,-.646);
+\draw[estiloejes,->](-3.319,-.646)--(-4.867,-.947);
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.014,-1.883)--(-2.014,-.356)--(-2.349,-.189)--(-2.349,-1.716)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](2.301,-1.743)--(2.301,-.217)--(1.957,-.38)--(1.957,-1.906)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-1.629,-2.022)--(-1.629,-.496)--(-2.014,-.356)--(-2.014,-1.883)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](1.957,-1.906)--(1.957,-.38)--(1.566,-.515)--(1.566,-2.041)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-1.204,-2.131)--(-1.204,-.605)--(-1.629,-.496)--(-1.629,-2.022)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](1.566,-2.041)--(1.566,-.515)--(1.136,-.618)--(1.136,-2.145)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-.75,-2.206)--(-.75,-.679)--(-1.204,-.605)--(-1.204,-2.131)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](1.136,-2.145)--(1.136,-.618)--(.677,-.688)--(.677,-2.214)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](-.277,-2.245)--(-.277,-.719)--(-.75,-.679)--(-.75,-2.206)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](.677,-2.214)--(.677,-.688)--(.203,-.722)--(.203,-2.248)--cycle;
+\filldraw[fill=gray!50,fill opacity=0.4,draw=none](.203,-2.248)--(.203,-.722)--(-.277,-.719)--(-.277,-2.245)--cycle;
+\draw[estiloejes](1.164,-1.416)--(1.136,-1.382);
+\draw[estiloejes,<-](1.947,-2.368)--(1.164,-1.416);
+\path (2.271,-2.763) node[left]{$y$} (-5.5,-1.2) node[above right]{$x$} (0,4.4) node[below]{$z$};\path (.811,-.2) node[right]{${\mathbb D}_A$} (0,-0.95) node[right]{$y_0$};
+\path (0,0.65) node[right]{$y_1$};
+\path [black!20!green] (-0.7,-0.1) node[right]{$\beta_0$};
+\path (2.5,1.468) node[above right]{${\mathbb D}_A(\eps)$};
+\path [red] (-4.3,-1.5) node[below]{$\beta_1$};
+\path [blue] (-1.1,.526) node[below]{$\gamma$};
+\end{tikzpicture}
+\caption{The path $\beta$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$.}\label{pic:disco}
+\end{center}
+\end{figure}
 
 \begin{lemma}\label{lemmaZ}
 a
@@ -1210,12 +1348,12 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 	
 	(ii) A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
 	
-	(iii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\varepsilon>0$ the intersection $B_{\varepsilon}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
-where $B_{\varepsilon}\subset\R^n$ is the open ball of radius $\varepsilon$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
+	(iii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\eps>0$ the intersection $B_{\eps}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
+where $B_{\eps}\subset\R^n$ is the open ball of radius $\eps$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
 
 Indeed, this result is a particular case of the local conic structure theorem of semialgebraic sets, \cite[IX.3.6]{bcr}. 
 	
-Observe that, by its very definition, it makes sense to define the germs $C_{i,p}$ of $C_i$ at the point $p$ for $i=1,\dots,k$ as they are independent of the radius $\varepsilon$. These germs  $C_{i,p}$ are called the \em germ Nash half-banches \em of the curve $\Gamma$ centered at $p$. For more details see \cite[IX.5.2]{bcr}. 
+Observe that, by its very definition, it makes sense to define the germs $C_{i,p}$ of $C_i$ at the point $p$ for $i=1,\dots,k$ as they are independent of the radius $\eps$. These germs  $C_{i,p}$ are called the \em germ Nash half-banches \em of the curve $\Gamma$ centered at $p$. For more details see \cite[IX.5.2]{bcr}. 
 \end{definitions}
 
 \begin{definition} \label{puiseux} It is proved in \cite[pp. 98-102]{w} that given an algebraically closed field $K$ and an indeterminate ${\tt t}$ over $K$, the field $K\left(\set{{\tt t}^*}\right)$ of \em Puiseux series \em with coefficients in $K$ is algebraically closed. As it is an algebraic extension of the field $K\left({\tt t}\right)$ of rational functions over $K$, the field $K\left(\set{{\tt t}^*}\right)$ is an algebraic closure of the field $F({\tt t})$ for every subfield $F$ of $K$ such that the field extension $K|F$ is algebraic. In particular, for $F:=\R$ it follows that $\C\left(\set{{\tt t}^*}\right)$ is an algebraic closure of $\R({\tt t})$.
