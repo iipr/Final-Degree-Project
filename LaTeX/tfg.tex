@@ -1050,13 +1050,13 @@ Without further ado, the polynomial map we are going to be working with is $\FFF
 }
 \end{equation*}
 
-As we anticipated before, in the next section we will give some topological definitions and proof some facts about a family of topological spaces homeomorphic to a closed disc in $\R^3$, and paths that go through them.
+As we anticipated before, in the next section we will give some topological definitions and proof some facts about a family of topological spaces homeomorphic\footnote{Meaning there exists a continuos map that has a continuous inverse.} to a closed disc in $\R^3$, and paths that go through them.
 
 Afterwards, by decomposing $\FFF$ into the composition $\FFF = f_2 \circ f_1$ with $f_2 = h \circ g$, it will be clear that we can reduce the proof to check that the boundaries of two certain topological spaces (homeomorphic to a closed disc) have non-empty intersection with the image $g(\overline{\Qu})$, where $\overline{\Qu} = \set{x \ge 0, y \ge 0}$ is the closure of the open quadrant $\Qu$.
 \end{subsection}
 \end{section}
 \begin{section}{Topological tools}
-\begin{subsection}{Some definitions}
+\begin{subsection}{Some definitions}\label{topDefs}
 We begin by defining the key topological varieties we are going to be working with:
 \begin{definitions}
 (i) Let ${\mathbb D}_A = \set{(x,y): x^2+y^2 \le A^2} \subset \R^2$ be the closed disc of center the origin and radius $A>0$. A \textit{warped disc} is a subset 
@@ -1086,7 +1086,7 @@ which is guaranteed to be well-defined because $\zeta$ is an homeomorphism.
 \end{definitions}
 
 Next, we define the topological concepts of \emph{path} and \emph{path concatenation}, and we explain what \emph{meeting transversally once a warped disc} means, which is just a formalization of our intuition. Finally, we will define the \emph{fundamental group} of a topological space in the usual way.
-\begin{definitions}
+\begin{definitions}\label{pathDefs}
 (i) Let $X$ be a topological space. A \emph{path} in $X$ is a continuos map $\alpha:[a, b] \to X$, where $[a,b] \subset \R$ is a closed interval. If $\alpha$ verifies that $\alpha(a) = \alpha(b) = x_0 \in \R^3$, then we say that $\alpha$ is a \emph{loop} with base point $x_0$. When this is the case, we can consider $\alpha$ as a an map whose domain is the quotient space $[a,b]/\! \sim$ obtained by identifying the end points of $[a,b]$, which is homeomorphic to $\mathbb{S}^1 := \set{(x,y): x^2+y^2=1} \subset \R^2$.
 
 (ii) Given two paths $\alpha:[a, b] \to X$ and $\beta:[c, d] \to X$ verifying $\alpha(b) = \beta(c)$, we define the \emph{composition (or product) of paths} in the following way:
@@ -1126,37 +1126,31 @@ If the path $\alpha:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{
 \end{subsection}
 
 \begin{subsection}{Useful results}
-We proceed now to prove some facts that later on will be helpful for the proof of Theorem \ref{openQuad}.
-\begin{lemma}\label{lemmaFundGr}
-Let $\D_{A,\xi}$ be a warped disc of $\R^3$ and let $X:=\R^3\setminus\partial\D_{A,\xi}$. Let $\alpha:[a,b]\to X$ be a loop with base point $x_0\in X$ that meets transversally once $\D_{A,\xi}$. Then $[\alpha]$ is a generator of $\pi_1(X,x_0)\cong{\mathbb Z}$.
-\begin{Proof} 
-Keep the notations introduced above. Let $s_0\in(a,b)$ and $\eps>0$ be such that 
-$$
-J:=\alpha^{-1}(\D_{A,\xi}(\eps))=(s_0-\eps,s_0+\eps)
-$$ 
-is an open subinterval of $[a,b]$ and $(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0)$. After a reparameterization of $\alpha$ we may assume $s_0=0$.
+We proceed now to prove some facts that later on will be helpful for the proof of Theorem \ref{openQuad}. Firstly, we prove in Lemma \ref{lemmaFundGr} that if a loop meets transversaly once a warped disc, then the topological space $\R^3$ minus the border of the warped disc has $\Z$ as fundamental group. In order to do this, Figure \ref{fig:disc} will be very helpful for visualizing the idea of the proof.
 
-As $\zeta$ is a homeomorphism of $\R^3$, we will prove the statement for $\beta:=\zeta\circ\alpha$, $Y:=\R^3\setminus\partial{\mathbb D}_A$ and the base point $y_0:=\beta(-\eps)=(0,0,-\eps)$. Consider the path $\gamma:[0,1]\rightarrow\R^3$ given by
+\begin{lemma}\label{lemmaFundGr}
+Let $\D_{A,\xi}\subset\R^3$ be a warped disc and let $X:=\R^3\setminus\partial\D_{A,\xi}$. Let $\alpha:[a,b]\to X$ be a loop with base point $x_0\in X$ that meets transversally once $\D_{A,\xi}$. Then $[\alpha]$ is a generator of $\pi_1(X,x_0)\cong{\mathbb Z}$.
+\begin{Proof} 
+Using the notation introduced in Definitions \ref{pathDefs}, let $s_0\in(a,b)$ and $\eps>0$ be such that 
+$$
+J:=\alpha^{-1}\big(\D_{A,\xi}(\eps)\big)=(s_0-\eps,s_0+\eps)\subset[a,b]
+$$ 
+and $(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0)$. We can assume $s_0=0$ after a reparameterization of $\alpha$, and so $J = (-\eps,\eps)$ and $(\zeta\circ\alpha)|_J(t)=(0,0,t)$. Note that we can write the interval $[a,b]$ like $[a,-\eps]\cup(-\eps,\eps)\cup[\eps,b]$.
+
+Since $\zeta$ is a homeomorphism of $\R^3$, instead of working in the warped disc we will prove the statement in ${\mathbb D}_A$ for $\beta:=\zeta\circ\alpha$, $Y:=\R^3\setminus\partial{\mathbb D}_A$ and the base point $y_0:=\beta(-\eps)=(0,0,-\eps)$. Consider the path $\gamma:[0,1]\rightarrow\R^3$ (see Figure \ref{fig:disc}) defined in the following way:
 $$
 \gamma(t):=
 \begin{cases}
-(3(A+\eps)t,0,\eps)&\text{if $0\le t\le\frac{1}{3}$,}\\
-(A+\eps, 0, \eps-(t-\frac{1}{3})6\eps)&\text{if $\frac{1}{3}<t\le \frac{2}{3}$,}\\
-(A+\eps-3(A+\eps)(t-\frac{2}{3}), 0, -\eps)&\text{if $\frac{2}{3}<t\le 1$}.
+\big(3(A+\eps)t,\,0,\,\eps\big)&\text{if $0\le t\le\frac{1}{3}$,}\\
+\big(A+\eps,\, 0,\, \eps-\big(t-\frac{1}{3}\big)6\eps\big)&\text{if $\frac{1}{3}<t\le \frac{2}{3}$,}\\
+\big(A+\eps-3(A+\eps)\big(t-\frac{2}{3}\big),\, 0,\, -\eps\big)&\text{if $\frac{2}{3}<t\le 1$}.
 \end{cases}
 $$
-Write $\beta_0:=\beta|_{J}$ and $\beta_1:=\beta|_{[\eps,b]}\ast\beta|_{[a,-\eps]}$. We claim:\em
+Write $\beta_0:=\beta|_{J}=\beta|_{(-\eps,\eps)}$ and $\beta_1:=\beta|_{[\eps,b]}\ast\beta|_{[a,-\eps]}$. Using the properties of path composition we get:
 $$
-\quad[\beta]=[\beta_0\ast\beta_1]=[\beta_0\ast\gamma]\,\cdot\,[\gamma^{-1}\ast\beta_1]=g\,\cdot\,e=g,
+\quad[\beta]=[\beta_0\ast\beta_1]=\big[\beta_0\ast\big(\gamma\ast\gamma^{-1}\big)\ast\beta_1\big]=[\beta_0\ast\gamma]\,\cdot\,[\gamma^{-1}\ast\beta_1].
 $$
-where $e$ and $g$ are respectively the identity element and a generator of $\pi_1(Y,y_0)\cong{\mathbb Z}$\em.
-
-The loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Consequently, $[\gamma^{-1}*\beta_1]=e$ in $\pi_1(Y,y_0)$. 
-
-The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as deformation retract the set $Z:=\partial{\mathbb D}_A(\eps)\cup I_\eps$ where $I_\eps:=\{(0,0)\}\times\{-\eps\le z\le \eps\}$. It is an exercise of algebraic topology to show that $[\beta_0\ast\gamma]$ is a generator of $\pi_1(Z,y_0)\cong\pi_1(Y,y_0)\cong{\mathbb Z}$, as required.
-\qed 
-\end{Proof}
-\end{lemma}
+We claim that $[\beta_0\ast\gamma]=g$ and $[\gamma^{-1}\ast\beta_1]=e$, where $g$ and $e$ are respectively a generator of $\pi_1(Y,y_0)\cong{\mathbb Z}$ and the identity element.
 
 \begin{figure}[ht!]
 \begin{center}
@@ -1169,7 +1163,7 @@ The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as def
 \tikzstyle{estiloborde2} = [line width=2pt, decorate]
 %Mio
 \tikzstyle{estiloborde3} = [line width=2pt, draw=red!70, rounded corners=8pt]
-\tikzstyle{estiloborde4} = [line width=2pt, draw=green!70, rounded corners=8pt]
+\tikzstyle{estiloborde4} = [line width=2pt, draw=black!50!blue, rounded corners=8pt]
 \tikzstyle{estiloborde5} = [line width=2pt, draw=blue!70, rounded corners=8pt]
 %------
 \tikzstyle{estiloborde} = [line width=2pt]
@@ -1200,22 +1194,32 @@ The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as def
 \filldraw[fill=gray!50,fill opacity=0.4,draw=black,dashed](-2.626,.001)--(-2.349,-.189)--(-2.014,-.356)--(-1.629,-.496)--(-1.204,-.605)--(-.75,-.679)--(-.277,-.719)--(.203,-.722)--(.677,-.688)--(1.136,-.618)--(1.566,-.515)--(1.957,-.38)--(2.301,-.217)--(2.587,-.03)--(2.81,.177)--(2.964,.398)--(3.045,.628)--(3.051,.862)--(2.982,1.093)--(2.839,1.316)--(2.626,1.525)--(2.349,1.716)--(2.014,1.883)--(1.629,2.022)--(1.204,2.131)--(.75,2.206)--(.277,2.245)--(-.203,2.248)--(-.677,2.214)--(-1.136,2.145)--(-1.566,2.041)--(-1.957,1.906)--(-2.301,1.743)--(-2.587,1.556)--(-2.81,1.349)--(-2.964,1.128)--(-3.045,.898)--(-3.051,.665)--(-2.982,.433)--(-2.839,.211)--cycle;
 \draw[estiloborde5,decorate,decoration={
     markings,
-    mark=at position 0.5 with {\arrow[blue!80,opacity=0.6]{>}}}](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
-\draw[estiloborde,draw=blue!70](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
-%Estoy aquí: -------> beta_1
-\draw[estiloborde3, opacity=1](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)--(0,-.763)--(0,.038)--(0,.763)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737)--cycle;
-\filldraw[fill opacity=0.5,line width=1pt,estilodiscos](-.973,1.222)--(-1.342,1.134)--(-1.678,1.018)--(-1.972,.878)--(-2.218,.718)--(-2.409,.541)--(-2.541,.351)--(-2.61,.154)--(-2.615,-.046)--(-2.556,-.244)--(-2.433,-.436)--(-2.251,-.615)--(-2.013,-.778)--(-1.726,-.922)--(-1.396,-1.041)--(-1.032,-1.134)--(-.643,-1.198)--(-.237,-1.232)--(.174,-1.234)--(.581,-1.206)--(.973,-1.146)--(1.342,-1.057)--(1.678,-.942)--(1.972,-.802)--(2.218,-.641)--(2.409,-.464)--(2.541,-.275)--(2.61,-.077)--(2.615,.123)--(2.556,.321)--(2.433,.512)--(2.251,.691)--(2.013,.855)--(1.726,.998)--(1.396,1.117)--(1.032,1.21)--(.643,1.275)--(.237,1.308)--(-.174,1.311)--(-.581,1.282)--cycle;
+    mark=at position 0.5 with {\arrow[blue!60,opacity=0.6]{>}}}](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
+\draw[estiloborde,draw=blue!60](-2.839,-.514)--(-2.839,-1.316)--(-.081,-.779);
+%beta_1 (clarito):
+\draw[estiloborde3, opacity=1](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)--(0,-.763)--(0,.238)--(0,.763)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737)--cycle;
+%Mi beta_0 (clarito):
+\draw[estiloborde,draw=black!20!blue,opacity=1](-0,0)--(-0,-0.8);
+%Disco naranja:
+\filldraw[fill opacity=0.5,orange!90,line width=1pt,estilodiscos](-.973,1.222)--(-1.342,1.134)--(-1.678,1.018)--(-1.972,.878)--(-2.218,.718)--(-2.409,.541)--(-2.541,.351)--(-2.61,.154)--(-2.615,-.046)--(-2.556,-.244)--(-2.433,-.436)--(-2.251,-.615)--(-2.013,-.778)--(-1.726,-.922)--(-1.396,-1.041)--(-1.032,-1.134)--(-.643,-1.198)--(-.237,-1.232)--(.174,-1.234)--(.581,-1.206)--(.973,-1.146)--(1.342,-1.057)--(1.678,-.942)--(1.972,-.802)--(2.218,-.641)--(2.409,-.464)--(2.541,-.275)--(2.61,-.077)--(2.615,.123)--(2.556,.321)--(2.433,.512)--(2.251,.691)--(2.013,.855)--(1.726,.998)--(1.396,1.117)--(1.032,1.21)--(.643,1.275)--(.237,1.308)--(-.174,1.311)--(-.581,1.282)--cycle;
 \draw[estiloejes,->](0,0)--(0,3.8);
-%Y aquí con el rojo: beta_1
-\draw[estiloborde3,opacity=0.9](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)(0,.038)--(0,.763)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737);
+%Mi beta_0 (oscuro):
+\draw[estiloborde,draw=black!30!blue,opacity=0.9](-0,1.1)--(-0,0.01);
+%beta_1 (oscuro):
+\draw[estiloborde3,opacity=0.9](-3.9,-.789)--(-3.893,-1.521)--(-3.731,-2.253)--(-3.244,-2.921)--(-2.433,-2.763)--(-1.622,-3.368)--(-.811,-3.211)--(0,-3.053)--(0,-1.526)(0,.77)--(0,.663)--(0,1.526)--(-.811,2.132)--(-2.433,1.816)--(-3.244,2.421)--(-4.056,1.5)--(-4.056,.737);
 \draw[estiloborde3,decorate,decoration={
     markings,
-    mark=at position 0.5 with {\arrow[red!80,opacity=0.6]{>}}}]
-(-4.056,1.)--(-4.056,-0.5);
+    mark=at position 0.5 with {\arrow[red!80,opacity=0.7]{>}}}]
+(-3.98,1.)--(-4.056,-0.5);
 \draw[estiloborde3,decorate,decoration={
     markings,
-    mark=at position 0.5 with {\arrow[red!80,opacity=0.6]{>}}}]
+    mark=at position 0.5 with {\arrow[red!80,opacity=0.7]{>}}}]
 (-1.622,-3.368)--(-.811,-3.211);
+%Mi flecha
+\draw[estiloborde4,decorate,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow[black!30!blue,opacity=0.65]{>}}}]
+(0,-0.5)--(0,1.25);
 \filldraw[fill=gray!50,fill opacity=0.4,draw=none](-2.964,-.398)--(-2.964,1.128)--(-2.81,1.349)--(-2.81,-.177)--cycle;
 \draw[estiloejes](3.319,.646)--(2.911,.567);
 \draw[estiloejes](2.911,.567)--(2.839,.553);
@@ -1224,7 +1228,7 @@ The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as def
 \draw[estiloborde,draw=blue!70](-.081,.747)--(-2.839,.211)--(-2.839,-.514);
 \draw[estiloborde5,decorate,decoration={
     markings,
-    mark=at position 0.5 with {\arrow[blue!80,opacity=0.6]{>}}}](-.081,.747)--(-2.839,.211)--(-2.839,-.514);
+    mark=at position 0.5 with {\arrow[blue!60,opacity=0.6]{>}}}](-.081,.747)--(-2.839,.211)--(-2.839,-.514);
 \draw[fill=black, draw=none, fill opacity=0.5] (0,.747) circle (0.1cm);
 \draw[fill=black, draw=none, fill opacity=0.3] (0,-.77) circle (0.1cm);
 \draw[estiloejes](4.867,.947)--(3.319,.646);
@@ -1254,28 +1258,350 @@ The class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as def
 \filldraw[fill=gray!50,fill opacity=0.4,draw=none](.203,-2.248)--(.203,-.722)--(-.277,-.719)--(-.277,-2.245)--cycle;
 \draw[estiloejes](1.164,-1.416)--(1.136,-1.382);
 \draw[estiloejes,<-](1.947,-2.368)--(1.164,-1.416);
-\path (2.271,-2.763) node[left]{$y$} (-5.5,-1.2) node[above right]{$x$} (0,4.4) node[below]{$z$};\path (.811,-.2) node[right]{${\mathbb D}_A$} (0,-0.95) node[right]{$y_0$};
-\path (0,0.65) node[right]{$y_1$};
-\path [black!20!green] (-0.7,-0.1) node[right]{$\beta_0$};
+\path (2.271,-2.763) node[left]{$y$} (-5.5,-1.2) node[above right]{$x$} (0,4.4) node[below]{$z$};\path (1.45,0) node[right]{${\mathbb D}_A$} (-0.1,-1.02) node[right]{$y_0$};
+\path (0,0.85) node[right]{$y_1$};
+\path [black!50!blue] (0.1,-0.1) node[right]{$\beta_0$};
 \path (2.5,1.468) node[above right]{${\mathbb D}_A(\eps)$};
 \path [red] (-4.3,-1.5) node[below]{$\beta_1$};
-\path [blue] (-1.1,.526) node[below]{$\gamma$};
+\path [blue!90] (-1.1,1.15) node[below]{$\gamma$};
 \end{tikzpicture}
-\caption{The path $\beta$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$.}\label{pic:disco}
+\caption{The loop $\beta=\beta_0\ast\beta_1$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$, so the path $\beta_0$ goes from $y_0$ to $y_1$ (in purple), $\gamma$ from $y_1$ to $y_0$ (in blue) and $\beta_1$ from $y_1$ to $y_0$ (in red).}\label{fig:disc}
 \end{center}
 \end{figure}
 
+Firstly, the loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Consequently, the loop $\gamma^{-1}*\beta_1$ is null-homotopic and $[\gamma^{-1}*\beta_1]=e \in \pi_1(Y,y_0)$.
+
+On the other hand, the class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as deformation retract the set $Z:=\partial{\mathbb D}_A(\eps)\cup I_\eps$ where $\partial{\mathbb D}_A(\eps)$ is the boundary of ${\mathbb D}_A(\eps)$ and $I_\eps:=\set{(0,0,z):-\eps\le z\le \eps}$. Finally, because the set $Z$ is homeomorphic to a sphere union one of its diameters we can use Lemma \ref{lemmaZ} and obtain that $[\beta_0\ast\gamma]$ is a generator of $\pi_1(Z,y_0)\cong\pi_1(Y,y_0)\cong{\mathbb Z}$, as required.
+\qed 
+\end{Proof}
+\end{lemma}
+
 \begin{lemma}\label{lemmaZ}
-a
+Let $S=\set{(x,y,z):x^2+y^2+z^2=A^2}\subset\R^3$ be the sphere of center the origin and radius $A > 0$, let $D$ be one of its diameters and let $M := S\cup D$. If $x_0\in M$ then $\pi_1(M,x_0)\cong\Z$.
+%No tengo muy clara esta demostración, está extraida de la página 76 de la Tesis de Ueno. Me lía un poco porque a veces no aparece el punto base del grupo fundamental, quizás es una tontería...
+\begin{Proof}
+Let $x_0\in S\setminus D$ and let $U := M\setminus\set{x_0}$. Also let $V$ be a neighbourhood of $x_0$ homeomorphic to a closed disc and small enough as for to having empty intersection with the diameter $D$. It is clear that $M\cong U\cup V$. Consider $\varphi$ the group homeomorphism
+$$
+\varphi: \pi_1(U\cap V, x_0) \longrightarrow \pi_1(U, x_0)
+$$
+induced by the inclusion map ${\tt j}: (U\cap V)\hookrightarrow U$. Because $V$ is a simply connected space, we deduce from the Theorem of Seifert and Van Kampen \cite[Chapter IV: $\mathsection$4, page 95]{m} that 
+$$
+\pi_1(M, x_0) = \bigslant{\pi_1(U, x_0)}{\text{im}(\varphi)}.
+$$
+Next, notice that $U$ is homeomorphic to a closed disc joined with an arc that connects two points of the disc and that doesn't touch its border. Thus, $U$ has $\mathbb{S}^1$ as deformation retract and $\pi_1(U, x_0)\cong \Z$. What is more, since $U\cap V \cong V\setminus\set{x_0}$ the set $U\cap V$ is homeomorphic to a disc minus a point, so $\pi_1(U\cap V, x_0)\cong \pi_1(\mathbb{S}^1,x_0) \cong \Z$, and notice that a generator of this fundamental group is contained in $S\setminus\set{x_0}\subset U$. But then, since $S\setminus\set{x_0}$ is contractible, we obtain that $\varphi(\pi_1(U\cap V, x_0))=0$ and then $\pi_1(M, x_0) = \pi_1(U, x_0)$ is generated by the class of a loop $\alpha$ like in Figure \ref{fig:sphereZ}. Thus, $\pi_1(M, x_0)=\Z$ as required.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+\draw[dashed] (-5,0) arc (180:0:5cm and 1.25cm);
+\draw[dashed] (0,5) arc (90:-90:1.5cm and 5cm);
+\draw (-3,4)--(0,0)--(3,-4);
+\draw [line width=2pt, draw=blue!65, opacity=0.8,rounded corners=8pt] (-3,4)--(0,0)--(3,-4);
+\draw (0,0) circle (5cm);
+\shade[ball color=blue!10!white,opacity=0.30] (0,0) circle (5cm);
+\draw (-5,0) arc (180:360:5cm and 1.25cm);
+\draw (0,5) arc (90:270:1.5cm and 5cm);
+\draw [line width=2pt, draw=blue!65, rounded corners=8pt] (-3,4) arc (120:-38:4.65cm and 5.4cm);
+\draw[line width=2.5pt,rotate=180,decorate,decoration={
+markings,
+mark=at position 0.5 with {\arrow[black!30!blue,opacity=0.65]{>}}}]
+(-4.2,0)--(-2.3,-4.5);
+\draw[line width=2.5pt,rotate=218,decorate,decoration={
+markings,
+mark=at position 0.5 with {\arrow[black!10!blue,opacity=0.45]{>}}}]
+(0,-1)--(0,1.45);
+\path (-4.1,-4.1) node[right]{\Large{$S$}};
+\path (-2.7,2.2) node[right]{\Large{$D$}};
+\path [blue!85] (3,3) node[right]{\Large{$\alpha$}};
+\end{tikzpicture}
+\caption{The set $M:=S\cup D$ and a generator $\alpha$ of $\pi_1(M,x_0)$ from Lemma \ref{lemmaZ}.}\label{fig:sphereZ}
+\end{center}
+\end{figure}
+\qed
+\end{Proof}
 \end{lemma}
 
 \begin{lemma}\label{lemmaId}
-a
+Let $z_0\in\partial C$ where $C$ is a space homeomorphic to a closed disc. Let $\phi:C\longrightarrow X$ be a continuous map and consider $\beta:[a,b]\longrightarrow\partial C$ a parameterization starting and ending at $z_0$. Then $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$.
+\begin{Proof} 
+Let $\psi:C\longrightarrow\{x^2+y^2\leq 1\}$ be a homeomorphism. Let $H$ be the continuous map
+$$
+H:[0,1]\times[a,b]\longrightarrow X,\ (\rho,t)\longmapsto\big(\phi\circ\psi^{-1}\big)\big(\rho\cdot(\psi\circ\beta)(t)+(1-\rho)\cdot\psi(z_0))\big).
+$$
+Notice that $H(0,t)=\phi(z_0)$ and that $H(1,t)=\phi\big(\beta(t)\big)$. Thus, it is clear that $H$ is a homotopy map between $\phi\circ\beta$ and the constant path, as required.
+\qed
+\end{Proof}
 \end{lemma}
 
 \begin{proposition}\label{propTop}
-a
+Let $C$ be a topological space homeomorphic to a closed disc and $\phi:C\longrightarrow\R^3$ a continuous map. If the boundary map of $\phi$ (namely $\partial\phi$) meets transversally once a warped disc $\D\subset\R^3$, then $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$.
+\begin{Proof}
+Suppose instead that $\partial\D\cap\phi\big(\overset{\circ}{C}\big)=\varnothing$. Since $\partial\phi$ meets transversally once $\D$, by Remark \ref{remPath} the image of $\partial C$ under the map $\phi$ does not intersect $\partial\D$. This alongside our initial asumption gives us that $\phi(C)\subset X:=\R^3\setminus\partial\D$.
+
+Let $\beta:[a,b]\to\partial C$ be a parameterization starting and ending at $z_0\in\partial C$ such that $\phi\circ\beta$ meets transversally once $\D$. By Lemma \ref{lemmaId} the class $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$. However, by Lemma \ref{lemmaFundGr} the class $[\phi\circ\beta]$ is a generator of $\pi_1\big(X,\phi(z_0)\big)\cong\Z$, which leads to a contradiction. Consequently, $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$, as we wanted to.
+\qed
+\end{Proof}
 \end{proposition}
+\end{subsection}
+\end{section}
+
+\begin{section}{The topological proof for the open quadrant problem}
+
+\begin{subsection}{Getting ready}
+Observe first that the map $f$ in the statement of Theorem \ref{main} is the composition $f_2\circ f_1$ of the polynomial maps
+\begin{align*}
+&f_1:\R^2\to\R^2,\quad (x,y)\mapsto(x^2,y^2),\\
+&f_2:\R^2\to\R^2,\quad (x,y)\mapsto((xy^2+x^2y-y-1)^2+x^3y^2,(x^3y+xy-x-1)^2+x^3y^2)u
+\end{align*}
+As $f_1(\R^2)$ is the closed quadrant $\overline{\Qu}:=\{x\geq0,y\geq0\}$, we have to prove the equality
+\begin{equation}
+f_2(\overline{\Qu})=\Qu.
+\end{equation}
+The inclusion $f_2(\overline{\Qu})\subset\Qu$ is straightforward because both components of $f_2$ are strictly positive on $\overline{\Qu}$. It only remains to show the inclusion 
+\begin{equation}\label{principal}
+\Qu\subset f_2(\overline{\Qu}).
+\end{equation}
+
+Consider the (continuous) semialgebraic maps 
+\begin{align*}
+&g:\overline{\Qu}\rightarrow\R^3,\ (x,y)\mapsto(xy^2+x^2y-y-1,x^{3/2}y,x^3y+xy-x-1)\\
+&h:\R^3\rightarrow\R^2,\ (x,y,z)\mapsto(x^2+y^2,y^2+z^2). 
+\end{align*}
+As $f_2=h\circ g$, we have to show that for each tuple $(A^2,B^2)\in\Qu$ there exists $(x_0,y_0)\in\overline{\Qu}$ such that $(h\circ g)(x_0,y_0)=(A^2,B^2)$. This is equivalent to check that the intersection $h^{-1}(\{(A^2,B^2)\})\cap g(\overline{\Qu})$ is non-empty. 
+
+Denote $\mathcal{S}:=g(\overline{\Qu})$ and fix values $B\ge A>0$. It holds that sets
+\begin{align*}
+&h^{-1}(\{(A^2,B^2)\})=\{x^2+y^2=A^2,y^2+z^2=B^2\},\\
+&h^{-1}(\{(B^2,A^2)\})=\{y^2+z^2=A^2,x^2+y^2=B^2\}
+\end{align*} 
+contain respectively the boundaries of the warped discs
+\begin{align}
+\D_1:\,z=\xi_1(x,y),\quad x^2+y^2\le A^2,\label{d1}\\
+\D_2:\,x=\xi_2(y,z),\quad y^2+z^2\le A^2,\label{d2}
+\end{align}
+for the (continuous) semialgebraic functions 
+\begin{align}
+&\xi_1:\R^2\to\R,\ (x,y)\mapsto\sqrt{B^2-\min\{y^2,B^2\}},\label{xi1}\\
+&\xi_2:\R^2\to\R,\ (y,z)\mapsto\sqrt{B^2-\min\{y^2,B^2\}}.\label{xi2}
+\end{align}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\pgfplotsset{ticks=none}
+\begin{axis}[view={45}{30}, scale=1.8, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-5.5,xmax=5.5,ymin=-9.5,ymax=9.5,zmin=-1,
+zmax=9, unit vector ratio=]
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {0});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {0});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {3*sin(v)});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,0)
+          (-5,-9,0)
+          (5,-9,0)
+          (5,-3,0)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,0)
+          (-5,9,0)
+          (5,9,0)
+          (5,3,0)};
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{3*sin(deg(x))});
+%------
+\addplot3[very thick,domain=0:2*pi,samples=40,samples y=0]
+({2*cos(deg(x))},
+{2*sin(deg(x))},
+{sqrt(9-4*(sin(deg(x)))^2)});
+\addplot3[opacity=0, fill opacity=0.5, surf,samples=40,gray,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:360]
+({u*cos(v)},{u*sin(v)},{sqrt(9-u^2*(sin(v))^2)});
+%------
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {2});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {2});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {2+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{2+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{2+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,2)
+          (-5,-9,2)
+          (5,-9,2)
+          (5,-3,2)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,2)
+          (-5,9,2)
+          (5,9,2)
+          (5,3,2)};
+%----
+\addplot3[opacity=0.0, fill opacity=0.3, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {4});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {4});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {4+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{4+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{4+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,4)
+          (-5,-9,4)
+          (5,-9,4)
+          (5,-3,4)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,4)
+          (-5,9,4)
+          (5,9,4)
+          (5,3,4)};
+%----
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {6});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {6});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {6+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{6+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{6+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,6)
+          (-5,-9,6)
+          (5,-9,6)
+          (5,-3,6)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,6)
+          (-5,9,6)
+          (5,9,6)
+          (5,3,6)};
+%----
+\end{axis}
+\end{tikzpicture}
+
+\vskip 0.3cm
+\begin{tikzpicture}
+%\draw[white,->] (0,0)--(1,3);
+\draw [thick, ->] (0,0)--(0,-0.5) node [right] {$\zeta$} -- (0,-1);
+\end{tikzpicture}
+\vskip 0.3cm
+
+\begin{tikzpicture}
+\pgfplotsset{ticks=none}
+\begin{axis}[view={45}{30}, scale=1.8, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-5.5,xmax=5.5,ymin=-9.5,ymax=9.5,zmin=-1,
+zmax=9, unit vector ratio=]
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {0});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,0)
+          (-5,9,0)
+          (5,9,0)
+          (5,-9,0)
+          (-5,-9,0)};
+%---
+\addplot3[very thick,domain=0:2*pi,samples=40,samples y=0]
+({2*cos(deg(x))},
+{2*sin(deg(x))},
+{0});
+\addplot3[opacity=0, fill opacity=0.5, surf,samples=40,gray,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:360]
+({u*cos(v)},{u*sin(v)},{0});
+%---
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {2});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,2)
+          (-5,9,2)
+          (5,9,2)
+          (5,-9,2)
+          (-5,-9,2)};
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {4});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,4)
+          (-5,9,4)
+          (5,9,4)
+          (5,-9,4)
+          (-5,-9,4)};
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {6});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,6)
+          (-5,9,6)
+          (5,9,6)
+          (5,-9,6)
+          (-5,-9,6)};
+\end{axis}
+\end{tikzpicture}
+\caption{The homeomorphism $\zeta$ for $\xi(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$.}\label{pic:homeo}
+\end{center}
+\end{figure}
+
+Consequently, we are reduced to prove:
+
+\paragraph{}\hspace{-6mm}\label{311} {\em For fixed values $B\ge A>0$ the intersections $\partial\D_1\cap\mathcal{S}$ and $\partial\D_2\cap\mathcal{S}$ are non-empty.}
+\end{subsection}
+
+\begin{subsection}{Proof of Statement}
 
 \end{subsection}
 
@@ -1455,6 +1781,9 @@ $10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
 
 \bibitem[W]{w} R.J. Walker: \em Algebraic curves. \em Berlin, Heidelberg, 
 New York: Springer Verlag, (1978).
+
+\bibitem[M]{m} W. Massey: A Basic Course in Algebraic Topology, \emph{Graduate Texts in Mathematics}, \textbf{\text{127}}.
+Springer-Verlag, New York: 1991.
 
 
 

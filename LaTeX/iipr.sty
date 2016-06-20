@@ -53,6 +53,9 @@
 \DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{\ifblank{#1}{{}\cdot{}}{#1}}        % Ceil
 \DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{\ifblank{#1}{{}\cdot{}}{#1}}   % Floor
 
+%For a nice quotient of spaces
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+
 % For all and exists with a "lighter spacing":
 \let\existstemp\exists
 \renewcommand{\exists}{\existstemp\, \hspace{-0.1ex}\!\,}
