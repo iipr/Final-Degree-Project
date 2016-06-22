@@ -201,7 +201,7 @@ whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem 
 \begin{itemize}
 \item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see section \ref{quadReasons}). 
 	
-\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre]{Laguerre's method}.
+\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre] {Laguerre's method}.
 \end{itemize}
 \end{remark}
 
@@ -318,7 +318,7 @@ as required.
 \begin{chapter}{The open quadrant $\Qu$ problem: First proof}
 \begin{section}{How to find a ``potential'' map to solve the problem}\label{quadReasons}
 		
-It is remarkable that though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see Figure \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
+It is worthwhile mentioning that though the open interval $I:=(0,+\infty)$ is the image of $\R^2$ under the polynomial map $h:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+x^2$, see Figure \ref{fig:h(x,y)}, the interval $I$ is not a polynomial image of $\R$ because polynomial images of the real line are closed subsets of $\R$.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plots/ch1_03_f(x,y).png}
@@ -332,6 +332,8 @@ There is no polynomial map $f:=(P_1, P_2):\R^2\to\R^2$ satisfying $f(\R^2)=\Qu$ 
 \end{remark}
 The proof of this remark relies on a suitable use of the Curve Selection Lemma (\cite[VIII.2.6]{abr}) to approach a point $(\lambda^2,0)\in\overline{\Qu}$ with $\lambda>0$, to get a contradiction.
 		
+\vspace{1mm}
+
 On the topic of finding a polynomial map $\Phi:\R^2\to\R^2$ that satisfies $\Phi(\R^2)=\Qu$, ``a major difficulty" is the following:
 \begin{center}
 \begin{tabular}{rr}
@@ -345,6 +347,8 @@ $$
 \end{remark}
 We are going to define a map $\P:=(\F,\G)$ that accomplish this task, with the set $F$ being $F:=\set{(-1,0),(0,-1)}$. If we were able to find such map $\P$, then condition ($\clubsuit$) will immediately be satisfied. 
 		
+\vspace{1mm}
+
 Suppose for a while that such a map $\P$ exists. Then, for every $\lambda,\mu\ge 0$ there will exist \hyperref[curveGerms]{Nash half-branch curve germs} $\alpha_{\lambda}(s),\beta_{\mu}(s)$ which cannot be extended to $0$ and such that:
 $$
 \lim_{s\rightarrow 0} P(\alpha_{\lambda}(s))=(\lambda^2,0)\qquad \text{and} \qquad \lim_{s\rightarrow 0} P(\beta_{\mu}(s))=(0,\mu^2).
@@ -452,7 +456,7 @@ We start by solving the equation $\G-v=0$, that is,
 $$
 (1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2-v=0
 $$ 
-As it has degree $2$ with respect to $y$, we can compute its roots $y^+({\tt x},v)$ and $y^-({\tt x},v)$ given by:
+As it has degree $2$ with respect to $y$, we compute its roots $y^+({\tt x},v)$ and $y^-({\tt x},v)$ given by:
 \begin{equation*}
 \begin{aligned}
 y^+({\tt x},v)&:=\frac{1+{\tt x}+{\tt x}^3+{\tt x}^4+\sqrt{\Delta({\tt x},v)}}{{\tt x}({\tt x}^2+({\tt x}^3+1)^2)}\\
@@ -615,6 +619,9 @@ are contained in $D$, they are graphs above the vertical axis $\{x=0\}\subset R^
 \includegraphics[width=1\textwidth]{plots/ch1_15_nice_plot.pdf}
 \caption{Plot of $\set{(N_v,v)}, \set{(\delta_v,v)}\subset D_v$, for $0<v<0.28^2$.\label{fig:nice_plot}}
 \end{figure}
+
+\vspace{1mm}
+
 So the only thing left to do is checking that $\gamma_v^-(N_v)>\gamma_v^-(\delta_v)$. Recall that 
 $$
 \gamma_v^-({\tt x})=\dfrac{A_2({\tt x},v)+B_2({\tt x},v)\sqrt{\Delta({\tt x},v)}}{C({\tt x})},
@@ -681,6 +688,8 @@ where
 }
 \end{equation*}
 We can see how the graphs of the components of these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
+
+\vspace{1mm}
 
 In the next section we proceed to develop the proof, which splits into three lemmas.
 
@@ -761,12 +770,11 @@ In the next section we proceed to develop the proof, which splits into three lem
 As we have anticipated before, $\Qu$ is the image of the composition $\HH\circ\GG\circ \FF$, but before proving this fact we need three auxiliar lemmas in order to shed some light on the properties that the images of $\FF,\,\GG\text { and }\HH$ enjoy.
 
 \begin{subsection}{The first lemma}
-\begin{lemma}\label{lemma1}
-Let $\mathscr{A}:=\set{xy\ge1}\ \cap\, \Qu$. Then the image of the map
+\begin{lemma}\label{lemma1} \em Let $\mathscr{A}:=\set{xy\ge1}\ \cap\, \Qu$. Then the image of the map
 $$
 \FF:=(\FF_1,\FF_2):\R^2\to\R^2,(x,y)\mapsto((xy-1)^2+x^2,(xy-1)^2+y^2)
 $$
-satisfies that $\mathscr{A}\subset\FF(\R^2)\subset\Qu$.
+satisfies that $\mathscr{A}\subset\FF(\R^2)\subset\Qu$. \em 
 \begin{Proof}
 Since $\FF_1$ and $\FF_2$ are positive on $\R^2$, the inclusion $\FF(\R^2) \subset \Qu$ is evident. To prove the other inclusion, we must show that for $(a,b)\in\mathscr{A}$ the system of polynomial equations
 \begin{equation}\label{eq:systemF}
@@ -826,12 +834,11 @@ Then $F(x_0,y_0)=(a,b)$ and $\mathscr{A}\subset\FF(\R^2)$, as required.
 \end{figure}
 
 \begin{subsection}{The second lemma}
-\begin{lemma}\label{lemma2}
-Let $\mathscr{B}:=\mathscr{A}\cup\set{y\ge x>0}$. Then, the map
+\begin{lemma}\label{lemma2} \em Let $\mathscr{B}:=\mathscr{A}\cup\set{y\ge x>0}$. Then, the map
 $$
 \GG:=(\GG_1,\GG_2):\R^2\to\R^2,(x,y)\mapsto (x,\ y(xy-2)^2+x(xy-1)^2)
 $$
-satisfies that $\mathscr{B}\subset\GG(\mathscr{A})\subset\GG(\Qu)\subset\Qu$.
+satisfies that $\mathscr{B}\subset\GG(\mathscr{A})\subset\GG(\Qu)\subset\Qu$. \em 
 \begin{Proof}
 The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial because $\mathscr{A}\subset\Qu$. The last inclusion $\GG(\Qu) \subset\Qu$ also holds since $\GG_1$ and $\GG_2$ are strictly positive on $\Qu$: if $x_0,y_0>0$ then $\GG_1(x_0,y_0)=x_0> 0$ and $\GG_2(x_0,y_0)=y_0(x_0y_0-2)^2+x_0(x_0y_0-1)^2>0$. Notice that $\GG_2(x_0,y_0)\ne0$. Otherwise there would exists a solution of the system of equations
 \begin{equation*}
@@ -843,6 +850,8 @@ The inclusion $\GG(\mathscr{A}) \subset \GG(\Qu)$ is trivial because $\mathscr{A
 \right.
 \end{equation*}
 which is not possible.
+
+\vspace{1mm}
 
 Now we can focus on proving $\mathscr{B} \subset \GG(\mathscr{A})$. First of all, notice that we can express the set $\mathscr{B}$ as a union of closed half-lines. Precisely, for each $x>0$ let $\mathscr{B}_x:=[y_x,+\infty)$, where $y_x:=\text{min}\set{x,1/x}$ and notice that
 $$
@@ -941,14 +950,15 @@ which concludes the proof.
 \end{center}
 
 \begin{subsection}{The third lemma}
-\begin{lemma}\label{lemma3}
-The polynomial map 
+\begin{lemma}\label{lemma3} \em The polynomial map 
 $$
 \HH:=(\HH_1,\HH_2):\R^2\to\R^2,(x,y)\mapsto(x(xy-2)^2+\tfrac{1}{2}xy^2,\ y)
 $$
-satisfies $\HH(\mathscr{B})=\HH(\Qu)=\Qu$.
+satisfies $\HH(\mathscr{B})=\HH(\Qu)=\Qu$. \em 
 \begin{Proof}
 The inclusion $\HH(\mathscr{B})\subset\HH(\Qu)$ is trivial because $\mathscr{B}\subset\Qu$. As for $\HH(\Qu)\subset\Qu$, since $\HH_1$ and $\HH_2$ are strictly positive on $\Qu$ the inclusion holds.
+
+\vspace{1mm}
 
 We proceed now to prove that $\Qu\subset\HH(\mathscr{B})$ and therefore get $\Qu\subset\HH(\mathscr{B})\subset\HH(\Qu) \subset\Qu$, which implies that $\HH(\mathscr{B})=\HH(\Qu)=\Qu$.
 
@@ -1040,33 +1050,36 @@ as required.
 \begin{chapter}{A topological proof for the open quadrant $\Qu$ problem}
 \begin{section}{A topological perspective}
 %Modificad cualquier cosa que no os convenza o que no sea totalmente cierta de esta introduccion:
-Not happy with having proved that $\Qu$ is the image of $\R^2$ under two different polynomial maps using diverse techniques, the authors developed a whole new proof that relies on algebraic topology for a new polynomial map $\FFF: \R^2 \longrightarrow \R^2$ on the paper \cite{fgu}. The genesis of this work was their collaboration with C. Ueno while he was writing his Ph.D. Thesis \cite{u}.
+Although Fernando, Gamboa and Ueno proved that the open quadrant $\Qu$ is the image of $\R^2$ under two distinct polynomial maps using very different techniques, they developed quite recently in \cite{fgu} a completely new proof that relies on algebraic topology methods applied to a new polynomial map $\FFF: \R^2 \longrightarrow \R^2$. The genesis of this third proof appears in Ueno's Ph.D. \cite{u} written under the supervision of Fernando. 
 
-In this chapter we will build up the topological machinery that will allow us to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
+In this chapter we will build up the topological machinery necessary to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
 \begin{subsection}{The new polynomial map}
-Without further ado, the polynomial map we are going to be working with is $\FFF$ and it is defined in the following way:
+Without further ado, the polynomial map we are going to work with is denoted $\FFF$ and it is defined as:
 \begin{equation*}
 \boxed{
 \FFF({\tt x}, {\tt y}) := \big(({\tt x}^2{\tt y}^4+{\tt x}^4{\tt y}^2-{\tt y}^2-1)^2+{\tt x}^6{\tt y}^4,\ ({\tt x}^6{\tt y}^2+{\tt x}^2{\tt y}^2-{\tt x}^2-1)^2+{\tt x}^6{\tt y}^4\big).
 }
 \end{equation*}
 
-As we anticipated before, in the next section we will give some topological definitions and proof some facts about a family of topological spaces homeomorphic\footnote{Meaning there exists a continuos map that has a continuous inverse.} to a closed disc in $\R^3$, and paths that go through them.
+As we announced before, in Section \ref{TTT} we will introduce some definitions and prove some facts about a family of topological subspaces of $\R^3$ homeomorphic to a closed disc, and paths that go through them.
 
-Afterwards, by decomposing $\FFF$ into the composition $\FFF = f_2 \circ f_1$ with $f_2 = h \circ g$, it will be clear that we can reduce the proof to check that the boundaries of two certain topological spaces (homeomorphic to a closed disc) have non-empty intersection with the image $g(\overline{\Qu})$, where $\overline{\Qu} = \set{x \ge 0, y \ge 0}$ is the closure of the open quadrant $\Qu$.
+\vspace{1mm}
+
+Afterwards, after factorizing $\FFF=f_2\circ f_1$ with $f_2=h\circ g$, it will be clear that the proof is reduced to check that the boundaries of two certain topological subspaces of $\R^3$ homeomorphic to a closed disc meet $g(\overline{\Qu})$, where $\overline{\Qu}:=\set{x\ge 0,y\ge 0}$ is the closed quadrant.
 \end{subsection}
 \end{section}
-\begin{section}{Topological tools}
+\begin{section}{Topological tools}\label{TTT}
 \begin{subsection}{Some definitions}\label{topDefs}
-We begin by defining the key topological varieties we are going to be working with:
+We begin by defining the key topological manifolds we are going to work with.
 \begin{definitions}
-(i) Let ${\mathbb D}_A = \set{(x,y): x^2+y^2 \le A^2} \subset \R^2$ be the closed disc of center the origin and radius $A>0$. A \textit{warped disc} is a subset 
-$$\D_{A,\xi}:=\set{(x,y,z): x^2+y^2\le A^2,\ z=\xi(x,y)}\subset\R^3$$
+(i) Let ${\mathbb D}_A:=\set{(x,y):x^2+y^2\le A^2}\subset\R^2$ be the closed disc of center the origin and radius $A>0$. A \textit{warped disc} is a subset 
+$$
+\D_{A,\xi}:=\set{(x,y,z):x^2+y^2\le A^2,\ z=\xi(x,y)}\subset\R^3$$
 where $\xi:\R^2\longrightarrow\R$ is a continuous function. Let $\zeta$ be the homeomorphism
 $$
 \zeta:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto\big(x,\, y,\, z-\xi(x,y)\big).
 $$
-Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$ is the projection or ``flattening'' of the warped disc $\D_{A,\xi}$ onto the $x-y$ plane. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$:
+Clearly $\zeta(\D_{A,\xi})={\mathbb D}_A\times\{0\}$ is the projection or ``flattening'' of the warped disc $\D_{A,\xi}$ onto the plane $\{z=0\}\subset\R^3$. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$; namely
 \begin{equation*}
 \begin{aligned}
 \D_{A,\xi}:=\set{(x,y,z): y^2+z^2\le A^2,\ x=\xi(y,z)}& \ \text{ or } \\
@@ -1075,35 +1088,61 @@ Then, it is clear that $\zeta(\D_{A,\xi}) = {\mathbb D}_A\times\{0\}$ is the pro
 \end{equation*}
 with $\xi$ defined as above.
 
-(ii) For each $\eps>0$ let us define an open neighborhood of ${\mathbb D}_A$ as follows:
+\vspace{1mm}
+
+(ii) For each $\eps>0$ let us define the following  open neighbourhood of ${\mathbb D}_A$: 
 $$
 {\mathbb D}_A(\eps):=\set{(x,y):x^2+y^2<(A+\eps)^2}\times(-\eps,\eps)\subset\R^3.
 $$ 
-Clearly, in this way we obtain an open neighborhood of $\D_{A,\xi}$ by defining:
-$$
-\D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big) \subset \R^3,
-$$
-which is guaranteed to be well-defined because $\zeta$ is an homeomorphism.
+As $\zeta$ is a homeomorphism, $\D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big)\subset\R^3$ is an open neighbourhood of the warped disc $\D_{A,\xi}$. 
 \end{definitions}
 
-Next, we define the topological concepts of \emph{path} and \emph{path concatenation}, and we explain what \emph{meeting transversally once a warped disc} means, which is just a formalization of our intuition. Finally, we will define the \emph{fundamental group} of a topological space in the usual way.
-\begin{definitions}\label{pathDefs}
-(i) Let $X$ be a topological space. A \emph{path} in $X$ is a continuos map $\alpha:[a, b] \to X$, where $[a,b] \subset \R$ is a closed interval. If $\alpha$ verifies that $\alpha(a) = \alpha(b) = x_0 \in \R^3$, then we say that $\alpha$ is a \emph{loop} with base point $x_0$. When this is the case, we can consider $\alpha$ as a an map whose domain is the quotient space $[a,b]/\! \sim$ obtained by identifying the end points of $[a,b]$, which is homeomorphic to $\mathbb{S}^1 := \set{(x,y): x^2+y^2=1} \subset \R^2$.
+Next, we recall the notions of \emph{path} and \emph{path concatenation}. Also, we will recall the concept of  \emph{fundamental group} of a (path connected) topological space.
 
-(ii) Given two paths $\alpha:[a, b] \to X$ and $\beta:[c, d] \to X$ verifying $\alpha(b) = \beta(c)$, we define the \emph{composition (or product) of paths} in the following way:
+\vspace{1mm}
+
+\begin{definitions}\label{pathDefs}
+(i) Let $X$ be a topological space. A continuous map $\alpha:[a,b]\to X$, where $[a,b]\subset\R$ is a closed interval is a \emph{path} in $X$. If $\alpha(a)=\alpha(b)=x_0\in X$, we say that $\alpha$ is a \emph{loop} with base point $x_0$. In such a case, $\alpha$ may be viewed as a map whose domain is the quotient space $[a,b]/\!\sim$ obtained by identifying the end points of $[a,b]$. Notice that $[a,b]/\!\sim$ is homeomorphic to the circumference $\mathbb{S}^1:=\set{(x,y):x^2+y^2=1}\subset\R^2$. After a linear change of variables we may assume, if necessary, that $[a,b]=[0,1]$.
+
+\vspace{1mm}
+
+(ii) Given two paths $\alpha:[0,1]\to X$ and $\beta:[0,1]\to X$ such that  $\alpha(1)=\beta(0)$ the \em concatenation \em (also called \em product \em) of $\alpha$ and $\beta$ is defined as follows:
 $$
-\alpha * \beta: [a, b+(d-c)] \longrightarrow X,\ t \longmapsto
-\left\{
-\begin{array}{ll}
-\alpha(t) &\text{ if } t\in[a,b],\\
-\beta(t+c-b) &\text{ if } t\in[b, b+(d-c)].
+\alpha*\beta:[0,1]\longrightarrow X,\ t\longmapsto
+\left\{\begin{array}{ll}
+\alpha(2t) &\text{ if } 0\leq t\leq\tfrac{1}{2},\\
+\beta(2t-1) &\text{ if } \tfrac{1}{2}\leq t\leq1.
 \end{array}
 \right.
 $$
+The idea under this definition is clear. We use $\alpha$ in the "first part of the path", but the speed must be double of the original one to reach the point $\alpha(1)$ at $t:=\tfrac{1}{2}$. This explains the definition of the first part of the new path. We must use $\beta$ for the second part. Necessarily $(\alpha*\beta)\big(\tfrac{1}{2}\big)=\beta(0)$ and $(\alpha*\beta)(1)=\beta(1)$. To do that, we use the line that joints the points $p:=\big(\tfrac{1}{2},0\big)$ and $q:=(1,1)$, that is $\gamma(t):=2t-1$. Of course this is not at all the only way to construct a path joining $p$ and $q$, but seems to be the simplest one.
 
-The composition of paths verifies the associative property. Also, there exists an identity element $e$ such that for every path $\alpha$ we have $\alpha *e = e*\alpha=\alpha$. Lastly, for every path $\alpha$ there exists an inverse element $\alpha^{-1}$ such that $\alpha*\alpha^{-1} = \alpha^{-1}*\alpha =e$.
+It is easily checked that the concatenation of loops enjoys the associative property. Besides, fixed $x_0\in X$, the constant loop $e_{x_0}:[0,1]\to X,\, t\mapsto x_0$ satisfies the equality $e_{x_0}*\alpha=\alpha=\alpha*e_{x_0}$ for every loop $\alpha$ in $X$ of basis $x_0$. In addition, given a loop $\alpha$ in $X$ the loop $\alpha^{-1}:[0,1]\to X, \, t\mapsto\alpha(1-t)$ that travels the same curve as $\alpha$ but in the opposite direction satisfies $\alpha*\alpha^{-1}=\alpha^{-1}*\alpha=e_{x_0}$.
 
-(iii) A path $\alpha:[a,b]\rightarrow\R^3$ \emph{meets transversally once the warped disc $\D_{A,\xi}$} if there exist $s_0\in(a,b)$ and $\eps>0$ such that
+\vspace{1mm}
+
+(iii) Let $I:=[0,1]\subset\R$ and let $X,Y$ be two path-connected topological spaces. A \emph{homotopy} is a continuous map $H: X\times I\longrightarrow Y$. We associate to $H$ the family of continuous maps $\{H_s:X\to Y,\ x\mapsto H(x,s)\}_{s\in I}$, and it is said that the maps $H_0:X\to Y$ and $g:=H_1:X\to Y$ are \em homotopic. \em We denote this with $f\overset{H}{\simeq}g$. If, in addition, $g$ is constant we say that $f$ is \emph{null-homotopic}.
+
+\vspace{1mm} 
+
+(iv) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space of loops of base $x_0$ modulo the ``homotopy relation'', and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$. The concatenation of loops is compatible with the homotopy relation and endows $\pi_1(X,x_0)$ with an structure of group.
+
+\vspace{1mm}
+
+(v) We impose $X$ to be path connected to be sure that the fundamental groups $\pi_1(X,x_0)$ and $\pi_1(X,x_1)$ corresponding to two distinct points $x_0$ and $x_1$ in $X$ are isomorphic. Indeed, if $\gamma$ is a path in $X$ that connects $x_0$ and $x_1$ we associate to each loop $\alpha$ with base $x_0$ the loop of base $x_1$ defined as the product $\gamma\cdot\alpha\cdot\gamma^{-1}$. This construction is compatible with the homotopy relation, so it induces a homomorphism $\pi_1(X,x_0)\to\pi_1(X,x_1)$. This is in fact an isomorphism because we can associate to every loop $\beta$ with base $x_1$ the loop of base $x_0$ defined as the product $\gamma^{-1}\cdot\beta\cdot\gamma$. This is why it is usual to denote $\pi_1(X)$ the fundamental group of $X$ without any reference to the base point $x_0$. 
+\end{definitions}
+
+\vspace{1mm}
+
+(vi) A path connected space $X$ is said to be \em simply connected \em if its fundamental group is trivial, that is, all loops are null-homotopic. Intuitively this means that all loops in $X$ are contractible to a point.
+
+\vspace{1mm}
+
+Next we explain the meaning of \emph{meeting transversally once a warped disc}, which is just a formalization of our intuition.
+
+\begin{definitions} \label{pathDefs1}
+
+(i) A path $\alpha:[a,b]\to\R^3$\emph{meets transversally once the warped disc $\D_{A,\xi}$} if there exist $s_0\in(a,b)$ and $\eps>0$ such that
 $$
 J:=\alpha^{-1}(\D_{A,\xi}(\eps))=(s_0-\eps,s_0+\eps)
 $$
@@ -1111,34 +1150,33 @@ is an open subinterval of $[a,b]$ and
 $$
 (\zeta\circ\alpha)|_J(t)=(0,0,t-s_0),
 $$
-where obviously $(\zeta\circ\alpha)|_J(t) \subset \mathbb{D}_A(\eps)$ because $\alpha|_J(t) \subset \zeta^{-1}\big(\mathbb{D}_A(\eps)\big) = \D_{A,\xi}(\eps)$.
+where obviously $(\zeta\circ\alpha)|_J(t)\subset\mathbb{D}_A(\eps)$ because $\alpha|_J(t)\in\zeta^{-1}\big(\mathbb{D}_A(\eps)\big) = \D_{A,\xi}(\eps)$.
 
-(iv) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\longrightarrow\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C \cong \mathbb{S}^1$ such that the path $\alpha:=\phi\circ\beta: [a,b] \to \R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
+\vspace{1mm}
 
-(iv) Let $I:=[0,1]\subset\R,\, s\in I$ and $X, Y$ be two path-connected topological spaces. We say that a \emph{homotopy} is a continuous map $H: X\times I\longrightarrow Y$. We also say that the set $\set[\big]{H_s: X \longrightarrow Y,\ x \longmapsto H(x,s) \text{ where the variable $s$ is fixed}}$ is a family of continuous maps. If $f=H_0:X\longrightarrow Y$ and $g=H_1:X\longrightarrow Y$ are homotopic, we denote it with $f \overset{H}{\simeq}g$, and if $g$ is constant we say that $f$ is \emph{null-homotopic}.
-
-%No tengo muy claro que este bien el inglés de: "quotient space modulo the homotopy relation"
-(vi) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space modulo the homotopy relation, and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$.
+(ii) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\to\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C\cong\mathbb{S}^1$ such that the path $\alpha:=\phi\circ\beta:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
 \end{definitions}
 
+
 \begin{remark}\label{remPath}
-If the path $\alpha:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$, then $\alpha\big([a,b]\big)\cap\partial\D_{A,\xi}=\varnothing$. This will be helpful in Proposition \ref{propTop}.
+If the path $\alpha:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$, then $\alpha\big([a,b]\big)\cap\partial\D_{A,\xi}=\varnothing$. This will be helpful in the proof of Proposition \ref{propTop}.
 \end{remark}
 \end{subsection}
 
-\begin{subsection}{Useful results}
-We proceed now to prove some facts that later on will be helpful for the proof of Theorem \ref{openQuad}. Firstly, we prove in Lemma \ref{lemmaFundGr} that if a loop meets transversaly once a warped disc, then the topological space $\R^3$ minus the border of the warped disc has $\Z$ as fundamental group. In order to do this, Figure \ref{fig:disc} will be very helpful for visualizing the idea of the proof.
+\begin{subsection}{Auxiliary results}
+We proceed now to prove some facts that will be helpful later on to prove Theorem \ref{openQuad}. Firstly, we prove in Lemma \ref{lemmaFundGr} that if a loop meets transversaly once a warped disc, then the topological space $\R^3$ minus the border of the warped disc has $\Z$ as fundamental group. Figure \ref{fig:disc} helps to visualize the idea of the proof.
 
-\begin{lemma}\label{lemmaFundGr}
-Let $\D_{A,\xi}\subset\R^3$ be a warped disc and let $X:=\R^3\setminus\partial\D_{A,\xi}$. Let $\alpha:[a,b]\to X$ be a loop with base point $x_0\in X$ that meets transversally once $\D_{A,\xi}$. Then $[\alpha]$ is a generator of $\pi_1(X,x_0)\cong{\mathbb Z}$.
+\begin{lemma}\label{lemmaFundGr} \em Let $\D_{A,\xi}\subset\R^3$ be a warped disc and let $X:=\R^3\setminus\partial\D_{A,\xi}$. Let $\alpha:[a,b]\to X$ be a loop with base point $x_0\in X$ that meets transversally once $\D_{A,\xi}$. Then $[\alpha]$ is a generator of $\pi_1(X,x_0)\cong{\mathbb Z}$. \em 
 \begin{Proof} 
-Using the notation introduced in Definitions \ref{pathDefs}, let $s_0\in(a,b)$ and $\eps>0$ be such that 
+Using the notation introduced in Definitions \ref{pathDefs} and \ref{pathDefs1}, let $s_0\in(a,b)$ and $\eps>0$ be such that 
 $$
 J:=\alpha^{-1}\big(\D_{A,\xi}(\eps)\big)=(s_0-\eps,s_0+\eps)\subset[a,b]
 $$ 
-and $(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0)$. We can assume $s_0=0$ after a reparameterization of $\alpha$, and so $J = (-\eps,\eps)$ and $(\zeta\circ\alpha)|_J(t)=(0,0,t)$. Note that we can write the interval $[a,b]$ like $[a,-\eps]\cup(-\eps,\eps)\cup[\eps,b]$.
+and $(\zeta\circ\alpha)|_J(t)=(0,0,t-s_0)$. We can assume $s_0=0$ after a reparameterization of $\alpha$; so $J=(-\eps,\eps)$ and $(\zeta\circ\alpha)|_J(t)=(0,0,t)$. Note that we can write the interval $[a,b]$ as $[a,-\eps]\cup(-\eps,\eps)\cup[\eps,b]$.
 
-Since $\zeta$ is a homeomorphism of $\R^3$, instead of working in the warped disc we will prove the statement in ${\mathbb D}_A$ for $\beta:=\zeta\circ\alpha$, $Y:=\R^3\setminus\partial{\mathbb D}_A$ and the base point $y_0:=\beta(-\eps)=(0,0,-\eps)$. Consider the path $\gamma:[0,1]\rightarrow\R^3$ (see Figure \ref{fig:disc}) defined in the following way:
+\vspace{1mm}
+
+Since $\zeta$ is a homeomorphism of $\R^3$, instead of working in the warped disc we will prove the statement for ${\mathbb D}_A$ where $\beta:=\zeta\circ\alpha$, $Y:=\R^3\setminus\partial{\mathbb D}_A$ and the new base point is $y_0:=\beta(-\eps)=(0,0,-\eps)$. Consider the path $\gamma:[0,1]\to\R^3$ (see Figure \ref{fig:disc}) defined in the following way:
 $$
 \gamma(t):=
 \begin{cases}
@@ -1147,11 +1185,11 @@ $$
 \big(A+\eps-3(A+\eps)\big(t-\frac{2}{3}\big),\, 0,\, -\eps\big)&\text{if $\frac{2}{3}<t\le 1$}.
 \end{cases}
 $$
-Write $\beta_0:=\beta|_{J}=\beta|_{(-\eps,\eps)}$ and $\beta_1:=\beta|_{[\eps,b]}\ast\beta|_{[a,-\eps]}$. Using the properties of path composition we get:
+Let $\beta_0:=\beta|_{J}=\beta|_{(-\eps,\eps)}$ and $\beta_1:=\beta|_{[\eps,b]}\ast\beta|_{[a,-\eps]}$. Using the properties of path concatenation we get:
 $$
 \quad[\beta]=[\beta_0\ast\beta_1]=\big[\beta_0\ast\big(\gamma\ast\gamma^{-1}\big)\ast\beta_1\big]=[\beta_0\ast\gamma]\,\cdot\,[\gamma^{-1}\ast\beta_1].
 $$
-We claim that $[\beta_0\ast\gamma]=g$ and $[\gamma^{-1}\ast\beta_1]=e$, where $g$ and $e$ are respectively a generator of $\pi_1(Y,y_0)\cong{\mathbb Z}$ and the identity element.
+We claim that $[\beta_0\ast\gamma]=g$ and $[\gamma^{-1}\ast\beta_1]=e$, where $g$ and $e$ are, respectively, a generator of $\pi_1(Y,y_0)\cong{\mathbb Z}$ and the identity element.
 
 \begin{figure}[ht!]
 \begin{center}
@@ -1266,30 +1304,32 @@ We claim that $[\beta_0\ast\gamma]=g$ and $[\gamma^{-1}\ast\beta_1]=e$, where $g
 \path [red] (-4.3,-1.5) node[below]{$\beta_1$};
 \path [blue!90] (-1.1,1.15) node[below]{$\gamma$};
 \end{tikzpicture}
-\caption{The loop $\beta=\beta_0\ast\beta_1$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$, so the path $\beta_0$ goes from $y_0$ to $y_1$ (in purple), $\gamma$ from $y_1$ to $y_0$ (in blue) and $\beta_1$ from $y_1$ to $y_0$ (in red).}\label{fig:disc}
+\caption{The loop $\beta=\beta_0\ast\beta_1$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$, so the path $\beta_0$ goes from $y_0$ to $y_1$ (in purple), $\gamma$ goes from $y_1$ to $y_0$ (in blue) and $\beta_1$ goes from $y_1$ to $y_0$ (in red).}\label{fig:disc}
 \end{center}
 \end{figure}
+Firstly, the loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Thus the loop $\gamma^{-1}*\beta_1$ is null-homotopic and $[\gamma^{-1}*\beta_1]=e \in \pi_1(Y,y_0)$.
 
-Firstly, the loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Consequently, the loop $\gamma^{-1}*\beta_1$ is null-homotopic and $[\gamma^{-1}*\beta_1]=e \in \pi_1(Y,y_0)$.
+\vspace{1mm}
 
-On the other hand, the class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as deformation retract the set $Z:=\partial{\mathbb D}_A(\eps)\cup I_\eps$ where $\partial{\mathbb D}_A(\eps)$ is the boundary of ${\mathbb D}_A(\eps)$ and $I_\eps:=\set{(0,0,z):-\eps\le z\le \eps}$. Finally, because the set $Z$ is homeomorphic to a sphere union one of its diameters we can use Lemma \ref{lemmaZ} and obtain that $[\beta_0\ast\gamma]$ is a generator of $\pi_1(Z,y_0)\cong\pi_1(Y,y_0)\cong{\mathbb Z}$, as required.
+On the other hand, the class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Indeed, $Y$ has as deformation retract the set $Z:=\partial{\mathbb D}_A(\eps)\cup I_\eps$ where $\partial{\mathbb D}_A(\eps)$ is the boundary of ${\mathbb D}_A(\eps)$ and we denote $I_\eps:=\set{(0,0,z):-\eps\le z\le\eps}$. Finally, since $Z$ is homeomorphic to the union of a sphere and one of its diameters we deduce from Lemma \ref{lemmaZ} that $[\beta_0\ast\gamma]$ is a generator of $\pi_1(Z,y_0)\cong\pi_1(Y,y_0)\cong{\mathbb Z}$, as required.
 \qed 
 \end{Proof}
 \end{lemma}
 
-\begin{lemma}\label{lemmaZ}
-Let $S=\set{(x,y,z):x^2+y^2+z^2=A^2}\subset\R^3$ be the sphere of center the origin and radius $A > 0$, let $D$ be one of its diameters and let $M := S\cup D$. If $x_0\in M$ then $\pi_1(M,x_0)\cong\Z$.
-%No tengo muy clara esta demostración, está extraida de la página 76 de la Tesis de Ueno. Me lía un poco porque a veces no aparece el punto base del grupo fundamental, quizás es una tontería...
+\vspace{1mm}
+
+\begin{lemma}\label{lemmaZ} \em Let $S:=\set{(x,y,z):x^2+y^2+z^2=A^2}\subset\R^3$ be the sphere of center the origin and radius $A> 0$, let $D$ be one of its diameters and let $M := S\cup D$. If $x_0\in M$ then $\pi_1(M,x_0)\cong\Z$. \em 
+
 \begin{Proof}
-Let $x_0\in S\setminus D$ and let $U := M\setminus\set{x_0}$. Also let $V$ be a neighbourhood of $x_0$ homeomorphic to a closed disc and small enough as for to having empty intersection with the diameter $D$. It is clear that $M\cong U\cup V$. Consider $\varphi$ the group homeomorphism
+Let $x_0\in S\setminus D$ and let $U := M\setminus\set{x_0}$. Also, let $V$ be an small enough  neighbourhood of $x_0$ homeomorphic to a closed disc such that it does not meet the diameter $D$. It is clear that $M\cong U\cup V$. Consider  the group homomorphism
 $$
-\varphi: \pi_1(U\cap V, x_0) \longrightarrow \pi_1(U, x_0)
+\varphi:\pi_1(U\cap V,x_0)\to\pi_1(U,x_0)
 $$
-induced by the inclusion map ${\tt j}: (U\cap V)\hookrightarrow U$. Because $V$ is a simply connected space, we deduce from the Theorem of Seifert and Van Kampen \cite[Chapter IV: $\mathsection$4, page 95]{m} that 
+induced by the inclusion map ${\tt j}: (U\cap V)\hookrightarrow U$. As $V$ is a simply connected space, we deduce from the Theorem of Seifert and Van Kampen \cite[Chapter IV: $\mathsection$4, page 95]{m} that 
 $$
-\pi_1(M, x_0) = \bigslant{\pi_1(U, x_0)}{\text{im}(\varphi)}.
+\pi_1(M,x_0)=\bigslant{\pi_1(U,x_0)}{\text{im}(\varphi)}.
 $$
-Next, notice that $U$ is homeomorphic to a closed disc joined with an arc that connects two points of the disc and that doesn't touch its border. Thus, $U$ has $\mathbb{S}^1$ as deformation retract and $\pi_1(U, x_0)\cong \Z$. What is more, since $U\cap V \cong V\setminus\set{x_0}$ the set $U\cap V$ is homeomorphic to a disc minus a point, so $\pi_1(U\cap V, x_0)\cong \pi_1(\mathbb{S}^1,x_0) \cong \Z$, and notice that a generator of this fundamental group is contained in $S\setminus\set{x_0}\subset U$. But then, since $S\setminus\set{x_0}$ is contractible, we obtain that $\varphi(\pi_1(U\cap V, x_0))=0$ and then $\pi_1(M, x_0) = \pi_1(U, x_0)$ is generated by the class of a loop $\alpha$ like in Figure \ref{fig:sphereZ}. Thus, $\pi_1(M, x_0)=\Z$ as required.
+Next, notice that $U$ is homeomorphic to the union of a closed disc with an arc that joints two points of the disc and that doesn't touch its border. Thus, $U$ has $\mathbb{S}^1$ as deformation retract and $\pi_1(U, x_0)\cong \Z$. In addition, as $U\cap V\cong V\setminus\set{x_0}$ the set $U\cap V$ is homeomorphic to a punctured disc, so $\pi_1(U\cap V, x_0)\cong \pi_1(\mathbb{S}^1,x_0) \cong \Z$, and notice that a generator of this fundamental group is a loop contained  in $S\setminus\set{x_0}\subset U$. As $S\setminus\set{x_0}$ is contractible, $\varphi(\pi_1(U\cap V, x_0))=0$, hence $\pi_1(M, x_0) = \pi_1(U, x_0)$ is generated by the class of a loop $\alpha$ as in Figure \ref{fig:sphereZ}. Consequently, $\pi_1(M, x_0)=\Z$ as required.
 \qed
 \end{Proof}
 \end{lemma}
@@ -1322,24 +1362,25 @@ mark=at position 0.5 with {\arrow[black!10!blue,opacity=0.45]{>}}}]
 \end{center}
 \end{figure}
 
-\begin{lemma}\label{lemmaId}
-Let $z_0\in\partial C$ where $C$ is a space homeomorphic to a closed disc. Let $\phi:C\longrightarrow X$ be a continuous map and consider $\beta:[a,b]\longrightarrow\partial C$ a parameterization starting and ending at $z_0$. Then $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$.
+\begin{lemma}\label{lemmaId} \em Let $C$ be a topological space homeomorphic to a closed disc and let $z_0\in\partial C$. Let $\phi:C\longrightarrow X$ be a continuous map and consider a parameterization $\beta:[a,b]\to\partial C$ such that $\beta(a)=z_0=\beta(b)$. Then $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$.\em
 \begin{Proof} 
-Let $\psi:C\longrightarrow\{x^2+y^2\leq 1\}$ be a homeomorphism. Let $H$ be the continuous map
+Let $\psi:C\to\{x^2+y^2\leq 1\}$ be a homeomorphism. Let $H$ be the continuous map
 $$
-H:[0,1]\times[a,b]\longrightarrow X,\ (\rho,t)\longmapsto\big(\phi\circ\psi^{-1}\big)\big(\rho\cdot(\psi\circ\beta)(t)+(1-\rho)\cdot\psi(z_0))\big).
+H:[0,1]\times[a,b]\to X,\ (\rho,t)\mapsto\big(\phi\circ\psi^{-1}\big)\big(\rho\cdot(\psi\circ\beta)(t)+(1-\rho)\cdot\psi(z_0))\big).
 $$
-Notice that $H(0,t)=\phi(z_0)$ and that $H(1,t)=\phi\big(\beta(t)\big)$. Thus, it is clear that $H$ is a homotopy map between $\phi\circ\beta$ and the constant path, as required.
+Notice that $H(0,t)=\phi(z_0)$ and that $H(1,t)=\phi\big(\beta(t)\big)$. Thus $H$ is a homotopy map between $\phi\circ\beta$ and the constant path, as required.
 \qed
 \end{Proof}
 \end{lemma}
 
 \begin{proposition}\label{propTop}
-Let $C$ be a topological space homeomorphic to a closed disc and $\phi:C\longrightarrow\R^3$ a continuous map. If the boundary map of $\phi$ (namely $\partial\phi$) meets transversally once a warped disc $\D\subset\R^3$, then $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$.
+Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\longrightarrow\R^3$ be a continuous map. If the boundary map $\partial\phi$ of $\phi$ meets transversally once a warped disc $\D\subset\R^3$, then $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$.
 \begin{Proof}
-Suppose instead that $\partial\D\cap\phi\big(\overset{\circ}{C}\big)=\varnothing$. Since $\partial\phi$ meets transversally once $\D$, by Remark \ref{remPath} the image of $\partial C$ under the map $\phi$ does not intersect $\partial\D$. This alongside our initial asumption gives us that $\phi(C)\subset X:=\R^3\setminus\partial\D$.
+Suppose instead that $\partial\D\cap\phi\big(\overset{\circ}{C}\big)=\varnothing$. Since $\partial\phi$ meets transversally once $\D$ it follows from Remark \ref{remPath} that the image of $\partial C$ under the map $\phi$ does not intersect $\partial\D$. This alongside our initial asumption gives us that $\phi(C)\subset X:=\R^3\setminus\partial\D$.
 
-Let $\beta:[a,b]\to\partial C$ be a parameterization starting and ending at $z_0\in\partial C$ such that $\phi\circ\beta$ meets transversally once $\D$. By Lemma \ref{lemmaId} the class $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$. However, by Lemma \ref{lemmaFundGr} the class $[\phi\circ\beta]$ is a generator of $\pi_1\big(X,\phi(z_0)\big)\cong\Z$, which leads to a contradiction. Consequently, $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$, as we wanted to.
+\vspace{1mm}
+
+Let $\beta:[a,b]\to\partial C$ be a parameterization such that $\beta(a)=z_0=\beta(b)$ for some point $z_0\in\partial C$ such that $\phi\circ\beta$ meets transversally once $\D$. By Lemma \ref{lemmaId} the class $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$. However $[\phi\circ\beta]$ generates, by Lemma \ref{lemmaFundGr}, the group $\pi_1\big(X,\phi(z_0)\big)\cong\Z$, which leads to a contradiction. Thus, $\partial\D\cap\phi\big(\overset{\circ}{C}\big)\neq\varnothing$, as desired.
 \qed
 \end{Proof}
 \end{proposition}
@@ -1348,8 +1389,8 @@ Let $\beta:[a,b]\to\partial C$ be a parameterization starting and ending at $z_0
 
 \begin{section}{The topological proof for the open quadrant problem}
 
-\begin{subsection}{Decomposing $\FFF$}
-The authors observed in \cite[Section 3]{fgu} that the map $\FFF$ can be decomposed as $\FFF=f_2\circ f_1$, where the polynomial maps $f_1, f_2$ are defined as follows:
+\begin{subsection}{Factorizing $\FFF$}
+The authors observed in \cite[Section 3]{fgu} that the map $\FFF$ can be factorized as $\FFF=f_2\circ f_1$, where the polynomial maps $f_1, f_2$ are defined as follows:
 \begin{align*}
 &f_1:\R^2\longrightarrow\R^2,\quad (x,y)\longmapsto\big(x^2,\,y^2\big),\\
 &f_2:\R^2\longrightarrow\R^2,\quad (x,y)\longmapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
@@ -1362,7 +1403,7 @@ Note that both components of $f_2$ are strictly positive on $\overline{\Qu}$ so 
 \begin{equation}\label{mainTop}
 \Qu\subset f_2\big(\overline{\Qu}\big).
 \end{equation}
-A careful observation of $f_2$ leads us to decompose it into $f_2=h\circ g$, where the continuous semialgebraic maps $g, h$ are defined in the following way:
+Indeed $f_2=h\circ g$, where the continuous semialgebraic maps $g, h$ are defined as:
 $$
 \arraycolsep=2pt\def\arraystretch{1.2}
 \begin{array}{crlcl}
@@ -1370,21 +1411,21 @@ g:&\overline{\Qu}\longrightarrow\R^3,&\ (x,y)&\longmapsto&\big(xy^2+x^2y-y-1,\,x
 h:&\R^3\longrightarrow\R^2,&\ (x,y,z)&\longmapsto&\big(x^2+y^2,\,y^2+z^2\big).\\
 \end{array}
 $$
-In this way we can reduce the proof to show that for each pair of real numbers $(A^2,B^2)\in\Qu$ there exists $(x_0,y_0)\in\overline{\Qu}$ such that $(h\circ g)(x_0,y_0)=(A^2,B^2)$. This is equivalent to check that
+In this way we can reduce the proof to show that for each pair of positive real numbers $(A^2,B^2)\in\Qu$ there exists a point $(x_0,y_0)\in\overline{\Qu}$ such that $(h\circ g)(x_0,y_0)=(A^2,B^2)$. This is equivalent to check that
 \begin{equation*}
 \boxed{
-\forall (A^2,B^2)\in\Qu:\ h^{-1}\big(\set[\big]{(A^2,B^2)}\big)\ \bigcap\ g\big(\overline{\Qu}\big)\ne\varnothing.
+\forall\, \,  (A^2,B^2)\in\Qu:\ h^{-1}\big(\set[\big]{(A^2,B^2)}\big)\ \bigcap\ g\big(\overline{\Qu}\big)\ne\varnothing.
 }
 \end{equation*}
 
 Let $\Ss:=g\big(\overline{\Qu}\big)$ and fix values $B\ge A>0$. By the definition of $h$ we know that
 \begin{align*}
-&h^{-1}\big(\set{(A^2,B^2)}\big)=\set[\big]{(x,y): x^2+y^2=A^2,\,y^2+z^2=B^2} \text{ and}\\
-&h^{-1}\big(\set{(B^2,A^2)}\big)=\set[\big]{(x,y): y^2+z^2=A^2,\,x^2+y^2=B^2},
+&h^{-1}\big(\set{(A^2,B^2)}\big)=\set[\big]{(x,y): x^2+y^2=A^2,\,y^2+z^2=B^2}\subset\R^2 \, \, \text{ and}\\
+&h^{-1}\big(\set{(B^2,A^2)}\big)=\set[\big]{(x,y): y^2+z^2=A^2,\,x^2+y^2=B^2}\subset\R^2.
 \end{align*} 
-which both of them are the intersection of two perpendicular cylinders. Besides, those sets contain respectively the boundaries of the warped discs
+Both of them are the intersection of two orthogonal cylinders. Besides, these sets contain, respectively, the boundaries of the warped discs
 \begin{align}
-&\D_1:= \set{(x,y,z): x^2+y^2\le A^2,\,z=\xi_1(x,y)} \text{ and}\label{d1}\\
+&\D_1:= \set{(x,y,z): x^2+y^2\le A^2,\,z=\xi_1(x,y)} \, \, \text{ and}\label{d1}\\
 &\D_2:= \set{(x,y,z): y^2+z^2\le A^2,\,x=\xi_2(y,z)},\label{d2}
 \end{align}
 for the continuous and semialgebraic functions
@@ -1394,7 +1435,8 @@ for the continuous and semialgebraic functions
 \end{align}
 see Figure \ref{fig:homeo}.
 
-%%IMAGEN
+%% IMAGEN COMENTADA
+\begin{comment}
 \begin{figure}[!ht]
 \begin{center}
 \begin{tikzpicture}
@@ -1605,6 +1647,7 @@ domain=-5:5, y domain=-9:9]
 \caption{The homeomorphism $\zeta$ for $\xi_1(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$. Notice how it ``flattens'' the warped disc $\D_1$.}\label{fig:homeo}
 \end{center}
 \end{figure}
+\end{comment}
 
 Now it is clear that our aim is to prove the following fact:
 
@@ -1614,9 +1657,9 @@ Now it is clear that our aim is to prove the following fact:
 
 \end{subsection}
 
-\begin{subsection}{Proof of ($\diamondsuit$)}\label{mainsubsectop}
+\begin{subsection}{Proof of Claim ($\diamondsuit$)}\label{mainsubsectop}
 
-In order to proof ($\diamondsuit$), we first need to introduce a map $\phi$ and show some of its properties. Let $\phi:=(\phi_1,\phi_2,\phi_3):\R^2\longrightarrow\R^3$, whose components are defined as
+In order to prove ($\diamondsuit$), we first introduce an auxiliary map $\phi$ and study some of its properties. Let $\phi:=(\phi_1,\phi_2,\phi_3):\R^2\longrightarrow\R^3$, whose components are defined as
 $$
 \arraycolsep=2pt\def\arraystretch{1.5}
 \begin{array}{l}
@@ -1627,34 +1670,35 @@ $$
 \end{array}
 $$
 
-Let also $\Rr:=\big[0,+\infty\big)\times\big(0,\tfrac{\pi}{2}\big)$ and $\overline{\Rr}=\big[0,+\infty\big)\times\big[0,\tfrac{\pi}{2}\big]$ be its closure. We procced now to prove some of the properties that $\phi$ enjoys, where the sets $\Rr$ and $\overline{\Rr}$ will be the domain of the map $\phi$.
+Let also $\Rr:=\big[0,+\infty\big)\times\big(0,\tfrac{\pi}{2}\big)$ and let $\overline{\Rr}:=\big[0,+\infty\big)\times\big[0,\tfrac{\pi}{2}\big]$ be its closure.
+
+\vspace{1mm}
 
 \begin{lemma}\label{phiContainsS}
 With the notation introduced above, $\phi(\Rr)\subset\Ss$.
 \begin{Proof}
 Let $\psi$ be the analytic map
 $$
-\psi:=(\psi_1, \psi_2):\Rr\longrightarrow\Qu,\quad (\rho,\theta)\longmapsto \left(\frac{\sin\theta}{\cos\theta},\frac{(\cos\theta+\sin\theta+\rho\cos\theta
+\psi:=(\psi_1,\psi_2):\Rr\to\Qu,\quad(\rho,\theta)\mapsto\left(\frac{\sin\theta}{\cos\theta},\frac{(\cos\theta+\sin\theta+\rho\cos\theta
 \sin\theta)\cos^2\theta}{\sin\theta}\right).
 $$
-Note that $g\circ\psi=\phi|_{\Rr}$. If $\theta\in\big(0,\tfrac{\pi}{2}\big)$ then $\cos\theta, \sin\theta \in(0,1)$, so $\psi$ is well-defined. This alongside $\rho\in[0,+\infty)$ gives us that $\psi_1, \psi_2>0$, so $\psi(\Rr)\subset \Qu\subset \overline{\Qu}$. Thus, 
-$$
-\phi|_{\Rr}=g(\psi(\Rr))\subset g\big(\overline{\Qu}\big)=\Ss.
-$$
+Note that $g\circ\psi=\phi|_{\Rr}$. If $\theta\in\big(0,\tfrac{\pi}{2}\big)$ then $\cos\theta,\sin\theta\in(0,1)$, so $\psi$ is well-defined. This together with the fact $\rho\in[0,+\infty)$ implies that $\psi_1,\psi_2$ just attain positive values, so $\psi(\Rr)\subset \Qu\subset \overline{\Qu}$. Thus, $\phi({\Rr})=g(\psi(\Rr))\subset g\big(\overline{\Qu}\big)=\Ss$.
 \qed
 \end{Proof}
 \end{lemma}
 
+\vspace{1mm}
+
 \begin{lemma}\label{phidist}
-For all $(\rho,\theta)\in\overline{\Rr}$, the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{\rho^2}{4}$ holds. Consequently,
+For all $(\rho,\theta)\in\overline{\Rr}$ the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{\rho^2}{4}$ holds. Thus,
 \begin{equation}\label{eq:ineqphi}
-\forall (\rho,\theta)\in\overline{\Rr}:\ \ \text{dist}\big(\phi(\rho,\theta),{\bf0}\big)\geq\frac{\rho}{2}.
+\forall (\rho,\theta)\in\overline{\Rr}:\  \text{dist}\big(\phi(\rho,\theta),0\big)\geq\frac{\rho}{2}.
 \end{equation}
 
 \begin{Proof}
-Firstly, if the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{\rho^2}{4}$ holds, we get that
+Notice first that if the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{\rho^2}{4}$ holds, then
 $$
-\text{dist}\big(\phi(\rho,\theta),{\bf0}\big)=\sqrt{\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta) + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4} + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4}}\ge\frac{\rho}{2},
+\text{dist}\big(\phi(\rho,\theta),0\big)=\sqrt{\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta) + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4} + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4}}\ge\frac{\rho}{2},
 $$
 so \ref{eq:ineqphi} holds. Now, for the first part, if $(\rho,\theta)\in\overline{\Rr}$ then $\cos\theta, \sin\theta \in[0,1]$ and $\rho\ge0$, so we have:
 \begin{align*}
@@ -1662,7 +1706,9 @@ so \ref{eq:ineqphi} holds. Now, for the first part, if $(\rho,\theta)\in\overlin
 &=^1\rho\cos\theta(1-2\cos^2\theta\sin^2\theta)=^2\rho\cos\theta\left(1-\frac{\sin^2(2\theta)}{2}\right)
 \ge^3 \frac{\rho}{2}\cos\theta.
 \end{align*}
-In the equality $^1$ we have used that $1^2=(\cos\theta^2+\sin\theta^2)^2=\cos\theta^4+\sin\theta^4+2\cos\theta^2\sin\theta^2$. Equality $^2$ holds because $2\cos\theta\sin\theta=\sin(2\theta)$. Also, since $\theta\in[0,\tfrac{\pi}{2}]$ then $2\theta\in[0,\pi]$, so $\sin(2\theta)\in[0,1]$ and because of this $\sin^2(2\theta)\in[0,1]$ and $\tfrac{\sin(2\theta)}{2}\in[0,\tfrac{1}{2}]$. Thus, inequality $^3$ holds.
+In the equality $^1$ we have used that $1^2=(\cos\theta^2+\sin\theta^2)^2=\cos\theta^4+\sin\theta^4+2\cos\theta^2\sin\theta^2$. Equality $^2$ holds because $2\cos\theta\sin\theta=\sin(2\theta)$. Also, as $\theta\in[0,\tfrac{\pi}{2}]$ we have $2\theta\in[0,\pi]$, so $\sin(2\theta)\in[0,1]$. Thus $\sin^2(2\theta)\in[0,1]$ and $\tfrac{\sin(2\theta)}{2}\in[0,\tfrac{1}{2}]$ and inequality $^3$ holds.
+
+\vspace{1mm}
 
 In addition, $\phi_3(\rho,\theta)=\rho\sin\theta\ge\frac{\rho}{2}\sin\theta$, so we obtain the desired inequality:
 $$
@@ -1674,11 +1720,11 @@ $$
 
 \begin{constr}\label{quotConstr}
 \em
-Thanks to the periodicity of the sine and the cosine:
+Recall the elementary equalities
 $$
 \sin\theta=\cos\Big(\frac{\pi}{2}-\theta\Big)\text{ and } \cos\theta=\sin\Big(\frac{\pi}{2}-\theta\Big)\ \ \forall\theta\in\R.
 $$
-Thus, we observe that $\phi(0,\theta)=\phi\big(0,\tfrac{\pi}{2}-\theta\big)$ when $\theta\in[0,\tfrac{\pi}{2}]$. This induces us to make an identification described as follows. Fix $M>0$ and consider the rectangle 
+Thus $\phi(0,\theta)=\phi\big(0,\tfrac{\pi}{2}-\theta\big)$ for $\theta\in[0,\tfrac{\pi}{2}]$. This induces us to make an identification described as follows. Fix $M>0$ and consider the rectangle 
 $$
 \overline{\Rr}_M:=\big[0,M\big]\times\big[0,\tfrac{\pi}{2}\big]\subset\overline{\Rr}.
 $$
@@ -1712,7 +1758,11 @@ Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and
 \caption{Idea of the identification in Construction \ref{quotConstr}.}\label{fig:identify}
 \end{figure}
 
-Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\longrightarrow\R^3$ such that the following diagram is commutative. In addition, since $\Rr_M\subset\Rr$, Lemma \ref{phiContainsS} gives us that $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$.
+Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\longrightarrow\R^3$ such that the following diagram is commutative. 
+
+\vspace{1mm}
+
+In addition $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$ because of Lemma \ref{phiContainsS} and the fact that $\Rr_M\subset\Rr$.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (A0) at (0,1) {$\Rr_M$};
@@ -1737,6 +1787,8 @@ Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\
 \em
 \end{constr}
 
+%%%% IMAGEN COMENTADA
+\begin{comment}
 \begin{figure}[!ht]
 \begin{center}
 \resizebox{6.2cm}{5cm}{\begin{tikzpicture}%[background rectangle/.style=
@@ -1785,28 +1837,28 @@ domain=-1.5:2.5, y domain=0:360]
 \caption{Left and right views of $\phi_M(\Rr_M)\subset\Ss$.}\label{pic:surface1}
 \end{center}
 \end{figure}
+\end{comment}
 
 \begin{lemma}\label{RMdisc}
 The set $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is the set
 $$
 \pi_M\big(\{\rho=M\}\cup\{\theta=0\}\cup\{\theta=\tfrac{\pi}{2}\}\big).
 $$
-\begin{Proof}
-Identify $\R^2$ with $\C$ (interchanging the order of the variables $(\rho,\theta)\leadsto(\theta,\rho)$) and consider the continuous map defined as 
+\begin{Proof} Identify $\R^2$ with $\C$ (interchanging the order of the variables $(\rho,\theta)\leadsto(\theta,\rho)$) and consider the continuous map defined as 
 $$
 \mu:\C\longrightarrow\C,\ z:=\theta+{\tt i}\rho\longmapsto w:=u+{\tt i}v=\big(\tfrac{4}{\pi}z-1\big)^2,
 $$
-where ${\tt i}$ is the imaginary unit $\sqrt{-1}$. If we restrict ourselves to the open upper half plane, we obtain the homeomorphism $\mu|_{\{\rho>0\}}:\{\rho>0\}\longrightarrow\C\setminus\big([0,+\infty)\times\{0\}\big)$. Now observe that the image of $\overline{\Rr}_M\setminus\{\rho=0\}$ is
+where ${\tt i}$ is the imaginary unit $\sqrt{-1}$. The restriction $\mu|_{\{\rho>0\}}:\{\rho>0\}\to\C\setminus\big([0,+\infty)\times\{0\}\big)$ is a homeomorphism. Now observe that the image of $\overline{\Rr}_M\setminus\{\rho=0\}$ is
 $$
 \Tt_M:=\big\{(u,v)\in\R^2:\ \big(\tfrac{\pi v}{8M}\big)^2-\big(\tfrac{4M}{\pi}\big)^2\leq u\leq1-\big(\tfrac{v}{2}\big)^2\big\}\setminus\set[\big]{(u,0):u\in[0,1]}.
 $$
-The closure $\overline{\Tt}_M$ of $\Tt_M$ is a compact convex set because it is a closed bounded intersection of two convex sets, see Figure \ref{fig:Tm}. Because of \cite[Corolary 11.3.4]{b}, $\overline{\Tt}_M$ is homeomorphic to a closed disc. On top of that,
+The closure $\overline{\Tt}_M$ of $\Tt_M$ is a compact convex set because it is a closed bounded intersection of two convex sets, see Figure \ref{fig:Tm}. This implies, by \cite[Corolary 11.3.4]{b}, that $\overline{\Tt}_M$ is homeomorphic to a closed disc. In addition, the map
 $$
-\mu|_{\set{\rho=0}}:\{\rho=0\}\longrightarrow\set[\big]{(u,0):u\in[0,+\infty)},\ \theta\longmapsto\big(\tfrac{4}{\pi}\theta-1\big)^2
+\mu|_{\set{\rho=0}}:\{\rho=0\}\to\set[\big]{(u,0):u\in[0,+\infty)},\ \theta\mapsto\big(\tfrac{4}{\pi}\theta-1\big)^2
 $$
-transforms the segment $[0,\tfrac{\pi}{2}]\times\set{0}$ onto the interval $[0,1]\times\set{0}$. Looking at the definition of $\mu|_{\set{\rho=0}}$ we see that the preimage of $t_0\in[0,1]$ is composed by two points, namely: 
+maps the segment $[0,\tfrac{\pi}{2}]\times\set{0}$ onto the interval $[0,1]\times\set{0}$ and the fiber $(\mu|_{\set{\rho=0}})^{-1}(t_0)$ for $t_0\in[0,1]$ consists of two points, namely: 
 $$
-\set[\big]{\theta_1:=\tfrac{\pi}{4}\big(1+\sqrt{t_0}\big),\theta_2:=\tfrac{\pi}{4}\big(1-\sqrt{t_0}\big)},
+\set[\big]{\theta_1:=\tfrac{\pi}{4}\big(1+\sqrt{t_0}\big),\, \, \theta_2:=\tfrac{\pi}{4}\big(1-\sqrt{t_0}\big)},
 $$
 which makes sense considering the identification described in Construction \ref{quotConstr}.
 
@@ -1858,7 +1910,7 @@ which makes sense considering the identification described in Construction \ref{
 \caption{Behavior of the map $\mu:\overline{\Rr}_M\longrightarrow\overline{\Tt}_M$.}\label{fig:Tm}
 \end{figure}
 
-Following Construction \ref{quotConstr} and since $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}:\overline{\Rr}_M\longrightarrow\overline{\Tt}_M$ factors through $\tilde{\overline{\Rr}}_M$ and there exists a continuous map $\tilde{\lambda}:\tilde{\overline{\Rr}}_M\longrightarrow\overline{\Tt}_M$ such that the following diagram is commutative:
+Following Construction \ref{quotConstr} and since $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}:\overline{\Rr}_M\to\overline{\Tt}_M$ factors through $\tilde{\overline{\Rr}}_M$ and there exists a continuous map $\tilde{\lambda}:\tilde{\overline{\Rr}}_M\to\overline{\Tt}_M$ such that the following diagram is commutative:
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (A0) at (0,1) {$\Rr_M$};
@@ -1878,7 +1930,7 @@ Following Construction \ref{quotConstr} and since $\theta_1=\tfrac{\pi}{2}-\thet
 (C0) edge node[left]{} (C);
 \end{tikzpicture}
 \end{center}
-The map $\tilde{\lambda}$ is continuous and bijective and it is a homeomorphism since it maps the compact set $\tilde{\overline{\Rr}}_M$ onto the Hausdorff space\footnote{Meaning every pair of distinct points have disjoint neigbourhoods.} $\overline{\Tt}_M$. Thus, $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is 
+The map $\tilde{\lambda}$ is continuous and bijective and in fact it is a homeomorphism because $\tilde{\overline{\Rr}}_M$ is compact and $\overline{\Tt}_M$ is a Hausdorff space. Thus, $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is 
 $$
 \pi_M\big(\set{\rho=M}\cup\set{\theta=0}\cup\set{\theta=\tfrac{\pi}{2}}\big),
 $$
@@ -1887,16 +1939,21 @@ which concludes the proof.
 \end{Proof}
 \end{lemma}
 
-We are going to prove now the main result of this section, which will be the key for the proof of Theorem \ref{openQuad}.
-\begin{lemma}\label{mainlemmatop}
-Fix $B\ge A>0$ and consider the warped discs $\D_1$ and $\D_2$ introduced in \eqref{d1} and \eqref{d2}. Then there exists $M>0$ such that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once both discs $\D_1$ and $\D_2$.
+\vspace{1mm}
 
-\begin{Proof}
-Firstly, since $\D_1$ and $\D_2$ are bounded, there exists $M_0>0$ verifying 
+We are ready to prove  the main result of this section, which will be the key to prove Theorem \ref{openQuad}.
+
+\vspace{1mm}
+
+\begin{lemma}\label{mainlemmatop}
+Fix $B\ge A>0$ and consider the warped discs $\D_1$ and $\D_2$ introduced in \eqref{d1} and \eqref{d2}. Then, there exists $M>0$ such that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once both discs $\D_1$ and $\D_2$.
+\begin{Proof} First, since $\D_1$ and $\D_2$ are bounded, there exists $M_0>0$ such that 
 $$
-\D_1\cup\D_2\subset\set{(x,y,z):\norm{(x,y,z)}<M_0}.
+\D_1\cup\D_2\subset\set{(x,y,z):\norm{(x,y,z)}<M_0}\subset\R^3.
 $$
 Take $M:=4M_0$ and consider the set $\tilde{\overline{\Rr}}_M$ and the continuous map $\tilde{\phi}_M$ introduced in Construction \ref{quotConstr}.
+
+\vspace{1mm}
 
 We are going to prove that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_1$.
 
@@ -1970,25 +2027,25 @@ $$
 
 Choose $\eps$ such that $0<\eps<\min\{B,M_0-B\}$ and consider the homeomorphism
 $$
-\zeta_1:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto(x,y,z-\xi_1(x,y)),
+\zeta_1:\R^3\to\R^3,\ (x,y,z)\mapsto(x,y,z-\xi_1(x,y)),
 $$
-where $\xi_1$ is the continuous semialgebraic function introduced in \eqref{xi1}. If we denote $\D_1(\varepsilon):=\zeta_1^{-1}\big({\mathbb D}_A(\varepsilon)\big)$, we can do as we have done in other proofs and rely on ${\mathbb D}_A(\varepsilon)$ to conclude this part of the proof, so is enough to check:
+where $\xi_1$ is the continuous semialgebraic function introduced in \eqref{xi1}. Let us abbreviate $\D_1(\varepsilon):=\zeta_1^{-1}\big({\mathbb D}_A(\varepsilon)\big)$. As we have done in other proofs we can rely on ${\mathbb D}_A(\varepsilon)$ to conclude this part of the proof, so is enough to check the equality:
 $$
 \alpha_1^{-1}(\D_1(\varepsilon))=(B-\varepsilon,B+\varepsilon). 
 $$
 
-If $t_0\in[0,2M+\frac{\pi}{2}]$, pick $p_0:=\alpha_1(t_0)\in\text{im}(\alpha_1)$. By the definition of $\alpha_1$, we distinguish three cases:
+If $t_0\in[0,2M+\frac{\pi}{2}]$, pick $p_0:=\alpha_1(t_0)\in\text{im}(\alpha_1)$. The definition of $\alpha_1$ leads us to distinguish three cases:
 
 \begin{enumerate}[(i)]
 \item If $0\le t_0\le M$, then 
 $$
 \zeta_1(p_0)=\zeta_1(\alpha(t_0))=\zeta_1(\phi(t_0,0))=\zeta_1(\phi(t_0,\tfrac{\pi}{2}))=(0,0,t_0-B),
 $$
- where we have used the definition of $\phi$ given in the beginning of \hyperref[mainsubsectop]{this subsection}. Thus, $\zeta_1(p_0)\in{\mathbb D}_A(\varepsilon)$ if and only if $-B<-\varepsilon<t_0-B<\varepsilon<M-B$, or $0<B-\varepsilon<t_0<B+\varepsilon<M$. 
+where $\phi$ was introduced at the beginning of \ref{mainsubsectop}. Thus, $\zeta_1(p_0)\in{\mathbb D}_A(\varepsilon)$ if and only if $-B<-\varepsilon<t_0-B<\varepsilon<M-B$, that is, $0<B-\varepsilon<t_0<B+\varepsilon<M$. 
 
-\item If $M<t_0\le M+\frac{\pi}{2}$, we have by \eqref{eq:ineqphi} that
+\item If $M<t_0\le M+\frac{\pi}{2}$ we have by \eqref{eq:ineqphi}, for every point $q\in\D_1(\varepsilon)$,  
 $$
-\text{dist}(p_0,{\bf0})=\text{dist}\big(\phi\big(M,M+\tfrac{\pi}{2}-t\big),{\bf0}\big)\geq\tfrac{M}{2}=2M_0>\sqrt{2}M_0>\text{dist}(q,{\bf0})\ \forall q\in\D_1(\varepsilon).
+\text{dist}(p_0,0)=\text{dist}\big(\phi\big(M,M+\tfrac{\pi}{2}-t\big),0\big)\geq\tfrac{M}{2}=2M_0>\sqrt{2}M_0>\text{dist}(q,0).
 $$ 
 Therefore $p_0\notin\D_1(\varepsilon)$.
 
@@ -1996,11 +2053,9 @@ Therefore $p_0\notin\D_1(\varepsilon)$.
 $$
 p_0=\alpha_1(t_0)=\phi\big(2M+\tfrac{\pi}{2}-t_0,0\big)=\big(2M+\tfrac{\pi}{2}-t_0,0,0\big),
 $$ 
-so $\zeta_1(p_0)=(2M+\tfrac{\pi}{2}-t_0,0,-B)$. By the definition of $\eps$, we know that $\varepsilon<B$ and thus 
-$$
-\zeta_1(p_0)\not\in{\mathbb D}_A(\varepsilon) \imp p_0\not\in\D_1(\varepsilon).
-$$
+so $\zeta_1(p_0)=(2M+\tfrac{\pi}{2}-t_0,0,-B)$. As $\varepsilon<B$, we have $\zeta_1(p_0)\not\in{\mathbb D}_A(\varepsilon)$ and $p_0\not\in\D_1(\varepsilon)$.
 \end{enumerate}
+
 We conclude $\alpha_1^{-1}\big(\D_1(\varepsilon)\big)=\big(B-\varepsilon,B+\varepsilon\big)$, so $\alpha_1$ meets transversally once $\D_1$. 
 
 Analogously one shows that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once $\D_2$.
@@ -2012,16 +2067,18 @@ Analogously one shows that the boundary map $\partial\tilde{\phi}_M:\partial\til
 \caption{The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_2$.}
 \end{figure}
 
+\vspace{1mm}
+
 Consider in this case the parameterization of $\partial\tilde{\overline{\Rr}}_M$ given by
 $$
 \beta_2(t):=
 \begin{cases}
 \pi_M\big(t,0\big) &\text{if $0\le t\le M$},\\
 \pi_M\big(M,t-M\big) &\text{if $M<t\le M+\frac{\pi}{2}$},\\
-\pi_M\big(2M+\frac{\pi}{2}-t,\frac{\pi}{2}\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$}.
+\pi_M\big(2M+\frac{\pi}{2}-t,\frac{\pi}{2}\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$},
 \end{cases}
 $$ 
-(see Figure \ref{fig:betas}). We can then define $\alpha_2(t):=\tilde{\phi}_M\circ\beta_2(t)$ as:
+(see Figure \ref{fig:betas}). Then we define $\alpha_2(t):=\tilde{\phi}_M\circ\beta_2(t)$ as:
 $$
 \alpha_2(t) =
 \begin{cases}
@@ -2035,18 +2092,16 @@ Proceed as above keeping the same values for $A$ and $\varepsilon$ and using in 
 $$
 \zeta_2:\R^3\to\R^3,\ (x,y,z)\longmapsto(z,y,x-\xi_2(z,y)),
 $$
-where $\xi_2$ is the continuous semialgebraic function introduced in \eqref{xi2}, to prove that $\alpha_2$ meets transversally once the warped disk $\D_2$.
-
-This concludes the proof.
+where $\xi_2$ is the continuous semialgebraic function introduced in \eqref{xi2}, to prove that $\alpha_2$ meets transversally once the warped disk $\D_2$. This concludes the proof.
 \qed
 \end{Proof}
 \end{lemma}
 
-Now we are in conditions of proving ($\diamondsuit$) and thus conclude the topological proof.
+Now we are ready to prove ($\diamondsuit$) and this way conclude the topological proof.
 
-\vspace{1mm}		
+\vspace{2mm}		
 
-[Proof of Theorem \ref{openQuadGen}] Firstly, by Lemma \ref{RMdisc} $\overline{\Rr}_M$ is homeomorphic to a closed disc. By Proposition \ref{propTop} applied to the continuous map $\phi_M:\overline{\Rr}_M\to\R^3$ and Lemma \ref{mainlemmatop}, we deduce that the boundaries of both warped discs $\D_1$ and $\D_2$ meet $\phi_M({\Rr}_M)\subset\Ss$. Thus, ($\diamondsuit$) holds, which concludes the proof.
+[Proof of Theorem \ref{openQuad}] Note first that, by Lemma \ref{RMdisc}, $\overline{\Rr}_M$ is homeomorphic to a closed disc. By Proposition \ref{propTop} applied to the continuous map $\phi_M:\overline{\Rr}_M\to\R^3$ and Lemma \ref{mainlemmatop}, we deduce that the boundaries of both warped discs $\D_1$ and $\D_2$ meet $\phi_M({\Rr}_M)\subset\Ss$. Thus, ($\diamondsuit$) holds, and this concludes the proof.
 \qed
 
 \end{subsection}
@@ -2184,11 +2239,10 @@ Equation \em \ref{eq:lagEq} \em defines a numerical method by choosing on each s
 $$
 x_{k+1}=x_k-n\left(g(x_k)\pm\sqrt{ (n-1)(nh(x_k)-g^2(x_k))}\right)^{-1}.
 $$
-Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \em \ref{eq:lagPol}. \em 
 \end{proposition}
 
-{\bf El algoritmo, tal y como se describe, parece fuertemente ligado al hecho de que $f$ tenga una ra\'iz, tal vez compleja, de multiplicidad $n-1$. Por eso no entiendo qu\'e significa que la f\'ormula funciona para polinomios cualesquiera!!!}
-
+%Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \em \ref{eq:lagPol}. \em 
+%{\bf El algoritmo, tal y como se describe, parece fuertemente ligado al hecho de que $f$ tenga una ra\'iz, tal vez compleja, de multiplicidad $n-1$. Por eso no entiendo qu\'e significa que la f\'ormula funciona para polinomios cualesquiera!!!}
 
 \end{section}
 \end{chapter}
@@ -2217,7 +2271,7 @@ Berlin, Heidelberg, New York (1987).
 \textit{Journal of Pure and Applied Algebra}, {\bf 179}, (2003), no. 3, 241-254.
 
 \bibitem[FGU]{fgu} J.F. Fernando, J.M. Gamboa, C. Ueno: The open quadrant problem:
-A topological proof. \textit{Preprint} (2015), 13 pages.
+A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesinos. Departamento de Geometr\'ia y Topolog\'ia. Facultad de CC. Matem\'aticas UCM, pp. 337-350, (2016).
 
 \bibitem[FU]{fu} J.F. Fernando, C. Ueno: A short proof for the open quadrant problem.
 \textit{Preprint RAAG} (2014, submitted to MEGA 2015), 8 pages.
