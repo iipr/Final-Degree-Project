@@ -1395,6 +1395,216 @@ for the continuous and semialgebraic functions
 see Figure \ref{fig:homeo}.
 
 %%IMAGEN
+\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\pgfplotsset{ticks=none}
+\begin{axis}[view={45}{30}, scale=1.8, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-5.5,xmax=5.5,ymin=-9.5,ymax=9.5,zmin=-1,
+zmax=9, unit vector ratio=]
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {0});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {0});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {3*sin(v)});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,0)
+          (-5,-9,0)
+          (5,-9,0)
+          (5,-3,0)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,0)
+          (-5,9,0)
+          (5,9,0)
+          (5,3,0)};
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{3*sin(deg(x))});
+%------
+\addplot3[very thick,domain=0:2*pi,samples=40,samples y=0]
+({2*cos(deg(x))},
+{2*sin(deg(x))},
+{sqrt(9-4*(sin(deg(x)))^2)});
+\addplot3[opacity=0, fill opacity=0.5, surf,samples=40,gray,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:360]
+({u*cos(v)},{u*sin(v)},{sqrt(9-u^2*(sin(v))^2)});
+%------
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {2});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {2});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {2+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{2+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{2+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,2)
+          (-5,-9,2)
+          (5,-9,2)
+          (5,-3,2)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,2)
+          (-5,9,2)
+          (5,9,2)
+          (5,3,2)};
+%----
+\addplot3[opacity=0.0, fill opacity=0.3, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {4});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {4});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {4+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{4+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{4+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,4)
+          (-5,-9,4)
+          (5,-9,4)
+          (5,-3,4)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,4)
+          (-5,9,4)
+          (5,9,4)
+          (5,3,4)};
+%----
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:-3]
+({u}, {v}, {6});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray,samples=5,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=3:9]
+({u}, {v}, {6});
+\addplot3[opacity=0.0, fill opacity=0.2, surf, gray, samples=20,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=0:180]
+({u}, {3*cos(v)}, {6+3*sin(v)});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({-5},
+{3*cos(deg(x))},
+{6+3*sin(deg(x))});
+\addplot3[very thin,domain=0:pi,samples=20,samples y=0]
+({5},
+{3*cos(deg(x))},
+{6+3*sin(deg(x))});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-3,6)
+          (-5,-9,6)
+          (5,-9,6)
+          (5,-3,6)};
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,3,6)
+          (-5,9,6)
+          (5,9,6)
+          (5,3,6)};
+%----
+\end{axis}
+\end{tikzpicture}
+
+\vskip 0.3cm
+\begin{tikzpicture}
+%\draw[white,->] (0,0)--(1,3);
+\draw [thick, ->] (0,0)--(0,-0.5) node [right] {$\zeta$} -- (0,-1);
+\end{tikzpicture}
+\vskip 0.3cm
+
+\begin{tikzpicture}
+\pgfplotsset{ticks=none}
+\begin{axis}[view={45}{30}, scale=1.8, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-5.5,xmax=5.5,ymin=-9.5,ymax=9.5,zmin=-1,
+zmax=9, unit vector ratio=]
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {0});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,0)
+          (-5,9,0)
+          (5,9,0)
+          (5,-9,0)
+          (-5,-9,0)};
+%---
+\addplot3[very thick,domain=0:2*pi,samples=40,samples y=0]
+({2*cos(deg(x))},
+{2*sin(deg(x))},
+{0});
+\addplot3[opacity=0, fill opacity=0.5, surf,samples=40,gray,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:360]
+({u*cos(v)},{u*sin(v)},{0});
+%---
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {2});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,2)
+          (-5,9,2)
+          (5,9,2)
+          (5,-9,2)
+          (-5,-9,2)};
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {4});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,4)
+          (-5,9,4)
+          (5,9,4)
+          (5,-9,4)
+          (-5,-9,4)};
+\addplot3[opacity=0.0, fill opacity=0.2, surf,gray,samples=20,colormap/hot,
+variable=\u, variable y=\v,
+domain=-5:5, y domain=-9:9]
+({u}, {v}, {6});
+\addplot3[very thin,mark=,black] plot coordinates {
+          (-5,-9,6)
+          (-5,9,6)
+          (5,9,6)
+          (5,-9,6)
+          (-5,-9,6)};
+\end{axis}
+\end{tikzpicture}
+\caption{The homeomorphism $\zeta$ for $\xi_1(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$. Notice how it ``flattens'' the warped disc $\D_1$.}\label{fig:homeo}
+\end{center}
+\end{figure}
 
 Now it is clear that our aim is to prove the following fact:
 
@@ -1404,7 +1614,7 @@ Now it is clear that our aim is to prove the following fact:
 
 \end{subsection}
 
-\begin{subsection}{Proof of ($\diamondsuit$)}
+\begin{subsection}{Proof of ($\diamondsuit$)}\label{mainsubsectop}
 
 In order to proof ($\diamondsuit$), we first need to introduce a map $\phi$ and show some of its properties. Let $\phi:=(\phi_1,\phi_2,\phi_3):\R^2\longrightarrow\R^3$, whose components are defined as
 $$
@@ -1446,7 +1656,7 @@ Firstly, if the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{
 $$
 \text{dist}\big(\phi(\rho,\theta),{\bf0}\big)=\sqrt{\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta) + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4} + \phi_2^2(\rho,\theta)}\ge\sqrt{\frac{\rho^2}{4}}\ge\frac{\rho}{2},
 $$
-so \ref{eq:ineqphi} holds. Now, for the first part, if $(\rho,\theta)\in\overline{\Rr}$ then $\cos\theta, \sin\theta \in[0,1]$ and $\rho\ge0$ as $\rho$, $\cos\theta$, $\sin\theta$ are $\geq0$ so we have:
+so \ref{eq:ineqphi} holds. Now, for the first part, if $(\rho,\theta)\in\overline{\Rr}$ then $\cos\theta, \sin\theta \in[0,1]$ and $\rho\ge0$, so we have:
 \begin{align*}
 \phi_1(\rho,\theta)&\ge\,\rho(\cos\theta\sin^4\theta+\cos^5\theta)=\rho\cos\theta(\cos^4\theta+\sin^4\theta)\\
 &=^1\rho\cos\theta(1-2\cos^2\theta\sin^2\theta)=^2\rho\cos\theta\left(1-\frac{\sin^2(2\theta)}{2}\right)
@@ -1472,7 +1682,7 @@ Thus, we observe that $\phi(0,\theta)=\phi\big(0,\tfrac{\pi}{2}-\theta\big)$ whe
 $$
 \overline{\Rr}_M:=\big[0,M\big]\times\big[0,\tfrac{\pi}{2}\big]\subset\overline{\Rr}.
 $$
-Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and $(0,\frac{\pi}{2}-\theta)$ for $\theta\in[0,\tfrac{\pi}{2}]$ (see Figure \ref{fig:identify}) and endow the quotient space $\tilde{\overline{\Rr}}_M$ with the quotient topology. Observe that the interior of $\tilde{\overline{\Rr}}_M$ (as a topological manifold with boundary) is the quotient space $\tilde{\Rr}_M$ obtained identifying the points $(0,\theta)$ and $(0,\frac{\pi}{2}-\theta)$ of $\Rr_M:=\big[0,M\big)\times\big(0,\tfrac{\pi}{2}\big)$, where $\theta\in\big(0,\tfrac{\pi}{2}\big)$.
+Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and $(0,\frac{\pi}{2}-\theta)$ for $\theta\in[0,\tfrac{\pi}{2}]$ (see Figure \ref{fig:identify}) and endow the quotient space $\tilde{\overline{\Rr}}_M$ with the quotient topology. Observe that, as a topological manifold with boundary, the interior of $\tilde{\overline{\Rr}}_M$ is the quotient space $\tilde{\Rr}_M$ obtained identifying the points $(0,\theta)$ and $(0,\frac{\pi}{2}-\theta)$ of $\Rr_M:=\big[0,M\big)\times\big(0,\tfrac{\pi}{2}\big)$, where $\theta\in\big(0,\tfrac{\pi}{2}\big)$.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1494,7 +1704,7 @@ Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and
 \draw (0,1) node{{\color{black!20!yellow!60}\large$\bullet$}};
 \draw (2.5,1.5) node{$\overline{\Rr}_M$};
 \draw [line width=0.8pt, draw=blue!65, <->] (-0.1,3) arc (80:280:1.52cm);
-\draw [line width=0.8pt, draw=red!60, <->] (0.05,1.45) arc (190:510:0.2cm);
+\draw [line width=0.8pt, draw=red!60, <->] (0.05,1.42) arc (210:510:0.2cm);
 \draw [line width=0.8pt, draw=orange!60, <->] (-0.1,2.5) arc (80:280:1.03cm);
 \draw [line width=0.8pt, draw=black!20!yellow!60, <->] (-0.1,2) arc (80:280:0.5cm);
 \end{tikzpicture}
@@ -1502,7 +1712,7 @@ Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and
 \caption{Idea of the identification in Construction \ref{quotConstr}.}\label{fig:identify}
 \end{figure}
 
-Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\longrightarrow\R^3$ such that the following diagram is commutative. In addition, since $\Rr_M\subset\Rr$ Lemma \ref{phiContainsS} gives us that $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$.
+Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\longrightarrow\R^3$ such that the following diagram is commutative. In addition, since $\Rr_M\subset\Rr$, Lemma \ref{phiContainsS} gives us that $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (A0) at (0,1) {$\Rr_M$};
@@ -1527,7 +1737,56 @@ Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\
 \em
 \end{constr}
 
-\begin{lemma}\label{}
+\begin{figure}[!ht]
+\begin{center}
+\resizebox{6.2cm}{5cm}{\begin{tikzpicture}%[background rectangle/.style=
+%{double,draw=gray},show background rectangle]
+\pgfplotsset{ticks=none}
+\begin{axis}[point meta min=-4, point meta max=3,view={-45}{30}, scale=2.1, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-0.5,xmax=2.5,ymin=-0.3,ymax=1.5,zmin=-0.5,zmax=2.5,
+unit vector ratio=]
+\addplot3[opacity=1, fill opacity=1, surf,samples=20,colormap/blackwhite,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:90]
+({min(cos(v)*sin(v)*(sin(v)-cos(v))^2+
+u*(2*(cos(v))^4*sin(v)+cos(v)*(sin(v))^4+(cos(v))^5)
++u^2*(cos(v))^5*sin(v),10)}, {min(sqrt(sin(v)*cos(v))*(sin(v)+cos(v)
++u*cos(v)*sin(v)),10)}, {min(u*sin(v),10)});
+\addplot3[opacity=0.0, fill opacity=0.0,surf,gray,z buffer=sort,samples=40,
+variable=\u, variable y=\v,
+domain=-1.5:2.5, y domain=0:360]
+({3*cos(v)}, {3*sin(v)}, {u});
+\addplot3[opacity=1, fill opacity=0.0,domain=0:90,samples=40,samples y=0]
+({min(cos(x)*sin(x)*(sin(x)-cos(x))^2,2)}, {min(sqrt(sin(x)*cos(x))*(sin(x)+cos(x)),2)}, {0});
+\end{axis}
+\end{tikzpicture}}\hskip 0.2cm
+\resizebox{6.2cm}{5cm}{
+\begin{tikzpicture}
+\pgfplotsset{ticks=none}
+\begin{axis}[point meta min=-4, point meta max=3,view={45}{30}, scale=2.5, axis lines=middle, footnotesize,xlabel=$$,ylabel=$$,
+xmin=-0.5,xmax=3.5,ymin=-0.3,ymax=1.5,zmin=-0.5,zmax=2.5,
+unit vector ratio=]
+\addplot3[opacity=1, fill opacity=1, surf,samples=20,colormap/blackwhite,
+variable=\u, variable y=\v,
+domain=0:2, y domain=0:90]
+({min(cos(v)*sin(v)*(sin(v)-cos(v))^2+
+u*(2*(cos(v))^4*sin(v)+cos(v)*(sin(v))^4+(cos(v))^5)
++u^2*(cos(v))^5*sin(v),10)}, {min(sqrt(sin(v)*cos(v))*(sin(v)+cos(v)
++u*cos(v)*sin(v)),10)}, {min(u*sin(v),10)});
+\addplot3[opacity=0.0, fill opacity=0.0,surf,gray,z buffer=sort,samples=40,
+variable=\u, variable y=\v,
+domain=-1.5:2.5, y domain=0:360]
+({3*cos(v)}, {3*sin(v)}, {u});
+\addplot3[opacity=1, fill opacity=0.0,domain=0:90,samples=40,samples y=0]
+({min(cos(x)*sin(x)*(sin(x)-cos(x))^2,2)}, {min(sqrt(sin(x)*cos(x))*(sin(x)+cos(x)),2)}, {0});
+\end{axis}
+\end{tikzpicture}%}
+}
+\caption{Left and right views of $\phi_M(\Rr_M)\subset\Ss$.}\label{pic:surface1}
+\end{center}
+\end{figure}
+
+\begin{lemma}\label{RMdisc}
 The set $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is the set
 $$
 \pi_M\big(\{\rho=M\}\cup\{\theta=0\}\cup\{\theta=\tfrac{\pi}{2}\}\big).
@@ -1543,39 +1802,50 @@ $$
 $$
 The closure $\overline{\Tt}_M$ of $\Tt_M$ is a compact convex set because it is a closed bounded intersection of two convex sets, see Figure \ref{fig:Tm}. Because of \cite[Corolary 11.3.4]{b}, $\overline{\Tt}_M$ is homeomorphic to a closed disc. On top of that,
 $$
-\mu|_{\{\rho=0\}}:\{\rho=0\}\longrightarrow\set[\big]{(u,0):u\in[0,+\infty)},\ \theta\longmapsto\big(\tfrac{4}{\pi}\theta-1\big)^2
+\mu|_{\set{\rho=0}}:\{\rho=0\}\longrightarrow\set[\big]{(u,0):u\in[0,+\infty)},\ \theta\longmapsto\big(\tfrac{4}{\pi}\theta-1\big)^2
 $$
-transforms the segment $[0,\tfrac{\pi}{2}]\times\{0\}$ onto the interval $[0,1]$. The preimage of $t_0\in[0,1]$ under $\mu|_{\{\rho=0\}}$ is 
+transforms the segment $[0,\tfrac{\pi}{2}]\times\set{0}$ onto the interval $[0,1]\times\set{0}$. Looking at the definition of $\mu|_{\set{\rho=0}}$ we see that the preimage of $t_0\in[0,1]$ is composed by two points, namely: 
 $$
-\{\theta_1:=\tfrac{\pi}{4}(1+\sqrt{t_0}),\theta_2:=\tfrac{\pi}{4}(1-\sqrt{t_0})\}.
+\set[\big]{\theta_1:=\tfrac{\pi}{4}\big(1+\sqrt{t_0}\big),\theta_2:=\tfrac{\pi}{4}\big(1-\sqrt{t_0}\big)},
 $$
-
+which makes sense considering the identification described in Construction \ref{quotConstr}.
 
 \begin{figure}[!ht]
 \begin{center}
 \begin{tikzpicture}[scale=0.99]
 %\draw[style=help lines,step=0.5cm] (0,0) grid (12.5,5);
-
 \begin{scope}[scale=0.5,xshift=4cm, yshift=5cm]
-\draw[line width=1.5pt,rotate=-90,draw,fill=gray!40] (6,11) parabola bend (0,20) (-6,11) parabola bend (0,10) (6,11);
+%\draw[line width=1.5pt,rotate=-90,draw,fill=gray!40] (6,11) parabola bend (0,20) (-6,11) parabola bend (0,10) (6,11);
+%--------------- Mio
+\draw[line width=1.5pt,rotate=-90,draw,fill=gray!40] (-6,11) parabola bend (0,10) (6,11);
+\draw[line width=1.5pt,rotate=-90,draw,fill=gray!40] (6,11) parabola bend (0,20) (-6,11);
+%---------------
 \draw[->, line width=1pt] (9,0) -- (21,0);
 \draw[->, line width=1pt] (19,-6.5) -- (19,6.5);
-
+%--------------- Mio
+\draw[draw=black!10!orange!80,line width=1.5pt,rotate=-90,draw] (-6,11) parabola bend (0,10) (6,11);
+\draw[draw=blue!60,line width=1.5pt,rotate=-90,draw] (0,20) parabola bend (0,20) (-6,11);
+\draw[draw=black!15!green!60,line width=1.5pt,rotate=-90,draw] (6,11) parabola bend (0,20) (0,20);
+%---------------
 \draw (20.5,-0.5) node{$1$};
 \draw (18.5,-0.5) node{$0$};
 \draw (14,2.5) node{$\overline{\Tt}_M$};
-\draw[white,line width=1.5pt,dotted] (19,0) -- (20,0);
-\draw (19,0) node{\large$\bullet$};
-\draw (20,0) node{\large$\bullet$};
+\draw[draw=red!65,line width=1.5pt] (19,0) -- (20,0);
+\draw (19,0) node{$\bullet$};
+\draw (20,0) node{$\bullet$};
 \end{scope}
-
 \draw[draw=none, fill=gray!40] (0.5,0) to (3.5,0) to (3.5,5) to (0.5,5) to (0.5,0);
-\draw[line width=1.5pt] (3.5,0) to (3.5,5) to (0.5,5) to (0.5,0);
+%\draw[draw=blue!60,line width=1.5pt] (3.5,0) to (3.5,5) to (0.5,5) to (0.5,0);
 \draw[->, line width=1pt] (-0.5,0) -- (4.5,0);
 \draw[->, line width=1pt] (0.5,-1) -- (0.5,6);
-\draw[white,line width=1.5pt,dotted] (0.5,0) to (3.5,0);
+%--------------- Mio
+\draw[draw=blue!60,line width=1.5pt] (3.5,0) to (3.5,5);
+\draw[draw=black!10!orange!80,line width=1.5pt] (3.5,5) to (0.5,5);
+\draw[draw=black!15!green!60,line width=1.5pt] (0.5,5) to (0.5,0);
+%---------------
+\draw[draw=red!65,line width=1.5pt] (0.5,0) to (3.5,0);
 \draw[line width=1.5pt] (2,-0.15) -- (2,0.15);
-\draw [line width=1.5pt, ->] (4.5,2.5)--(5.25,2.5) node [above] {$\mu$} -- (6,2.5);
+\draw [line width=1pt, ->] (4.5,2.5)--(5.25,2.5) node [above] {$\mu$} -- (6,2.5);
 \draw (0.25,-0.25) node{$0$};
 \draw (3.5,-0.35) node{$\tfrac{\pi}{2}$};
 \draw (4.4,-0.35) node{$\theta$};
@@ -1588,14 +1858,14 @@ $$
 \caption{Behavior of the map $\mu:\overline{\Rr}_M\longrightarrow\overline{\Tt}_M$.}\label{fig:Tm}
 \end{figure}
 
-As $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}:\overline{\Rr}_M\to\overline{\Tt}_M$ factors through $\tilde{\overline{\Rr}}_M$ and there exists a continuous map $\tilde{\lambda}:\tilde{\overline{\Rr}}_M\to\overline{\Tt}_M$ such that the following diagram is commutative.
+Following Construction \ref{quotConstr} and since $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}:\overline{\Rr}_M\longrightarrow\overline{\Tt}_M$ factors through $\tilde{\overline{\Rr}}_M$ and there exists a continuous map $\tilde{\lambda}:\tilde{\overline{\Rr}}_M\longrightarrow\overline{\Tt}_M$ such that the following diagram is commutative:
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (A0) at (0,1) {$\Rr_M$};
 \node (A) at (1,1) {$\overline{\Rr}_M$};
 \node (C0) at (0,0) {$\tilde{\Rr}_M$};
 \node (C) at (1,0) {$\tilde{\overline{\Rr}}_M$};
-\node (D) at (2,0) {$\Ss_M$};
+\node (D) at (2,0) {$\Tt_M$};
 
 \path[->,font=\scriptsize,>=angle 90]
 (A) edge node[above right]{$\lambda$} (D)
@@ -1608,34 +1878,67 @@ As $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}
 (C0) edge node[left]{} (C);
 \end{tikzpicture}
 \end{center}
-The map $\tilde{\lambda}$ is continuous and bijective and it maps the compact set $\tilde{\overline{\Rr}}_M$ onto the Hausdorff space $\overline{\Tt}_M$, so it is a homeomorphism. Consequently, $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is $\pi_M(\{\rho=M\}\cup\{\theta=0\}\cup\{\theta=\tfrac{\pi}{2}\})$, as required.
+The map $\tilde{\lambda}$ is continuous and bijective and it is a homeomorphism since it maps the compact set $\tilde{\overline{\Rr}}_M$ onto the Hausdorff space\footnote{Meaning every pair of distinct points have disjoint neigbourhoods.} $\overline{\Tt}_M$. Thus, $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is 
+$$
+\pi_M\big(\set{\rho=M}\cup\set{\theta=0}\cup\set{\theta=\tfrac{\pi}{2}}\big),
+$$
+which concludes the proof.
 \qed
 \end{Proof}
-	
 \end{lemma}
+
+We are going to prove now the main result of this section, which will be the key for the proof of Theorem \ref{openQuad}.
+\begin{lemma}\label{mainlemmatop}
+Fix $B\ge A>0$ and consider the warped discs $\D_1$ and $\D_2$ introduced in \eqref{d1} and \eqref{d2}. Then there exists $M>0$ such that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once both discs $\D_1$ and $\D_2$.
+
+\begin{Proof}
+Firstly, since $\D_1$ and $\D_2$ are bounded, there exists $M_0>0$ verifying 
+$$
+\D_1\cup\D_2\subset\set{(x,y,z):\norm{(x,y,z)}<M_0}.
+$$
+Take $M:=4M_0$ and consider the set $\tilde{\overline{\Rr}}_M$ and the continuous map $\tilde{\phi}_M$ introduced in Construction \ref{quotConstr}.
+
+We are going to prove that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_1$.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=6cm]{plots/ch3_02_B2.png}
+\end{center}
+\caption{The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_1$.}
+\end{figure}
+
+Consider the parameterization of $\partial\tilde{\overline{\Rr}}_M$ given by
+$$
+\beta_1(t):=
+\begin{cases}
+\pi_M\big(t,\frac{\pi}{2}\big) &\text{if $0\le t\le M$},\\
+\pi_M\big(M,M+\frac{\pi}{2}-t\big) &\text{if $M<t\le M+\frac{\pi}{2}$},\\
+\pi_M\big(2M+\frac{\pi}{2}-t,0\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$}.
+\end{cases}
+$$ 
 
 \begin{figure}[!ht]
 \begin{center}
 \begin{tikzpicture}[scale=0.99]
 \draw[->, line width=1pt] (-0.5,0) -- (5.5,0);
 \draw[->, line width=1pt] (0,-0.5) -- (0,3.5);
-\draw[gray,line width=2pt,fill=gray!20] (0,3) to (5,3) to (5,0) to (0,0);
-\draw[gray,line width=2pt,->,>=angle 45] (0,3) to (2.75,3);
-\draw[gray,line width=2pt,->,>=angle 45] (5,3) to (5,1.25);
-\draw[gray,line width=2pt,->,>=angle 45] (5,0) to (2.25,0);
+\draw[draw=blue!60,line width=2pt,fill=gray!20] (0,3) to (5,3) to (5,0) to (0,0);
+\draw[draw=blue!60,line width=2pt,->,>=angle 45] (0,3) to (2.75,3);
+\draw[draw=blue!60,line width=2pt,->,>=angle 45] (5,3) to (5,1.25);
+\draw[draw=blue!60,line width=2pt,->,>=angle 45] (5,0) to (2.25,0);
 \draw[->, line width=1pt] (6.5,0) -- (12.5,0);
 \draw[->, line width=1pt] (7,-0.5) -- (7,3.5);
-\draw[gray,line width=2pt,fill=gray!20] (7,3) to (12,3) to (12,0) to (7,0);
-\draw[gray,line width=2pt,->,>=angle 45] (12,3) to (9.25,3);
-\draw[gray,line width=2pt,->,>=angle 45] (12,0) to (12,1.75);
-\draw[gray,line width=2pt,->,>=angle 45] (7,0) to (9.75,0);
+\draw[draw=red!65,line width=2pt,fill=gray!20] (7,3) to (12,3) to (12,0) to (7,0);
+\draw[draw=red!65,line width=2pt,->,>=angle 45] (12,3) to (9.25,3);
+\draw[draw=red!65,line width=2pt,->,>=angle 45] (12,0) to (12,1.75);
+\draw[draw=red!65,line width=2pt,->,>=angle 45] (7,0) to (9.75,0);
 \draw (-0.25,-0.25) node{$0$};
 \draw (-0.3,1.5) node{$\theta$};
 \draw (-0.3,3) node{$\tfrac{\pi}{2}$};
 \draw (2.5,-0.35) node{$\rho$};
 \draw (5,-0.25) node{$M$};
-\draw (0,0) node{{\color{gray}\large$\bullet$}};
-\draw (0,3) node{{\color{gray}\large$\bullet$}};
+\draw (0,0) node{{\color{blue!60}\large$\bullet$}};
+\draw (0,3) node{{\color{blue!60}\large$\bullet$}};
 \draw (1.5,1.5) node{identified!};
 \draw[->,thick] (1.25,1.75) -- (0.2,2.8);
 \draw[->,thick] (1.25,1.25) -- (0.2,0.2);
@@ -1645,23 +1948,113 @@ The map $\tilde{\lambda}$ is continuous and bijective and it maps the compact se
 \draw (6.7,3) node{$\tfrac{\pi}{2}$};
 \draw (9.5,-0.35) node{$\rho$};
 \draw (12,-0.25) node{$M$};
-\draw (7,0) node{{\color{gray}\large$\bullet$}};
-\draw (7,3) node{{\color{gray}\large$\bullet$}};
+\draw (7,0) node{{\color{red!65}\large$\bullet$}};
+\draw (7,3) node{{\color{red!65}\large$\bullet$}};
 \draw (8.5,1.5) node{identified!};
 \draw[->,thick] (8.25,1.75) -- (7.2,2.8);
 \draw[->,thick] (8.25,1.25) -- (7.2,0.2);
 \draw (9.5,3.5) node{$\beta_2(t)$};
 \end{tikzpicture}
 \end{center}
-\caption{Behavior of the paths $\beta_1$ and $\beta_2$.}
+\caption{Behavior of the paths $\beta_1$ and $\beta_2$, surrounding $\tilde{\overline{\Rr}}_M$.}\label{fig:betas}
 \end{figure}
 
+Let $\alpha_1(t):=\tilde{\phi}_M\circ\beta_1(t)$ defined as:
+$$
+\alpha_1(t)=\begin{cases}
+\phi\big(t,\frac{\pi}{2}\big) &\text{if $0\le t\le M$},\\
+\phi\big(M,M+\frac{\pi}{2}-t\big) &\text{if $M<t\le M+\frac{\pi}{2}$},\\
+\phi\big(2M+\frac{\pi}{2}-t,0\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$}.
+\end{cases}
+$$ 
+
+Choose $\eps$ such that $0<\eps<\min\{B,M_0-B\}$ and consider the homeomorphism
+$$
+\zeta_1:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto(x,y,z-\xi_1(x,y)),
+$$
+where $\xi_1$ is the continuous semialgebraic function introduced in \eqref{xi1}. If we denote $\D_1(\varepsilon):=\zeta_1^{-1}\big({\mathbb D}_A(\varepsilon)\big)$, we can do as we have done in other proofs and rely on ${\mathbb D}_A(\varepsilon)$ to conclude this part of the proof, so is enough to check:
+$$
+\alpha_1^{-1}(\D_1(\varepsilon))=(B-\varepsilon,B+\varepsilon). 
+$$
+
+If $t_0\in[0,2M+\frac{\pi}{2}]$, pick $p_0:=\alpha_1(t_0)\in\text{im}(\alpha_1)$. By the definition of $\alpha_1$, we distinguish three cases:
+
+\begin{enumerate}[(i)]
+\item If $0\le t_0\le M$, then 
+$$
+\zeta_1(p_0)=\zeta_1(\alpha(t_0))=\zeta_1(\phi(t_0,0))=\zeta_1(\phi(t_0,\tfrac{\pi}{2}))=(0,0,t_0-B),
+$$
+ where we have used the definition of $\phi$ given in the beginning of \hyperref[mainsubsectop]{this subsection}. Thus, $\zeta_1(p_0)\in{\mathbb D}_A(\varepsilon)$ if and only if $-B<-\varepsilon<t_0-B<\varepsilon<M-B$, or $0<B-\varepsilon<t_0<B+\varepsilon<M$. 
+
+\item If $M<t_0\le M+\frac{\pi}{2}$, we have by \eqref{eq:ineqphi} that
+$$
+\text{dist}(p_0,{\bf0})=\text{dist}\big(\phi\big(M,M+\tfrac{\pi}{2}-t\big),{\bf0}\big)\geq\tfrac{M}{2}=2M_0>\sqrt{2}M_0>\text{dist}(q,{\bf0})\ \forall q\in\D_1(\varepsilon).
+$$ 
+Therefore $p_0\notin\D_1(\varepsilon)$.
+
+\item If $M+\frac{\pi}{2}<t_0\le 2M+\frac{\pi}{2}$, then 
+$$
+p_0=\alpha_1(t_0)=\phi\big(2M+\tfrac{\pi}{2}-t_0,0\big)=\big(2M+\tfrac{\pi}{2}-t_0,0,0\big),
+$$ 
+so $\zeta_1(p_0)=(2M+\tfrac{\pi}{2}-t_0,0,-B)$. By the definition of $\eps$, we know that $\varepsilon<B$ and thus 
+$$
+\zeta_1(p_0)\not\in{\mathbb D}_A(\varepsilon) \imp p_0\not\in\D_1(\varepsilon).
+$$
+\end{enumerate}
+We conclude $\alpha_1^{-1}\big(\D_1(\varepsilon)\big)=\big(B-\varepsilon,B+\varepsilon\big)$, so $\alpha_1$ meets transversally once $\D_1$. 
+
+Analogously one shows that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once $\D_2$.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[height=6cm]{plots/ch3_01_A2.png}
+\end{center}
+\caption{The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_2$.}
+\end{figure}
+
+Consider in this case the parameterization of $\partial\tilde{\overline{\Rr}}_M$ given by
+$$
+\beta_2(t):=
+\begin{cases}
+\pi_M\big(t,0\big) &\text{if $0\le t\le M$},\\
+\pi_M\big(M,t-M\big) &\text{if $M<t\le M+\frac{\pi}{2}$},\\
+\pi_M\big(2M+\frac{\pi}{2}-t,\frac{\pi}{2}\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$}.
+\end{cases}
+$$ 
+(see Figure \ref{fig:betas}). We can then define $\alpha_2(t):=\tilde{\phi}_M\circ\beta_2(t)$ as:
+$$
+\alpha_2(t) =
+\begin{cases}
+\phi\big(t,0\big) &\text{if $0\le t\le M$},\\
+\phi\big(M,t-M\big) &\text{if $M<t\le M+\frac{\pi}{2}$},\\
+\phi\big(2M+\frac{\pi}{2}-t,\frac{\pi}{2}\big) &\text{if $M+\frac{\pi}{2}<t\le 2M+\frac{\pi}{2}$}.
+\end{cases}
+$$ 
+
+Proceed as above keeping the same values for $A$ and $\varepsilon$ and using in this case the homeomorphism
+$$
+\zeta_2:\R^3\to\R^3,\ (x,y,z)\longmapsto(z,y,x-\xi_2(z,y)),
+$$
+where $\xi_2$ is the continuous semialgebraic function introduced in \eqref{xi2}, to prove that $\alpha_2$ meets transversally once the warped disk $\D_2$.
+
+This concludes the proof.
+\qed
+\end{Proof}
+\end{lemma}
+
+Now we are in conditions of proving ($\diamondsuit$) and thus conclude the topological proof.
+
+\vspace{1mm}		
+
+[Proof of Theorem \ref{openQuadGen}] Firstly, by Lemma \ref{RMdisc} $\overline{\Rr}_M$ is homeomorphic to a closed disc. By Proposition \ref{propTop} applied to the continuous map $\phi_M:\overline{\Rr}_M\to\R^3$ and Lemma \ref{mainlemmatop}, we deduce that the boundaries of both warped discs $\D_1$ and $\D_2$ meet $\phi_M({\Rr}_M)\subset\Ss$. Thus, ($\diamondsuit$) holds, which concludes the proof.
+\qed
+
 \end{subsection}
-
 \end{section}
-
 \end{chapter}
 
+
+%Pendiente: Añadir consecuencia ---> El interior y el complementario de un ángulo son imágenes polinómicas de R^2 (Tesis Ueno)
 \appendix
 \begin{chapter}{Auxiliary definitions and results}\label{AA}
 
@@ -1818,6 +2211,8 @@ New York: Springer Verlag, (1996).
 alg\'ebrique r\'eelle. \em Ergeb. Math. \em {\bf 12}, Springer-Verlag,
 Berlin, Heidelberg, New York (1987).
 
+\bibitem[B]{b} M. Berger: Geometry. I. \em Universitext\em. Springer-Verlag, Berlin: 1987.
+
 \bibitem[FG]{fg} J.F. Fernando, J.M. Gamboa: Polynomial images of $R^n$.
 \textit{Journal of Pure and Applied Algebra}, {\bf 179}, (2003), no. 3, 241-254.
 
@@ -1831,8 +2226,6 @@ A topological proof. \textit{Preprint} (2015), 13 pages.
 $10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
 
 \bibitem[U]{u} C. Ueno: Im\'agenes polin\'omicas y regulares de espacios eucl\'\i deos. {\em Ph.D. Thesis UCM} (2012).
-
-\bibitem[B]{b} M. Berger: Geometry. I. \em Universitext\em. Springer-Verlag, Berlin: 1987.
 
 \bibitem[W]{w} R.J. Walker: \em Algebraic curves. \em Berlin, Heidelberg, 
 New York: Springer Verlag, (1978).
