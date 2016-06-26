@@ -2111,8 +2111,21 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 \begin{chapter}{Complexity analysis}\label{compChapter}
 
 \begin{section}{Introduction to the computational comparison}\label{5sect1}
+In this chapter we are going to set up the theoretical basis to discuss about how ``good'' or how ``bad'' the three given polynomial maps are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards and by means of a computer we will transform certain sets of $\R^2$ through the given maps $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3), $\FFF$ (chapter 4).
 
-\emph{Why is it interesting to represent the open quadrant in an easy way?}
+We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some dense sets in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves. Lastly, we will use random sets of points.
+
+In the analysis, we will compare times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will take advantage of the proof in chapter 4 for computing $f_2(\overline{\Qu})$ instead of computing $\FFF(\R^2)$.
+
+So the first question we have to address is:
+
+\vspace{0.2cm}
+
+\fbox{ \emph{Why is it interesting to represent the open quadrant in an easy way?} }
+
+\vspace{0.2cm}
+
+Here the word \textit{easy} means computationally efficient, so we are looking for the map that fills the open quadrant $\Qu$ quicker (in terms of the number of calculations) and the one that, given the same set of points, fills more area.
 	
 \end{section}
 
@@ -2128,9 +2141,9 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 
 \end{section}
 
+%Pendiente: Añadir consecuencia ---> El interior y el complementario de un ángulo son imágenes polinómicas de R^2 (Tesis Ueno)
 \end{chapter}
 
-%Pendiente: Añadir consecuencia ---> El interior y el complementario de un ángulo son imágenes polinómicas de R^2 (Tesis Ueno)
 \appendix
 \begin{chapter}{Auxiliary definitions and results}\label{AA}
 
