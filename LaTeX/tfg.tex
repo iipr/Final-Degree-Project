@@ -378,7 +378,7 @@ $$
 \beta_{\mu}(s):=\left(\frac{1+b_{\mu }s}{s},s^{3}\right).
 $$
 The following pair of polynomials:
-\begin{equation*}
+\begin{equation*}\label{eq:firstMap}
 \boxed{
 \begin{aligned}
 \F({\tt x},{\tt y})&:=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2&=&\ \F_1^2+\F_2^2 \\
@@ -684,7 +684,7 @@ $$
 f:=\HH\circ\GG\circ\FF:\R^2\longrightarrow \R^2,
 $$
 where
-\begin{equation*}
+\begin{equation*}\label{eq:secondMap}
 \boxed{
 \begin{aligned}
 \FF:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto((xy-1)^2+x^2,\ (xy-1)^2+y^2), \\
@@ -1061,7 +1061,7 @@ Although Fernando, Gamboa and Ueno proved that the open quadrant $\Qu$ is the im
 In this chapter we will build up the topological machinery necessary to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
 \begin{subsection}{The new polynomial map}
 Without further ado, the polynomial map we are going to work with is denoted $\FFF$ and it is defined as:
-\begin{equation*}
+\begin{equation*}\label{eq:thirdMap}
 \boxed{
 \FFF({\tt x}, {\tt y}) := \big(({\tt x}^2{\tt y}^4+{\tt x}^4{\tt y}^2-{\tt y}^2-1)^2+{\tt x}^6{\tt y}^4,\ ({\tt x}^6{\tt y}^2+{\tt x}^2{\tt y}^2-{\tt x}^2-1)^2+{\tt x}^6{\tt y}^4\big).
 }
@@ -2117,42 +2117,72 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 \begin{chapter}{Complexity analysis}\label{compChapter}
 
 \begin{section}{Introduction to the computational comparison}\label{5sect1}
-In this chapter we are going to set up the theoretical basis to discuss about how ``good'' or how ``bad'' the three given polynomial maps are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards and by means of a computer we will transform certain sets of $\R^2$ through the given maps $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3), $\FFF$ (chapter 4).
+In this chapter we are going to set up the theoretical basis to discuss about how ``good'' or how ``bad'' the three given polynomial maps are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards and by means of a computer we will transform certain sets of $\R^2$ through the given maps from the three different proofs, namely $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3) and $\FFF$ (chapter 4).
 
-We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some dense sets in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves. Lastly, we will use random sets of points.
+We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some dense sets in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained in the unit disc and in the disc of radius $\rho=100$.
 
-In the analysis, we will compare times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will take advantage of the proof in chapter 4 for computing $f_2(\overline{\Qu})$ instead of computing $\FFF(\R^2)$.
+In the analysis, we will compare times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will also take advantage of the proof in Chapter 4 for computing $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$.
 
 So the first question we have to address is:
 
-\vspace{0.2cm}
-
+%\vspace{0.1cm}
+\begin{center}
 \fbox{ \emph{Why is it interesting to represent the open quadrant in an easy way?} }
-
-\vspace{0.2cm}
+\end{center}
+%\vspace{0.1cm}
 
 Here the word \textit{easy} means computationally efficient, so we are looking for the map that fills the open quadrant $\Qu$ quicker (in terms of the number of calculations) and the one that, given the same set of points, fills more area.
-	
+
+The main answer to the question is that the representation of $\Qu$ as a polynomial image is a key step that allows constructing polynomial or regular images of higher complexity. For instance, this is the case of convex polyhedra, their interiors and their complementaries. The reason for this is that for constructing either polynomial or regular maps $f:\R^n\to\R^n$ producing polyhedral images, the first step relies on the construction of a polynomial map whose image is the open orthant $\mathscr{O}:=\{x_1>0,\dots,x_n>0\}$. As we saw in Theorem \ref{openQuadGen} this heavily relies on using polynomial maps on the plane with the half-plane $\H$ and the open quadrant $\Qu$ as images. Afterwards, the strategy for obtaining polynomial maps with convex polyhedral images is usually to start from $\mathscr{O}$, which is the simplest convex polyhedron containing at least one vertex, and add a new vertex inductively by composing with an adequate regular map.
+
+That is why the better the constituents of the final map are, the better the final map will be.  Thus, the representation of $\Qu$ as a polynomial image of $\R^2$ is key in this process.	
 \end{section}
 
 \begin{section}{Complexity of the given polynomial maps}\label{5sect2}
 
+\begin{subsection}{The map from the first proof}
+
+What we need to do first is computing the coefficients and the shape of the polynomials we are going to be using in the next section. Note for instance that the first polynomial map $\P$ defined in \ref{eq:firstMap} transforms $\R^2$ into $\Qu \cup \set{(0,1), (1,0)}$, and then relying on the proof of Theorem \ref{finSetTh} we manage to ged rid of those two points by means of a polynomial map (say $H$) that is applied to $\R^2$ before $\P$ acts. But we recall that the proof of Theorem \ref{finSetTh} depends on the values $r, a_1, a_2\dots$ and so, how is $H$ defined?
+
+Fernando, Gamboa and Ueno wrote a paper \cite{fgu1} where they answered this question. Based on the map $f(\x), \ \x=(\x_1,\dots,\x_n)\in \R^n$ from the proof of Theorem \ref{finSetTh} they proved the following result with similar arguments from the ones given before:
+
+\begin{lemma}
+Let $r\in\R\setminus\{0,1\}$ and $S=\set{(0,0),(-1,0)}$. Then, $\R^2\setminus S$ is the image of the polynomial map 
+$$
+H=(H_1,H_2):\R^2\to\R^2,\ (x,y)\mapsto\big(xy-r,\ x^2(xy-r)(xy-r+1)+y\big).
+$$	
+\end{lemma}
+
+Here we take $r=-1$ for simplicity. Then you might say, well, our ``conflictive'' set is the preimage through $\P$ of the set $\set{(0,1),(1,0)}$, namely $\set{(0,-1),(-1,0)}$ and not $\set{(0,0),(-1,0)}$. This is not a problem since the polynomial map $Q$ defined as
+$$
+Q:\R^2\to\R^2,\ (x,y)\mapsto(x,y-x-1),
+$$
+maps $(-1,0)$ to $(-1,0)$ and $(0,0)$ to $(0,-1)$. Now it is clear that the first map we will be using for the computational comparison is
+$$
+g=(g_1, g_2):=\P\circ Q\circ H:\R^2\longrightarrow\R^2.
+$$
+
+We wonder how the full expansion of $g$ looks like, and the result can be observed in Table \ref{tab:firstMap}. In the comparison we will mostly be using the composition $\P\circ Q\circ H$ to get the image of a given point, but we will also do a comparison between that composition and the full expansion as shown in Table \ref{tab:firstMap}.
+
 \begin{table}[ht!]
 \framebox{
 \begin{tabular}{p{14cm}}
-{\tiny $(\F\circ Q\circ H)(\x,\y) =  (\x^{18} + 2   \x^{16} + \x^{14} ) \y^{10} + 2  (7   \x^{17} + 11   \x^{15} + 2   \x^{14} + 3   \x^{13} + 3   \x^{12} - \x^{11} + \x^{10} )\y^{9} + (87   \x^{16} + 98   \x^{14} + 44   \x^{13} - \x^{12} + 48   \x^{11} - 10   \x^{10} + 6   \x^{9} + 7   \x^{8} - 2   \x^{7} + \x^{6} )\y^{8} + 16   \x^{8} + 2   (158   \x^{15} + 104   \x^{13} + 104   \x^{12} - 49   \x^{11} + 69   \x^{10} + \x^{9} - 12   \x^{8} + 19   \x^{7} - 3   \x^{6} + \x^{4} ) \y^{7} + (743   \x^{14} + 118   \x^{12} + 552   \x^{11} - 331   \x^{10} + 114   \x^{9} + 116   \x^{8} - 136   \x^{7} + 61 \x^{6} + 8   \x^{5} - 14   \x^{4} + 4   \x^{3} + \x^{2} )\y^{6} - 64   \x^{6} + 2   (591   \x^{13} - 225   \x^{11} + 450   \x^{10} - 225   \x^{9} - 132   \x^{8} + 163   \x^{7} - 103   \x^{6} - 9   \x^{5} + 26   \x^{4} - 13   \x^{3} - 2   \x^{2} + \x ) \y^{5} + (1289   \x^{12} - 1250   \x^{10} + 924   \x^{9} - 78   \x^{8} - 786   \x^{7} + 386   \x^{6} - 10   \x^{5} - 154   \x^{4} + 66   \x^{3} + 3   \x^{2} - 14   \x + 1 )\y^{4} + 92   \x^{4} + 2   (476   \x^{11} - 770   \x^{9} + 292   \x^{8} + 282   \x^{7} - 432   \x^{6} + 63   \x^{5} + 143   \x^{4} - 76   \x^{3} + \x^{2} + 19   \x - 4 ) \y^{3} + (456   \x^{10} - 1064   \x^{8} + 208   \x^{7} + 767   \x^{6} - 456   \x^{5} - 172   \x^{4} + 290   \x^{3} - 27   \x^{2} - 52   \x + 23 ) \y^{2} - 56   \x^{2} + 4   (32   \x^{9} - 100   \x^{7} + 8   \x^{6} + 107   \x^{5} - 24   \x^{4} - 47   \x^{3} + 23   \x^{2} + 8   \x - 7 )\y + 13$,}
+{\tiny $g_1(\x,\y) =  (\x^{18} + 2   \x^{16} + \x^{14} ) \y^{10} + 2  (7   \x^{17} + 11   \x^{15} + 2   \x^{14} + 3   \x^{13} + 3   \x^{12} - \x^{11} + \x^{10} )\y^{9} + (87   \x^{16} + 98   \x^{14} + 44   \x^{13} - \x^{12} + 48   \x^{11} - 10   \x^{10} + 6   \x^{9} + 7   \x^{8} - 2   \x^{7} + \x^{6} )\y^{8}  + 2   (158   \x^{15} + 104   \x^{13} + 104   \x^{12} - 49   \x^{11} + 69   \x^{10} + \x^{9} - 12   \x^{8} + 19   \x^{7} - 3   \x^{6} + \x^{4} ) \y^{7} + (743   \x^{14} + 118   \x^{12} + 552   \x^{11} - 331   \x^{10} + 114   \x^{9} + 116   \x^{8} - 136   \x^{7} + 61 \x^{6} + 8   \x^{5} - 14   \x^{4} + 4   \x^{3} + \x^{2} )\y^{6}  + 2   (591   \x^{13} - 225   \x^{11} + 450   \x^{10} - 225   \x^{9} - 132   \x^{8} + 163   \x^{7} - 103   \x^{6} - 9   \x^{5} + 26   \x^{4} - 13   \x^{3} - 2   \x^{2} + \x ) \y^{5} + (1289   \x^{12} - 1250   \x^{10} + 924   \x^{9} - 78   \x^{8} - 786   \x^{7} + 386   \x^{6} - 10   \x^{5} - 154   \x^{4} + 66   \x^{3} + 3   \x^{2} - 14   \x + 1 )\y^{4} + 2   (476   \x^{11} - 770   \x^{9} + 292   \x^{8} + 282   \x^{7} - 432   \x^{6} + 63   \x^{5} + 143   \x^{4} - 76   \x^{3} + \x^{2} + 19   \x - 4 ) \y^{3} + (456   \x^{10} - 1064   \x^{8} + 208   \x^{7} + 767   \x^{6} - 456   \x^{5} - 172   \x^{4} + 290   \x^{3} - 27   \x^{2} - 52   \x + 23 ) \y^{2}  + 4   (32   \x^{9} - 100   \x^{7} + 8   \x^{6} + 107   \x^{5} - 24   \x^{4} - 47   \x^{3} + 23   \x^{2} + 8   \x - 7 )\y + (16 \x^{8}- 64   \x^{6} + 92   \x^{4} - 56 \x^{2} +  13)$,}
 \\[0.2cm]
-{\tiny $(\G\circ Q\circ H)(\x,\y) = \x^{16} \y^{12} + 2   (7   \x^{15} - \x^{13} + \x^{12} ) \y^{11} + (89   \x^{14} - 26   \x^{12} + 22   \x^{11} + \x^{10} - 2   \x^{9} + \x^{8} )\y^{10} + 2  (171   \x^{13} - 76   \x^{11} + 54   \x^{10} + 6   \x^{9} - 10   \x^{8} + 4   \x^{7} ) \y^{9} + (893   \x^{12} - 532   \x^{10} + 316   \x^{9} + 64   \x^{8} - 88   \x^{7} + 28   \x^{6} ) \y^{8} + 2   (844   \x^{11} - 628   \x^{9} + 311   \x^{8} + 101   \x^{7} - 114   \x^{6} + 29   \x^{5} )\y^{7} + (2396   \x^{10} - 2140   \x^{8} + 878   \x^{7} + 427   \x^{6} - 396   \x^{5} + 81   \x^{4} ) \y^{6} + 2   (1299   \x^{9} - 1369   \x^{7} + 457   \x^{6} + 326   \x^{5} - 248   \x^{4} + 40   \x^{3} ) \y^{5} + (2148   \x^{8} - 2668   \x^{6} + 698   \x^{5} + 751   \x^{4} - 458   \x^{3} + 55   \x^{2} )\y^{4} + 20   \x^{4} + 2   (661   \x^{7} - 976   \x^{5} + 187   \x^{4} + 327   \x^{3} - 151   \x^{2} + 12   \x ) \y^{3} + (573   \x^{6} - 1022   \x^{4} + 126   \x^{3} + 414   \x^{2} - 130   \x + 5 )\y^{2} - 56   \x^{2} + 4   (39   \x^{5} - 86   \x^{3} + 5   \x^{2} + 44   \x - 7 ) \y + 40$.}
+{\tiny $g_2(\x,\y) = \x^{16} \y^{12} + 2   (7   \x^{15} - \x^{13} + \x^{12} ) \y^{11} + (89   \x^{14} - 26   \x^{12} + 22   \x^{11} + \x^{10} - 2   \x^{9} + \x^{8} )\y^{10} + 2  (171   \x^{13} - 76   \x^{11} + 54   \x^{10} + 6   \x^{9} - 10   \x^{8} + 4   \x^{7} ) \y^{9} + (893   \x^{12} - 532   \x^{10} + 316   \x^{9} + 64   \x^{8} - 88   \x^{7} + 28   \x^{6} ) \y^{8} + 2   (844   \x^{11} - 628   \x^{9} + 311   \x^{8} + 101   \x^{7} - 114   \x^{6} + 29   \x^{5} )\y^{7} + (2396   \x^{10} - 2140   \x^{8} + 878   \x^{7} + 427   \x^{6} - 396   \x^{5} + 81   \x^{4} ) \y^{6} + 2   (1299   \x^{9} - 1369   \x^{7} + 457   \x^{6} + 326   \x^{5} - 248   \x^{4} + 40   \x^{3} ) \y^{5} + (2148   \x^{8} - 2668   \x^{6} + 698   \x^{5} + 751   \x^{4} - 458   \x^{3} + 55   \x^{2} )\y^{4} + 2   (661   \x^{7} - 976   \x^{5} + 187   \x^{4} + 327   \x^{3} - 151   \x^{2} + 12   \x ) \y^{3} + (573   \x^{6} - 1022   \x^{4} + 126   \x^{3} + 414   \x^{2} - 130   \x + 5 )\y^{2}  + 4   (39   \x^{5} - 86   \x^{3} + 5   \x^{2} + 44   \x - 7 ) \y + ( 20   \x^{4}- 56   \x^{2} + 40)$.}
 \end{tabular}}
 \caption{The first polynomial map}\label{tab:firstMap}
 \end{table}
+\end{subsection}
 
+\begin{subsection}{The map from the short proof}
+As for the second map, we recall that it is defined as $f=(f_1, f_2):=\HH\circ\GG\circ\FF$, see its definition in \ref{eq:secondMap}. The full expansion of $f$ can be seen in Table \ref{tab:secondMap}. We will also be doing a comparison between the expanded map and the composition in the next section.
 
 \begin{table}[ht!]
 \framebox{
 \begin{tabular}{p{14cm}}
 
-{\tiny $(\HH\circ\GG\circ\FF)_1(\x,\y)= \big(4\x^{26}+20\x^{24}+41\x^{22}+44\x^{20}+26\x^{18}
+{\tiny $f_1(\x,\y)= \big(4\x^{26}+20\x^{24}+41\x^{22}+44\x^{20}+26\x^{18}
 +8\x^{16}+\x^{14}\big)\y^{26}+\big(-104\x^{25}-
 480\x^{23}-902\x^{21}-880\x^{19}-468\x^{17}-128\x^{15}
 -14\x^{13}\big)\y^{25}+\big(32\x^{26}+1458\x^{24}+
@@ -2214,11 +2244,11 @@ Here the word \textit{easy} means computationally efficient, so we are looking f
 -2472\x^9+10104\x^7+3718\x^5+16\x^3-20\x\big)\y^3+\big(28\x^{20}+439\x^{18}
 +2350\x^{16}+{\tfrac{10971}{2}}\x^{14}+5505\x^{12}+1064\x^{10}-2161\x^8-1411\x^6-46\x^4
 +{\tfrac{127}{2}}\x^2+1\big)\y^2+\big(-8\x^{19}-86\x^{17}-312\x^{15}-451\x^{13}
--168\x^{11}+222\x^9+252\x^7+26\x^5-34\x^3-5\x\big)\y+\x^{18}+7\x^{16}+{\tfrac{31}{2}}
+-168\x^{11}+222\x^9+252\x^7+26\x^5-34\x^3-5\x\big)\y+\big(\x^{18}+7\x^{16}+{\tfrac{31}{2}}
 \x^{14}+{\tfrac{19}{2}}\x^{12}-8\x^{10}-17\x^8-4\x^6+5\x^4+{\tfrac{3}{2}}\x^2
-+{\tfrac{3}{2}}$,}
++{\tfrac{3}{2}}\big)$,}
 \\[0.2cm]
-{\tiny $(\HH\circ\GG\circ\FF)_2(\x,\y)= \big(2\x^{10}+5\x^8+4\x^6+\x^4\big)\y^{10}+
+{\tiny $f_2(\x,\y)= \big(2\x^{10}+5\x^8+4\x^6+\x^4\big)\y^{10}+
 \big(-20\x^9-40\x^7-24\x^5-4\x^3\big)\y^9+
 \big(5\x^{10}+102\x^8+149\x^6+62\x^4+6\x^2\big)\y^8+
 \big(-40\x^9-312\x^7-316\x^5-84\x^3-4\x\big)\y^7+
@@ -2228,35 +2258,357 @@ Here the word \textit{easy} means computationally efficient, so we are looking f
 \big(-4\x^9-84\x^7-284\x^5-168\x^3\big)\y^3
 +\big(6\x^8+60\x^6+99\x^4+5\x^2-1\big)\y^2
 +\big(-4\x^7-20\x^5-8\x^3+6\x\big)\y+
-\x^6+2\x^4-2\x^2+1.$}
+(\x^6+2\x^4-2\x^2+1).$}
 
 \end{tabular}}
 \caption{The second polynomial map}\label{tab:secondMap}
 \end{table}
+\end{subsection}
+
+\begin{subsection}{The map from the topological proof}
+
+Lastly and after such long polynomials, the map from the topological proof defined in \ref{eq:thirdMap} is showed in its expanded form in Table \ref{tab:thirdMap}. Recall that $\FFF = f_2 \circ f_1$ where $f_1\big(\R^2\big) = \overline{\Qu}$, so we will also be testing how $f_2\big(\overline{\Qu}\big)$ behaves.
 
 \begin{table}[ht!]
 \begin{center}
+\vspace{1cm}
 \framebox{
 \begin{tabular}{p{10cm}}
-{\tiny $\FFF_1(\x,\y) = x^{4} y^{8} + 2   {(x^{6} - x^{2})} y^{6} + {(x^{8} + x^{6} - 2   x^{4} - 2   x^{2} + 1)} y^{4} - 2   {(x^{4} - 1)} y^{2} + 1$,}
+{\tiny $\FFF_1(\x,\y) = \x^{4} \y^{8} + 2   {(\x^{6} - \x^{2})} \y^{6} + {(\x^{8} + \x^{6} - 2   \x^{4} - 2   \x^{2} + 1)} \y^{4} - 2   {(\x^{4} - 1)} \y^{2} + 1$,}
 \\[0.2cm]
-{\tiny $ \FFF_2(\x,\y) = {(x^{12} + 2   x^{8} + x^{6} + x^{4})} y^{4} + x^{4} - 2   {(x^{8} + x^{6} + x^{4} + x^{2})} y^{2} + 2   x^{2} + 1$.}
+{\tiny $ \FFF_2(\x,\y) = {(\x^{12} + 2   \x^{8} + \x^{6} + \x^{4})} \y^{4}  - 2   {(\x^{8} + \x^{6} + \x^{4} + \x^{2})} \y^{2} + (\x^{4}+ 2   \x^{2} + 1)$.}
 \end{tabular}}
 \end{center}
 \caption{The third polynomial map}\label{tab:thirdMap}
 \end{table}
+\end{subsection}
+
+\begin{subsection}{Optimal algebraic structure of the given polynomial maps}
+
+In this section we show the total degree and the total number of (non-zero) monomials from the three polynomial maps, see Table \ref{tab:degreeMon}. We define the \textit{total degree} of a polynomial map to be the sum of the degrees of its components, so for instance $\text{deg}(\FFF) = \text{deg}(\FFF_1) + \text{deg}(\FFF_2) = 12 + 16 = 28$.
+
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{c || c | c | c}
+& Total degree & Total number of monomials & Non-escalar complexity\\ \hline \hline
+$g = \P\circ Q \circ H$ & 56 & 167 & 13 \\ \hline
+$f=\HH\circ\GG\circ\FF$ & 72 &  350 & 11\\ \hline
+$\FFF = f_2 \circ f_1$ & 28 & 22 & 25\\	
+\end{tabular}
+\caption{Total degree, total number of monomials and non-escalar complexity.}\label{tab:degreeMon}
+\end{center}
+\end{table}
+
+\end{subsection}
+
+\begin{subsection}{Optimal multiplicative complexity of the given polynomial maps}
+
+When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of this value, because depending on how the product is implemented on a certain programming language this value could get smaller.
+
+For instance consider the first polynomial map $g = \P\circ Q \circ H$:
+\begin{align*}
+&H:\R^2\to\R^2,\ (x,y)\mapsto\big(xy+1,\ x^2(xy+1)(xy+2)+y\big), \\
+&Q:\R^2\to\R^2,\ (x,y)\mapsto(x,y-x-1), \\
+&\P:\R^2\to\R^2,\ (x,y)\mapsto\big((1-x^3y+y-xy^2)^2+x^4y^2, (1-xy+x-x^4y)^2+x^4y^2\big).\\
+\end{align*}
+Looking at $H$ we see that the different non-scalar products that need to be computed are $xy, x^2, (xy + 1)(xy+2) \text{ and } x^2(xy + 1)(xy+2)$, that makes 4 in total. In a similar way we get 0 for $Q$ and $9$ for $\P$. In total, an upper bound for $g$ is $4 + 0 + 9 = 13$. Similarly, we obtain $4+4+3=11$ for $f=\HH\circ\GG\circ\FF$ rewritten as
+\begin{align*}
+&\FF:\R^2\to\R^2,\  (x,y)\mapsto((xy-1)^2+x^2,(xy-1)^2+y^2),\\
+&\GG:\R^2\to\R^2,\  (x,y)\mapsto(x,y((xy)^2-4xy+4)+x((xy)^2-2xy+1)),\\
+&\HH:\R^2\to\R^2,\  (x,y)\mapsto(xy(x\cdot(xy)-4x+4+\tfrac{1}{2}y),y),
+\end{align*}
+
+As for $\FFF$: 
+\begin{align*}
+\FFF_1(x,y) = &\  x^{4} y^{4}y^4 + 2   {(x^{4}x^2 - x^{2})} y^{4}y^2 + (x^{4}x^4 + x^{4}x^2 - 2   x^{4} - 2   x^{2} + 1) y^{4}\\
+&\  - 2   {(x^{4} - 1)} y^{2} + 1, \\
+\FFF_2(x,y) =&\ {(x^{4}x^4x^4 + 2   x^{4}x^4 + x^{4}x^2 + x^{4})} y^{4}  - 2   {(x^{4}x^4 + x^{4}x^2 + x^{4} + x^{2})} y^{2} \\
+&\ + (x^{4}+ 2   x^{2} + 1).
+\end{align*}
+
+we get $14+11=25$. See Table \ref{tab:degreeMon}.
+
+\end{subsection}
 
 \end{section}
 
 \begin{section}{Computational analysis}\label{5sect3}
 
+After all these arguments and explanations, we did a few tests on Sage, in terms of timing and obtaining the resulting regions of $\R^2$. We split this analysis into three cases depending on the chosen domain.
+
+\begin{subsection}{Uniformly distibuted points contained in a square}
+
+The test we performed related to this were:
+\begin{enumerate}[1. ]
+\item \textbf{The set of integers contained in $[-10, 10]\times[-10,10]$}, that is:
+$$
+\PP_1 := \set[\big]{(x,y): -10\le x,y\le 10,\ x, y\in \Z} \subset \R^2.
+$$
+\item \textbf{The set of integers contained in $[-100, 100]\times[-100,100]$}, that is:
+$$
+\PP_2 := \set[\big]{(x,y): -100\le x,y\le 100,\ x, y\in \Z} \subset \R^2.
+$$
+\item \textbf{Grid of $10^6$ points uniformly distributed in $[0, 1]\times[0,1]$} with step $h=\tfrac{1}{999}$:
+$$
+\PP_3 := \set[\big]{x: x = nh,\ 0\le n\le 999 } \times \set[\big]{y: y=nh,\ 0\le n\le 999 } \subset \R^2.
+$$
+\item \textbf{Grid of $10^6$ points uniformly distributed in $[-1, 1]\times[-1,1]$} with step $h=\tfrac{2}{999}$:
+$$
+\PP_4 := \set[\big]{x: x = nh -1,\ 0\le n\le 999 } \times \set[\big]{y: y=nh-1,\ 0\le n\le 999 } \subset \R^2.
+$$
+\item \textbf{Grid of $4\cdot 10^4$ points uniformly distributed in $[-10, 10]\times[-10,10]$} with step $h=\tfrac{20}{199}$:
+$$
+\PP_5 := \set[\big]{x: x = nh -10,\ 0\le n\le 199 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 199 } \subset \R^2.
+$$
+\item \textbf{Grid of $4\cdot 10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$} with step $h=\tfrac{20}{1999}$:
+$$
+\PP_6 := \set[\big]{x: x = nh -10,\ 0\le n\le 1999 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 1999 } \subset \R^2.
+$$
+\end{enumerate}
+
+We considered to continue making the set of points bigger, namely a grid of $4\cdot 10^8$ points, but a quick estimation took this idea away from us, because it could take a few hours just for the first polynomial. The time results are displayed in Table \ref{tab:square}.
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{c || c | c | c}
+& $g = \P\circ Q \circ H$ & $f=\HH\circ\GG\circ\FF$ & $\FFF$ \\ \hline \hline
+$\PP_1$ & 0.19 s & 0.17 s & 0.07 s \\ \hline
+$\PP_2$ & 17.38 s & 16.23 s & 6.88 s \\ \hline
+$\PP_3$ & 410.73 s & 389.74 s & 155.09 s \\ \hline
+$\PP_4$ & 408.88 s & 392.34 s & 155.29 s \\ \hline
+$\PP_5$ & 17.10 s & 15.45 s & 7.00 s \\ \hline
+$\PP_6$ & 1633.50 s & 1640.01 s & 625.11 s \\
+\end{tabular}
+\caption[Times of the computation of points contained in a square.]{Times of the computation of uniformly distibuted points contained in a square.}\label{tab:square}
+\end{center}
+\end{table}
+
+In this section we also compare the first and third maps as a composition or fully expanded, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
+
+\begin{table}[ht!]
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c | c }
+$g$ & Composition &Expanded \\ \hline \hline
+$\PP_1$ & 0.19 s & 0.23 s \\ \hline
+$\PP_5$ & 17.10 s & 16.15 s \\ \hline
+$\PP_6$ & 1633.50 s & 1582.08 s \\
+\end{tabular}
+\caption[Comparison between $g$ on its expanded form or as a composition.]{Comparison between $g= \P\circ Q \circ H$ on its expanded form (Table \ref{tab:firstMap}) or as a composition.}\label{tab:expand1}
+}
+\hfill
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c | c }
+$f$ & Composition &Expanded \\ \hline \hline
+$\PP_1$ & 0.17 s & 0.40 s \\ \hline
+$\PP_5$ & 15.45 s & 26.50 s \\ \hline
+$\PP_6$ & 1640.01 s & 2650.13 s \\
+\end{tabular}
+\caption[Comparison between $f$ on its expanded form or as a composition.]{Comparison between $f=\HH\circ\GG\circ\FF$ on its expanded form (Table \ref{tab:secondMap}) or as a composition.}\label{tab:expand2}
+}
+\end{table}
+
+Lastly, we recall that $\FFF = f_2\circ f_1$, where $f_1(\x, \y) = (\x^2, \y^2)$, so $f_1\big(\R^2\big) = \overline{\Qu}$. Thus, we study $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$. We used a grid of $10^6$ points uniformly distributed in $[0, 10]\times[0,10]$ with step $h=\tfrac{10}{999}$:
+$$
+\PP_7 := \set[\big]{x: x = nh,\ 0\le n\le 999 } \times \set[\big]{y: y=nh,\ 0\le n\le 999 } \subset \R^2.
+$$
+It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. % comparar con las imagenes de F(P_3) y F(P_4)
+\end{subsection}
+
+\begin{subsection}{Using families of curves}
+It this section we recall the condition that any polynomial map that has $\Qu$ as an image must verify:
+\begin{center}
+\begin{tabular}{rr}
+$\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad \quad$ ($\clubsuit$)
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+
+On the second Chapter we used certain families of curves to  approach the axes, namely:
+$$
+\alpha_{\lambda}(s, a_\lambda):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
+\quad \text{ and } \quad
+\beta_{\mu}(s, b_\mu):=\left(\frac{1+b_{\mu }s}{s},s^{3}\right).
+$$
+In this section we used as the domain of the curves the grid of $10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$ with step $h=\tfrac{20}{999}$:
+$$
+\PP_8 := \set[\big]{x: x = nh-10,\ 0\le n\le 999 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 999 } \subset \R^2.
+$$
+First, for each $(s, a_\lambda) \in \PP_8$ we computed $\alpha_{\lambda}\big((s, a_\lambda)\big)$, and then we applied $g$ to that set of points. We did the same thing for $(s, b_\mu) \in \PP_8$, obtaining $g\big(\beta_{\mu}\big((s, b_\mu)\big)\big)$. The timing tests are displayed in Table \ref{tab:curves1}.
+
+\begin{table}[ht!]
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c }
+ & Time  \\ \hline \hline
+\\[-1em]
+$\alpha_{\lambda}\big((s, a_\lambda)\big)$ &  129.27 s\\ \hline
+\\[-1em]
+$\beta_{\mu}\big((s, b_\mu)\big)$ &133.76 s \\ \hline
+\\[-1em]
+$g\big(\alpha_{\lambda}\big((s, a_\lambda)\big)\big)$ & 398.04 s  \\ \hline
+\\[-1em]
+$g\big(\beta_{\mu}\big((s, b_\mu)\big)\big)$ & 399.02 s \\
+\end{tabular}
+\caption[]{Times when computing the image of curves through $g$.}\label{tab:curves1}
+}
+\hfill
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c }
+ & Time  \\ \hline \hline
+\\[-1em]
+$\gamma_{\lambda}\big((s, a_\lambda)\big)$ & 133.64 s \\ \hline
+\\[-1em]
+$\delta_{\mu}\big((s, b_\mu)\big)$ &127.90 s \\ \hline
+\\[-1em]
+$f_2\big(\gamma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 141.92 s  \\ \hline
+\\[-1em]
+$f_2\big(\delta_{\mu}\big((s, b_\mu)\big)\big)$ & 143.21 s \\
+\end{tabular}
+\caption[]{Times when computing the image of curves through $f_2$.}\label{tab:curves3}
+}
+\end{table}
+
+We can proceed in the exact same way with a new family of curves for $f_2$:
+$$
+\gamma_\lambda(s, a_\lambda) = \left(\frac{1+a_\lambda s}{s}, s^2\right)
+\quad \text{ and } \quad
+\delta_\mu(s, b_\mu) = \left(s, \frac{1+b_\mu s}{s}\right).
+$$
+The computation times can be seen in Table \ref{tab:curves3}.
+
+\end{subsection}
+
+\begin{subsection}{Randomly distibuted points contained in a disc}
+When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square, but afterwards we opted for doing it on the disc. The points are generated by means of a random radius $\rho \in [0, 1]$ (and $\rho \in [0, 100]$ afterwards) and a random argument $\theta\in[0, 2\pi]$. Then, each point is generated as $(\rho\cos(\theta), \rho\sin(\theta))$. The result is a disc of $10^5$ points where there is a higher concentration of points when we get closer to the origin, but this is not a problem for our study case.
+%Añadir imagen del disco
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{c || c | c | c}
+& $g = \P\circ Q \circ H$ & $f=\HH\circ\GG\circ\FF$ & $\FFF$ \\ \hline \hline
+${\mathbb D}_1$ & 131.97 s & 99.56 s & 32.02 s \\ \hline
+${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
+\end{tabular}
+\caption[Times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:square}
+\end{center}
+\end{table}
+
+\end{subsection}
+
 \end{section}
 
 \begin{section}{Conclusions and future research}\label{5sect4}
 
+As we have seen in the previous section, the third map $\FFF$ outstrips the other two maps in the timing tests. This is to be expected from the ideas developed in Section \ref{5sect2} from this Chapter. Also, even though the second map $f$ was by far the one that provided the easiest proof for Theorem \ref{openQuad}, the Figures from the previous section show that it is not very good at filling a big area of the open quadrant $\Qu$. Lastly, the first map $g$ was reasonably good in terms of covering $\Qu$, but not so much in terms of time.
+
+All of this could just be considered as an appetizer for finding a polynomial map with the least possible total degree and the least possible number of monomials:
+\begin{problem}
+\begin{enumerate}[(i)]
+\item Which is the minimum total degree for a polynomial map $\R^2 \to \R^2$ having $\Qu$ as image?
+\item Which is the sparsest polynomial map $\R^2 \to \R^2$ whose image is $\Qu$?
+\end{enumerate}
+\end{problem}
+
+The authors haven't stopped working on the problem, and we are going to present some new candidates whose images could be $\Qu$:
+\begin{align*}
+\cdot\ \mathcal{N}_1:\R^2 &\to \R^2, \\
+(x,y)&\mapsto\big(x^4y^4 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^4y^4 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big),\\
+\cdot\ \mathcal{N}_2:\R^2 &\to \R^2, \\
+(x,y)&\mapsto\big(x^2y^2 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^2y^2 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big),\\
+\cdot\ \mathcal{N}_3:\R^2 &\to \R^2, \\
+(x,y)&\mapsto\big(x^6y^4 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^4y^6 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big).
+\end{align*}
+It is remarkable how good their properties are in terms of total degree and number of monomials, see Table \ref{tab:newDegreeMon}.
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{c || c | c | c}
+& Total degree & Total number of monomials & Non-escalar complexity\\ \hline \hline
+$\mathcal{N}_1$ & 16 & 24 & 11 \\ \hline
+$\mathcal{N}_2$ & 16 &  26 & 7 \\ \hline
+$\mathcal{N}_3$ & 20 & 26 & 15 \\	
+\end{tabular}
+\caption{Properties from the new maps.}\label{tab:newDegreeMon}
+\end{center}
+\end{table}
+Note that their symmetry gives them an advantage for the upper-bound of the non-escalar complexity. We used the following pair of curves to approach the axes:
+
+$$
+\sigma_\lambda(s, a_\lambda) = \left(s^2 + a_\lambda s^3,\ \frac{1}{s}\right)
+\quad \text{ and } \quad
+\tau_\mu(s, b_\mu) = \left(\frac{1}{s},\ s^2 + b_\mu s^3\right).
+$$
+The computation times for $\mathcal{N}_1$ and $\mathcal{N}_2$ are displayed respectively in Tables \ref{tab:curvesNew1} and \ref{tab:curvesNew2}.
+
+\begin{table}[ht!]
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c }
+ & Time  \\ \hline \hline
+\\[-1em]
+$\sigma_{\lambda}\big((s, a_\lambda)\big)$ &  133.15 s\\ \hline
+\\[-1em]
+$\tau_{\mu}\big((s, b_\mu)\big)$ &129.80 s, \\ \hline
+\\[-1em]
+$\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.88 s \\ \hline
+\\[-1em]
+$\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 153.14 s \\
+\end{tabular}
+\caption[]{Times when computing the image of curves through $\mathcal{N}_1$.}\label{tab:curvesNew1}
+}
+\hfill
+\parbox{.45\linewidth}{
+\centering
+\begin{tabular}{c || c }
+ & Time  \\ \hline \hline
+\\[-1em]
+$\sigma_{\lambda}\big((s, a_\lambda)\big)$ &  133.15 s\\ \hline
+\\[-1em]
+$\tau_{\mu}\big((s, b_\mu)\big)$ &129.80 s, \\ \hline
+\\[-1em]
+$\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.23 s  \\ \hline
+\\[-1em]
+$\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 148.84 s \\
+\end{tabular}
+\caption[]{Times when computing the image of curves through $\mathcal{N}_2$.}\label{tab:curvesNew2}
+}
+\end{table}
+
+Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes for this family of curves. Even when checking on $[0, 0.1]\times[0, 0.1]$ it fills plenty of area towards the axes.
+%% REFERENCIA IMAGEN
+
+\newpage
+\vspace{1cm}
+{\bf Aside form the optimal algebraic structure and the optimal multiplicative complexity, there is another measurement that could be consider when talking about the complexity of the given polynomials.\bf }
+
+It is well know that for a computer it is far way easier to compute multiplications and divisions by powers of 2 than any other number, because that translates into a simple shift in the array of bits. For instance consider the number $20 = 2^4 + 2^2$ expressed in base 2 with 8 bits: $(20)_{10} = (0001\ 0100)_2$. Then, if we want to multiply $20\cdot 4$ the computer can just shift the array two positions (because $4=2^2$) to the left, namely:
+$$(20 \cdot 4)_{10} = (0101\ 0000)_2 = (80)_{10}.$$
+It is clear that the other way around also works for division, shifting to the right:
+$$(80 / 16)_{10} = (0000\ 1010)_2 = (5)_{10}.$$
+
+Computers have had for years logic units that compute this shiftings flawlessly. Thus, we could focus on obtaining a polynomial map that only has powers of 2 as multiplicative factors on its components. Note that the three new maps and the one from the topological proof verify this. Whats more, this factor is 2 for all of them.
+
+\vspace{1cm}
+{\bf There is a kind of general implementation we could do for computing the image of a given set of points through a map: relying on parallelism.\bf}
+
+Let $f(\x, \y) = (f_1(\x, \y), f_2(\x, \y))$ be any of the maps we were working with in this work. Taking advantage of the number of kernels computers have nowadays, we could use the readers-writers problem from concurrent computing (using two threads) and a data structure like a hash table. The key of this hash table would be a monomial (or a part of it), for instance $x^2$ or $x^4y^2$. The value associated to that key would be the computation of that monomial given the current point.
+
+Let $p = (x,y)$ be a point of the set of points we are using as a domain. When the programme starts, we would launch both threads: one for $f_1$ and the other for $f_2$. Each time $f_1(p)$ would need to compute a non-scalar multiplication (like the examples we just stated) it would look for it on the hash table. If its there, then there is no need to compute the multiplication, just get the value. If the key is not in the hash table, compute it and add it to the table. The thread for $f_2(p)$ would work in the same way. This way each non-scalar multiplication would only be computed once.
+
+The good thing is that this implementation could easily be generalized for computing $f$ when it would be a composition of other maps, say $f = g\circ h$. The programme would act in the same way, starting computing $h(p)= (h_1(p), h_2(p))$ for every $p$ by updating the hash table with each $p$. Then, when this phase would be over, we would have to delete the content in the hash table and proceed in the same way for $g(h(p))= g((h_1(p), h_2(p)))$.
+
+The only inconvenience would be working with symbolic expressions in Java or C++, which is far way easier with Sage (as far as I know). In any case, this implementation would probably mean a improvement in time, because searching for a key in a (relatively small) hash table would be quicker (it requires constant time) than re-computing the multiplication. If for instance for each point we avoid computing two out of ten monomials, in total we could be saving roughly 20\% of the time.
+
 \end{section}
 
 %Pendiente: Añadir consecuencia ---> El interior y el complementario de un ángulo son imágenes polinómicas de R^2 (Tesis Ueno)
+
+% Paper 2:
+%A similar argument applies to prove that the complement in $\R^n$ of an $n$-dimensional convex polyhedron is a polynomial image of $\R^n$ \cite{fu2}, which uses  an inductive process starting with the complement of the open orthant. In order to represent this complement of the orthant as a polynomial image we need first to obtain the complement of the (closed) quadrant in $\R^2$  as a polynomial image, and this is achieved by applying to the open quadrant (considered in $\C$) the polynomial map $z\mapsto z^3$. Thus, the representation of the open quadrant as a polynomial image of $\R^2$ is the seed in many inductive processes that allows us to determine the semialgebraic sets with piecewise linear boundary that are polynomial or regular images of $\R^n$. 
+
 \end{chapter}
 
 \appendix
@@ -2435,6 +2787,8 @@ New York: Springer Verlag, (1978).
 
 \bibitem[M]{m} W. Massey: A Basic Course in Algebraic Topology, \emph{Graduate Texts in Mathematics}, \textbf{\text{127}}.
 Springer-Verlag, New York: 1991.
+
+\bibitem[FGU1]{fgu1} J.F. Fernando, C. Ueno: On the open quadrant as a polynomial image of $\R^2$ (revisited).
 
 
 
