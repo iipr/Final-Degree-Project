@@ -2119,7 +2119,7 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 \begin{section}{Introduction to the computational comparison}\label{5sect1}
 In this chapter we are going to set up the theoretical basis to discuss about how ``good'' or how ``bad'' the three given polynomial maps are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards and by means of a computer we will transform certain sets of $\R^2$ through the given maps from the three different proofs, namely $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3) and $\FFF$ (chapter 4).
 
-We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some dense sets in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained in the unit disc and in the disc of radius $\rho=100$.
+We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some grids in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained in the unit disc and in the disc of radius $\rho=100$.
 
 In the analysis, we will compare times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will also take advantage of the proof in Chapter 4 for computing $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$.
 
@@ -2303,7 +2303,7 @@ $\FFF = f_2 \circ f_1$ & 28 & 22 & 25\\
 
 \begin{subsection}{Optimal multiplicative complexity of the given polynomial maps}
 
-When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of this value, because depending on how the product is implemented on a certain programming language this value could get smaller.
+When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of this value, because depending on how the product is implemented on a certain programming language this value could be smaller.
 
 For instance consider the first polynomial map $g = \P\circ Q \circ H$:
 \begin{align*}
@@ -2338,7 +2338,7 @@ After all these arguments and explanations, we did a few tests on Sage, in terms
 
 \begin{subsection}{Uniformly distibuted points contained in a square}
 
-The test we performed related to this were:
+The tests we performed related to this were:
 \begin{enumerate}[1. ]
 \item \textbf{The set of integers contained in $[-10, 10]\times[-10,10]$}, that is:
 $$
@@ -2368,20 +2368,80 @@ $$
 
 We considered to continue making the set of points bigger, namely a grid of $4\cdot 10^8$ points, but a quick estimation took this idea away from us, because it could take a few hours just for the first polynomial. The time results are displayed in Table \ref{tab:square}.
 
+\begin{figure}[ht!]
+%\vspace{-0.6cm}
+\hspace{0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_08_P4prime.png}
+\vspace{-0.4cm}\caption{$g(\PP_4)$.\label{fig:gP4}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_04_P3.png}
+\vspace{-0.4cm}\caption{$g(\PP_3)$.\label{fig:gP3}}
+\end{subfigure}\\[1ex]
+\vspace{-0.2cm}
+
+\hspace{0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_05_P3.png}
+\vspace{-0.4cm}\caption{$f(\PP_3)$.\label{fig:fP3}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_06_P3.png}
+\vspace{-0.4cm}\caption{$\FFF(\PP_3)$.\label{fig:FFFP3}}
+\end{subfigure}
+\vspace{-0.1cm}\caption{The sets $g(\PP_4),\ g(\PP_3),\ f(\PP_3)$ and $\FFF(\PP_3)$.\label{fig:discAll}}
+\end{figure}
+
 \begin{table}[ht!]
 \begin{center}
 \begin{tabular}{c || c | c | c}
 & $g = \P\circ Q \circ H$ & $f=\HH\circ\GG\circ\FF$ & $\FFF$ \\ \hline \hline
 $\PP_1$ & 0.19 s & 0.17 s & 0.07 s \\ \hline
 $\PP_2$ & 17.38 s & 16.23 s & 6.88 s \\ \hline
-$\PP_3$ & 410.73 s & 389.74 s & 155.09 s \\ \hline
-$\PP_4$ & 408.88 s & 392.34 s & 155.29 s \\ \hline
+$\PP_3$ & 410.73 s (\ref{fig:gP3}) & 389.74 s (\ref{fig:fP3}) & 155.09 s (\ref{fig:FFFP3}) \\ \hline
+$\PP_4$ & 408.88 s (\ref{fig:gP4}) & 392.34 s & 155.29 s \\ \hline
 $\PP_5$ & 17.10 s & 15.45 s & 7.00 s \\ \hline
-$\PP_6$ & 1633.50 s & 1640.01 s & 625.11 s \\
+$\PP_6$ & 1633.50 s (\ref{fig:gP6_1}-\ref{fig:gP6_2}) & 1640.01 s  (\ref{fig:fP6_1}-\ref{fig:fP6_2}) & 625.11 s  (\ref{fig:FFFP6_1}-\ref{fig:FFFP6_2}) \\
 \end{tabular}
 \caption[Times of the computation of points contained in a square.]{Times of the computation of uniformly distibuted points contained in a square.}\label{tab:square}
 \end{center}
 \end{table}
+
+\begin{figure}
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_16_P6.png}
+\vspace{0cm}\caption{$g(\PP_6)$.\label{fig:gP6_1}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_17_P6prime.png}
+\vspace{0cm}\caption{$g(\PP_6)$.\label{fig:gP6_2}}
+\end{subfigure}\\[1ex]
+\vspace{0.4cm}
+	
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_19_P6.png}
+\vspace{0cm}\caption{$f(\PP_6)$.\label{fig:fP6_1}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_20_P6prime.png}
+\vspace{0cm}\caption{$f(\PP_6)$.\label{fig:fP6_2}}
+\end{subfigure}\\[1ex]
+\vspace{0.4cm}
+
+\hspace{-0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_21_P6.png}
+\vspace{0cm}\caption{$\FFF(\PP_6)$.\label{fig:FFFP6_1}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_22_P6prime.png}
+\vspace{0cm}\caption{$\FFF(\PP_6)$.\label{fig:FFFP6_2}}
+\end{subfigure}
+\vspace{0.1cm}\caption{Images of the $4\cdot 10^6$ points from $\PP_6$ through $f, g$ and $\FFF$.\label{fig:P6}}
+\end{figure}
 
 In this section we also compare the first and third maps as a composition or fully expanded, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
 
@@ -2413,7 +2473,8 @@ Lastly, we recall that $\FFF = f_2\circ f_1$, where $f_1(\x, \y) = (\x^2, \y^2)$
 $$
 \PP_7 := \set[\big]{x: x = nh,\ 0\le n\le 999 } \times \set[\big]{y: y=nh,\ 0\le n\le 999 } \subset \R^2.
 $$
-It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. % comparar con las imagenes de F(P_3) y F(P_4)
+It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. Note that this makes sense since the only difference between computing $\FFF= f_2\circ f_1$ or $f_2$ of a set is that with $\FFF$ you first compute $f_1$, which should not take a lot of time because of its simplicity, and then you compute $f_2$ of the result.
+% comparar con las imagenes de F(P_3) y F(P_4)
 \end{subsection}
 
 \begin{subsection}{Using families of curves}
@@ -2477,22 +2538,84 @@ $$
 \quad \text{ and } \quad
 \delta_\mu(s, b_\mu) = \left(s, \frac{1+b_\mu s}{s}\right).
 $$
-The computation times can be seen in Table \ref{tab:curves3}.
+The computation times can be seen in Table \ref{tab:curves3}. The images of the curves through $g$ and $f_2$ are shown in Figure \ref{fig:curvesfg}.
+
+\begin{figure}
+\vspace{-0.6cm}
+\hspace{0.4cm}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_25_1curves3.png}
+\vspace{-0.4cm}\caption{$g(\alpha_{\lambda})$ and $g(\beta_{\mu})$.\label{fig:1curves1}}
+\end{subfigure}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_29_3curves3.png}
+\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves1}}
+\end{subfigure}\\[1ex]
+\vspace{-0.2cm}
+	
+\hspace{0.4cm}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_24_1curves2.png}
+\vspace{-0.4cm}\caption{$g(\alpha_{\lambda})$ and $g(\beta_{\mu})$.\label{fig:1curves2}}
+\end{subfigure}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_30_3curves4.png}
+\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves2}}
+\end{subfigure}\\[1ex]
+\vspace{-0.2cm}
+
+\hspace{0.4cm}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_26_1curves4.png}
+\vspace{-0.4cm}\caption{$g(\alpha_{\lambda})$ and $g(\beta_{\mu})$.\label{fig:1curves3}}
+\end{subfigure}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_30_3curves5.png}
+\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves3}}
+\end{subfigure}
+\vspace{-0.1cm}\caption{Images of families of curves for $g$ and $f_2$: $\alpha_{\lambda}$ in orange and $\beta_{\mu}$ in purple.\label{fig:curvesfg}}
+\end{figure}
 
 \end{subsection}
 
 \begin{subsection}{Randomly distibuted points contained in a disc}
-When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square, but afterwards we opted for doing it on the disc. The points are generated by means of a random radius $\rho \in [0, 1]$ (and $\rho \in [0, 100]$ afterwards) and a random argument $\theta\in[0, 2\pi]$. Then, each point is generated as $(\rho\cos(\theta), \rho\sin(\theta))$. The result is a disc of $10^5$ points where there is a higher concentration of points when we get closer to the origin, but this is not a problem for our study case.
-%Añadir imagen del disco
+When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square, but afterwards we opted for doing it on the disc. The points are generated by means of a random radius $\rho \in [0, 1]$ (and $\rho \in [0, 100]$ afterwards) and a random argument $\theta\in[0, 2\pi]$. Then, each point is generated as $(\rho\cos(\theta), \rho\sin(\theta))$. The result is a disc of $10^5$ points where there is a higher concentration of points when we get closer to the origin, but this is not a problem for our study case. See Figure \ref{fig:disc}. The timing tests are shown in Table \ref{tab:disc}.
+
+\begin{figure}[ht!]
+\vspace{-0.6cm}
+\hspace{0.1cm}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_34_disc.png}
+\vspace{-0.4cm}\caption{Set of $10^5$ points contained in ${\mathbb D}_1$.\label{fig:disc}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_35_disc1.png}
+\vspace{-0.4cm}\caption{$g({\mathbb D}_1)$.\label{fig:disc1}}
+\end{subfigure}\\[1ex]
+\vspace{-0.2cm}
+
+\hspace{0.1cm}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_37_disc2.png}
+\vspace{-0.4cm}\caption{$f({\mathbb D}_1)$.\label{fig:disc2}}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_39_disc3.png}
+\vspace{-0.4cm}\caption{$\FFF({\mathbb D}_1)$.\label{fig:disc3}}
+\end{subfigure}
+\vspace{-0.1cm}\caption{Images of points in ${\mathbb D}_{1}$.\label{fig:discAll}}
+\end{figure}
+
+\vspace{0.2cm}
 
 \begin{table}[ht!]
 \begin{center}
 \begin{tabular}{c || c | c | c}
 & $g = \P\circ Q \circ H$ & $f=\HH\circ\GG\circ\FF$ & $\FFF$ \\ \hline \hline
-${\mathbb D}_1$ & 131.97 s & 99.56 s & 32.02 s \\ \hline
+${\mathbb D}_1$ & 131.97 s (\ref{fig:disc1}) & 99.56 s (\ref{fig:disc2}) & 32.02 s (\ref{fig:disc3}) \\ \hline
 ${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
 \end{tabular}
-\caption[Times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:square}
+\caption[Times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:disc}
 \end{center}
 \end{table}
 
@@ -2531,7 +2654,7 @@ $\mathcal{N}_1$ & 16 & 24 & 11 \\ \hline
 $\mathcal{N}_2$ & 16 &  26 & 7 \\ \hline
 $\mathcal{N}_3$ & 20 & 26 & 15 \\	
 \end{tabular}
-\caption{Properties from the new maps.}\label{tab:newDegreeMon}
+\caption{Properties of the new maps.}\label{tab:newDegreeMon}
 \end{center}
 \end{table}
 Note that their symmetry gives them an advantage for the upper-bound of the non-escalar complexity. We used the following pair of curves to approach the axes:
@@ -2577,10 +2700,27 @@ $\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 148.84 s \\
 }
 \end{table}
 
-Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes for this family of curves. Even when checking on $[0, 0.1]\times[0, 0.1]$ it fills plenty of area towards the axes.
-%% REFERENCIA IMAGEN
+Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes for this family of curves. Even when checking on $[0, 0.1]\times[0, 0.1]$ it fills plenty of area towards the axes. See Figures \ref{fig:4curves1} and \ref{fig:5curves1}.
+
+\begin{figure}
+%\vspace{-0.6cm}
+\hspace{0.4cm}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_32_4curves2.png}
+\vspace{-0.4cm}\caption{$\mathcal{N}_1(\sigma_{\lambda})$ and $\mathcal{N}_1(\tau_{\mu})$.\label{fig:4curves1}}
+\end{subfigure}
+\begin{subfigure}{.45\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_33_4curves3.png}
+\vspace{-0.4cm}\caption{$\mathcal{N}_2(\sigma_{\lambda})$ and $\mathcal{N}_2(\tau_{\mu})$.\label{fig:5curves1}}
+\end{subfigure}\\[1ex]
+\vspace{-0.2cm}
+
+\vspace{-0.1cm}\caption{Images of families of curves for $\mathcal{N}_1$ and $\mathcal{N}_2$: $\sigma_{\lambda}$ in green and $\tau_{\mu}$ in blue.\label{fig:curvesfg}}
+\end{figure}
 
 \newpage
+%\mbox{}
+%\newpage
 \vspace{1cm}
 {\bf Aside form the optimal algebraic structure and the optimal multiplicative complexity, there is another measurement that could be consider when talking about the complexity of the given polynomials.\bf }
 
