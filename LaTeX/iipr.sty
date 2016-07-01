@@ -104,6 +104,60 @@
 %\usepackage[kpfonts]{quotchap}    %Style of the chapter. Other font options: palatino, avantgarde, beramono, berasans, bookman, courier, helvetica, kpfonts, lmodern, newcentury, times, utopia
 \usepackage{enumerate}    % Easier enumerate styles
 \usepackage{emptypage}		% Empty page style on las page of a chapter
+\usepackage{listings} 		% For adding computer code
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+\DeclareFixedFont{\sttm}{T1}{txtt}{m}{n}{9}  % for small normal
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+	language=Python,
+	basicstyle=\ttm,
+	commentstyle=\ttfamily\color{deepgreen},
+	otherkeywords={self},             % Add keywords here
+	keywordstyle=\ttb\color{deepblue},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	breaklines=true,                 % sets automatic line breaking
+	frame=tbrl,                         % Any extra options here
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=8pt,                   % how far the line-numbers are from the code
+	numberstyle=\sttm\color{gray}, % the style that is used for the line-numbers
+	%rulecolor=\color{black},
+	title=\lstname,
+	%linewidth=14.5cm,
+	showstringspaces=false
+}}
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+	\pythonstyle
+	\lstinputlisting[#1]{#2}
+}}
+% Sage style for highlighting
+\newcommand\sagestyle{\lstset{
+	language=Python,
+	basicstyle=\ttm,
+	commentstyle=\ttfamily\color{deepgreen},
+	stringstyle=\color{deepgreen},
+	breaklines=true,                 % sets automatic line breaking
+	frame=tbrl,                         % Any extra options here
+	rulecolor=\color{black},    %%% <--- here
+	%literate={\$}{{\textcolor{deepgreen}{\$}}}1,
+	showstringspaces=false
+}}
+%Sage for inline
+\newcommand\sageinline[1]{{\sagestyle\lstinline!#1!}}
+%Sage environment
+\lstnewenvironment{sage}[1][]
+{
+	\sagestyle
+	\lstset{#1}
+}
+{}
 
 %________________ITEMIZES________________
 

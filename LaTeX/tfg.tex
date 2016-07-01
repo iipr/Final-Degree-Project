@@ -13,7 +13,6 @@
 \pagestyle{fancy}
 
 
-\usepackage{amsmath}
 \begin{document}
 
 \pagenumbering{roman}
@@ -24,7 +23,7 @@ Polynomial Algorithms}} \\
 \vspace{0.5cm}
 \Large{\textsc{Final Degree Project}}\\
 \vspace{1.5cm}
-\protect\includegraphics[scale=0.9]{escudo_ucm.pdf}
+\protect\includegraphics[scale=0.6]{escudo_ucm.pdf}
 \vspace{1.5cm}}
 \author{\textbf{Ignacio Iker Prado Rujas} \\
 Complutense University of Madrid (UCM) \\
@@ -33,6 +32,7 @@ Double Degree in Mathematics and Computer Science}
 \maketitle
 \thispagestyle{empty}
 
+\vspace{1cm}
 \begin{center}
 \textbf{Tutors:} \\
 \textbf{Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa} \\
@@ -56,11 +56,10 @@ Let $R$ be a real closed field and $n\geq 2$. Then:
 	
 The key result here is that $\Qu:=\{x>0,y>0\}\subset R^2$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry (such as Sturm's theorem and the Curve Selection Lemma) and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
 
-(...)
+Lastly, we perform a computational comparison (using SageMath) between the three polynomial maps that are used in the previous chapters, on the search for the most efficient and the quickest one.
 
 \vspace{0.2cm}
-\textit{Keywords.} Polynomial map, polynomial image, semialgebraic set, open quadrant, complexity.
-
+\textit{Keywords.} Polynomial map, polynomial image, semialgebraic set, open quadrant, complexity, optimal algebraic structure, optimal multiplicative complexity.
 
 \vspace{0.3cm}
 \begin{center}
@@ -77,12 +76,10 @@ Sean $R$ un cuerpo real cerrado y $n\geq 2$. Entonces:
 	
 El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'omica de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un ordenador; una segunda forma m\'as breve, empleando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima en la que se utilizan  argumentos de topolog\'ia algebraica, que evitan efectuar c\'alculos en un ordenador. 
 
-(...)
+Por \'ultimo, realizamos una comparaci\'on computacional (usando SageMath) entre las tres aplicaciones polinomiales que son utilizadas en los cap\'itulos anteriores, tratando de encontrar la m\'as eficiente y la m\'as r\'apida.
 
 \vspace{0.2cm}
-\textit{Palabras clave.} Aplicaci\'on polinomial, imagen polinomial, conjunto semialgebraico, quadrante abierto, complejidad.
-
-
+\textit{Palabras clave.} Aplicaci\'on polinomial, imagen polinomial, conjunto semialgebraico, quadrante abierto, complejidad, estructura algebraica \'optima, complejidad multiplicativa \'optima.
 \end{abstract}
 
 \tableofcontents
@@ -97,6 +94,36 @@ El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'
 \begin{chapter}{Introduction to polynomial images of $R^n$}
 \pagenumbering{arabic}    % Numbering from 1
 
+\section{General background and structure of the memoir}
+
+Although it is usually said that the first work in Real Geometry is due to Harnack \cite{h}, who obtained an upper bound for the number of connected components of a non-singular real algebraic curve in terms of its genus, modern Real Algebraic Geometry was born with Tarski's article \cite{ta}, where it is proved that the image of a semialgebraic set under a polynomial map is a semialgebraic set. In the last decade J.F. Fernando, J.M Gamboa and C. Ueno have intensively studied  what might be called the `inverse problem'. In the 1990 \em Oberwolfach Reelle algebraische Geometrie \em week \cite{g} Gamboa proposed to characterize the subsets of $\R^m$ that are polynomial images of some $\R^n$. 
+
+Open semialgebraic sets deserve a special attention in connection with the real Jacobian Conjecture \cite{p}. In addition it can be easily seen that they constitute a not at all trivial challenge. Observe for instance that the closed half-line $[0,+\infty)$ is the image of $\R$ under the polynmial map $f:\R\to\R, x\mapsto x^2$ but the open half-line $(0,+\infty)$ is not the image of any polynomial map $\R\to\R$, although it is the image of 
+$$
+f:\R^2\to\R,\, (x,y)\to (xy-1)^2+y^2.
+$$ 
+As open sets with piecewise linear boundary seem to be friendly it is natural to begin by studying them. Indeed it is easily seen that the open upper half-plane $\H:=\set{y>0}\subset\R^2$ is the image of the polynomial map 
+$$
+\R^2\to\R^2,\, (x,y)\mapsto (y(xy-1),(xy-1)^2+x^2).
+$$
+This examples explain why in \cite{g} the so called `open quadrant problem' was proposed, that is, to determine whether the open quadrant $\Qu:=\{x>0,y>0\}\subset\R^2$ is a polynomial image of $\R^2$.
+
+This problem stimulated the interest of many specialists in the field. However, only after twelve years a first solution was found in \cite{fg} and presented by the first author in the 2002 \em Oberwolfach Reelle algebraische Geometrie \em week \cite{fe}.
+
+The open quadrant problem was the germ of a more systematic study of `Polynomial images of Euclidean spaces' developed  during the last decade, and was the topic of the Ph.D. Thesis of C. Ueno \cite{u} supervised by J.F. Fernando. It is worthwhile mentioning that the work on polynomial and regular images constitutes the germ of the recent proof by Fernando of the so called ``Shiota's conjecture''. The result is the following.  \em A subset $\Ss\subset\R^n$ is the image of a Nash map $f:\R^m\to\R^n$ if and only if $\Ss$ is semialgebraic, pure dimensional of dimension $d\leq m$ and there exists an analytic path $\alpha:[0,1]\to\Ss$ whose image meets all the connected components of the set of regular points of $\Ss$\em. 
+
+Coming back to polynomial and regular maps of euclidean spaces a lot of work has been done after the discovery that $\Qu$ is a polynomial image of $\R^2$, with two main objectives: 
+\begin{itemize}
+\item Finding obstructions to be an either polynomial or regular image of an euclidean space. 
+\item Proving (constructively) that large families of semialgebraic sets with piecewise linear boundary (convex polyhedra, their interiors, complements and the interiors of their complements) are either polynomial or regular images of some Euclidean space. The positive answer to the open quadrant problem has been a recurrent starting point for this approach.
+\end{itemize}
+This is the main reason to search the ``best" polynomial map $\R^2\to\R^2$ whose image is $\Qu$. As easy such a map is, as easy they would be those polynomial or regular maps $\R^n\to\R^m$ whose image is a prescribed convex polyhedron, its interior or their complements. 
+
+\subsection{Structure of this memoir}
+This memoir is organized as follows. In this first chapter we collect some examples of polynomial images of euclidean spaces and present some obstructions to be such an image. In Chapters 2, 3 and 4 we present very detailed proofs of the main results in, respectively, \cite{fg}, \cite{fu} and \cite{fgu}. The first one has an strong computational character, the second one is purely algebraic whereas the third one involves algebraic topology arguments. It must be pointed out that concerning the proof in Chapter 2 we have complemented the use of Sturm sequences in the original work \cite{fg} by the use of Laguerre's algorithm to approximate the roots of an univariate polynomial with complex coefficients.
+
+The most original part of the work is Chapter 5, where we compare from distinct view points the complexity of the maps presented in the precedent chapters having $\Qu$ as image. We have found two ways to compare the effectiveness of two such maps. Namely, the execution time needed to fill the quadrant, and the density in $\Qu$ of the image of a thick enough grid. To perform the corresponding computations we have used Sage. To finish we present without proof simpler maps $f:\R^2\to\R^2$ that, maybe, satisfy the equality $f(\R^2)=\Qu$. If this were so one of them would probably be the map with smallest topological degree among those having the open quadrant as image.
+
 \begin{section}{Statement of the problem and main results}
 \begin{definition}\label{polyMap} Given a \hyperref[realCField]{real closed field} $R$ and positive integers $m,n$ it is said that $f:=(f_1,\dots,f_n):R^m\to R^n$ is a \em polynomial map \em if $f_i\in R[{\tt x}_1,\dots,{\tt x}_m]$ for $i=1,\dots,n$. 
 \end{definition}
@@ -107,14 +134,12 @@ A very famous theorem by Tarski and Seidenberg states the following:
 \begin{theorem}[\em Tarski-Seidenberg\em]\label{tarskiSeidenberg} \em The image of every polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$. \em
 \end{theorem}
 
-In this work we study a sort of converse of this statement. In the 1990 \emph{Oberwolfach Reelle algebraische Geometrie} week, J.M. Gamboa \cite{g} proposed the following
+As we have commented above, in this work we study a sort of converse of this statement proposed by  J.M. Gamboa \cite{g} in the 1990 \emph{Oberwolfach Reelle algebraische Geometrie} week:
 \begin{problem}
 Characterize the semialgebraic subsets of $R^n$ that are polynomial images of some $R^m$.
 \end{problem}
-Particularly interesting seems to be the study of those open semialgebraic subsets of $R^n$ that are polynomial images of $R^n$, because this is related with the real jacobian conjecture.
 	
-\begin{notation} We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \em exterior boundary \em of a subset $S\subset R^n$ is $\delta S:=\overline{S}\setminus S$, with $\overline{S}$ being the \em closure \em of $S$ in the usual topology of $R^n$. In addition we will denote by $\overline{S}^{\text{zar}}$ the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology} of $R^n$. We will say that a semialgebraic subset $A\subset R^n$ is \em Zariski-irreducible \em if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
-\end{notation}
+We need to mention to which topology we refer to when we talk about closures, boundaries, etc. More specifically, the \em exterior boundary \em of a subset $S\subset R^n$ is $\delta S:=\overline{S}\setminus S$, with $\overline{S}$ being the \em closure \em of $S$ in the usual topology of $R^n$. In addition we will denote by $\overline{S}^{\text{zar}}$ the closure of $S$ with respect to the \hyperref[zariski]{Zariski topology} of $R^n$. We will say that a semialgebraic subset $A\subset R^n$ is \em Zariski-irreducible \em if its Zariski closure $\overline{A}^{\text{zar}}$ is an irreducible algebraic set.
 	
 \begin{subsection}{Necessary conditions and examples} To begin working on this idea, we provide some necessary conditions for a set $S\subset R^n$ to be a polynomial image of $R^m$. 
 	
@@ -200,6 +225,8 @@ $$
 \psi:R^2 \to R^2,\, (x,y)\mapsto(x^4y^2,x^2y^4)
 $$	
 whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem in this field was given in the following theorem:
+
+\newpage
 \begin{theorem}\label{openQuad}\em The first open quadrant $\Qu$ is a polynomial image of $R^2$.\em
 \end{theorem}
 	
@@ -2117,13 +2144,13 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 \begin{chapter}{Complexity analysis}\label{compChapter}
 
 \begin{section}{Introduction to the computational comparison}\label{5sect1}
-In this chapter we are going to set up the theoretical basis to discuss about how ``good'' or how ``bad'' the three given polynomial maps are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards and by means of a computer we will transform certain sets of $\R^2$ through the given maps from the three different proofs, namely $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3) and $\FFF$ (chapter 4).
+In this chapter we set up the theoretical basis to discuss how ``good'' or how ``bad'' the three polynomial maps $\R^2\to\R^2$ having ${\Qu}$ as image are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards, and using a computer, we will compare the images under the maps $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3) and $\FFF$ (chapter 4) of certain subsets of $\R^2$.
 
-We will start with some innocent grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some grids in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained in the unit disc and in the disc of radius $\rho=100$.
+We will start with some naif grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some grids in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained, respectively, in the unit disc and in the disc of radius $\rho=100$.
 
-In the analysis, we will compare times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will also take advantage of the proof in Chapter 4 for computing $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$.
+In the analysis, we will compare the execution times between the three maps, and also between computing the image as a composition of maps or as a fully expanded polynomial map. We will also take advantage of the proof in Chapter 4 for computing $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$.
 
-So the first question we have to address is:
+One may wonder:
 
 %\vspace{0.1cm}
 \begin{center}
@@ -2131,9 +2158,9 @@ So the first question we have to address is:
 \end{center}
 %\vspace{0.1cm}
 
-Here the word \textit{easy} means computationally efficient, so we are looking for the map that fills the open quadrant $\Qu$ quicker (in terms of the number of calculations) and the one that, given the same set of points, fills more area.
+Here the word \textit{easy} means computationally efficient, so we are looking for the map that fills the open quadrant $\Qu$ quicker (in terms of the number of calculations) and the one $f$ such that the image $f(\Ss)$ of suitable subsets $\Ss\subset\R^2$ fill a bigger area.
 
-The main answer to the question is that the representation of $\Qu$ as a polynomial image is a key step that allows constructing polynomial or regular images of higher complexity. For instance, this is the case of convex polyhedra, their interiors and their complementaries. The reason for this is that for constructing either polynomial or regular maps $f:\R^n\to\R^n$ producing polyhedral images, the first step relies on the construction of a polynomial map whose image is the open orthant $\mathscr{O}:=\{x_1>0,\dots,x_n>0\}$. As we saw in Theorem \ref{openQuadGen} this heavily relies on using polynomial maps on the plane with the half-plane $\H$ and the open quadrant $\Qu$ as images. Afterwards, the strategy for obtaining polynomial maps with convex polyhedral images is usually to start from $\mathscr{O}$, which is the simplest convex polyhedron containing at least one vertex, and add a new vertex inductively by composing with an adequate regular map.
+The answer is that the representation of $\Qu$ as a polynomial image of $\R^2$ is a key step to represent much more sophisticated subsets of $\R^n$ as polynomial or regular images of some $\R^m$. Thus, if we are able to represent $\Qu$ easily we would be able to represent other semialgebraic sets easily too. This is the case, for instance, for the family  of convex polyhedra, their interiors and their complementaries. The reason for this is that for constructing either polynomial or regular maps $f:\R^n\to\R^n$ producing polyhedral images, the first step relies on the construction of a polynomial map whose image is the open orthant $\mathscr{O}:=\{x_1>0,\dots,x_n>0\}$. As we saw in Theorem \ref{openQuadGen} this heavily relies on using polynomial maps on the plane with the half-plane $\H$ and the open quadrant $\Qu$ as images. Afterwards, the strategy for obtaining polynomial maps with convex polyhedral images is usually to start from $\mathscr{O}$, which is the simplest convex polyhedron containing at least one vertex, and add new vertices inductively by composing with adequate either polynomial or regular maps.
 
 That is why the better the constituents of the final map are, the better the final map will be.  Thus, the representation of $\Qu$ as a polynomial image of $\R^2$ is key in this process.	
 \end{section}
@@ -2142,9 +2169,9 @@ That is why the better the constituents of the final map are, the better the fin
 
 \begin{subsection}{The map from the first proof}
 
-What we need to do first is computing the coefficients and the shape of the polynomials we are going to be using in the next section. Note for instance that the first polynomial map $\P$ defined in \ref{eq:firstMap} transforms $\R^2$ into $\Qu \cup \set{(0,1), (1,0)}$, and then relying on the proof of Theorem \ref{finSetTh} we manage to ged rid of those two points by means of a polynomial map (say $H$) that is applied to $\R^2$ before $\P$ acts. But we recall that the proof of Theorem \ref{finSetTh} depends on the values $r, a_1, a_2\dots$ and so, how is $H$ defined?
+We need first to compute the coefficients and the shape of the polynomials we are going to use. Note for instance that the first polynomial map $\P$ defined in \ref{eq:firstMap} transforms $\R^2$ into $\Qu\cup\set{p_1:=(0,1),p_2=(1,0)}$ and then, relying on the proof of Theorem \ref{finSetTh} we manage to ged rid of $p_1$ and $p_2$ by means of a polynomial map (say $H$) that is applied to $\R^2$ before $\P$ acts. Nevertheless the proof of Theorem \ref{finSetTh} depends on the some values $r,a_1,a_2,\dots$; so, how is $H$ defined?
 
-Fernando, Gamboa and Ueno wrote a paper \cite{fgu1} where they answered this question. Based on the map $f(\x), \ \x=(\x_1,\dots,\x_n)\in \R^n$ from the proof of Theorem \ref{finSetTh} they proved the following result with similar arguments from the ones given before:
+Fernando and Ueno answered this question in \cite{fu1} where they proved the following Lemma:
 
 \begin{lemma}
 Let $r\in\R\setminus\{0,1\}$ and $S=\set{(0,0),(-1,0)}$. Then, $\R^2\setminus S$ is the image of the polynomial map 
@@ -2153,11 +2180,11 @@ H=(H_1,H_2):\R^2\to\R^2,\ (x,y)\mapsto\big(xy-r,\ x^2(xy-r)(xy-r+1)+y\big).
 $$	
 \end{lemma}
 
-Here we take $r=-1$ for simplicity. Then you might say, well, our ``conflictive'' set is the preimage through $\P$ of the set $\set{(0,1),(1,0)}$, namely $\set{(0,-1),(-1,0)}$ and not $\set{(0,0),(-1,0)}$. This is not a problem since the polynomial map $Q$ defined as
+Here we take $r=-1$ for simplicity. In fact the ``conflictive'' set is the preimage through $\P$ of the set $\set{(0,1),(1,0)}$, namely $\set{(0,-1),(-1,0)}$ and not $\set{(0,0),(-1,0)}$, but a change of coordinates 
 $$
 Q:\R^2\to\R^2,\ (x,y)\mapsto(x,y-x-1),
 $$
-maps $(-1,0)$ to $(-1,0)$ and $(0,0)$ to $(0,-1)$. Now it is clear that the first map we will be using for the computational comparison is
+maps $(-1,0)$ to $(-1,0)$ and $(0,0)$ to $(0,-1)$. Now it is clear that the first map we will use for the computational comparison is
 $$
 g=(g_1, g_2):=\P\circ Q\circ H:\R^2\longrightarrow\R^2.
 $$
@@ -2285,7 +2312,7 @@ Lastly and after such long polynomials, the map from the topological proof defin
 
 \begin{subsection}{Optimal algebraic structure of the given polynomial maps}
 
-In this section we show the total degree and the total number of (non-zero) monomials from the three polynomial maps, see Table \ref{tab:degreeMon}. We define the \textit{total degree} of a polynomial map to be the sum of the degrees of its components, so for instance $\text{deg}(\FFF) = \text{deg}(\FFF_1) + \text{deg}(\FFF_2) = 12 + 16 = 28$.
+In this section we show the total degree and the total number of (non-zero) monomials from the three polynomial maps, see Table \ref{tab:degreeMon}. We define the \textit{total degree} of a polynomial map to be the sum of the degrees of its components. For instance $\text{deg}(\FFF)=\text{deg}(\FFF_1)+\text{deg}(\FFF_2)=12+16=28$.
 
 \begin{table}[t]
 \begin{center}
@@ -2303,7 +2330,7 @@ $\FFF = f_2 \circ f_1$ & 28 & 22 & 25\\
 
 \begin{subsection}{Optimal multiplicative complexity of the given polynomial maps}
 
-When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of this value, because depending on how the product is implemented on a certain programming language this value could be smaller.
+When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of the number of calculations, because depending on how the product is implemented on a certain programming language this value could be smaller.
 
 For instance consider the first polynomial map $g = \P\circ Q \circ H$:
 \begin{align*}
@@ -2358,15 +2385,15 @@ $$
 $$
 \item \textbf{Grid of $4\cdot 10^4$ points uniformly distributed in $[-10, 10]\times[-10,10]$} with step $h=\tfrac{20}{199}$:
 $$
-\PP_5 := \set[\big]{x: x = nh -10,\ 0\le n\le 199 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 199 } \subset \R^2.
+\PP_5:=\set[\big]{x:x=nh -10,\ 0\le n\le 199 }\times\set[\big]{y: y=nh-10,\ 0\le n\le199 }\subset\R^2.
 $$
 \item \textbf{Grid of $4\cdot 10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$} with step $h=\tfrac{20}{1999}$:
 $$
-\PP_6 := \set[\big]{x: x = nh -10,\ 0\le n\le 1999 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 1999 } \subset \R^2.
+\PP_6:=\set[\big]{x:x=nh -10,\ 0\le n\le 1999 }\times\set[\big]{y:y=nh-10,\ 0\le n\le 1999 }\subset \R^2.
 $$
 \end{enumerate}
 
-We considered to continue making the set of points bigger, namely a grid of $4\cdot 10^8$ points, but a quick estimation took this idea away from us, because it could take a few hours just for the first polynomial. The time results are displayed in Table \ref{tab:square}.
+We considered to continue making the set of points bigger, namely a grid of $4\cdot 10^8$ points, but a quick estimation took this idea away from us, because it could take a few hours just for the first polynomial. The execution time results are displayed in Table \ref{tab:square}.
 
 \begin{figure}[ht!]
 %\vspace{-0.6cm}
@@ -2402,9 +2429,9 @@ $\PP_2$ & 17.38 s & 16.23 s & 6.88 s \\ \hline
 $\PP_3$ & 410.73 s (\ref{fig:gP3}) & 389.74 s (\ref{fig:fP3}) & 155.09 s (\ref{fig:FFFP3}) \\ \hline
 $\PP_4$ & 408.88 s (\ref{fig:gP4}) & 392.34 s & 155.29 s \\ \hline
 $\PP_5$ & 17.10 s & 15.45 s & 7.00 s \\ \hline
-$\PP_6$ & 1633.50 s (\ref{fig:gP6_1}-\ref{fig:gP6_2}) & 1640.01 s  (\ref{fig:fP6_1}-\ref{fig:fP6_2}) & 625.11 s  (\ref{fig:FFFP6_1}-\ref{fig:FFFP6_2}) \\
+$\PP_6$ & 1633.50 s (\ref{fig:gP6_1}-\ref{fig:gP6_2}) & 1640.01 s (\ref{fig:fP6_1}-\ref{fig:fP6_2}) & 625.11 s  (\ref{fig:FFFP6_1}-\ref{fig:FFFP6_2}) \\
 \end{tabular}
-\caption[Times of the computation of points contained in a square.]{Times of the computation of uniformly distibuted points contained in a square.}\label{tab:square}
+\caption[Execution times of the computation of points contained in a square.]{Execution times of the computation of uniformly distributed points contained in a square.}\label{tab:square}
 \end{center}
 \end{table}
 
@@ -2443,16 +2470,16 @@ $\PP_6$ & 1633.50 s (\ref{fig:gP6_1}-\ref{fig:gP6_2}) & 1640.01 s  (\ref{fig:fP6
 \vspace{0.1cm}\caption{Images of the $4\cdot 10^6$ points from $\PP_6$ through $f, g$ and $\FFF$.\label{fig:P6}}
 \end{figure}
 
-In this section we also compare the first and third maps as a composition or fully expanded, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
+In this section we also compare the first and third maps as either a composition or a a fully expanded espression, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
 
 \begin{table}[ht!]
 \parbox{.45\linewidth}{
 \centering
 \begin{tabular}{c || c | c }
 $g$ & Composition &Expanded \\ \hline \hline
-$\PP_1$ & 0.19 s & 0.23 s \\ \hline
-$\PP_5$ & 17.10 s & 16.15 s \\ \hline
-$\PP_6$ & 1633.50 s & 1582.08 s \\
+$\PP_1$&0.19 s&0.23 s \\ \hline
+$\PP_5$ & 17.10 s&16.15 s \\ \hline
+$\PP_6$ &1633.50 s &1582.08 s \\
 \end{tabular}
 \caption[Comparison between $g$ on its expanded form or as a composition.]{Comparison between $g= \P\circ Q \circ H$ on its expanded form (Table \ref{tab:firstMap}) or as a composition.}\label{tab:expand1}
 }
@@ -2469,11 +2496,11 @@ $\PP_6$ & 1640.01 s & 2650.13 s \\
 }
 \end{table}
 
-Lastly, we recall that $\FFF = f_2\circ f_1$, where $f_1(\x, \y) = (\x^2, \y^2)$, so $f_1\big(\R^2\big) = \overline{\Qu}$. Thus, we study $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$. We used a grid of $10^6$ points uniformly distributed in $[0, 10]\times[0,10]$ with step $h=\tfrac{10}{999}$:
+Lastly, we recall that $\FFF=f_2\circ f_1$, where $f_1(\x,\y)=(\x^2,\y^2)$, so $f_1\big(\R^2\big) =\overline{\Qu}$. Thus, we study $f_2\big(\overline{\Qu}\big)$ instead of computing $\FFF\big(\R^2\big)$. We used a grid of $10^6$ points uniformly distributed in $[0, 10]\times[0,10]$ with step $h=\tfrac{10}{999}$:
 $$
-\PP_7 := \set[\big]{x: x = nh,\ 0\le n\le 999 } \times \set[\big]{y: y=nh,\ 0\le n\le 999 } \subset \R^2.
+\PP_7 := \set[\big]{x: x=nh,\ 0\le n\le 999 }\times\set[\big]{y: y=nh,\ 0\le n\le 999 }\subset \R^2.
 $$
-It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. Note that this makes sense since the only difference between computing $\FFF= f_2\circ f_1$ or $f_2$ of a set is that with $\FFF$ you first compute $f_1$, which should not take a lot of time because of its simplicity, and then you compute $f_2$ of the result.
+It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. Note that this makes sense since the only difference between computing the image of a set under $\FFF= f_2\circ f_1$ or $f_2$ is that with $\FFF$ you first compute the image under $f_1$, which should not take a lot of time because of its simplicity, and then you compute the image under $f_2$ of the resulting set.
 % comparar con las imagenes de F(P_3) y F(P_4)
 \end{subsection}
 
@@ -2481,22 +2508,21 @@ It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7
 It this section we recall the condition that any polynomial map that has $\Qu$ as an image must verify:
 \begin{center}
 \begin{tabular}{rr}
-$\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad \quad$ ($\clubsuit$)
+$\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad\quad$ ($\clubsuit$)
 \end{tabular}
 \end{center}
 \vspace{0.2cm}
-
-On the second Chapter we used certain families of curves to  approach the axes, namely:
+We used in  Chapter 2 certain families of curves whose images approach the axes, namely:
 $$
-\alpha_{\lambda}(s, a_\lambda):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
+\alpha_{\lambda}(s,a_\lambda):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
 \quad \text{ and } \quad
-\beta_{\mu}(s, b_\mu):=\left(\frac{1+b_{\mu }s}{s},s^{3}\right).
+\beta_{\mu}(s,b_\mu):=\left(\frac{1+b_{\mu }s}{s},s^{3}\right).
 $$
-In this section we used as the domain of the curves the grid of $10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$ with step $h=\tfrac{20}{999}$:
+In this section we use as the domain of the curves the grid of $10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$ with step $h=\tfrac{20}{999}$:
 $$
-\PP_8 := \set[\big]{x: x = nh-10,\ 0\le n\le 999 } \times \set[\big]{y: y=nh-10,\ 0\le n\le 999 } \subset \R^2.
+\PP_8:=\set[\big]{x: x=nh-10,\ 0\le n\le 999 }\times\set[\big]{y:y=nh-10,\ 0\le n\le 999}\subset\R^2.
 $$
-First, for each $(s, a_\lambda) \in \PP_8$ we computed $\alpha_{\lambda}\big((s, a_\lambda)\big)$, and then we applied $g$ to that set of points. We did the same thing for $(s, b_\mu) \in \PP_8$, obtaining $g\big(\beta_{\mu}\big((s, b_\mu)\big)\big)$. The timing tests are displayed in Table \ref{tab:curves1}.
+First, for each point $(s,a_\lambda) \in \PP_8$ we computed $\alpha_{\lambda}\big((s, a_\lambda)\big)$, and then we applied $g$ to that set of points. We did the same for $(s, b_\mu) \in \PP_8$, obtaining $g\big(\beta_{\mu}\big((s, b_\mu)\big)\big)$. The timing tests are displayed in Table \ref{tab:curves1}.
 
 \begin{table}[ht!]
 \parbox{.45\linewidth}{
@@ -2504,15 +2530,15 @@ First, for each $(s, a_\lambda) \in \PP_8$ we computed $\alpha_{\lambda}\big((s,
 \begin{tabular}{c || c }
  & Time  \\ \hline \hline
 \\[-1em]
-$\alpha_{\lambda}\big((s, a_\lambda)\big)$ &  129.27 s\\ \hline
+$\alpha_{\lambda}\big((s,a_\lambda)\big)$ &  129.27 s\\ \hline
 \\[-1em]
-$\beta_{\mu}\big((s, b_\mu)\big)$ &133.76 s \\ \hline
+$\beta_{\mu}\big((s,b_\mu)\big)$ &133.76 s \\ \hline
 \\[-1em]
-$g\big(\alpha_{\lambda}\big((s, a_\lambda)\big)\big)$ & 398.04 s  \\ \hline
+$g\big(\alpha_{\lambda}\big((s,a_\lambda)\big)\big)$ & 398.04 s  \\ \hline
 \\[-1em]
-$g\big(\beta_{\mu}\big((s, b_\mu)\big)\big)$ & 399.02 s \\
+$g\big(\beta_{\mu}\big((s,b_\mu)\big)\big)$ & 399.02 s \\
 \end{tabular}
-\caption[]{Times when computing the image of curves through $g$.}\label{tab:curves1}
+\caption[]{Execution times when computing the image of curves through $g$.}\label{tab:curves1}
 }
 \hfill
 \parbox{.45\linewidth}{
@@ -2528,11 +2554,11 @@ $f_2\big(\gamma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 141.92 s  \\ \hline
 \\[-1em]
 $f_2\big(\delta_{\mu}\big((s, b_\mu)\big)\big)$ & 143.21 s \\
 \end{tabular}
-\caption[]{Times when computing the image of curves through $f_2$.}\label{tab:curves3}
+\caption[]{Execution times when computing the image of curves through $f_2$.}\label{tab:curves3}
 }
 \end{table}
 
-We can proceed in the exact same way with a new family of curves for $f_2$:
+We can proceed in exactly the same way with a new family of curves for $f_2$:
 $$
 \gamma_\lambda(s, a_\lambda) = \left(\frac{1+a_\lambda s}{s}, s^2\right)
 \quad \text{ and } \quad
@@ -2578,8 +2604,8 @@ The computation times can be seen in Table \ref{tab:curves3}. The images of the 
 
 \end{subsection}
 
-\begin{subsection}{Randomly distibuted points contained in a disc}
-When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square, but afterwards we opted for doing it on the disc. The points are generated by means of a random radius $\rho \in [0, 1]$ (and $\rho \in [0, 100]$ afterwards) and a random argument $\theta\in[0, 2\pi]$. Then, each point is generated as $(\rho\cos(\theta), \rho\sin(\theta))$. The result is a disc of $10^5$ points where there is a higher concentration of points when we get closer to the origin, but this is not a problem for our study case. See Figure \ref{fig:disc}. The timing tests are shown in Table \ref{tab:disc}.
+\begin{subsection}{Randomly distributed points contained in a disc}
+When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square. However we opted for doing it on the unit disc. The points are generated by means of a random argument $\theta\in[0,2\pi]$ and a random radius; first with $\rho\in[0,1]$, and $\rho\in[0,100]$ afterwards. Then, each point is generated as $(\rho\cos\theta,\rho\sin\theta)$. The result is a subset of $10^5$ points of the disc that presents a higher concentration of points when we get closer to the origin. Of course this is not a problem for our study case. See Figure \ref{fig:disc}. The timing tests are shown in Table \ref{tab:disc}.
 
 \begin{figure}[ht!]
 \vspace{-0.6cm}
@@ -2615,7 +2641,7 @@ When thinking of the possible domain that the polynomial maps could have, we tho
 ${\mathbb D}_1$ & 131.97 s (\ref{fig:disc1}) & 99.56 s (\ref{fig:disc2}) & 32.02 s (\ref{fig:disc3}) \\ \hline
 ${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
 \end{tabular}
-\caption[Times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:disc}
+\caption[Execution times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Execution times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:disc}
 \end{center}
 \end{table}
 
@@ -2625,7 +2651,7 @@ ${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
 
 \begin{section}{Conclusions and future research}\label{5sect4}
 
-As we have seen in the previous section, the third map $\FFF$ outstrips the other two maps in the timing tests. This is to be expected from the ideas developed in Section \ref{5sect2} from this Chapter. Also, even though the second map $f$ was by far the one that provided the easiest proof for Theorem \ref{openQuad}, the Figures from the previous section show that it is not very good at filling a big area of the open quadrant $\Qu$. Lastly, the first map $g$ was reasonably good in terms of covering $\Qu$, but not so much in terms of time.
+As we have seen in the previous section, the third map $\FFF$ outstrips the other two maps in the timing tests. This is to be expected from the ideas developed in Section \ref{5sect2}. Also, even though the second map $f$ was by far the one that provided the easiest proof for Theorem \ref{openQuad}, the Figures from the previous section show that it is not very good at filling a big area of the open quadrant $\Qu$. Lastly, the first map $g$ was reasonably good in terms of covering $\Qu$, but not so much in terms of execution time.
 
 All of this could just be considered as an appetizer for finding a polynomial map with the least possible total degree and the least possible number of monomials:
 \begin{problem}
@@ -2635,14 +2661,14 @@ All of this could just be considered as an appetizer for finding a polynomial ma
 \end{enumerate}
 \end{problem}
 
-The authors haven't stopped working on the problem, and we are going to present some new candidates whose images could be $\Qu$:
+The authors haven't stopped working on the problem, and we present right now some new candidates whose images could be $\Qu$:
 \begin{align*}
-\cdot\ \mathcal{N}_1:\R^2 &\to \R^2, \\
-(x,y)&\mapsto\big(x^4y^4 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^4y^4 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big),\\
+\cdot\ \mathcal{N}_1:\R^2 &\to R^2, \\
+(x,y)&\mapsto\big(x^4y^4+(x^2y+xy^2-1)^2(y^2+1),\ x^4y^4+(x^2y+xy^2-1)^2(x^2+1)\big),\\
 \cdot\ \mathcal{N}_2:\R^2 &\to \R^2, \\
-(x,y)&\mapsto\big(x^2y^2 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^2y^2 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big),\\
+(x,y)&\mapsto\big(x^2y^2+(x^2y+xy^2-1)^2(y^2+1),\ x^2y^2+(x^2y+xy^2-1)^2(x^2+1)\big),\\
 \cdot\ \mathcal{N}_3:\R^2 &\to \R^2, \\
-(x,y)&\mapsto\big(x^6y^4 + (x^2y + xy^2 - 1)^2(y^2 + 1),\ x^4y^6 + (x^2y + xy^2 - 1)^2(x^2 + 1)\big).
+(x,y)&\mapsto\big(x^6y^4+(x^2y+xy^2-1)^2(y^2+1),\ x^4y^6+(x^2y+xy^2-1)^2(x^2+1)\big).
 \end{align*}
 It is remarkable how good their properties are in terms of total degree and number of monomials, see Table \ref{tab:newDegreeMon}.
 
@@ -2650,21 +2676,21 @@ It is remarkable how good their properties are in terms of total degree and numb
 \begin{center}
 \begin{tabular}{c || c | c | c}
 & Total degree & Total number of monomials & Non-escalar complexity\\ \hline \hline
-$\mathcal{N}_1$ & 16 & 24 & 11 \\ \hline
-$\mathcal{N}_2$ & 16 &  26 & 7 \\ \hline
-$\mathcal{N}_3$ & 20 & 26 & 15 \\	
+$\mathcal{N}_1$&16&24&11 \\ \hline
+$\mathcal{N}_2$&16&26&7 \\ \hline
+$\mathcal{N}_3$&20&26&15 \\	
 \end{tabular}
 \caption{Properties of the new maps.}\label{tab:newDegreeMon}
 \end{center}
 \end{table}
-Note that their symmetry gives them an advantage for the upper-bound of the non-escalar complexity. We used the following pair of curves to approach the axes:
+Note that the symmetry of the maps above converts them in good candidates to minimize the upper-bound of the non-escalar complexity. We have used the following pair of families of curves to approach the axes:
 
 $$
 \sigma_\lambda(s, a_\lambda) = \left(s^2 + a_\lambda s^3,\ \frac{1}{s}\right)
 \quad \text{ and } \quad
 \tau_\mu(s, b_\mu) = \left(\frac{1}{s},\ s^2 + b_\mu s^3\right).
 $$
-The computation times for $\mathcal{N}_1$ and $\mathcal{N}_2$ are displayed respectively in Tables \ref{tab:curvesNew1} and \ref{tab:curvesNew2}.
+The execution times for $\mathcal{N}_1$ and $\mathcal{N}_2$ are displayed respectively in Tables \ref{tab:curvesNew1} and \ref{tab:curvesNew2}.
 
 \begin{table}[ht!]
 \parbox{.45\linewidth}{
@@ -2680,7 +2706,7 @@ $\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.88 s \\ 
 \\[-1em]
 $\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 153.14 s \\
 \end{tabular}
-\caption[]{Times when computing the image of curves through $\mathcal{N}_1$.}\label{tab:curvesNew1}
+\caption[]{Execution times when computing the image of curves through $\mathcal{N}_1$.}\label{tab:curvesNew1}
 }
 \hfill
 \parbox{.45\linewidth}{
@@ -2696,7 +2722,7 @@ $\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.23 s  \\
 \\[-1em]
 $\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 148.84 s \\
 \end{tabular}
-\caption[]{Times when computing the image of curves through $\mathcal{N}_2$.}\label{tab:curvesNew2}
+\caption[]{Execution times when computing the image of curves through $\mathcal{N}_2$.}\label{tab:curvesNew2}
 }
 \end{table}
 
@@ -2718,29 +2744,30 @@ Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes 
 \vspace{-0.1cm}\caption{Images of families of curves for $\mathcal{N}_1$ and $\mathcal{N}_2$: $\sigma_{\lambda}$ in green and $\tau_{\mu}$ in blue.\label{fig:curvesfg}}
 \end{figure}
 
-\newpage
-%\mbox{}
-%\newpage
-\vspace{1cm}
-{\bf Aside form the optimal algebraic structure and the optimal multiplicative complexity, there is another measurement that could be consider when talking about the complexity of the given polynomials.\bf }
+\subsection{Comments on further reductions}
+
+\subsubsection{Reduction of multiplications using powers of 2}
+
+Aside from the optimal algebraic structure and the optimal multiplicative complexity, there is another measurement that could be considered when talking about the complexity of the given polynomials.
 
 It is well know that for a computer it is far way easier to compute multiplications and divisions by powers of 2 than any other number, because that translates into a simple shift in the array of bits. For instance consider the number $20 = 2^4 + 2^2$ expressed in base 2 with 8 bits: $(20)_{10} = (0001\ 0100)_2$. Then, if we want to multiply $20\cdot 4$ the computer can just shift the array two positions (because $4=2^2$) to the left, namely:
 $$(20 \cdot 4)_{10} = (0101\ 0000)_2 = (80)_{10}.$$
 It is clear that the other way around also works for division, shifting to the right:
 $$(80 / 16)_{10} = (0000\ 1010)_2 = (5)_{10}.$$
 
-Computers have had for years logic units that compute this shiftings flawlessly. Thus, we could focus on obtaining a polynomial map that only has powers of 2 as multiplicative factors on its components. Note that the three new maps and the one from the topological proof verify this. Whats more, this factor is 2 for all of them.
+This is exactly what scholars do to multiply or divide an integer by a power of $10$; they either add zeros or move the  comma. Computers have had for years logic units that compute this shiftings flawlessly. Thus, we could focus on obtaining a polynomial map that only has powers of 2 as multiplicative factors on its components. Note that the three new maps and the one from the topological proof verify this condition. Indeed, this factor equals 2 for all of them.
 
-\vspace{1cm}
-{\bf There is a kind of general implementation we could do for computing the image of a given set of points through a map: relying on parallelism.\bf}
+\subsubsection{Reduction of multiplications using hash tables and concurrency}
 
-Let $f(\x, \y) = (f_1(\x, \y), f_2(\x, \y))$ be any of the maps we were working with in this work. Taking advantage of the number of kernels computers have nowadays, we could use the readers-writers problem from concurrent computing (using two threads) and a data structure like a hash table. The key of this hash table would be a monomial (or a part of it), for instance $x^2$ or $x^4y^2$. The value associated to that key would be the computation of that monomial given the current point.
+There is an idea that could be implemented when computing the image of a given set of points through a map: relying on parallelism.
 
-Let $p = (x,y)$ be a point of the set of points we are using as a domain. When the programme starts, we would launch both threads: one for $f_1$ and the other for $f_2$. Each time $f_1(p)$ would need to compute a non-scalar multiplication (like the examples we just stated) it would look for it on the hash table. If its there, then there is no need to compute the multiplication, just get the value. If the key is not in the hash table, compute it and add it to the table. The thread for $f_2(p)$ would work in the same way. This way each non-scalar multiplication would only be computed once.
+Let $f(\x,\y):=(f_1(\x,\y),f_2(\x,\y))$ be any of the maps we were working with in this work. Taking advantage of the number of kernels computers have nowadays, we could use the readers-writers problem from concurrent computing and a data structure like a hash table. There would be one thread for $f_1$ and one for $f_2$, and both threads would be both readers and writers on the hash table. The key of this hash table would be a monomial (or a part of it), for instance $x^2$ or $x^4y^2$. The value associated to that key would be the computation of that monomial given the current point.
 
-The good thing is that this implementation could easily be generalized for computing $f$ when it would be a composition of other maps, say $f = g\circ h$. The programme would act in the same way, starting computing $h(p)= (h_1(p), h_2(p))$ for every $p$ by updating the hash table with each $p$. Then, when this phase would be over, we would have to delete the content in the hash table and proceed in the same way for $g(h(p))= g((h_1(p), h_2(p)))$.
+Let $p:=(x,y)$ be a point of the set of points we are using as a domain. When the programme starts, we would launch both threads. At each step the computation of $f_1(p)$ involves to calculate a non-scalar multiplication (like the examples we just stated) it would look for it on the hash table. If its there, then there is no need to compute the multiplication, just get the value. If the key is not in the hash table, compute it and add a new entry to the hash table with this computation. The thread for $f_2(p)$ would work in the same way. This way each non-scalar multiplication would be computed only once.
 
-The only inconvenience would be working with symbolic expressions in Java or C++, which is far way easier with Sage (as far as I know). In any case, this implementation would probably mean a improvement in time, because searching for a key in a (relatively small) hash table would be quicker (it requires constant time) than re-computing the multiplication. If for instance for each point we avoid computing two out of ten monomials, in total we could be saving roughly 20\% of the time.
+The remarkable fact is that this implementation could easily be generalized for computing $f$ when it would be a composition of other maps, say $f=g\circ h$. The programme would act in the same way, starting computing $h(p):=(h_1(p), h_2(p))$ for every $p$ by updating the hash table with each new point $p$. Then, when this phase would be over, we would have to delete the content in the hash table and proceed in the same way for $g(h(p))= g((h_1(p), h_2(p)))$.
+
+The only inconvenience would be working with symbolic expressions in Java or C++, which is far way easier with Sage (as far as I know). In any case, this implementation would probably mean a improvement in the execution time, because searching for a key in a (relatively small) hash table would be quicker than re-computing the multiplication. Indeed, searching a value on a hash table requires on average constant time $O(1)$, whereas computing the multiplication of two $n$-digits numbers is for example $O(n^{1.585})$ for Karatsuba's algorithm. If for instance for each point we avoid computing two out of ten monomials, an upper bound for the total new time would be 20\% less than the original time.
 
 \end{section}
 
@@ -2864,23 +2891,45 @@ Laguerre's method differs from Sturm's method in that it is a numerical algorith
 
 \begin{proposition}[Laguerre's method]\label{laguerre}
 Let $f\in\R[{\tt x}]$ be a polynomial of degree $n$ and write it as
-\begin{equation}\label{eq:lagPol}
-f({\tt x})=({\tt x}-r)({\tt x}-q)^{n-1},
-\end{equation}
-where $r,q\in\C$ represent unknowns. Let 
+\begin{equation*}\label{eq:lagPol}
+f({\tt x})=\prod_{i=1}^n \left({\tt x}-x_i\right),
+\end{equation*}
+where $x_i\in\C,\ i=1,\dots, n,$ are its roots. Consider
 $$
-g({\tt x}):=\frac{f'({\tt x})}{f({\tt x})}=\frac{1}{{\tt x}-r}+\frac{n-1}{{\tt x}-q} \ \text{ and } \ h({\tt x}):=g^2({\tt x})-\frac{f''({\tt x})}{f({\tt x})}=\frac{1}{({\tt x}-r)^2}+\frac{n-1}{({\tt x}-q)^2}.
+\ln \abs{f({\tt x})}=\ln\abs[\Big]{\prod_{i=1}^n \left({\tt x}-x_i\right)} = \sum_{i=1}^n \ln\abs{\x - x_i}.
 $$
-If we solve for ${\tt x}-q$ in $g({\tt x})$ and substitute the result on $h({\tt x})$, we get a quadratic equation for ${\tt x}-r$, whose solution is named \em Laguerre's formula\em:
+Then, taking its derivative:
+$$
+\left(\ln \abs{f({\tt x})}\right)'=\left(\sum_{i=1}^n \ln\abs{\x - x_i}\right)'=\sum_{i=1}^n \big(\ln\abs{\x - x_i}\big)' = \sum_{i=1}^n \frac{1}{\x - x_i} = \frac{f'(\x)}{f(\x)}:= g(\x).
+$$
+Also, consider
+$$
+-g(\x)'= -\sum_{i=1}^n \left(\frac{1}{\x - x_i}\right)' = \sum_{i=1}^n \frac{1}{(\x - x_i)^2} =g^2({\tt x})-\frac{f''({\tt x})}{f({\tt x})}:= h(\x).
+$$
+Now, making a ``rather drastic set of assumptions'' \em(\cite[page 187]{a})\em, suppose that the root we are seeking $x_1$ is isolated and that the rest of them $x_i$ are clustered at a certain distance from it, namely: $a = \x - x_1$ and $b = \x -x_i, i=2,\dots, n.$ Then, we can rewrite $g$ and $h$ as: 
+$$
+g({\tt x})=\frac{1}{{\tt x}-x_1}+\frac{n-1}{{\tt x}-x_i} = \frac{1}{a}+\frac{n-1}{b} \ \text{ and } \ h({\tt x})=\frac{1}{({\tt x}-x_1)^2}+\frac{n-1}{({\tt x}-x_i)^2} = \frac{1}{a^2}+\frac{n-1}{b^2}.
+$$
+Then, if we solve for $a$, we get a quadratic equation, whose solution is named \em Laguerre's formula\em:
 \begin{equation}\label{eq:lagEq}
-{\tt x}-r=n\left(g({\tt x})\pm\sqrt{(n-1)(nh({\tt x})-g^2({\tt x}))}\right)^{-1}.
+a=\frac{n}{g({\tt x})\pm\sqrt{(n-1)(nh({\tt x})-g^2({\tt x}))}}.
 \end{equation}
 
-Equation \em \ref{eq:lagEq} \em defines a numerical method by choosing on each step the sign that results in the larger magnitude of the denominator and taking the new root to be:
+Equation \em \ref{eq:lagEq} \em defines an iterative algorithm in the following way:
+\em
+\begin{enumerate}[(1)]
+\item Start with a trial random value $x_0$.
+\item Compute $f(x_k)$, and if $\abs{f(x_k)}$ is smaller than a certain threshold, stop the algorithm and return $x_k$. If not, go to step (3).
+\item Compute $g(x_k)$ and $h(x_k)$. Compute $a$ using \ref{eq:lagEq}, by choosing the sign that results in the larger magnitude of the denominator. Take the new root to be:
 $$
-x_{k+1}=x_k-n\left(g(x_k)\pm\sqrt{ (n-1)(nh(x_k)-g^2(x_k))}\right)^{-1}.
-$$
+x_{k+1}=x_k-\frac{n}{g(x_k)\pm\sqrt{ (n-1)(nh(x_k)-g^2(x_k))}}.
+$$ 
+\item Go to step (2).
+\end{enumerate}
+\em
 \end{proposition}
+
+A possible implementation for this algorithm is shown in Appendix \ref{lagSec}, using Python.
 
 %Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \em \ref{eq:lagPol}. \em 
 %{\bf El algoritmo, tal y como se describe, parece fuertemente ligado al hecho de que $f$ tenga una ra\'iz, tal vez compleja, de multiplicidad $n-1$. Por eso no entiendo qu\'e significa que la f\'ormula funciona para polinomios cualesquiera!!!}
@@ -2888,11 +2937,1278 @@ $$
 \end{section}
 \end{chapter}
 
-\begin{chapter}{Sage code}
+\begin{chapter}{Python code}\label{BB}
+\begin{section}{Laguerre's Method}\label{lagSec}
+\pythonexternal{../Laguerre/polyRoots.py}	
+\end{section}
+
+\begin{section}{Examples}\label{exLagSec}
+
+\begin{center}\pythonexternal{../Laguerre/polyExample.py}	\end{center}
+
+\vspace{0.4cm}
+Output for the given examples:
+
+\begin{itemize}
+\item \textbf{Example 1: }
+\begin{lstlisting}[frame=tbrl]
+x^4 - 5x^3 - 9x^2 + 155x - 250
+Roots are:
+[(2+0j),
+ (4-3j),
+ (4+3j),
+ (-5+0j)] 
+\end{lstlisting}
+\item \textbf{Example 2:}
+\begin{lstlisting}[frame=tbrl]
+x^7 + 2x^4 + x^3 + x
+Roots are:
+[(0.224542684789-0.690314534559j),
+ (-9.29688929465e-14+0j),
+ (0.224542684789+0.690314534559j),
+ (0.780156137307+1.03569383548j),
+ (-1.0046988221+0.345379300925j),
+ (0.780156137307-1.03569383548j),
+ (-1.0046988221-0.345379300925j)] 
+\end{lstlisting}
+\item	 \textbf{Example 3:}
+\begin{lstlisting}[frame=tbrl]
+Delta(x, 0.28^2)
+Roots are:
+[(0.235691061376+0j),
+ (-0.527292033951-0.194675359692j),
+ (-0.527292033951+0.194675359692j),
+ (-1.7584904885+0.0707240369592j),
+ (-1.7584904885-0.0707240369592j),
+ (4.33587398352+0j)] 
+\end{lstlisting}
+\end{itemize}
+
+\end{section}
 
 \end{chapter}
 
-\begin{chapter}{Python code}
+\begin{chapter}{Sage code}\label{CC}
+\begin{section}{Computations related to Chapter 1}
+Graphs from Example \ref{introExample} (ii).
+\begin{sage}
+var('x, y')
+hyper = region_plot([x*y<1], (x, -10, 10), (y, -10, 10), alpha=0.9, bordercol='blue', incol='lightblue', legend_label='$S_1$')
+hyper.axes_labels(['$u$', '$v$'])
+hyper.save('ch1_01_S_1.svg')
+\end{sage}
+
+\begin{sage}
+hyper_other = region_plot([x*y>1, x>0], (x,-2,10), (y,-2,10), alpha=0.9, bordercol='blue', incol='lightblue')
+hyper_other.axes_labels(['$u$', '$v$'])
+hyper_other.save('ch1_02_S_2.svg')
+\end{sage}
+
+\end{section}
+
+\begin{section}{Computations related to Chapter 2}
+
+Define the polynomials $\F_1, \F_2, \G_1, \G_2, \F, \G$ and $\P$ in $\R[\x, \y]$.
+\begin{sage}
+var('a, b, s, x, y')
+F_1(x, y) = 1 - x**3 * y + y - x*y**2
+F_2(x, y) = x**2 * y
+G_1(x, y) = 1 - x * y + x - x**4 * y
+G_2(x, y) = x**2 * y
+F(x, y) = F_1**2 + F_2**2; show('F: R^2 -> R'); show(F)
+G(x, y) = G_1**2 + G_2**2; show('G: R^2 -> R'); show(G)
+P(x, y) = (F, G); show('P = (F, G): R^2 -> R^2'); show(P)
+\end{sage}
+
+Graph of $\F(\x,\y)$.
+\begin{sage}
+F(x, y) = (1 - x**3*y + y - x*y**2)**2 + (x**2*y)**2
+plot3d(F, (x, -2.9, 3), (y, -5, 2), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+
+Graph of $\G(\x,\y)$.
+\begin{sage}
+G(x, y) = (1 - x*y + x - x**4*y)**2 + (x**2*y)**2
+plot3d(G, (x, -3, 3), (y, -3, 3), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+
+Define $\alpha_\lambda (s)$ and $\beta_\mu (s)$.
+\begin{sage}
+alpha(s) = (s, (1+a*s)/s); show('alpha_lamda: R -> R^2')
+show(alpha)
+beta(s) = ((1+b*s)/s, s**3); show('beta_mu: R -> R^2')
+show(beta)
+\end{sage}
+
+$\F$ and $\G$ behave well on those curves. \ref{eq:firstMap}: (a) and (b).
+\begin{sage}
+show('F_1(alpha) =');    show(F_1(*alpha).simplify_full())
+show('F_1(beta) =');     show(F_1(*beta).simplify_full())
+show('G_1(alpha) =');    show(G_1(*alpha).simplify_full())
+show('G_1(beta) =');     show(G_1(*beta).simplify_full())
+\end{sage}
+
+For printing the resulting polynomials in \LaTeX\ style:
+\begin{sage}
+aux = F(*beta).simplify_full()
+print "+".join(map(latex, sorted([f for f in aux.operands()], key=lambda exp: exp.degree(s))))
+\end{sage}
+
+\ref{eq:firstMap}: (c).
+\begin{sage}
+show('F_2(alpha) =')
+show(F_2(s, (1+a*s)/s).simplify_full())
+show('G_2(alpha) =')
+show(G_2(s, (1+a*s)/s).simplify_full())
+show('F_2(beta) =')
+show(F_2((1+b*s)/s, s**3).simplify_full())
+show('G_2(beta) =')
+show(G_2((1+b*s)/s, s**3).simplify_full())
+\end{sage}
+
+\ref{eq:firstMap}: (iii).
+\begin{sage}
+show('F(alpha) =');     show(F(*alpha).simplify_full())
+show('G(alpha) =');     show(G(*alpha).simplify_full())
+show('F(beta) =');      show(F(*beta).simplify_full())
+show('G(beta) =');      show(G(*beta).simplify_full())
+\end{sage}
+
+Now we proceed with the computations performed in the first proof of Theorem \ref{OpenQuad}.
+
+\textbf{Step 1:}
+
+Roots of $\G = v$ in $y$: $\ y^+(x, v),\ y^-(x, v)$.
+
+We can see that the denominator only cancels in 0. This is checked with Python (Appendix \ref{BB}). {\tt roots} function returns the roots with its multiplicity:
+\begin{sage}
+var('v')
+y_1, y_2 = solve(G-v, y)
+show('y+: D_v -> R'); show(y_1)
+show('y-: D_v -> R'); show(y_2)
+show('The denominator, which is the same, only cancels in 0: ', expand(x * (x**2 + (x**3 + 1)**2)))
+show((x * (x**2 + (x**3 + 1)**2)).roots())
+#Actual check that it doesn't cancel on the rest of them:
+plot(x**2+(x**3+1)**2, xmin=-2, xmax=2, ymin=-1, ymax=10)
+\end{sage}
+
+Define $\Delta(x, v) =  v  (x^2 + (x^3 + 1)^2) - x^2(x + 1)^2$:
+\begin{sage}
+Delta(x, v) = v * (x**2 + (x**3 + 1)**2) - x**2*(x + 1)**2
+show('Delta: R^2 -> R'); show(expand(Delta))
+\end{sage}
+
+Define $y^+(x, v),\ y^-(x, v)$ as functions in order to manipulate them. Recall that $$D_v = \{x \in R : \Delta(x, v) \ge 0, x \ne 0\}.$$
+\begin{sage}
+y_1(x, v) = (1 + x + x **3 + x**4 + sqrt(Delta)) / (x * (x**2 + (x**3 + 1)**2)) 
+show('y+: D_v -> R'); show(y_1)
+y_2(x, v) = (1 + x + x **3 + x**4 - sqrt(Delta)) / (x * (x**2 + (x**3 + 1)**2))
+show('y-: D_v -> R'); show(y_2)
+\end{sage}
+
+Check of how they look like for instance for $v = 0.8$ (Figure \ref{fig:plotYs_1}).
+\begin{sage}
+sols = plot(y_1(x, 0.8), xmin=-10, xmax=10, ymin=-10, ymax=10, legend_label='$y^+(x,\ 0.8)$') +\
+    plot(y_2(x, 0.8), xmin=-10, xmax=10, ymin=-10, ymax=10, color='green', legend_label='$y^-(x,\ 0.8)$') +\
+    text('$y$', (-1,9), fontsize=20, color='black') +\
+    text('$x$', (9,-1), fontsize=20, color='black')
+sols.save('ch1_06_sols.svg')
+\end{sage}
+
+As for $v=1$, it will be useful later on. We see that $y⁻(x, 1) \approx 1$ when $x \to 0$, in red. Thus, we have that $\gamma_1^⁻(x) = F(x, y^-(x, 1)) \approx F(x, 1)$ if $x \to 0$, so we obtain $= (1 + 1) ^2 = 4$.
+\begin{sage}
+sols_1 = plot(y_1(x, 1), xmin=-10, xmax=10, ymin=-10, ymax=10, legend_label='$y^+(x,\ 1)$') +\
+    plot(y_2(x, 1), xmin=-10, xmax=10, ymin=-10, ymax=10, color='red', thickness=2, legend_label='$y^-(x,\ 1)$') +\
+    text('$y$', (-1,9), fontsize=20, color='black') +\
+    text('$x$', (9,-1), fontsize=20, color='black')
+sols_1.save('ch1_07_sols_1.svg')
+\end{sage}
+
+\begin{sage}
+plot(y_1(x, 0.8), xmin=0, xmax=2, ymin=0, ymax=2) + plot(y_2(x, 0.8), xmin=0, xmax=2, ymin=0, ymax=2, color='green')
+\end{sage}
+
+Animated pic of $y^+(x, v),\ y^-(x, v)$ for fixed $x$ and $v$ varying between 0 and 5, step is 0.05.
+\begin{sage}
+G_sols = [plot(y_1(x, c), xmin=-10, xmax=10, ymin=-10, ymax=10) + plot(y_2(x, c), xmin=-10, xmax=10, ymin=-10, ymax=10, color='green') for c in sxrange(0,5,.05)]
+animate(G_sols)
+\end{sage}
+
+\textbf{Step 2:}
+
+Define $\gamma^+ _v (x), \ \gamma^- _v (x) : D_v \longrightarrow R$.
+\begin{sage}
+gamma_1(x) = F(x, y_1).simplify_full(); show('gamma+: D_v -> R, ', gamma_1)
+gamma_2(x) = F(x, y_2).simplify_full(); show('gamma-: D_v -> R,', gamma_2)
+\end{sage}
+
+Compute the limits from (i) y (ii) in Step 2.
+\begin{sage}
+show('lim of gamma+ when x -> infty: ',lim(gamma_1,x=oo))
+show('lim of gamma- when x -> infty: ',lim(gamma_2,x=oo))
+show('lim of gamma+ when x -> -infty: ',lim(gamma_1,x=-oo))
+show('lim of gamma- when x -> -infty: ',lim(gamma_2,x=-oo))
+show('lim of gamma+ when x -> 0: ',lim(gamma_1,x=0))
+show('lim of gamma- when x -> 0: ',lim(gamma_2,x=0))
+\end{sage}
+
+But we have to check what happens for $v=1$, namely: $$\lim_{x\rightarrow 0} \gamma^- _ 1 (x).$$
+Define $\gamma^+ _ 1$ as {\tt gamma\_1\_aux} and $\gamma^- _ 1$ as {\tt gamma\_2\_aux}.
+\begin{sage}
+gamma_1_aux(x) = F(x, y_1(x, 1)).simplify_full()
+show(gamma_1_aux)
+gamma_2_aux(x) = F(x, y_2(x, 1)).simplify_full()
+show(gamma_2_aux)
+\end{sage}
+
+And the limit is:
+\begin{sage}
+show('lim de gamma+ cuando x -> 0 es: ', lim(gamma_1_aux, x = 0))
+show('lim de gamma- cuando x -> 0 es: ', lim(gamma_2_aux, x = 0))
+\end{sage}
+
+Now we are going to see how the numerator looks like for $\gamma^+ _v$ and $\gamma^- _v$ when $x:=0$.
+\begin{sage}
+gamma_1_num(x, v) = F(x, y_1(x, v)).numerator()
+show('Numerator of gamma+ when x = 0: ', gamma_1_num(0, v), ' = ', v*(1+sqrt(v))**2)
+gamma_2_num(x, v) = F(x, y_2(x, v)).numerator()
+show('Numerator of gamma- when x = 0: ', gamma_2_num(0, v), ' = ', v*(1-sqrt(v))**2)
+gamma_den(x, v) = F(x, y_1(x, v)).denominator(); show('Denominators from both of them: ', gamma_den(x, v))
+\end{sage}
+
+And we see that for $v>0$, the first numerator is $>0$ (in purple) and the second one $\ge 0$ (in orange).
+\begin{sage}
+numerators = plot(v*(1+sqrt(v))**2, xmin=0.01, xmax=2, ymin=0, ymax=2, color='purple', legend_label='Numerator of $\gamma_v^+(0)$') +\
+    plot(v*(1-sqrt(v))**2, xmin=0.01, xmax=2, ymin=0, ymax=2, color='orange', legend_label='Numerator of $\gamma_v^-(0)$', fontsize=13)
+numerators.axes_labels(['$v$', ' '])
+numerators.set_legend_options(font_size=15, borderpad=0.35)
+numerators.save('ch1_08_numerators.svg')
+\end{sage}
+
+Plots of $\gamma_1 ^+$ in blue, and $\gamma_1 ^- $ in green, where we can see the value of the limit in $x=0$ (red point).
+\begin{sage}
+limit = circle((0,4), 0.12, fill=True, rgbcolor='red')
+aux = plot(gamma_1_aux, xmin=-10, xmax=10, ymin=0, ymax=18, aspect_ratio=1, legend_label='$\gamma_1^+(x)$') +\
+    plot(gamma_2_aux, xmin=-10, xmax=10, ymin=0, ymax=18, color='green', legend_label='$\gamma_1^-(x)$') +\
+    plot(limit, legend_label='Limit')
+aux.axes_labels(['$x$', ' '])
+aux.save('ch1_09_limit.svg')
+\end{sage}
+
+Animation of $\gamma_1^+$ and $\gamma_1^-$.
+\begin{sage}
+gammas = [plot(gamma_1_num(x, c)/gamma_den(x, c), xmin=-10, xmax=10, ymin=0, ymax=10) + plot(gamma_2_num(x, c)/gamma_den(x, c), xmin=-10, xmax=10, ymin=0, ymax=10, color='green') for c in sxrange(0.01,5,.05)]
+animate(gammas)
+\end{sage}
+
+We proceed to study know the map
+$$v(x) = \frac{{\left(x + 1\right)^2} x^{2}}{{\left(x^{3} + 1\right)}^{2} + x^{2}}.$$
+\begin{sage}
+uve(x) = (x**2 * (x + 1)**2) / (x**2 + (x**3 + 1)**2)
+show('v: R -> R'); show(uve)
+uve_plot = plot(uve, (x, -10, 10), color="green", legend_label='$v(x)$') +\
+    plot(0.82, (x, -10, 10), color='red', legend_label='$v = 0.82$', figsize=7, fontsize=13)
+uve_plot.axes_labels(['$x$', ' '])
+uve_plot.set_legend_options(loc=2, font_size=18, borderpad=0.4)
+uve_plot.save('ch1_10_uve.svg')
+\end{sage}
+
+We estimate that $v(x) < 0.28^2 = 0.0784$ when $x \in (-\infty, 0).$
+\begin{sage}
+detail_uve = plot(uve, (x, -4, 0), ymin=0.00, ymax=0.08, color="green", legend_label='$v(x)$') +\
+    plot(0.28**2, (x, -4, 0), color='red', thickness=1, legend_label='$v = 0.28^2$', figsize=7,fontsize=13)
+detail_uve.axes_labels(['$x$', ' '])
+detail_uve.set_legend_options(loc=(0.02, 0.765), font_size=18, borderpad=0.4, shadow=False)
+detail_uve.save('ch1_11_uve_detail.svg')
+\end{sage}
+
+Test of an animated plot for $\Delta(x, y)$ with $y \in (0.0001, 5)$ and step 0.05.
+\begin{sage}
+Delta_plot = [plot(Delta(x, c), xmin=-1, xmax=1, ymin=0, ymax=10) for c in sxrange(0.0001,5,.05)]
+animate(Delta_plot)
+\end{sage}
+
+We would like to prove that $\Delta(x, 0.28^2)$ has no roots for $x \in (-\infty, 0)$. Since we didn't achieve it with Sage, we used Laguerre's method with Python (Appendix \ref{BB}).
+\begin{sage}
+show('Delta(x, 0.28^2) = ', Delta(x, 0.28**2).expand())
+plot(Delta(x, 0.28**2), xmin=-3, xmax=0, ymin=0, ymax=0.2)
+\end{sage}
+
+Idea of what we want to proof in \textbf{Step 4}.
+\begin{sage}
+gamma_what(x) = F(x, y_2(x, 0.1)).simplify_full()
+idea = plot(gamma_what, (x, -4, 0),ymin=0,ymax=3.5,color='green',legend_label='$\gamma^-(x)$',ticks=[[0],[0]]) +\
+    text("]",(-1.16,0), fontsize=20, color='purple') +\
+    text("<",(-4,-0.004), fontsize=20, color='purple') +\
+    text("$N_v$",(-1.15,-0.25),fontsize=15,color='purple') +\
+    line([(-4,-0.004), (-1.15, 0)], thickness=2, color='purple') +\
+    line([(-1.14,gamma_what(-1.14)), (-1.14, 0)], thickness=1, color='purple', linestyle='--') +\
+    circle((-1.14,gamma_what(-1.14)), 0.03, fill=True, rgbcolor='purple') +\
+    line([(-1.14,gamma_what(-1.14)), (0, gamma_what(-1.14))], thickness=1, color='purple', linestyle='--') +\
+    text("$\gamma^-(N_v)$",(0.45,gamma_what(-1.14)), fontsize=15, color='purple')+\
+    text("[",(-0.7,0), fontsize=20, color='orange') +\
+    text(">",(0.8,-0.004), fontsize=20, color='orange') +\
+    text("$\delta_v$",(-0.7,-0.25), fontsize=20, color='orange') +\
+    line([(-0.7,0), (0.8, 0)], thickness=2, color='orange') +\
+    line([(-0.695,gamma_what(-0.695)), (-0.695, 0)], thickness=1, color='orange', linestyle='--') +\
+    circle((-0.695,gamma_what(-0.695)), 0.03, fill=True, rgbcolor='orange') +\
+    line([(-0.695,gamma_what(-0.695)), (0, gamma_what(-0.695))], thickness=1, color='orange', linestyle='--') +\
+    text("$\gamma^-(\delta_v)$",(0.45,gamma_what(-0.695)), fontsize=15, color='orange')
+idea.axes_labels(['$x$', '$v$'])
+idea.set_legend_options(loc=(0.02, 0.765), font_size=15, borderpad=0.4, shadow=False)
+idea.save('ch1_12_idea.svg')
+\end{sage}
+
+Define $N_v$ and $\delta_v$.
+\begin{sage}
+N(v) = -1/v**(1/2) + 1 + v**(1/2) + v
+show('N_v: ', N)
+delta(v) = - v**(1/2) - v - 5/2 * v**(3/2)
+show('delta_v: ', delta)
+\end{sage}
+
+And we see that $-\infty < N_v < \delta_v < 0$  for $0 < v < 0.28^2$, with $N_v$ in blue and $\delta_v$ in green.
+\begin{sage}
+N_delta = plot(N, (x, 0, 0.28**2), ymin=-20, ymax=0, color='blue', legend_label='$N_v$') +\
+    plot(delta,(x,0,0.28**2),ymin=-20,ymax=0,color='green',legend_label='$\delta_v$',figsize=7,fontsize=13)
+N_delta.axes_labels(['$v$', ' '])
+N_delta.set_legend_options(loc=(0.8, 0.1), font_size=18, borderpad=0.4, shadow=False)
+N_delta.save('ch1_13_comp.svg')
+\end{sage}
+
+Now we check that $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive for $w \in (0, 0.28)$ (or in $v \in (0, 0.28^2)$).
+\begin{sage}
+Delta_N_delta = plot(Delta(N, v),(x,0,0.28**2),ymin=0,ymax=15,color='blue',legend_label='$\Delta(N_{v},\ v)$') +\
+    plot(Delta(delta, v)/v**(5/2), (x, 0, 0.28**2), ymin=0, ymax=15, color='green', legend_label='$\Delta(\delta_{v},\ v)/v^{5/2}$', figsize=7, fontsize=13)
+Delta_N_delta.axes_labels(['$v$', ' '])
+Delta_N_delta.set_legend_options(loc=(0.65, 0.5), font_size=18, borderpad=0.4, shadow=False)
+Delta_N_delta.save('ch1_14_positive.svg')
+\end{sage}
+
+We take advantage of {\tt numpy} library from Python, in order to use {\tt linspace}.
+\begin{sage}
+import numpy as np
+\end{sage}
+
+Compute the graphs of $(N_v, v)$ and $(\delta_v, v)$.
+\begin{sage}
+vpoints1 = np.linspace(0.008, 0.08, 100)
+vpoints2 = np.linspace(0.0001, 0.08, 100)
+t_array = np.linspace(-10, 0, 500)
+Npoints = [N(vpoints1[i]) for i in range(100)]
+deltapoints = [delta(vpoints2[i]) for i in range(100)]
+uvepoints = [uve(t_array[i]) for i in range(500)]
+Njoin = line(zip(Npoints, vpoints1), rgbcolor=(0,0.6,1), thickness=1.2, legend_label='$(N_v,\ v)$')
+deltajoin = line(zip(deltapoints, vpoints2), rgbcolor=(0.196078, 0.803922, 0.196078), thickness=1.2, legend_label='$(\delta_v,\ v)$')
+uve_plot = line(zip(t_array, uvepoints), rgbcolor=(1,0.3,0), thickness=2, legend_label='$\Delta = 0$')
+\end{sage}
+
+And we draw it alongside the border of $D$, which is $\{\Delta = 0\} \cup \{x=0\}$.
+\begin{sage}
+Delta_aux(x, y)=y * (x**2 + (x**3+1)**2) - x**2*(x+1)**2
+\end{sage}
+
+\begin{sage}
+xAxis = line([(0,0), (0,0.08)], color='red', thickness=2, legend_label='$x = 0$')
+t_array = np.linspace(-10, 0, 0.01)
+nice_plot = plot(uve_plot, marker=4) +\
+    plot(xAxis, (x, -10, 0), ymin=0, ymax=0.08) +\
+    plot(Njoin)+\
+    plot(deltajoin)+\
+    region_plot([Delta_aux > 0], (x, -10, 0), (y, 0, 0.08), alpha=0.9, bordercol='white', incol='lightblue', plot_points=1000, aspect_ratio=85)+ \
+    text("$D_v$",(-7, 0.06), fontsize=15, color='black')
+nice_plot.axes_labels(['$x$', '$v$'])
+nice_plot.set_legend_options(loc=(0.01, 0.8), shadow=True, fancybox=True)
+nice_plot.save('ch1_15_nice_plot_.svg')
+\end{sage}
+
+Now we must check that $\gamma_v^-(N_v) > \gamma_v^-(\delta_v)$. In order to do that, recall the definition of $$\gamma_v^-(x) = \frac{A_2(x, v) + B_2(x, v) \sqrt{\Delta(x, v)}}{C(x)}.$$
+
+\begin{sage}
+A_2(x, v) = (v + 2)*x**24 + (v - 4)*x**22 + 2*x**23 + 2*(2*v + 3)*x**21 + (3*v + 20)*x**20 + 2*(5*v - 3)*x**19 + (13*v - 3)*x**18 + 2*(3*v + 23)*x**17 + (30*v + 11)*x**16 + 2*(19*v - 12)*x**15 + (18*v + 49)*x**14 + 2*(16*v + 23)*x**13 + (v**2 + 45*v - 30)*x**12 + 2*(21*v + 2)*x**11 + (28*v + 57)*x**10 + 2*(2*v**2 + v + 10)*x**9 + (2*v**2 + 28*v - 11)*x**8 + 12*(2*v + 1)*x**7 + 2*(3*v**2 - 10*v + 13)*x**6 + 2*(2*v**2 - v + 3)*x**5 + (v**2 + 12*v - 9)*x**4 + 2*(2*v**2 - 3*v - 3)*x**3 + (2*v**2 + v - 1)*x**2 + v**2 + 4*v*x + v
+
+B_2(x, v) = - 2*(x**21 + x**20 - x**19 + 2*x**18 + 8*x**17 + (v - 1)*x**15 + 3*x**16 + 9*x**14 + 3*(v + 1)*x**12 + 13*x**13 + (2*v - 3)*x**11 + 2*(v + 1)*x**10 + (4*v + 7)*x**9 + 2*(v - 4)*x**8 + (7*v - 18)*x**7 + 3*(2*v - 1)*x**6 + (5*v - 11)*x**4 + (5*v - 7)*x**3 + 2*v*x - x**2 + v)
+
+C(x) = x**2*(x**2 + (x**3 + 1)**2)**4
+
+show((A_2 + B_2 * sqrt(Delta))/C)
+\end{sage}
+
+In order to simplify $\sqrt{w^2} = w$ we need to tell Sage that $w>0$, which is true because $w^2 = v$ and recall that $v>0$.
+\begin{sage}
+var('w')
+assume(w > 0)
+\end{sage}
+
+Define now:
+\begin{align*}
+&f_1(w) = A_2(N_{w^2}, w^2) \cdot w^{24}, \quad &f_2(w) = A_2(\delta_{w^2}, w^2), \\
+&g_1(w) = B_2(N_{w^2}, w^2) \cdot w^{21}, \quad &g_2(w) = B_2(\delta_{w^2}, w^2), \\
+&q_1(w) = \Delta(N_{w^2}, w^2), \quad &q_2(w) = \Delta(\delta_{w^2}, w^2), \\
+&h_1(w) = C(N_{w^2}) \cdot w^{26}, \quad &h_2(w) = C(\delta_{w^2}).
+\end{align*}
+\begin{sage}
+f_1(w) = (A_2(N(w**2), w**2) * w**24).simplify().expand()
+f_2(w) = A_2(delta(w**2), w**2).simplify().expand()
+g_1(w) = (B_2(N(w**2), w**2) * w**21).simplify().expand()
+g_2(w) = B_2(delta(w**2), w**2).simplify().expand()
+q_1(w) = Delta(N(w**2), w**2).simplify().expand()
+q_2(w) = Delta(delta(w**2), w**2).simplify().expand()
+h_1(w) = (C(N(w**2)) * w**26).simplify().expand()
+h_2(w) = C(delta(w**2)).simplify().expand()
+\end{sage}
+
+And check that the maps $$L(w) = \frac{w^2h_2f_1 - f_2h_1}{w^2}, \quad g_1(w) , \quad K(w) = \frac{-g_2}{w^3}$$
+are positive for $w \in (0, 0.28)$.
+\begin{sage}
+L(w) = ((w**2 * h_2 * f_1 - f_2 * h_1) / w**4).simplify().expand()
+L_plot = plot(L, (x, 0, 0.28), ymin=0, ymax=1, rgbcolor=(0,1,0), legend_label='$L(w)$',fontsize=18,thickness=2)
+L_plot.axes_labels(['$w$', ' '])
+L_plot.set_legend_options(loc=(0.75, 0.9), font_size=25, borderpad=0.4)
+L_plot.save('ch1_16_L.svg')
+\end{sage}
+\begin{sage}
+g_1_plot = plot(g_1, (x, 0, 0.28), ymin=0, ymax=2, rgbcolor=(0.196078, 0.803922, 0.196078), legend_label='$g_1(w)$', fontsize=18, thickness=2)
+g_1_plot.axes_labels(['$w$', ' '])
+g_1_plot.set_legend_options(loc=(0.75, 0.9), font_size=25, borderpad=0.4)
+g_1_plot.save('ch1_17_g_1.svg')
+\end{sage}
+\begin{sage}
+K(w) = (-g_2 / w**3).simplify().expand()
+K_plot = plot(K, (x, 0, 0.28), ymin=0, ymax=7, rgbcolor=(0, 0.392157, 0), legend_label='$K(w)$', fontsize=18, thickness=2)
+K_plot.axes_labels(['$w$', ' '])
+K_plot.set_legend_options(loc=(0.75, 0.9), font_size=25, borderpad=0.4)
+K_plot.save('ch1_18_K.svg')
+\end{sage}
+
+There are some other ways to check that they have no roots in the given interval:
+\begin{sage}
+show(find_root(L, 0, 0.28))
+show(find_root(K, 0, 0.28))
+show(find_root(g_1, 0, 0.28))
+\end{sage}
+
+Or:
+\begin{sage}
+import scipy
+from scipy import optimize
+scipy.optimize.brentq(K, 0, 0.28)
+\end{sage}
+
+\end{section}
+
+\begin{section}{Computations related to Chapter 3}
+The following code produces the graphs from Figure \ref{fig:ch2Maps}: $\FF_1, \FF_2, \GG_1, \GG_2, \HH_1$ and $\HH_2$.
+\begin{sage}
+x, y = var('x, y')
+F_1(x, y) = (x*y - 1)**2 + x**2
+F_2(x, y) = (x*y - 1)**2 + y**2
+G_1(x, y) = x
+G_2(x, y) = y * (x*y - 2)**2 + x * (x*y - 1)**2
+H_1(x, y) = x * (x*y - 2)**2 + 1/2*x*y**2
+H_2(x, y) = y
+\end{sage}
+\begin{sage}
+plot3d(F_1, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+\begin{sage}
+plot3d(F_2, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+\begin{sage}
+plot3d(G_1, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+\begin{sage}
+plot3d(G_2, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+\begin{sage}
+plot3d(H_1, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+\begin{sage}
+plot3d(H_2, (x, -10, 10), (y, -10, 10), adaptive=True, mesh=True, opacity=0.8, color=rainbow(100, 'rgbtuple'))
+\end{sage}
+
+Regions from Figure \ref{fig:setA} and \ref{fig:setB}.
+\begin{sage}
+A = region_plot([x*y >= 1, x > 0], (x, -1, 5), (y, -1, 5), alpha=0.9, bordercol='blue', incol='lightblue')
+A.axes_labels(['$x$', '$y$'])
+A.show()
+A.save('ch2_01_A.pdf')
+\end{sage}
+\begin{sage}
+B = region_plot([x*y >= 1, x > 0], (x, -1, 5), (y, -1, 5), alpha=0.9, bordercol='blue', incol='lightblue',borderstyle='dashed') +\
+    region_plot([y >= x, x > 0.03], (x, -1, 5), (y, -1, 5), alpha=0.9, bordercol='blue', incol='lightblue', borderstyle='dashed') +\
+    plot(x, (x, 0.03, 1), thickness=1.5) +\
+    plot(1/x, (x, 1, 5), thickness=1.5)
+B.axes_labels(['$x$', '$y$'])
+B.show()
+B.save('ch2_02_B.pdf')
+\end{sage}
+
+Graph that shows that $1/x$ is ``below'' $2/x$:
+\begin{sage}
+plot(1/x, (x, 0, 5), ymin=0, ymax=5, aspect_ratio=1) + 
+    plot(2/x, (x, 0, 5), ymin=0, ymax=5, color='green') + B
+\end{sage}
+
+We use {\tt numpy} as well here. First, generate points where we are going to evaluate:
+\begin{sage}
+import numpy as np
+t_array_0 = np.linspace(0.2, 1, 25)
+t_array_1 = np.linspace(0, 1, 30)
+t_array_2 = np.linspace(1, 5, 120)
+\end{sage}
+
+Then, compute the light blue lines from Figure \ref{fig:Bvert}:
+\begin{sage}
+slice_vert_B_1 = [line([(x_0, x_0), (x_0, 5)], color='lightblue') for x_0 in t_array_1]
+slice_vert_B_2 = [line([(x_0, 1 / x_0), (x_0, 5)], color='lightblue') for x_0 in t_array_2]
+\end{sage}
+
+And draw the whole picture:
+\begin{sage}
+slice_vert_B = sum(slice_vert_B_1) + sum(slice_vert_B_2) +\
+    line([(1/3, 1/3), (1/3, 5)], color='green', thickness=1.5) + \
+    line([(1/3, 1/3), (1/3, 0)], color='green', linestyle='-.') +\
+    line([(3.25, 1/3.25), (3.25, 5)], color='red', thickness=1.5) +\
+    line([(3.25, 1/3.25), (3.25, 0)], color='red', linestyle='-.') +\
+    line([(0, 0), (1, 1)]) +\
+    plot(1/x, (x, 1, 5), aspect_ratio=1) +\
+    text('$x_0$', (0.35, -0.2), fontsize=20, color='green') +\
+    text('$x_1$', (3.25, -0.2), fontsize=20, color='red')
+slice_vert_B.axes_labels(['$x$', '$y$'])
+slice_vert_B.save('ch2_09_B_vert.pdf')
+show(slice_vert_B)
+\end{sage}
+
+Same for Figure \ref{fig:Bhor}:
+\begin{sage}
+slice_hor_B_0 = [line([(0, y_0), (y_0, y_0)], color='lightblue') for y_0 in t_array_1]
+slice_hor_B_1 = [line([(1/y_0, y_0), (5, y_0)], color='lightblue') for y_0 in t_array_0]
+slice_hor_B_2 = [line([(0, y_0), (5, y_0)], color='lightblue') for y_0 in t_array_2]
+\end{sage}
+
+And the whole picture:
+\begin{sage}
+slice_hor_B = sum(slice_hor_B_0) + sum(slice_hor_B_1) + sum(slice_hor_B_2) +\
+    line([(0, 3.25), (5, 3.25)], color='green', thickness=1.5) + \
+    line([(0, 0.6), (0.6, 0.6)], color='red', thickness=1.5) +\
+    line([(1/0.6, 0.6), (5, 0.6)], color='red', thickness=1.5) +\
+    line([(0, 0), (1, 1)]) +\
+    plot(1/x, (x, 1, 5), aspect_ratio=1) +\
+    text('$y_0$', (-0.2, 3.3), fontsize=20,color='green')+\
+    text('$y_1$', (-0.2, 0.65), fontsize=20,color='red')
+slice_hor_B.axes_labels(['$x$', '$y$'])
+slice_hor_B.save('ch2_10_B_hor.pdf')
+show(slice_hor_B)
+\end{sage}
+
+\end{section}
+
+\begin{section}{Computations related to Chapter 5}
+We need to import {\tt numpy} and define the polynomials we will be using. 
+
+First we define the polynomial maps from the first proof.
+Note that the final map is $P(Q(H(\x, \y)))$, but we obtain it as the expanded composition, defined as {\tt P(G(H))}, and as a fully expanded composition, which is {\tt P\_aux}.
+\begin{sage}
+Q(x, y) = (x, y - x - 1)
+H(x, y) = (x*y + 1, x**2 * (x*y + 1) * (x*y + 2) + y)
+
+F(x, y) = (1 - x**3 * y + y - x*y**2)**2 + (x**2 * y)**2
+G(x, y) = (1 - x * y + x - x**4 * y)**2 + (x**2 * y)**2
+P(x, y) = (F, G)
+P_aux(x, y) =
+(expand(F(*Q(*H))).collect(y),expand(G(*Q(*H))).collect(y))
+
+show('P = (F, G): R^2 -> R^2')
+show(P)
+\end{sage}
+Now, the ones from the second one: the short proof.
+\begin{sage}
+FF_1(x, y) = (x*y - 1)**2 + x**2
+FF_2(x, y) = (x*y - 1)**2 + y**2
+FF(x, y) = (FF_1, FF_2); show('FF = (FF_1, FF_2): R^2 -> R^2'); show(FF)
+
+GG_1(x, y) = x
+GG_2(x, y) = y * (x*y - 2)**2 + x * (x*y - 1)**2
+GG(x, y) = (GG_1, GG_2); show('GG = (GG_1, GG_2): R^2 -> R^2'); show(GG)
+
+HH_1(x, y) = x * (x*y - 2)**2 + 1/2*x*y**2
+HH_2(x, y) = y
+HH(x, y) = (HH_1, HH_2); show('HH = (HH_1, HH_2): R^2 -> R^2'); show(HH)
+\end{sage}
+And we define {\tt ff} to be the full expansion of the composition, grouping on the $y$ variable:
+\begin{sage}
+ff_1(x, y) = 1/2*((((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 1)**2*((x*y - 1)**2 + x**2) + (((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 2)**2*((x*y - 1)**2 + y**2))**2*((x*y - 1)**2 + x**2) + (((((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 1)**2*((x*y - 1)**2 + x**2) + (((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 2)**2*((x*y - 1)**2 + y**2))*((x*y - 1)**2 + x**2) - 2)**2*((x*y - 1)**2 + x**2)
+
+ff_2(x, y) = (((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 1)**2*((x*y - 1)**2 + x**2) + (((x*y - 1)**2 + x**2)*((x*y - 1)**2 + y**2) - 2)**2*((x*y - 1)**2 + y**2)
+
+ff(x,y) = (expand(ff_1).collect(y),expand(ff_2).collect(y))
+show('ff = HH(GG(FF)): R^2 -> R^2')#; show(ff)
+\end{sage}
+
+And, lastly, the third polynomial map, the one from the topological proof.
+\begin{sage}
+FFF_1(x, y) = (x**2*y**4 + x**4*y**2 - y**2 - 1)**2 + x**6*y**4
+FFF_2(x, y) = (x**6*y**2 + x**2*y**2 - x**2 - 1)**2 + x**6*y**4
+FFF(x, y) = (FFF_1, FFF_2); show('FFF = (FFF_1, FFF_2): R^2 -> R^2'); show(FFF)
+\end{sage}
+\begin{sage}
+f_1(x, y) = (x**2, y**2)
+f_2(x, y) = ((x*y**2 + x**2*y - y - 1)**2 + x**3*y**2, (x**3*y + x*y - x - 1)**2 + x**3*y**2)
+g(x, y) = (x*y**2 + x**2*y - y - 1, x**(3/2)*y, x**3*y + x*y - x - 1) 
+h(x, y, z) = (x**2 + y**2, y**2 + z**2)
+\end{sage}
+
+Actual check of that $\FFF=f_2\circ f_1$ with $f_2=h\circ g$.
+\begin{sage}
+show(expand(FFF_1))
+show(expand(h(*g(*f_1(x, y)))[0]))
+
+show(expand(FFF_2))
+show(expand(h(*g(*f_1(x, y)))[1]))
+\end{sage}
+
+\begin{subsection}{The set $\PP_1$}
+First, define the set $\PP_1$.
+\begin{sage}
+smallSq = [(i, j) for i in range(-10,11) for j in range(-10,11)]
+point(smallSq)
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHsmallSq = [P(*Q(*H(*k))) for k in smallSq]
+myplot = point(PQHsmallSq, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_01.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFsmallSq = [HH(*GG(*FF(*k))) for k in smallSq]
+myplot = point(HHGGFFsmallSq, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_02.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFsmallSq = [FFF(*k) for k in smallSq]
+myplot = point(FFFsmallSq, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_03.pdf')
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{The set $\PP_2$}
+First, define the set $\PP_2$.
+\begin{sage}
+bigSq = [(i, j) for i in range(-100,101) for j in range(-100,101)]
+point(bigSq)
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHbigSq = [P(*Q(*H(*k))) for k in bigSq]
+myplot = point(PQHbigSq, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_04.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFbigSq = [HH(*GG(*FF(*k))) for k in bigSq]
+myplot = point(HHGGFFbigSq, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_05.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFbigSq = [FFF(*k) for k in bigSq]
+myplot = point(FFFbigSq, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_06.pdf')
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{The set $\PP_3$}
+First, define the set $\PP_3$.
+\begin{sage}
+t_0 = np.linspace(0,1,1000)
+zeroOne = [(i, j) for i in t_0 for j in t_0]
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHzeroOne = [P(*Q(*H(*k))) for k in zeroOne]
+myplot = point(PQHzeroOne, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_07.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFzeroOne = [HH(*GG(*FF(*k))) for k in zeroOne]
+myplot = point(HHGGFFzeroOne, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_08.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFzeroOne = [FFF(*k) for k in zeroOne]
+myplot = point(FFFzeroOne, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_09.pdf')
+\end{sage}
+
+\end{subsection}
+
+\begin{subsection}{The set $\PP_4$}
+First, define the set $\PP_4$.
+\begin{sage}
+t_1 = np.linspace(-1,1,1000)
+minusOneOne = [(i, j) for i in t_1 for j in t_1]
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHminusOneOne = [P(*Q(*H(*k))) for k in minusOneOne]
+myplot = point(PQHminusOneOne, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_10.pdf')
+\end{sage}
+
+Take a closer look to the graph in $[0,2]\times[0,2]$
+\begin{sage}
+myplot = point(PQHminusOneOne, rgbcolor=(1,0.3,0), xmin=0, xmax=2, ymin=0, ymax=2, axes_labels=['$x$', '$y$'])
+show(myplot)
+#myplot.save('ch5_11_prime.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFminusOneOne = [HH(*GG(*FF(*k))) for k in minusOneOne]
+myplot = point(HHGGFFminusOneOne, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_12.pdf')
+\end{sage}
+
+Looking closer:
+\begin{sage}
+myplot = point(HHGGFFminusOneOne, xmin=0, xmax=1, ymin=0, ymax=1, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_13.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFminusOneOne = [FFF(*k) for k in minusOneOne]
+myplot = point(FFFminusOneOne, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_14.pdf')
+\end{sage}
+
+Looking closer:
+\begin{sage}
+myplot = point(FFFminusOneOne, xmin=0, xmax=1, ymin=0, ymax=1, rgbcolor=(0.196078,0.803922,0.196078), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_15.pdf')
+\end{sage}
+
+\end{subsection}
+
+\begin{subsection}{The set $\PP_5$}
+First, define the set $\PP_5$.
+\begin{sage}
+t_2 = np.linspace(-10,10,200)
+minusTenTen = [(i, j) for i in t_2 for j in t_2]
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHminusTenTen = [P(*Q(*H(*k))) for k in minusTenTen]
+myplot = point(PQHminusTenTen, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_16.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFminusTenTen = [HH(*GG(*FF(*k))) for k in minusTenTen]
+myplot = point(HHGGFFminusTenTen, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_17.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFminusTenTen = [FFF(*k) for k in minusTenTen]
+myplot = point(FFFminusTenTen, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_18.pdf')
+\end{sage}
+
+\end{subsection}
+
+\begin{subsection}{The set $\PP_6$}
+First, define the set $\PP_6$.
+\begin{sage}
+t_3 = np.linspace(-10,10,2000)
+minusTenTen = [(i, j) for i in t_3 for j in t_3]
+\end{sage}
+
+For the map $g$:
+\begin{sage}
+time PQHminusTenTen = [P(*Q(*H(*k))) for k in minusTenTen]
+myplot = point(PQHminusTenTen, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_19.pdf')
+\end{sage}
+
+Same graph in $[0,1]\times[0,1]$:
+\begin{sage}
+myplot = point(PQHminusTenTen, xmin=0, xmax=1, ymin=0, ymax=1, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_20.pdf')
+\end{sage}
+
+And in $[0,0.1]\times[0,0.1]$:
+\begin{sage}
+myplot = point(PQHminusTenTen, xmin=0, xmax=0.1, ymin=0, ymax=0.1, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_21.pdf')
+\end{sage}
+
+For the map $f$:
+\begin{sage}
+time HHGGFFminusTenTen = [HH(*GG(*FF(*k))) for k in minusTenTen]
+myplot = point(HHGGFFminusTenTen, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_22.pdf')
+\end{sage}
+
+Same graph in $[0,1]\times[0,1]$:
+\begin{sage}
+myplot = point(HHGGFFminusTenTen, xmin=0, xmax=1, ymin=0, ymax=1, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_23.pdf')
+\end{sage}
+
+For the map $\FFF$:
+\begin{sage}
+time FFFminusTenTen = [FFF(*k) for k in minusTenTen]
+myplot = point(FFFminusTenTen, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_24.pdf')
+\end{sage}
+
+
+And the same graph in $[0,1]\times[0,1]$:
+\begin{sage}
+myplot = point(FFFminusTenTen, xmin=0, xmax=1, ymin=0, ymax=1, rgbcolor=(0.196078,0.803922,0.196078), axes_labels=['$x$', '$y$'])
+show(myplot)
+myplot.save('ch5_25.pdf')
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Expanded vs. Composed}
+Define the domain. For instance $\PP_6$:
+\begin{sage}
+t_3 = np.linspace(-10,10,2000)
+minusTenTen = [(i, j) for i in t_3 for j in t_3]
+\end{sage}
+
+For the first map $g$:
+\begin{sage}
+time P_auxMinusTenTen = [P_aux(*k) for k in minusTenTen]
+myplot = point(P_auxMinusTenTen, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+#myplot.save('ch5_26_prime.pdf')
+\end{sage}
+
+For the second one $f$:
+\begin{sage}
+time ffminusTenTen = [ff(*k) for k in minusTenTen]
+myplot = point(ffminusTenTen, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+#myplot.save('ch5_26.pdf')
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Using $f_2(\overline{\Qu})$ on the third map.}
+First, define $\PP_7$:
+\begin{sage}
+t_4 = np.linspace(0,10,1000)
+zeroTen = [(i, j) for i in t_4 for j in t_4]
+\end{sage}
+
+And compute the result:
+\begin{sage}
+time f_2zeroTen = [f_2(*k) for k in zeroTen]
+myplot = point(f_2zeroTen, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+myplot.save('ch5_27.pdf')
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Families of curves composed with $g$ and $f_2$.}
+Define new variables for the curves, and the curves for the first map as in \ref{quadReasons}.
+\begin{sage}
+var('s, a, b')
+alpha(s, a) = (s, (1+a*s)/s)
+show('alpha_lamda: R^2 -> R^2'); show(alpha)
+beta(s, b) = ((1+b*s)/s, s**3)
+show('beta_mu: R^2 -> R^2'); show(beta)
+\end{sage}
+
+Define the domain $\PP_8$ of the curves:
+\begin{sage}
+t_5 = np.linspace(-10,10,1000)
+minusTenTen = [(i, j) for i in t_5 for j in t_5]
+\end{sage}
+
+Compute the image of $\PP_8$ through the curves:
+\begin{sage}
+time alphaminusTenTen = [alpha(*k) for k in minusTenTen]
+time betaminusTenTen = [beta(*k) for k in minusTenTen]
+\end{sage}
+
+Plots of the curves $\alpha_\lambda$ and $\beta_\mu$ for $(s,a)\in [-10,10]\times[-10,10]$ and 1000 points on each side:
+\begin{sage}
+myplot = line(alphaminusTenTen, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(betaminusTenTen, color='orange', axes_labels=['$x$', '$y$'])
+show(myplot, xmin=-15, xmax=15, ymin=-15, ymax=15)
+#myplot.save('ch5_28.pdf')
+\end{sage}
+
+Compute the images of the curves through $g$:
+\begin{sage}
+time PQHalpha = [P(*Q(*H(*k))) for k in alphaminusTenTen]
+time PQHbeta = [P(*Q(*H(*k))) for k in betaminusTenTen]
+\end{sage}
+
+Plots of $\big(\P\circ Q\circ H\big)(\alpha_\lambda)$ and $\big(\P\circ Q\circ H\big)(\beta_\mu)$.
+\begin{sage}
+myplot = line(PQHalpha, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(PQHbeta, color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=1, ymin=0,ymax=1,aspect_ratio=1)
+#myplot.save('ch5_29.pdf')
+\end{sage}
+
+Same in $[0,100]\times[0,100]$:
+\begin{sage}
+myplot = line(PQHalpha, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(PQHbeta, color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=100, ymin=0, ymax=100, aspect_ratio=1)
+\end{sage}
+
+Same in $[0,0.1]\times[0,0.1]$:
+\begin{sage}
+myplot = line(PQHalpha, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(PQHbeta, color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=0.1, ymin=0, ymax=0.1, aspect_ratio=1)
+\end{sage}
+
+Now, we define the family of curves for the third map:
+\begin{sage}
+gamma(s, a) = ((1+a*s)/s, s**2)
+show('gamma: R^2 -> R^2'); show(gamma)
+delta(s, b) = (s, (1+b*s)/s)
+show('delta: R^2 -> R^2'); show(delta)
+\end{sage}
+
+The domain $\PP_8$:
+\begin{sage}
+t_5 = np.linspace(0.001,10,1000)
+zeroTen = [(i, j) for i in t_5 for j in t_5]
+\end{sage}
+
+The image through the curves:
+\begin{sage}
+time gammazeroTen = [gamma(*k) for k in zeroTen]
+time deltazeroTen = [delta(*k) for k in zeroTen]
+\end{sage}
+
+The image through $f_2$:
+\begin{sage}
+time f_2gamma = [f_2(*k) for k in gammazeroTen]
+time f_2delta = [f_2(*k) for k in deltazeroTen]
+\end{sage}
+
+Plots of $F(\gamma)$ and $F(\delta)$:
+\begin{sage}
+myplot = line(f_2gamma, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(f_2delta,color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=100, ymin=0, ymax=100, aspect_ratio=1)
+#myplot.save('ch5_31.pdf')
+\end{sage}
+
+Same in $[0,4]\times[0, 4]$:
+\begin{sage}
+myplot = line(f_2gamma, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(f_2delta,color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=4, ymin=0, ymax=4, aspect_ratio=1)
+\end{sage}
+
+In $[0,1]\times[0, 1]$:
+\begin{sage}
+myplot = line(f_2gamma, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(f_2delta,color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=1, ymin=0, ymax=1, aspect_ratio=1)
+\end{sage}
+
+And in $[0,0.1]\times[0,0.1]$:
+\begin{sage}
+myplot = line(f_2gamma, color='purple', axes_labels=['$x$', '$y$']) +\
+    line(f_2delta,color='orange',axes_labels=['$x$','$y$'])
+show(myplot, xmin=0, xmax=0.1, ymin=0, ymax=0.1, aspect_ratio=1)
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Randomly distributed points contained in a disc}
+Generate the random points in the unit disc:
+\begin{sage}
+circle_cloud = []
+circle_list = []
+for i in range(0,100000):
+    rho = RealField().random_element(0,1)
+    theta = RealField().random_element(0,2*pi)
+    circle_cloud = circle_cloud + [point((rho*cos(theta), rho*sin(theta)))]
+    circle_list = circle_list + [(rho*cos(theta), rho*sin(theta))]
+\end{sage}
+
+Plot it:
+\begin{sage}
+plot(circle_cloud, aspect_ratio=1)
+\end{sage}
+
+Images through $g$:
+\begin{sage}
+time PQHcircle_list = [P(*Q(*H(*k))) for k in circle_list]
+myplot = point(PQHcircle_list, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+\end{sage}
+
+Looking closer:
+\begin{sage}
+show(myplot, xmin=0, xmax=10, ymin=0, ymax=10)
+\end{sage}
+
+Images through $f$:
+\begin{sage}
+time HHGGFFcircle_list = [HH(*GG(*FF(*k))) for k in circle_list]
+myplot = point(HHGGFFcircle_list, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+\end{sage}
+
+Looking closer:
+\begin{sage}
+show(myplot, xmin=0, xmax=5, ymin=0, ymax=5)
+\end{sage}
+
+Images through $\FFF$:
+\begin{sage}
+time FFFcircle_list = [FFF(*k) for k in circle_list]
+myplot = point(FFFcircle_list, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+\end{sage}
+
+A closer look:
+\begin{sage}
+show(myplot, xmin=0, xmax=2, ymin=0, ymax=2)
+\end{sage}
+
+Do the exact same thing for a disc with radius equals to 100:
+\begin{sage}
+circle_cloud = []
+circle_list = []
+for i in range(0,100000):
+    rho = RealField().random_element(0,100)
+    theta = RealField().random_element(0,2*pi)
+    circle_cloud = circle_cloud + [point((rho*cos(theta), rho*sin(theta)))]
+    circle_list = circle_list + [(rho*cos(theta), rho*sin(theta))]
+\end{sage}
+
+Image through $g$:
+\begin{sage}
+time PQHcircle_list = [P(*Q(*H(*k))) for k in circle_list]
+myplot = point(PQHcircle_list, rgbcolor=(1,0.3,0), axes_labels=['$x$', '$y$'])
+show(myplot)
+\end{sage}
+
+Looking closer:
+\begin{sage}
+show(myplot, xmin=0, xmax=10, ymin=0, ymax=10)
+\end{sage}
+
+Images through $f$:
+\begin{sage}
+time HHGGFFcircle_list = [HH(*GG(*FF(*k))) for k in circle_list]
+myplot = point(HHGGFFcircle_list, rgbcolor=(0,0.5,1), axes_labels=['$x$', '$y$'])
+show(myplot)
+\end{sage}
+
+Looking closer:
+\begin{sage}
+show(myplot, xmin=0, xmax=5, ymin=0, ymax=5)
+\end{sage}
+
+Images through $\FFF$:
+\begin{sage}
+time FFFcircle_list = [FFF(*k) for k in circle_list]
+myplot = point(FFFcircle_list, rgbcolor=(0.196078,0.803922,0.196078),axes_labels=['$x$','$y$'])
+show(myplot)
+\end{sage}
+
+Looking closer:
+\begin{sage}
+show(myplot, xmin=0, xmax=10, ymin=0, ymax=10)
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Families of curves composed with the new maps: $\mathcal{N}_1$ and $\mathcal{N}_2$}
+
+We begin by defining the first new polynomial map $\mathcal{N}_1$:
+\begin{sage}
+newMap_1(x,y)=(x**4*y**4 + (x**2*y + x*y**2 - 1)**2*(y**2 + 1), x**4*y**4 + (x**2*y + x*y**2 - 1)**2*(x**2 + 1))
+show('newMap_1: R^2 -> R^2'); show(newMap_1)
+\end{sage}
+
+And the new family of curves:
+\begin{sage}
+sigma(s, a) = (s**2 + a*s**3, 1/s)
+show('sigma: R^2 -> R^2'); show(sigma)
+tau(s, b) = (1/s, s**2 + b*s**3)
+show('tau: R^2 -> R^2'); show(tau)
+\end{sage}
+
+The domain:
+\begin{sage}
+t_5 = np.linspace(-10,10,1000)
+minusTenTen = [(i, j) for i in t_5 for j in t_5]
+\end{sage}
+
+The image through the curves:
+\begin{sage}
+time sigmaminusTenTen = [sigma(*k) for k in minusTenTen]
+time tauminusTenTen = [tau(*k) for k in minusTenTen]
+\end{sage}
+
+Plots of the curves $\sigma$ and $\tau$ for $(s,a)\in [-10,10]\times[-10,10]$ and 1000 points on each side:
+\begin{sage}
+myplot = line(sigmaminusTenTen, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
+    line(tauminusTenTen, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
+show(myplot, xmin=-15, xmax=15, ymin=-15, ymax=15)
+#myplot.save('ch5_32.pdf')
+\end{sage}
+
+Image through $\mathcal{N}_1$:
+\begin{sage}
+time newMap_1sigma = [newMap_1(*k) for k in sigmaminusTenTen]
+time newMap_1tau = [newMap_1(*k) for k in tauminusTenTen]
+\end{sage}
+
+Plots of $\mathcal{N}_1(\sigma)$ and $\mathcal{N}_1(\tau)$:
+\begin{sage}
+myplot = line(newMap_1sigma, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
+    line(newMap_1tau, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
+show(myplot, xmin=0, xmax=0.1, ymin=0, ymax=0.1, aspect_ratio=1)
+#myplot.save('ch5_33.pdf')
+\end{sage}
+
+As for $\mathcal{N}_2$:
+\begin{sage}
+newMap_2(x,y)=(x**2*y**2 + (x**2*y + x*y**2 - 1)**2*(y**2 + 1), x**2*y**2 + (x**2*y + x*y**2 - 1)**2*(x**2 + 1))
+show('newMap_2: R^2 -> R^2'); show(newMap_2)
+\end{sage}
+
+We use the exact same curves we just did. Compute the image:
+\begin{sage}
+time newMap_2sigma = [newMap_2(*k) for k in sigmaminusTenTen]
+time newMap_2tau = [newMap_2(*k) for k in tauminusTenTen]
+\end{sage}
+
+Plots of $\mathcal{N}_2(\sigma)$ and $\mathcal{N}_2(\tau)$:
+\begin{sage}
+myplot = line(newMap_2sigma, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
+    line(newMap_2tau, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
+show(myplot, xmin=0, xmax=0.1, ymin=0, ymax=0.1, aspect_ratio=1)
+#myplot.save('ch5_33.pdf')
+\end{sage}
+
+The third map $\mathcal{N}_3$ is:
+\begin{sage}
+newMap_3(x,y)=(x**6*y**4 + (x**2*y + x*y**2 - 1)**2*(y**2 + 1), x**4*y**6 + (x**2*y + x*y**2 - 1)**2*(x**2 + 1))
+show('newMap_3: R^2 -> R^2'); show(newMap_3)
+\end{sage}
+\end{subsection}
+
+\begin{subsection}{Expansion and grouping of the given polynomial maps}
+Computing the total degree and the total number of monomials.
+
+First paper $g$:
+\begin{itemize}
+\item Total degree: 56.
+\item Total number of monomials: 167 (101 + 67).
+\end{itemize}
+\begin{sage}
+show(expand(F(*Q(*H))).collect(y))
+show(expand(G(*Q(*H))).collect(y))
+\end{sage}
+
+Second map $f$:
+\begin{itemize}
+\item Total degree: 72.
+\item Total number of monomials: 350.
+\end{itemize}
+\begin{sage}
+show(expand(ff[0]).collect(y))
+show(expand(ff[1]).collect(y))
+\end{sage}
+
+Third map $\FFF$:
+\begin{itemize}
+\item Total degree: 28.
+\item Total number of monomials: 22. 
+\end{itemize}
+\begin{sage}
+show(expand(FFF[0]).collect(y))
+show(expand(FFF[1]).collect(y))
+\end{sage}
+
+First new map $\mathcal{N}_1$:
+\begin{itemize}
+\item Total degree: 16.
+\item Total number of monomials: 24 .
+\end{itemize}
+\begin{sage}
+show(expand(newMap_1[0]).collect(y))
+show(expand(newMap_1[1]).collect(y))
+\end{sage}
+
+Second new map $\mathcal{N}_2$:
+\begin{itemize}
+\item Total degree: 16.
+\item Total number of monomials: 26.
+\end{itemize}
+\begin{sage}
+show(expand(newMap_2[0]).collect(y))
+show(expand(newMap_2[1]).collect(y))
+\end{sage}
+
+Third new map $\mathcal{N}_3$:
+\begin{itemize}
+\item Total degree: 20.
+\item Total number of monomials: 26.
+\end{itemize}
+\begin{sage}
+show(expand(newMap_3[0]).collect(y))
+show(expand(newMap_3[1]).collect(y))
+\end{sage}
+\end{subsection}
+\end{section}
 
 \end{chapter}
 
@@ -2908,8 +4224,12 @@ Berlin, Heidelberg, New York (1987).
 
 \bibitem[B]{b} M. Berger: Geometry. I. \em Universitext\em. Springer-Verlag, Berlin: 1987.
 
-\bibitem[FG]{fg} J.F. Fernando, J.M. Gamboa: Polynomial images of $R^n$.
-\textit{Journal of Pure and Applied Algebra}, {\bf 179}, (2003), no. 3, 241-254.
+\bibitem[F]{fe} J.F. Fernando: Polynomial images of $\R^n$. {\em Reelle algebraische und analytische Geometrie}, March, 17$^{\rm th}$ -- 23$^{\rm rd}$ (2002), Oberwolfach.
+
+\bibitem[F1]{f1} J.F. Fernando: On Nash images of Euclidean spaces. Submitted, arXiv:1503.07567.
+
+\bibitem[FG]{fg} J.F. Fernando, J.M. Gamboa: Polynomial images of $\R^n$. {\em J. Pure Appl. Algebra}, {\bf179} (2003), 241--254.
+
 
 \bibitem[FGU]{fgu} J.F. Fernando, J.M. Gamboa, C. Ueno: The open quadrant problem:
 A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesinos. Departamento de Geometr\'ia y Topolog\'ia. Facultad de CC. Matem\'aticas UCM, pp. 337-350, (2016).
@@ -2920,6 +4240,13 @@ A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesi
 \bibitem[G]{g} J.M. Gamboa: Algebraic images of the real plane. \textit{Reelle algebraische Geometrie}, June,
 $10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
 
+\bibitem[H]{h} A. Harnack: \"Uber die Vielheiligkeit der ebenen algebraischen Kurven. {\em Math. Ann.} {\bf10} (1876), 189--198.
+
+\bibitem[P]{p} S. Pinchuk: A counterexample to the real Jacobian Conjecture, \em Math. Z.
+\em {\bf 217} (1994), 1--4.
+
+\bibitem[T]{ta} A. Tarski: A decisi\'on method for elementary algebra and geometry. Prepared for publication by J.C.C. Mac Kinsey, Berkeley: 1951.
+
 \bibitem[U]{u} C. Ueno: Im\'agenes polin\'omicas y regulares de espacios eucl\'\i deos. {\em Ph.D. Thesis UCM} (2012).
 
 \bibitem[W]{w} R.J. Walker: \em Algebraic curves. \em Berlin, Heidelberg, 
@@ -2928,8 +4255,9 @@ New York: Springer Verlag, (1978).
 \bibitem[M]{m} W. Massey: A Basic Course in Algebraic Topology, \emph{Graduate Texts in Mathematics}, \textbf{\text{127}}.
 Springer-Verlag, New York: 1991.
 
-\bibitem[FGU1]{fgu1} J.F. Fernando, C. Ueno: On the open quadrant as a polynomial image of $\R^2$ (revisited).
+\bibitem[FU1]{fu1} J.F. Fernando, C. Ueno: On the open quadrant as a polynomial image of $\R^2$ (revisited).
 
+\bibitem[A]{a} F. S. Acton: \textit{Numerical Methods That Work}, 2\textsuperscript{nd} printing. Washington, DC: Math. Assoc. Amer., 1990. 
 
 
 \end{thebibliography}

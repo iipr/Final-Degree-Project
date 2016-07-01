@@ -16,8 +16,9 @@ rootList = polyRoots(c)
 print('x^7 + 2x^4 + x^3 + x\nRoots are:\n')
 print '[%s]' % ',\n '.join(map(str, rootList)), '\n'
 
-# Example 3: Delta(x, 0.28^2) = 0.0784*x^6 - x^4 - 1.8432*x^3 - 0.9216*x^2 + 0.0784
-c = np.array([0.0784, 0, -1.0, - 1.8432, - 0.9216, 0, 0.0784])
+# Example 3: Delta(x, 0.28^2) = 
+#            0.0784*x^6-x^4-1.8432*x^3-0.9216*x^2+0.0784
+c = np.array([0.0784,0,-1.0,-1.8432,-0.9216,0,0.0784])
 rootList = polyRoots(c)
 print('Delta(x, 0.28^2)\nRoots are:\n')
 print '[%s]' % ',\n '.join(map(str, rootList)), '\n'
