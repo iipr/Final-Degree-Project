@@ -104,10 +104,13 @@
 %\usepackage[kpfonts]{quotchap}    %Style of the chapter. Other font options: palatino, avantgarde, beramono, berasans, bookman, courier, helvetica, kpfonts, lmodern, newcentury, times, utopia
 \usepackage{enumerate}    % Easier enumerate styles
 \usepackage{emptypage}		% Empty page style on las page of a chapter
+
+
+%________________CODE TOOLS________________
 \usepackage{listings} 		% For adding computer code
 % Default fixed font does not support bold face
-\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
-\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{11}  % for normal
 \DeclareFixedFont{\sttm}{T1}{txtt}{m}{n}{9}  % for small normal
 \definecolor{deepblue}{rgb}{0,0,0.5}
 \definecolor{deepred}{rgb}{0.6,0,0}
@@ -147,6 +150,7 @@
 	frame=tbrl,                         % Any extra options here
 	rulecolor=\color{black},    %%% <--- here
 	%literate={\$}{{\textcolor{deepgreen}{\$}}}1,
+	linewidth=14.9cm,
 	showstringspaces=false
 }}
 %Sage for inline

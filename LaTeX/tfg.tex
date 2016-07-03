@@ -12,7 +12,6 @@
 \renewcommand{\headrulewidth}{0.4pt} % Rule below headings
 \pagestyle{fancy}
 
-
 \begin{document}
 
 \pagenumbering{roman}
@@ -22,13 +21,13 @@
 Polynomial Algorithms}} \\
 \vspace{0.5cm}
 \Large{\textsc{Final Degree Project}}\\
-\vspace{1.5cm}
+\vspace{2cm}
 \protect\includegraphics[scale=0.6]{escudo_ucm.pdf}
-\vspace{1.5cm}}
+\vspace{1.75cm}}
 \author{\textbf{Ignacio Iker Prado Rujas} \\
 Complutense University of Madrid (UCM) \\
 Double Degree in Mathematics and Computer Science}
-\date{\today}
+\date{July 1\textsuperscript{st}, 2016}
 \maketitle
 \thispagestyle{empty}
 
@@ -37,7 +36,7 @@ Double Degree in Mathematics and Computer Science}
 \textbf{Tutors:} \\
 \textbf{Juan R. Delgado, Jos\'e F. Fernando \textit{\&} Jos\'e M. Gamboa} \\
 \vspace{0.1cm}
-Algebra Department, Mathematics Faculty
+Department of Algebra, Faculty of Mathematics.
 \end{center}
 
 \end{titlepage}
@@ -46,17 +45,11 @@ Algebra Department, Mathematics Faculty
 \thispagestyle{empty}
 \newpage	
 \thispagestyle{empty}
-\begin{abstract} This work is about different proofs of the same fact and a computational comparison between them, looking for the most efficient one.
+\begin{abstract} In this work we gather three different proofs appearing in \cite{fg}, \cite{fgu} and \cite{fu1} of the following result: let $R$ be a real closed field and consider the open quadrant $\Qu:=\{x>0,y>0\}\subset R^2$. Then, there exists a polynomial map $f:R^2\to R^2$ such that $f(R^2)=\Qu$. In addition, we compare in the last chapter the computational complexity of the three maps $f$ satisfying the equality $f(R^2)=\Qu$ looking for the most efficient one. 
 
-Let $R$ be a real closed field and $n\geq 2$. Then: 
-	
-(1) For every finite subset $F$ of $R^n$, the semialgebraic set $R^n\setminus F$ is a polynomial image of $R^n$. 
-	
-(2) Given linearly independent linear forms $h_1,\dots,h_r$ of $R^n$, the semialgebraic set $\{h_1>0,\dots,h_r>0\}\subset R^n$ is a polynomial image of $R^n$.
-	
-The key result here is that $\Qu:=\{x>0,y>0\}\subset R^2$ is a polynomial image of $R^2$. This assert is proved in three different ways: a first approach using some basic results in real algebraic geometry (such as Sturm's theorem and the Curve Selection Lemma) and the aid of a computer; a second and shorter one, using the composition of three rather simple polynomial maps; and a third one that applies arguments of algebraic topology, without the aid of computer computations.
+The first proof, which uses some basics in real algebraic geometry such as Sturm's theorem and the Curve selection lemma, requires the aid of a computer to determine the sign of some univariate polynomials in small intervals of the type $(0,\eps)$.  The second one has a purely algebraic character and to check that the image of $R^2$ is $\Qu$ is rather easy. However its execution time is high and the image of suitable grids is not thick enough. The third proof involves more sophisticated mathematical arguments, most of them concerning algebraic topology, but it seems to be very efficient from the computational view point.
 
-Lastly, we perform a computational comparison (using SageMath) between the three polynomial maps that are used in the previous chapters, on the search for the most efficient and the quickest one.
+As announced above we lastly perform a computational comparison in chapter 5, using SageMath, between the three polynomial maps that are used in the previous chapters, on the search for the most efficient and the quickest one.
 
 \vspace{0.2cm}
 \textit{Keywords.} Polynomial map, polynomial image, semialgebraic set, open quadrant, complexity, optimal algebraic structure, optimal multiplicative complexity.
@@ -66,39 +59,33 @@ Lastly, we perform a computational comparison (using SageMath) between the three
 \textbf{Resumen}
 \end{center}
 
-Este trabajo contiene distintas pruebas del mismo hecho y pretende hacer una comparaci\'on computacional entre ellas, tratando de encontrar la m\'as eficiente.
+En este trabajo reunimos tres demostraciones distintas, que aparecen en \cite{fg}, \cite{fgu} y \cite{fu1}, del siguiente resultado: dado un cuerpo real cerrado $R$ el cuadrante abierto $\Qu:=\{x>0,y>0\}\subset R^2$ es la imagen de una aplicaci\'on polin\'omica $f:R^2\to R^2$. Adem\'as comparamos en el \'ultimo cap\'itulo la complejidad computacional de las tres aplicaciones cuya imagen es el cuadrante abierto, tratando de encontrar la m\'as eficiente.
 
-Sean $R$ un cuerpo real cerrado y $n\geq 2$. Entonces: 
-	
-(1) Para cada subconjunto finito $F$ de $R^n$, el conjunto semialgebraico $R^n\setminus F$ es imagen polin\'omica de $R^n$. 
-	
-(2) Dadas formas linealmente independientes $h_1,\dots,h_r$ de $R^n$, el conjunto semialgebraico $\{h_1>0,\dots,h_r>0\}\subset R^n$ es imagen polin\'omica de $R^n$.
-	
-El resultado clave aqu\'i es que $\Qu:=\{x>0,y>0\}\subset R^2$ es imagen polin\'omica de $R^2$. Esta afirmaci\'on es probada de tres maneras diferentes: una primera usando algunos resultados b\'asicos de geometr\'ia algebraica real (como son el teorema de Sturm y el Lema de Selecci\'on de Curvas) y la ayuda de un ordenador; una segunda forma m\'as breve, empleando la composici\'on de tres aplicaciones polinomiales bastante sencillas; y una tercera y \'ultima en la que se utilizan  argumentos de topolog\'ia algebraica, que evitan efectuar c\'alculos en un ordenador. 
+La primera demostraci\'on, que usa resultados elementales de la geometr\'ia algebraica real tales como el teorema de Sturm o el Lema de selecci\'on de curvas, requiere de la ayuda de un ordenador para estudiar el signo de ciertos polinomios en una variable en intervalos muy peque\~nos del tipo $(0,\eps)$. La segunda tiene car\'acter algebraico y la comprobaci\'on de que la imagen es el cuadrante abierto es muy sencilla. Sin embargo su coste en tiempo de ejecuci\'on es alto y el tamizado de la imagen de un cuadrado centrado en el origen de $R^2$ no es tan denso como en los restantes casos. Por \'ultimo la tercera prueba, que es la que usa argumentos matem\'aticos m\'as sofisticados, entre ellos algunos propios de la topolog\'ia algebraica, parece ser muy eficiente desde el punto de vista computacional.
 
-Por \'ultimo, realizamos una comparaci\'on computacional (usando SageMath) entre las tres aplicaciones polinomiales que son utilizadas en los cap\'itulos anteriores, tratando de encontrar la m\'as eficiente y la m\'as r\'apida.
+La comparaci\'on de las complejidades a las que hemos hecho referencia en el p\'arrafo anterior se realiza mediante SageMath, es el contenido del cap\'itulo 5 y tiene por objetivo determinar cual de las tres aplicaciones es la m\'as eficiente y la m\'as r\'apida en rellenar el cuadrante.
 
 \vspace{0.2cm}
 \textit{Palabras clave.} Aplicaci\'on polinomial, imagen polinomial, conjunto semialgebraico, quadrante abierto, complejidad, estructura algebraica \'optima, complejidad multiplicativa \'optima.
 \end{abstract}
 
 \tableofcontents
-\thispagestyle{empty}
+%\thispagestyle{empty}
 
 \listoffigures
-\thispagestyle{empty}
+%\thispagestyle{empty}
 
 \listoftables
-\thispagestyle{empty}
+%\thispagestyle{empty}
 
 \begin{chapter}{Introduction to polynomial images of $R^n$}
 \pagenumbering{arabic}    % Numbering from 1
 
 \section{General background and structure of the memoir}
 
-Although it is usually said that the first work in Real Geometry is due to Harnack \cite{h}, who obtained an upper bound for the number of connected components of a non-singular real algebraic curve in terms of its genus, modern Real Algebraic Geometry was born with Tarski's article \cite{ta}, where it is proved that the image of a semialgebraic set under a polynomial map is a semialgebraic set. In the last decade J.F. Fernando, J.M Gamboa and C. Ueno have intensively studied  what might be called the `inverse problem'. In the 1990 \em Oberwolfach Reelle algebraische Geometrie \em week \cite{g} Gamboa proposed to characterize the subsets of $\R^m$ that are polynomial images of some $\R^n$. 
+Although it is usually said that the first work in Real Geometry is due to Harnack \cite{h}, who obtained an upper bound for the number of connected components of a non-singular real algebraic curve in terms of its genus, modern Real Algebraic Geometry was born with Tarski's article \cite{ta}, where it is proved that the image of a semialgebraic set under a polynomial map is a semialgebraic set. In the last decade J.F. Fernando, J.M. Gamboa and C. Ueno have intensively studied  what might be called the `inverse problem'. In the 1990 \em Oberwolfach Reelle algebraische Geometrie \em week \cite{g} Gamboa proposed to characterize the subsets of $\R^m$ that are polynomial images of some $\R^n$. 
 
-Open semialgebraic sets deserve a special attention in connection with the real Jacobian Conjecture \cite{p}. In addition it can be easily seen that they constitute a not at all trivial challenge. Observe for instance that the closed half-line $[0,+\infty)$ is the image of $\R$ under the polynmial map $f:\R\to\R, x\mapsto x^2$ but the open half-line $(0,+\infty)$ is not the image of any polynomial map $\R\to\R$, although it is the image of 
+Open semialgebraic sets deserve a special attention in connection with the real Jacobian Conjecture \cite{p}. In addition it can be easily seen that they constitute a not at all trivial challenge. Observe for instance that the closed half-line $[0,+\infty)$ is the image of $\R$ under the polynomial map $f:\R\to\R, x\mapsto x^2$ but the open half-line $(0,+\infty)$ is not the image of any polynomial map $\R\to\R$, although it is the image of 
 $$
 f:\R^2\to\R,\, (x,y)\to (xy-1)^2+y^2.
 $$ 
@@ -106,11 +93,11 @@ As open sets with piecewise linear boundary seem to be friendly it is natural to
 $$
 \R^2\to\R^2,\, (x,y)\mapsto (y(xy-1),(xy-1)^2+x^2).
 $$
-This examples explain why in \cite{g} the so called `open quadrant problem' was proposed, that is, to determine whether the open quadrant $\Qu:=\{x>0,y>0\}\subset\R^2$ is a polynomial image of $\R^2$.
+These examples explain why in \cite{g} the so called `open quadrant problem' was proposed, that is, to determine whether the open quadrant $\Qu:=\{x>0,y>0\}\subset\R^2$ is a polynomial image of $\R^2$.
 
 This problem stimulated the interest of many specialists in the field. However, only after twelve years a first solution was found in \cite{fg} and presented by the first author in the 2002 \em Oberwolfach Reelle algebraische Geometrie \em week \cite{fe}.
 
-The open quadrant problem was the germ of a more systematic study of `Polynomial images of Euclidean spaces' developed  during the last decade, and was the topic of the Ph.D. Thesis of C. Ueno \cite{u} supervised by J.F. Fernando. It is worthwhile mentioning that the work on polynomial and regular images constitutes the germ of the recent proof by Fernando of the so called ``Shiota's conjecture''. The result is the following.  \em A subset $\Ss\subset\R^n$ is the image of a Nash map $f:\R^m\to\R^n$ if and only if $\Ss$ is semialgebraic, pure dimensional of dimension $d\leq m$ and there exists an analytic path $\alpha:[0,1]\to\Ss$ whose image meets all the connected components of the set of regular points of $\Ss$\em. 
+The open quadrant problem was the germ of a more systematic study of `Polynomial images of Euclidean spaces' developed  during the last decade, and was the topic of the Ph.D. Thesis of C. Ueno \cite{u} supervised by J.F. Fernando. It is worthwhile mentioning that the work on polynomial and regular images constitutes the germ of the recent proof by Fernando, \cite{f1} of the so called ``Shiota's conjecture''. The result is the following.  \em A subset $\Ss\subset\R^n$ is the image of a Nash map $f:\R^m\to\R^n$ if and only if $\Ss$ is semialgebraic, pure dimensional of dimension $d\leq m$ and there exists an analytic path $\alpha:[0,1]\to\Ss$ whose image meets all the connected components of the set of regular points of $\Ss$\em. 
 
 Coming back to polynomial and regular maps of euclidean spaces a lot of work has been done after the discovery that $\Qu$ is a polynomial image of $\R^2$, with two main objectives: 
 \begin{itemize}
@@ -120,18 +107,18 @@ Coming back to polynomial and regular maps of euclidean spaces a lot of work has
 This is the main reason to search the ``best" polynomial map $\R^2\to\R^2$ whose image is $\Qu$. As easy such a map is, as easy they would be those polynomial or regular maps $\R^n\to\R^m$ whose image is a prescribed convex polyhedron, its interior or their complements. 
 
 \subsection{Structure of this memoir}
-This memoir is organized as follows. In this first chapter we collect some examples of polynomial images of euclidean spaces and present some obstructions to be such an image. In Chapters 2, 3 and 4 we present very detailed proofs of the main results in, respectively, \cite{fg}, \cite{fu} and \cite{fgu}. The first one has an strong computational character, the second one is purely algebraic whereas the third one involves algebraic topology arguments. It must be pointed out that concerning the proof in Chapter 2 we have complemented the use of Sturm sequences in the original work \cite{fg} by the use of Laguerre's algorithm to approximate the roots of an univariate polynomial with complex coefficients.
+This memoir is organized as follows. In this first chapter we collect some examples of polynomial images of euclidean spaces and present some obstructions to be such an image. In Chapters 2, 3 and 4 we present very detailed proofs of the main results in, respectively, \cite{fg}, \cite{fu1} and \cite{fgu}. The first one has an strong computational character, the second one is purely algebraic whereas the third one involves algebraic topology arguments. It must be pointed out that concerning the proof in Chapter 2 we have complemented the use of Sturm sequences in the original work \cite{fg} by the use of Laguerre's algorithm to approximate the roots of an univariate polynomial with complex coefficients.
 
-The most original part of the work is Chapter 5, where we compare from distinct view points the complexity of the maps presented in the precedent chapters having $\Qu$ as image. We have found two ways to compare the effectiveness of two such maps. Namely, the execution time needed to fill the quadrant, and the density in $\Qu$ of the image of a thick enough grid. To perform the corresponding computations we have used Sage. To finish we present without proof simpler maps $f:\R^2\to\R^2$ that, maybe, satisfy the equality $f(\R^2)=\Qu$. If this were so one of them would probably be the map with smallest topological degree among those having the open quadrant as image.
+The most original part of the work is Chapter 5, where we compare from distinct view points the complexity of the maps presented in the precedent chapters having $\Qu$ as image. We have found two ways to compare the effectiveness of two such maps. Namely, the execution time needed to fill the quadrant, and the density in $\Qu$ of the image of a thick enough grid. To perform the corresponding computations we have used Sage. To finish we present without proof simpler maps $f:\R^2\to\R^2$ that, maybe, satisfy the equality $f(\R^2)=\Qu$. If this were so one of them would probably be the map with smallest \textit{total degree} among those having the open quadrant as image.
 
 \begin{section}{Statement of the problem and main results}
 \begin{definition}\label{polyMap} Given a \hyperref[realCField]{real closed field} $R$ and positive integers $m,n$ it is said that $f:=(f_1,\dots,f_n):R^m\to R^n$ is a \em polynomial map \em if $f_i\in R[{\tt x}_1,\dots,{\tt x}_m]$ for $i=1,\dots,n$. 
 \end{definition}
 
-An important example of real closed field (and the only one with the Archimedean property) if the field $\R$ of real numbers. There are several concepts, like the one of real closed field, that appear in the Introduction but that we do not recall until Appendix \ref{AA} in order to lighten the presentation and soften the reading.
+We refer the reader to Appendix \ref{AA} to recall several notions and results appearing there in order to lighten the presentation and soften the reading. For example the concept of real closed field is introduced in Appendix \ref{AA}; now let us simply say that the field $\R$ of real numbers is an example (the most important one) of real closed field. 
 	
 A very famous theorem by Tarski and Seidenberg states the following:
-\begin{theorem}[\em Tarski-Seidenberg\em]\label{tarskiSeidenberg} \em The image of every polynomial map $f: R^m \longrightarrow R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$. \em
+\begin{theorem}[\em Tarski-Seidenberg\em]\label{tarskiSeidenberg} \em The image of every polynomial map $f:R^m\to R^n$ is a \hyperref[semialgSet]{semialgebraic subset} of $R^n$. \em
 \end{theorem}
 
 As we have commented above, in this work we study a sort of converse of this statement proposed by  J.M. Gamboa \cite{g} in the 1990 \emph{Oberwolfach Reelle algebraische Geometrie} week:
@@ -147,11 +134,10 @@ If $m=n=1$, that is, for a polynomial function $f:R\to R$, its image $f(R)$ is e
 	
 In the general case, by \hyperref[tarskiSeidenberg]{Tarski-Seidenberg}, $S$ must be a semialgebraic set and, as $R^n$ is semialgebraically connected, $S$ is semialgebraically connected too. In addition, by the identity principle for polynomials, $S$ is Zariski-irreducible and \hyperref[pureDim]{pure dimensional}.
 	
-	% Añadir el teorema de Shiota y la definición de Nash map? NO
-	
+		
 But to be a polynomial image of some $R^m$ is a restrictive condition, and there are more constrains than those quoted above. 
 	
-\begin{definition} A polynomial map $f:R^m\to R^n$ is said to be \em semialgebraically proper at a point $p\in R^n$ \em if there exists an open neighbourhood $K$ of $p$ such that the restriction $f|_{f^{-1}(K)}:f^{-1}(K)\to K$ is a \hyperref[properMap]{semialgebraically proper map}.
+\begin{definition} A polynomial map $f:R^m\to R^n$ is said to be \em semialgebraically proper at a point $p\in R^n$ \em if there exists an open neighborhood $K$ of $p$ such that the restriction $f|_{f^{-1}(K)}:f^{-1}(K)\to K$ is a \hyperref[properMap]{semialgebraically proper map}.
 \end{definition}
 	
 \begin{definition} A \em parametric semiline \em of $R^n$ is the image of $R$ under a non-constant polynomial map $R\to R^n$.
@@ -166,7 +152,7 @@ With these ideas in mind, we present in the following proposition some obstructi
 \begin{proposition}\label{propIntro} Let $f: R^m\to R^n$ be a polynomial map and $S:=f(R^m)$.
 \begin{enumerate}[\em(1)\em]
 \item $\delta S \subset\S_f$.
-\begin{Proof} Suppose $p\in\delta S\setminus \S_f$. Since $p\notin\S_f$, there exists an open neighbourhood $K$ of $p$ such that the restriction $f|_{f^{-1}(K)}:f^{-1}(K)\to K$ of $f$ is proper. Thus its image $K\cap S$ is a closed subset of $K$. Hence, $p\in K\cap\overline{S}=K\cap(\overline{K\cap S})=K\cap S$, which yields in a contradiction.
+\begin{Proof} Suppose $p\in\delta S\setminus \S_f$. Since $p\notin\S_f$, there exists an open neighborhood $K$ of $p$ such that the restriction $f|_{f^{-1}(K)}:f^{-1}(K)\to K$ of $f$ is proper. Thus its image $K\cap S$ is a closed subset of $K$. Hence, $p\in K\cap\overline{S}=K\cap(\overline{K\cap S})=K\cap S$, which yields in a contradiction.
 \end{Proof}
 \item Let $m=n=2$ and $\Gamma$ be a $1$-dimensional irreducible component of $\overline{\delta S}^{\text{zar}}$. Then $\Gamma$ is the Zariski closure of a parametric semiline of $R^2$.
 \begin{Proof} As $f$ is a dominant map, $\S_f$ is, by Theorem \ref{jelonek}, a finite union of parametric semilines, say $M_1,\dots, M_s$ in $R^2$. Using (1) we get: $\Gamma\subset\overline{\delta S}^{\text{zar}}\subset \overline{\S_f}^{\text{zar}}=\bigcup_{i=1}^s\overline{M_i}^{\text{zar}}$. Lastly, using that both $\Gamma$ and the $\overline{M_i}^{\text{zar}}$'s are irreducible, $\Gamma=\overline{M_i}^{\text{zar}}$ for some index $i=1,\dots,s$.
@@ -203,7 +189,7 @@ Then $p$ would be constant on $S$, which is a contradiction.
 \item Let $S:=R^2\setminus\set{(0,0)}$ be the punctured plane. Then $S$ is the image of the polynomial map $(x,y) \mapsto (xy-1,(xy-1)x^2-y)$.
 \item The open upper half-plane $\H:=\set{v>0}\subset R^2$ is the image of the polynomial map 
 $$
-R^2\to R^2,\, (x,y)\mapsto (y(xy-1),(xy-1)^2+x^2),
+R^2\to R^2,\, (x,y)\mapsto (y(xy-1),(xy-1)^2+x^2).
 $$
 This implies that every open half-plane is a polynomial image of $R^2$. This is probably the simplest polynomial map whose image is $\H$.
 \end{enumerate}
@@ -227,14 +213,14 @@ $$
 whose image is $\Qu\cup\set{(0,0)}$. The answer to the first intriguing problem in this field was given in the following theorem:
 
 \newpage
-\begin{theorem}\label{openQuad}\em The first open quadrant $\Qu$ is a polynomial image of $R^2$.\em
+\begin{theorem}\label{openQuad}\em The open quadrant $\Qu$ is a polynomial image of $R^2$.\em
 \end{theorem}
 	
 \begin{remark} The first proof of Theorem \ref{openQuad} consists of two parts:
 \begin{itemize}
 \item Choosing a ``good'' candidate to be a polynomial map whose image is close enough to $\Qu$, and giving the reasons behind this choice (see section \ref{quadReasons}). 
 	
-\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain polynomials in one variable on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre] {Laguerre's method}.
+\item Checking that the image of the map is $\Qu$ indeed. After some arguments, this can be reduced to prove the non-existence of real roots of certain univariate polynomials on certain intervals, and to compare some rational functions on those intervals. In order to do this, we use symbolic computations with tools like Sage and Maple. Because of the high degree of the involved polynomials, the actual checking of the non-existence of roots is done with a Maple package that performs \hyperref[sturm]{Sturm algorithm} and a Python programme that implements \hyperref[laguerre] {Laguerre's method}.
 \end{itemize}
 \end{remark}
 
@@ -244,21 +230,21 @@ Let us see how Theorem \ref{openQuadGen} follows from Theorem \ref{openQuad}.
 		
 [Proof of Theorem \ref{openQuadGen}] After a linear change of coordinates we can suppose that $h_1:={\tt x}_1,\dots,h_r:={\tt x}_r$, so we only have to prove that for every pair of positive integers $r\leq n$ the semialgebraic set $\{x_1>0,\dots,x_r>0\}\subset R^n$ is a polynomial image of $R^n$. This is reduced to prove the following two steps:
 \begin{itemize}
-\item $\H:=\{x_1>0\}\subset R^2$ and $\Qu:=\{x_1>0,\,x_2>0\}\subset R^2$ are polynomial images of $R^2$, which is true, respectively, by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
-\item This implies that $\mathscr{O}:=\{x_1>0,\, x_2>0,\, x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $f,g:R^2 \rightarrow R^2$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
+\item $\H:=\{x_1>0\}\subset R^2$ and $\Qu:=\{x_1>0,\,x_2>0\}\subset R^2$ are polynomial images of $R^2$ by Example \ref{introExample} (iv) and Theorem \ref{openQuad}.
+\item This implies that $\mathscr{O}:=\{x_1>0,\,x_2>0,\,x_3>0\}\subset R^3$ is a polynomial image of $R^3$. Indeed, let $f:R^2\to R^2,\, (x_1,x_2)\to(f_1(x_1,x_2),f_2(x_1,x_2))$ and $g:R^2\to R^2,\,(x_1,x_2)\to(g_1(x_1,x_2),g_2(x_1,x_2))$ be polynomial maps whose respective images are $\H$ and $\Qu$. Let us define:
 \begin{align*}
-(f,\text{id}_R): R^3=R^2\times R&\longrightarrow R^3= R^2\times R\\
-(x_1,x_2,x_3) &\longmapsto (f_1(x_1, x_2),\, f_2(x_1, x_2),\, x_3)\\
-(\text{id}_R,g): R^3=R\times R^2&\longrightarrow R^3= R\times R^2\\
-(x_1,x_2,x_3) &\longmapsto (x_1,\, g_1(x_2, x_3),\, g_2(x_2, x_3)).
+(f,\text{id}_R):R^3=R^2\times R&\to R^3=R^2\times R\\
+(x_1,x_2,x_3) &\mapsto (f_1(x_1,x_2),\,f_2(x_1,x_2),\,x_3)\\
+(\text{id}_R,g):R^3=R\times R^2&\to R^3=R\times R^2\\
+(x_1,x_2,x_3) &\mapsto (x_1,\,g_1(x_2,x_3),\,g_2(x_2,x_3)).
 \end{align*}
 Then, $\mathscr{O}$ is the image of the polynomial map 
 \begin{align*}
-H:=(\text{id}_R,g)\circ(f,\text{id}_R):R^3&\longrightarrow R^3\\
-(x_1,x_2,x_3) &\longmapsto (f_1(x_1, x_2),\, g_1(f_2(x_1, x_2), x_3),\, g_2(f_2(x_1, x_2), x_3)).
+H:=(\text{id}_R,g)\circ(f,\text{id}_R):R^3&\to R^3\\
+(x_1,x_2,x_3) &\mapsto (f_1(x_1,x_2),\,g_1(f_2(x_1,x_2),x_3),\,g_2(f_2(x_1,x_2),x_3)).
 \end{align*}
 \end{itemize} 
-Once the case $n=3$ is solved the case of arbitrary $n$ follows straightforwardly, by taking $g \times \overset{k}{\cdots} \times g: R^n \longrightarrow R^n$ when $n=2k$ and $H \times g \times \overset{k-1}{\cdots} \times g: R^n \longrightarrow R^n$ when $n=2k-1$. \qed
+Once the case $n=3$ is solved the case of arbitrary $n$ follows straightforwardly, by taking $g\times\overset{k}{\cdots} \times g:R^n\to R^n$ when $n=2k$ and $H\times g\times\overset{k-1}{\cdots}\times g:R^n\to R^n$ when $n=2k-1$. \qed
 
 \vspace{1mm}
 		
@@ -286,7 +272,7 @@ Then $x_i=y_i$ for $i=1,\dots,n-1$. Also $x_n+P_1(x_1)=y_n+P_1(y_1)$ and $P_1(x_
 		
 Now, for $p_j':=(a_{1j},\dots,a_{(n-1)j},0)$ we have $h_1(p_j')=p_j$. Analogously, there exists $P_2\in\R[{\tt t}]$ such that $P_2(a_{1j}) = a_{(n-1)j}$, and define the polynomial bijection
 $$
-h_2:\R^n\longrightarrow \R^n,\,(x'',x_{n-1},x_n)\mapsto (x'',x_{n-1}+P_2(x_1),x_n),
+h_2:\R^n\to\R^n,\,(x'',x_{n-1},x_n)\mapsto (x'',x_{n-1}+P_2(x_1),x_n),
 $$
 where $x'':=(x_1,\dots,x_{n-2})$. Then $h_2(p_j'')=p_j'$ for $p_j''= (a_{1j},\dots,a_{(n-2)j},0,0)$. In this way the polynomial bijection $h_1\circ h_2:\R^n\to\R^n$ satisfies
 $$
@@ -329,7 +315,7 @@ and multiplying by ${\tt x}_1$ we get
 \begin{equation}\label{quintica}
 {\tt x}_1^5\rho({\tt x})+{\tt x}_1^3\sigma({\tt x})-u_2{\tt x}_1+(u_1-a_1+r)=0.
 \end{equation}
-Then, $\rho({\tt x})=\prod_{j=1}^k(u_1-a_j) \text{ and } \sigma({\tt x})=\sigma(u)$. Now it is clear that each solution $x_1$ of equation \eqref{quintica} must be a nonzero root of the polynomial:
+Then, $\rho({\tt x})=\prod_{j=1}^k(u_1-a_j) \text{ and } \sigma({\tt x})=\sigma(u)$. Now it is clear that each solution $x_1$ of equation \eqref{quintica} is a nonzero root of the polynomial:
 $$
 Q({\tt t})=\Big(\prod_{j=1}^k(u_1-a_j)\Big){\tt t}^{5}+\sigma(u){\tt t}^{3}-u_2{\tt t}+(r-a_1+u_1),
 $$
@@ -413,7 +399,7 @@ The following pair of polynomials:
 \end{aligned}
 }
 \end{equation*}
-enjoy a nice behavior along these curves, as figure \ref{fig:plotFG} show.
+enjoy a nice behavior along these curves, as Figure \ref{fig:plotFG} show.
 \begin{figure}[h]\hspace{-0.15cm}
 \begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_04_F.png}
@@ -423,7 +409,7 @@ enjoy a nice behavior along these curves, as figure \ref{fig:plotFG} show.
 \includegraphics[width=1\textwidth]{plots/ch1_05_G.png}
 \caption{$\G({\tt x},{\tt y})=(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2$.\label{fig:G}}
 \end{subfigure}\\[1ex]
-\caption{Plots of the polynomials $\F,\G:\R^2\longrightarrow\R$.\label{fig:plotFG}}
+\caption{Plots of the polynomial functions $\F,\G:\R^2\to\R$.\label{fig:plotFG}}
 \end{figure}
 Next, notice that
 \begin{enumerate}[(a)]
@@ -447,9 +433,9 @@ All of these map compositions were computed by Sage. Thus, we get the following 
 		
 \begin{enumerate}[(i)]
 		
-\item The polynomials $\F,\G$ are non-negative in $\R^2$.
+\item The polynomial functions $\F,\G$ are non-negative in $\R^2$.
 		
-\item $\cdot$ $\F^{-1}(0)=\F_1^{-1}(0)\cap \F_2^{-1}(0)=\{(0,-1)\}\xmapsto{\ \P\ }\set{(0,1)}$.
+\item $\cdot$ $\F^{-1}(0)=\F_1^{-1}(0)\cap\F_2^{-1}(0)=\{(0,-1)\}\xmapsto{\ \P\ }\set{(0,1)}$.
 			
 $\cdot$ $\G^{-1}(0)=\G_1^{-1}(0)\cap \G_2^{-1}(0)\ =\, \{(-1,0)\} \xmapsto{\ \P\ } \set{(1,0)}$.
 		
@@ -487,7 +473,7 @@ The polynomials $\F\circ\alpha_{\lambda },\ \G\circ\alpha_{\lambda}\in\R[s,a_{\l
 
 We start by solving the equation $\G-v=0$, that is, 
 $$
-(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2-v=0
+(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2-v=0.
 $$ 
 As it has degree $2$ with respect to $y$, we compute its roots $y^+({\tt x},v)$ and $y^-({\tt x},v)$ given by:
 \begin{equation*}
@@ -496,7 +482,7 @@ y^+({\tt x},v)&:=\frac{1+{\tt x}+{\tt x}^3+{\tt x}^4+\sqrt{\Delta({\tt x},v)}}{{
 y^-({\tt x},v)&:=\frac{1+{\tt x}+{\tt x}^3+{\tt x}^4-\sqrt{\Delta({\tt x},v)}}{{\tt x}({\tt x}^2+({\tt x}^3+1)^2)}\\
 \end{aligned}
 \end{equation*}
-where $\Delta({\tt x},v)=\Delta_v({\tt x}):=v({\tt x}^2+({\tt x}^3+1)^2)-{\tt x}^2({\tt x}+1)^2,\ \text{deg}_{\tt x}(\Delta)=6$. We can see on figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v:=0.8$. As we can see on figure \ref{fig:plotYs_2}, for $v:=1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0}y^-(x,1)=1$. This observation is used later, in \hyperref[step2]{Step 2}.
+where $\Delta({\tt x},v)=\Delta_v({\tt x}):=v({\tt x}^2+({\tt x}^3+1)^2)-{\tt x}^2({\tt x}+1)^2,\ \text{deg}_{\tt x}(\Delta)=6$. We can see on Figure \ref{fig:plotYs_1} how $y^+$ and $y^-$ look like for instance for $v:=0.8$. As we can see on Figure \ref{fig:plotYs_2}, for $v:=1$ there are no singularities on $y^-$ because $\lim_{x\rightarrow0}y^-(x,1)=1$. This observation is used later, in \hyperref[step2]{Step 2}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{plots/ch1_06_sols.pdf}
@@ -533,7 +519,7 @@ $$\text{(ii)} \lim_{x\rightarrow 0}\gamma_v^+(x)=+\infty
  4 & \text{ for $v=1$}
 \end{array} \right.
 $$
-Using Sage we can symbolically check how $\gamma_v^+\text{ and }\gamma_v^-$ look like, getting polynomials $A_1,A_2,B_1,B_2\in\R[x,v]$ and $C\in \R[x]$ such that:
+Using Sage we can symbolically check how $\gamma_v^+\text{ and }\gamma_v^-$ look like, getting polynomials $A_1,A_2,B_1,B_2\in\R[{\tt x},v]$ and $C\in\R[{\tt x}]$ such that:
 $$\text{(a) }\gamma_v^+(x)=\dfrac{A_1(x,v)+B_1(x,v)\sqrt{\Delta(x,v)}}{C(x)}, \ \ 
 \gamma_v^-(x)=\dfrac{A_2(x,v)+B_2(x,v)\sqrt{\Delta(x,v)}}{C(x)},$$
 $$
@@ -559,7 +545,7 @@ Now, for $x=0$, we get $\Delta(0,v)=v>0$, thus $0\in\overline{D_v}$. Also:
 \caption{Numerators of $\gamma_v^+$ and $\gamma_v^-$ for $x:=0$.\label{fig:numerators}}
 \end{figure}
 			
-Thus, (ii) holds (we also checked it with Sage). The result for $v:=1$ in (ii) is not relevant here (see figure \ref{fig:limit}).
+Thus, (ii) holds (we also checked it with Sage). The result for $v:=1$ in (ii) is not relevant here (see Figure \ref{fig:limit}).
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{plots/ch1_09_limit.pdf}
@@ -573,7 +559,7 @@ In order to see whether $(0,+\infty)\subset\text{im}(\gamma_v^+)\cup\text{im}(\g
 $$
 v(x):=\frac{x^2(x+1)^2}{x^2+(x^3+1)^2},
 $$
-whose graph can be seen in figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checked using Laguerre's method that the polynomial
+whose graph can be seen in Figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checked using Laguerre's method that the polynomial
 \begin{figure}[h]\hspace{-0.2cm}
 \begin{subfigure}{.5\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_10_uve.pdf}
@@ -588,7 +574,7 @@ whose graph can be seen in figure \ref{fig:v(x)}. If $x\in(-\infty,0)$ we checke
 $$
 \Delta(x,0.28^2)=0.0784\,x^{6}-x^{4}-1.8432\,x^{3}-0.9216\,x^{2}+0.0784
 $$ 
-has 4 complex roots and 2 real ones\footnote{The value $v_0:=0.28^2$ comes from a careful observation of the plot from figure \ref{fig:uveDetail}.}. These last are $\delta_0\approx 0.236$ and $\delta_1\approx 4.336$. Thus $\Delta({\tt x},v)$ has no negative roots for $v\ge 0.28^2$ and, in addition, it only attains positive values. Therefore $(-\infty,0)\subset D_v$. But then, as $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get  
+has 4 complex roots and 2 real ones\footnote{The value $v_0:=0.28^2$ comes from a careful observation of the plot from Figure \ref{fig:uveDetail}.}. These last are $\delta_0\approx 0.236$ and $\delta_1\approx 4.336$. Thus $\Delta({\tt x},v)$ has no negative roots for $v\ge 0.28^2$ and, in addition, it only attains positive values. Therefore $(-\infty,0)\subset D_v$. But then, as $\gamma_v^+$ is continuous and recalling the limits computed in \hyperref[step2]{Step 2}, we get  
 $$
 (0,+\infty)\subset\text{im}(\gamma_v^+)\subset\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-).
 $$
@@ -606,23 +592,23 @@ To prove that for $0<v<0.28^2$ the inclusion $(0,+\infty)\subset\text{im}(\gamma
 \includegraphics[width=1\textwidth]{plots/ch1_12_idea.pdf}
 \caption{Idea of what we are saying with $(\spadesuit)$. Here $v:=0.1$.\label{fig:idea}}
 \end{figure}
-See figure \ref{fig:idea} to get an idea of what we are saying here. 
+See Figure \ref{fig:idea} to get an idea of what we are saying here. 
 
-To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v({\tt x})$ in an algebraic closure of the field of rational functions $\R(v)$. Such an algebraic closure is the field of Puiseux series $\C\left(\set{v^*}\right)$, see \ref{puiseux}. These roots are power series in $\C\left(\set{w^*}\right)$ with $w:=\sqrt{v}$, and we consider the largest and the smallest negative roots $\eta_v,\xi_v\in\R\left(\set{v^*}\right)$ of $\Delta_v$ with respect to the unique ordering in $\R\left(\set{v^*}\right)$ that makes $v$ positive and infinitesimal with respect to $\R$. These roots are:
+To prove the existence of such $N_v$ and $\delta_v$, we must compute the roots of $\Delta_v({\tt x})$ in an algebraic closure of the field of rational functions $\R({\tt v})$. Such an algebraic closure is the field of Puiseux series $\C\left(\set{{\tt v}^*}\right)$, see \ref{puiseux}. These roots are power series in $\C\left(\set{{\tt w}^*}\right)$ with ${\tt w}:=\sqrt{\tt v}$, and we consider the largest and the smallest negative roots $\eta_{\tt v},\xi_{\tt v}\in\R\left(\set{{\tt v}^*}\right)$ of $\Delta_{\tt v}$ with respect to the unique ordering in $\R\left(\set{{\tt v}^*}\right)$ that makes ${\tt v}$ positive and infinitesimal with respect to $\R$. These roots are:
 			
 \begin{equation*}\left\{\begin{split}
-\eta_v:=&-\frac{1}{w}+1+w+w^2+\frac{5}{2}w^3+\cdots\\
-\xi_v:=&-w-w^2-\frac{5}{2}w^3-6w^4+\cdots
+\eta_{\tt v}:=&-\frac{1}{\tt w}+1+{\tt w}+{\tt w}^2+\frac{5}{2}{\tt w}^3+\cdots\\
+\xi_{\tt v}:=&-{\tt w}-{\tt w}^2-\frac{5}{2}{\tt w}^3-6{\tt w}^4+\cdots
 \end{split}\right.
 \end{equation*}
-Notice that, by the definition of the ordering in $\R\left(\set{v^*}\right)$, the first coefficient of a series is the ``most meaningful orderwise". In particular $\eta_v<\xi_v$. To perform calculations, we handle suitable truncations of the involved series. Here the word suitable means ``as short as possible but order preserving"; in other words, we look for $N_v$ and $\delta_v$ with $N_v<\eta_v<\xi_v<\delta_v$, and in fact we choose
+Notice that, by the definition of the ordering in $\R\left(\set{{\tt v}^*}\right)$, the first coefficient of a series is the ``most meaningful orderwise". In particular $\eta_{\tt v}<\xi_{\tt v}$. To perform calculations, we handle suitable truncations of the involved series. Here the word suitable means ``as short as possible but order preserving"; in other words, we look for $N_{\tt v}$ and $\delta_{\tt v}$ with $N_{\tt v}<\eta_{\tt v}<\xi_{\tt v}<\delta_{\tt v}$, and in fact we choose
 \begin{equation*}\left\{
 \begin{split}
-N_v:=&-\frac{1}{w}+1+w+w^2=\eta_v-\Big(\frac{5}{2}w^3+\cdots\Big)<\eta_v\\
-\delta_v:=&-w-w^2-\frac{5}{2}w^3=\xi_v-(-6w^4+\cdots)>\xi_v
+N_{\tt v}:=&-\frac{1}{\tt w}+1+{\tt w}+{\tt w}^2=\eta_{\tt v}-\Big(\frac{5}{2}{\tt w}^3+\cdots\Big)<\eta_{\tt v}\\
+\delta_{\tt v}:=&-{\tt w}-{\tt w}^2-\frac{5}{2}{\tt w}^3=\xi_{\tt v}-(-6{\tt w}^4+\cdots)>\xi_{\tt v}.
 \end{split}\right.
 \end{equation*}
-We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see Figure \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see Figure \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v, \delta_v\in D_v$.
+We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is, for $w\in(0,0.28)$, see Figure \ref{fig:comp}. Now we can focus on proving $(\spadesuit)$. Since $\Delta(N_{w^2},w^2)$ and $\Delta(\delta_{w^2},w^2)$ are positive (see Figure \ref{fig:positive}) for $w\in (0,0.28)$, we get that $N_v,\delta_v\in D_v$.
 \begin{figure}[h]\hspace{-0.25cm}
 \begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_13_comp.pdf}
@@ -630,7 +616,7 @@ We checked with Sage that $-\infty<N_v<\delta_v<0$ for $v\in (0,0.28^2)$ that is
 \end{subfigure}
 \begin{subfigure}{.50\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch1_14_positive.pdf}
-\caption{$\Delta(N_{v}, v), \Delta(\delta_{v},v) > 0$.\label{fig:positive}}
+\caption{$\Delta(N_{v},v),\Delta(\delta_{v},v)>0$.\label{fig:positive}}
 \end{subfigure}\\[1ex]
 \caption{Plots of $N_v,\delta_v<0$ and $\Delta(N_{v},v),\ \Delta(\delta_{v},v)>0$ for $v\in(0, 0.28^2)$.\label{fig:N_delta}}
 \end{figure} For the first part, let 
@@ -645,7 +631,7 @@ This graph is above the axis $\{v=0\}\subset R^2$. Then, $(-\infty,N_v]$ and $[\
 $$
 \set{(\delta_v,v):0<v<0.28^2}\, \, \, \text{and}\, \, \, \set{(N_v,v):0<v<0.28^2}
 $$ 
-are contained in $D$, they are graphs above the vertical axis $\{x=0\}\subset R^2$, and $\delta_v<\xi_v$ and $N_v<\eta_v$ as we saw before. Look at figure \ref{fig:nice_plot}.
+are contained in $D$, they are graphs above the vertical axis $\{x=0\}\subset R^2$, and $\delta_v<\xi_v$ and $N_v<\eta_v$ as we saw before. Look at Figure \ref{fig:nice_plot}.
 
 \begin{figure}[h]
 \centering
@@ -701,26 +687,26 @@ As we see in the figures they indeed are. This has been also checked with Sturm 
 
 \begin{chapter}{A short proof for the open quadrant $\Qu$ problem}
 \begin{section}{A new approach}
-In the previous chapter, we proved that $\Qu$ is the image of $\R^2$ under the polynomial map $\P:=(\F,\G)$. This fact alongside Theorem \ref{finSetTh} were key for proving Theorem \ref{openQuadGen}. To achieve Theorem \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials do not have roots on particular intervals or that they are positive on them. Although legit, this procedure is controversial, and the authors kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper (\cite{fu}) with a much simpler proof.
+In the previous chapter, we proved that $\Qu$ is the image of $\R^2$ under the polynomial map $\P:=(\F,\G)$. This fact alongside Theorem \ref{finSetTh} were key for proving Theorem \ref{openQuadGen}. To achieve Theorem \ref{openQuad}, we needed the aid of a computer in order to check that certain polynomials do not have roots on particular intervals or that they are positive on them. Although legit, this procedure is controversial, and Fernando and Ueno kept on working on the problem of characterizing which semialgebraic subsets $\mathscr{S} \subset \R^m$ are polynomial images of $\R^n$ and wrote a new paper \cite{fu} with a much simpler proof.
 
 In this third chapter we present a new approach to the open quadrant problem. We will show that $\Qu$ is the image of the composition of three simple polynomial maps: $\FF,\, \GG \text{ and } \HH$. The proof of Theorem \ref{openQuad} will be conducted by inspecting at the images of the aforementioned polynomials, albeit the lack of precise tools to determine the image of a polynomial map.
 
 \begin{subsection}{The new polynomial maps}
 In this subsection we introduce new polynomial maps that satisfy the requirements to prove Theorem \ref{openQuad} in a different way. To be more precise, we define 
 $$
-f:=\HH\circ\GG\circ\FF:\R^2\longrightarrow \R^2,
+f:=\HH\circ\GG\circ\FF:\R^2\to\R^2,
 $$
 where
 \begin{equation*}\label{eq:secondMap}
 \boxed{
 \begin{aligned}
-\FF:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto((xy-1)^2+x^2,\ (xy-1)^2+y^2), \\
-\GG:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto(x,\ y(xy-2)^2+x(xy-1)^2), \\
-\HH:\R^2\longrightarrow \R^2,\ (x,y)&\longmapsto(x(xy-2)^2+\tfrac{1}{2}xy^2,\ y). \\
+\FF:\R^2\to\R^2,\ (x,y)&\mapsto((xy-1)^2+x^2,\ (xy-1)^2+y^2),\\
+\GG:\R^2\to\R^2,\ (x,y)&\mapsto(x,\ y(xy-2)^2+x(xy-1)^2),\\
+\HH:\R^2\to\R^2,\ (x,y)&\mapsto(x(xy-2)^2+\tfrac{1}{2}xy^2,\ y). \\
 \end{aligned}
 }
 \end{equation*}
-We can see how the graphs of the components of these maps look like in figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
+We can see how the graphs of the components of these maps look like in Figure \ref{fig:ch2Maps}, and appreciate the symmetry between the $x$ and $y$ variables while the transformation is performed.
 
 \vspace{1mm}
 
@@ -1059,23 +1045,25 @@ as required.
 
 
 %%Ejemplo de como introducir texto con TikZ, con una rejilla de ayuda
+\begin{comment}
 %--------------------------------------------------------------------%
-%\begin{figure}[h]
-%\begin{tikzpicture}
-%\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
-%\foreach \xx in {0,1,2,...,9}{
-%\draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
-%\draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
-%}
-%\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c1)($(img.south east)!0.3!(img.north east)$);% c1: first corner
-%\path ($(img.north west)!0.82!(img.north east)$)|-coordinate(c2)($(img.south east)!0.77!(img.north east)$);   %c2 : second corner
-%\draw[red,ultra thick,rounded corners] (c1)         rectangle (c2);
-%\draw (c1) node {\huge{$\mathscr{A}$}};
-%\draw (c2) node[below] {\huge{$\mathscr{B}$}};
-%\end{tikzpicture}
-%\caption{M1} \label{fig:M1}
-%\end{figure}
+\begin{figure}[h]
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[width=\textwidth]{plots/ch1_15_nice_plot.pdf}};
+\foreach \xx in {0,1,2,...,9}{
+\draw[dashed] ($(img.north west)!0.\xx!(img.north east)$)node[above]{0.\xx} --  ($(img.south west)!0.\xx!(img.south east)$);
+\draw[dashed] ($(img.south east)!0.\xx!(img.north east)$)node[right]{0.\xx} --  ($(img.south west)!0.\xx!(img.north west)$);
+}
+\path ($(img.north west)!0.1!(img.north east)$)|-coordinate(c1)($(img.south east)!0.3!(img.north east)$);% c1: first corner
+\path ($(img.north west)!0.82!(img.north east)$)|-coordinate(c2)($(img.south east)!0.77!(img.north east)$);   %c2 : second corner
+\draw[red,ultra thick,rounded corners] (c1)         rectangle (c2);
+\draw (c1) node {\huge{$\mathscr{A}$}};
+\draw (c2) node[below] {\huge{$\mathscr{B}$}};
+\end{tikzpicture}
+\caption{M1} \label{fig:M1}
+\end{figure}
 %--------------------------------------------------------------------%
+\end{comment}
 
 \end{section}
 \end{chapter}
@@ -1083,9 +1071,9 @@ as required.
 \begin{chapter}{A topological proof for the open quadrant $\Qu$ problem}
 \begin{section}{A topological perspective}
 %Modificad cualquier cosa que no os convenza o que no sea totalmente cierta de esta introduccion:
-Although Fernando, Gamboa and Ueno proved that the open quadrant $\Qu$ is the image of $\R^2$ under two distinct polynomial maps using very different techniques, they developed quite recently in \cite{fgu} a completely new proof that relies on algebraic topology methods applied to a new polynomial map $\FFF: \R^2 \longrightarrow \R^2$. The genesis of this third proof appears in Ueno's Ph.D. \cite{u} written under the supervision of Fernando. 
+Although Fernando, Gamboa and Ueno proved that the open quadrant $\Qu$ is the image of $\R^2$ under two distinct polynomial maps using very different techniques, they developed quite recently in \cite{fgu} a completely new proof that relies on algebraic topology methods applied to a new polynomial map $\FFF:\R^2\to\R^2$. The genesis of this third proof appears in Ueno's Ph.D. \cite{u} written under the supervision of Fernando. 
 
-In this chapter we will build up the topological machinery necessary to prove theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
+In this chapter we will build up the topological machinery necessary to prove Theorem \ref{openQuad} in a very geometrical way, and completely avoiding the aid of computer calculations.
 \begin{subsection}{The new polynomial map}
 Without further ado, the polynomial map we are going to work with is denoted $\FFF$ and it is defined as:
 \begin{equation*}\label{eq:thirdMap}
@@ -1108,9 +1096,9 @@ We begin by defining the key topological manifolds we are going to work with.
 (i) Let ${\mathbb D}_A:=\set{(x,y):x^2+y^2\le A^2}\subset\R^2$ be the closed disc of center the origin and radius $A>0$. A \textit{warped disc} is a subset 
 $$
 \D_{A,\xi}:=\set{(x,y,z):x^2+y^2\le A^2,\ z=\xi(x,y)}\subset\R^3$$
-where $\xi:\R^2\longrightarrow\R$ is a continuous function. Let $\zeta$ be the homeomorphism
+where $\xi:\R^2\to\R$ is a continuous function. Let $\zeta$ be the homeomorphism
 $$
-\zeta:\R^3\longrightarrow\R^3,\ (x,y,z)\longmapsto\big(x,\, y,\, z-\xi(x,y)\big).
+\zeta:\R^3\to\R^3,\ (x,y,z)\mapsto\big(x,\,y,\,z-\xi(x,y)\big).
 $$
 Clearly $\zeta(\D_{A,\xi})={\mathbb D}_A\times\{0\}$ is the projection or ``flattening'' of the warped disc $\D_{A,\xi}$ onto the plane $\{z=0\}\subset\R^3$. We will also call a warped disc the image of $\D_{A,\xi}$ under a permutation of the variables of $\R^3$; namely
 \begin{equation*}
@@ -1123,55 +1111,16 @@ with $\xi$ defined as above.
 
 \vspace{1mm}
 
-(ii) For each $\eps>0$ let us define the following  open neighbourhood of ${\mathbb D}_A$: 
+(ii) For each $\eps>0$ let us define the following open neighborhood of ${\mathbb D}_A$: 
 $$
-{\mathbb D}_A(\eps):=\set{(x,y):x^2+y^2<(A+\eps)^2}\times(-\eps,\eps)\subset\R^3.
+{\mathbb D}_A(\eps):=\set{(x,y)\in\R^2:x^2+y^2<(A+\eps)^2}\times(-\eps,\eps)\subset\R^3.
 $$ 
-As $\zeta$ is a homeomorphism, $\D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big)\subset\R^3$ is an open neighbourhood of the warped disc $\D_{A,\xi}$. 
-\end{definitions}
-
-Next, we recall the notions of \emph{path} and \emph{path concatenation}. Also, we will recall the concept of  \emph{fundamental group} of a (path connected) topological space.
-
-\vspace{1mm}
-
-\begin{definitions}\label{pathDefs}
-(i) Let $X$ be a topological space. A continuous map $\alpha:[a,b]\to X$, where $[a,b]\subset\R$ is a closed interval is a \emph{path} in $X$. If $\alpha(a)=\alpha(b)=x_0\in X$, we say that $\alpha$ is a \emph{loop} with base point $x_0$. In such a case, $\alpha$ may be viewed as a map whose domain is the quotient space $[a,b]/\!\sim$ obtained by identifying the end points of $[a,b]$. Notice that $[a,b]/\!\sim$ is homeomorphic to the circumference $\mathbb{S}^1:=\set{(x,y):x^2+y^2=1}\subset\R^2$. After a linear change of variables we may assume, if necessary, that $[a,b]=[0,1]$.
-
-\vspace{1mm}
-
-(ii) Given two paths $\alpha:[0,1]\to X$ and $\beta:[0,1]\to X$ such that  $\alpha(1)=\beta(0)$ the \em concatenation \em (also called \em product \em) of $\alpha$ and $\beta$ is defined as follows:
-$$
-\alpha*\beta:[0,1]\longrightarrow X,\ t\longmapsto
-\left\{\begin{array}{ll}
-\alpha(2t) &\text{ if } 0\leq t\leq\tfrac{1}{2},\\
-\beta(2t-1) &\text{ if } \tfrac{1}{2}\leq t\leq1.
-\end{array}
-\right.
-$$
-The idea under this definition is clear. We use $\alpha$ in the "first part of the path", but the speed must be double of the original one to reach the point $\alpha(1)$ at $t:=\tfrac{1}{2}$. This explains the definition of the first part of the new path. We must use $\beta$ for the second part. Necessarily $(\alpha*\beta)\big(\tfrac{1}{2}\big)=\beta(0)$ and $(\alpha*\beta)(1)=\beta(1)$. To do that, we use the line that joints the points $p:=\big(\tfrac{1}{2},0\big)$ and $q:=(1,1)$, that is $\gamma(t):=2t-1$. Of course this is not at all the only way to construct a path joining $p$ and $q$, but seems to be the simplest one.
-
-It is easily checked that the concatenation of loops enjoys the associative property. Besides, fixed $x_0\in X$, the constant loop $e_{x_0}:[0,1]\to X,\, t\mapsto x_0$ satisfies the equality $e_{x_0}*\alpha=\alpha=\alpha*e_{x_0}$ for every loop $\alpha$ in $X$ of basis $x_0$. In addition, given a loop $\alpha$ in $X$ the loop $\alpha^{-1}:[0,1]\to X, \, t\mapsto\alpha(1-t)$ that travels the same curve as $\alpha$ but in the opposite direction satisfies $\alpha*\alpha^{-1}=\alpha^{-1}*\alpha=e_{x_0}$.
-
-\vspace{1mm}
-
-(iii) Let $I:=[0,1]\subset\R$ and let $X,Y$ be two path-connected topological spaces. A \emph{homotopy} is a continuous map $H: X\times I\longrightarrow Y$. We associate to $H$ the family of continuous maps $\{H_s:X\to Y,\ x\mapsto H(x,s)\}_{s\in I}$, and it is said that the maps $H_0:X\to Y$ and $g:=H_1:X\to Y$ are \em homotopic. \em We denote this with $f\overset{H}{\simeq}g$. If, in addition, $g$ is constant we say that $f$ is \emph{null-homotopic}.
-
-\vspace{1mm} 
-
-(iv) Given a path-connected topological space $X$ and a point $x_0\in X$ we define the \emph{fundamental group of $X$ at the base point $x_0$} as the quotient space of loops of base $x_0$ modulo the ``homotopy relation'', and we denote it with $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$. The concatenation of loops is compatible with the homotopy relation and endows $\pi_1(X,x_0)$ with an structure of group.
-
-\vspace{1mm}
-
-(v) We impose $X$ to be path connected to be sure that the fundamental groups $\pi_1(X,x_0)$ and $\pi_1(X,x_1)$ corresponding to two distinct points $x_0$ and $x_1$ in $X$ are isomorphic. Indeed, if $\gamma$ is a path in $X$ that connects $x_0$ and $x_1$ we associate to each loop $\alpha$ with base $x_0$ the loop of base $x_1$ defined as the product $\gamma\cdot\alpha\cdot\gamma^{-1}$. This construction is compatible with the homotopy relation, so it induces a homomorphism $\pi_1(X,x_0)\to\pi_1(X,x_1)$. This is in fact an isomorphism because we can associate to every loop $\beta$ with base $x_1$ the loop of base $x_0$ defined as the product $\gamma^{-1}\cdot\beta\cdot\gamma$. This is why it is usual to denote $\pi_1(X)$ the fundamental group of $X$ without any reference to the base point $x_0$. 
+As $\zeta$ is a homeomorphism, $\D_{A,\xi}(\eps):=\zeta^{-1}\big({\mathbb D}_A(\eps)\big)\subset\R^3$ is an open neighborhood of the warped disc $\D_{A,\xi}$. 
 \end{definitions}
 
 \vspace{1mm}
 
-(vi) A path connected space $X$ is said to be \em simply connected \em if its fundamental group is trivial, that is, all loops are null-homotopic. Intuitively this means that all loops in $X$ are contractible to a point.
-
-\vspace{1mm}
-
-Next we explain the meaning of \emph{meeting transversally once a warped disc}, which is just a formalization of our intuition.
+We refer the reader to Appendix \ref{fundgroup} for further details concerning the \emph{fundamental group} of a (path connected) topological space. Next we explain the meaning of \emph{meeting transversally once a warped disc}, which is just a formalization of our intuition.
 
 \begin{definitions} \label{pathDefs1}
 
@@ -1187,7 +1136,7 @@ where obviously $(\zeta\circ\alpha)|_J(t)\subset\mathbb{D}_A(\eps)$ because $\al
 
 \vspace{1mm}
 
-(ii) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\to\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C\cong\mathbb{S}^1$ such that the path $\alpha:=\phi\circ\beta:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
+(ii) Let $C$ be a topological space homeomorphic to a closed disc and let $\phi:C\to\R^3$ be a continuous map. The restriction $\partial\phi:=\phi|_{\partial C}$ is called the \textit{boundary map} of $\phi$. We say that the boundary map $\partial\phi$ \emph{meets transversally once a warped disc} $\D_{A,\xi}\subset\R^3$ if there exists a parameterization $\beta:[a,b]\to\partial C\cong\mathbb{S}^1:=\set{x^2+y^2=1}\subset\R^2$ such that the path $\alpha:=\phi\circ\beta:[a,b]\to\R^3$ meets transversally once the warped disc $\D_{A,\xi}$.
 \end{definitions}
 
 
@@ -1340,6 +1289,9 @@ We claim that $[\beta_0\ast\gamma]=g$ and $[\gamma^{-1}\ast\beta_1]=e$, where $g
 \caption[The loop $\beta=\beta_0\ast\beta_1$ meets transversally once the disk ${\mathbb D}_A$.]{The loop $\beta=\beta_0\ast\beta_1$ meets transversally once the disk ${\mathbb D}_A$. Here $y_0:=\beta(-\eps)$ and $y_1:=\beta(\eps)$, so the path $\beta_0$ goes from $y_0$ to $y_1$ (in purple), $\gamma$ goes from $y_1$ to $y_0$ (in blue) and $\beta_1$ goes from $y_1$ to $y_0$ (in red).}\label{fig:disc}
 \end{center}
 \end{figure}
+
+\vspace{1mm}
+
 Firstly, the loop $\gamma^{-1}\ast\beta_1$ with base point $y_0$ is contained in $\R^3\setminus{\mathbb D}_A$, which is a simply connected space. Thus the loop $\gamma^{-1}*\beta_1$ is null-homotopic and $[\gamma^{-1}*\beta_1]=e \in \pi_1(Y,y_0)$.
 
 \vspace{1mm}
@@ -1351,10 +1303,10 @@ On the other hand, the class $[\beta_0\ast\gamma]$ generates $\pi_1(Y,y_0)$. Ind
 
 \vspace{1mm}
 
-\begin{lemma}\label{lemmaZ} \em Let $S:=\set{(x,y,z):x^2+y^2+z^2=A^2}\subset\R^3$ be the sphere of center the origin and radius $A> 0$, let $D$ be one of its diameters and let $M := S\cup D$. If $x_0\in M$ then $\pi_1(M,x_0)\cong\Z$. \em 
+\begin{lemma}\label{lemmaZ} \em Let $S:=\set{x^2+y^2+z^2=A^2}\subset\R^3$ be the sphere of center the origin and radius $A>0$, let $D$ be one of its diameters and let $M:=S\cup D$. If $x_0\in M$ then $\pi_1(M,x_0)\cong\Z$. \em 
 
 \begin{Proof}
-Let $x_0\in S\setminus D$ and let $U := M\setminus\set{x_0}$. Also, let $V$ be an small enough  neighbourhood of $x_0$ homeomorphic to a closed disc such that it does not meet the diameter $D$. It is clear that $M\cong U\cup V$. Consider  the group homomorphism
+Let $x_0\in S\setminus D$ and let $U:=M\setminus\set{x_0}$. Also, let $V$ be an small enough  neighborhood of $x_0$ homeomorphic to a closed disc such that it does not meet the diameter $D$. It is clear that $M\cong U\cup V$. Consider  the group homomorphism
 $$
 \varphi:\pi_1(U\cap V,x_0)\to\pi_1(U,x_0)
 $$
@@ -1397,11 +1349,11 @@ mark=at position 0.5 with {\arrow[black!10!blue,opacity=0.45]{>}}}]
 
 \begin{lemma}\label{lemmaId} \em Let $C$ be a topological space homeomorphic to a closed disc and let $z_0\in\partial C$. Let $\phi:C\longrightarrow X$ be a continuous map and consider a parameterization $\beta:[a,b]\to\partial C$ such that $\beta(a)=z_0=\beta(b)$. Then $[\phi\circ\beta]$ is the identity element of $\pi_1\big(X,\phi(z_0)\big)$.\em
 \begin{Proof} 
-Let $\psi:C\to\{x^2+y^2\leq 1\}$ be a homeomorphism. Let $H$ be the continuous map
+Let $\psi:C\to\{x^2+y^2\leq 1\}\subset\R^2$ be a homeomorphism. Let $H$ be the continuous map
 $$
 H:[0,1]\times[a,b]\to X,\ (\rho,t)\mapsto\big(\phi\circ\psi^{-1}\big)\big(\rho\cdot(\psi\circ\beta)(t)+(1-\rho)\cdot\psi(z_0))\big).
 $$
-Notice that $H(0,t)=\phi(z_0)$ and that $H(1,t)=\phi\big(\beta(t)\big)$. Thus $H$ is a homotopy map between $\phi\circ\beta$ and the constant path, as required.
+Notice that $H(0,t)=\phi(z_0)$ and $H(1,t)=\phi\big(\beta(t)\big)$. Thus $H$ is a homotopy map between $\phi\circ\beta$ and the constant path, as required.
 \qed
 \end{Proof}
 \end{lemma}
@@ -1425,8 +1377,8 @@ Let $\beta:[a,b]\to\partial C$ be a parameterization such that $\beta(a)=z_0=\be
 \begin{subsection}{Factorizing $\FFF$}
 The authors observed in \cite[Section 3]{fgu} that the map $\FFF$ can be factorized as $\FFF=f_2\circ f_1$, where the polynomial maps $f_1, f_2$ are defined as follows:
 \begin{align*}
-&f_1:\R^2\longrightarrow\R^2,\quad (x,y)\longmapsto\big(x^2,\,y^2\big),\\
-&f_2:\R^2\longrightarrow\R^2,\quad (x,y)\longmapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
+&f_1:\R^2\to\R^2,\quad (x,y)\mapsto\big(x^2,\,y^2\big),\\
+&f_2:\R^2\to\R^2,\quad (x,y)\mapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
 \end{align*}
 Since $f_1\big(\R^2\big)=\overline{\Qu}$ it is then clear that we just need to prove that
 \begin{equation}
@@ -1440,8 +1392,8 @@ Indeed $f_2=h\circ g$, where the continuous semialgebraic maps $g, h$ are define
 $$
 \arraycolsep=2pt\def\arraystretch{1.2}
 \begin{array}{crlcl}
-g:&\overline{\Qu}\longrightarrow\R^3,&\ (x,y)&\longmapsto&\big(xy^2+x^2y-y-1,\,x^{3/2}y,\,x^3y+xy-x-1\big),\\
-h:&\R^3\longrightarrow\R^2,&\ (x,y,z)&\longmapsto&\big(x^2+y^2,\,y^2+z^2\big).\\
+g:&\overline{\Qu}\to\R^3,&\ (x,y)&\mapsto&\big(xy^2+x^2y-y-1,\,x^{3/2}y,\,x^3y+xy-x-1\big),\\
+h:&\R^3\to\R^2,&\ (x,y,z)&\mapsto&\big(x^2+y^2,\,y^2+z^2\big).\\
 \end{array}
 $$
 In this way we can reduce the proof to show that for each pair of positive real numbers $(A^2,B^2)\in\Qu$ there exists a point $(x_0,y_0)\in\overline{\Qu}$ such that $(h\circ g)(x_0,y_0)=(A^2,B^2)$. This is equivalent to check that
@@ -1453,23 +1405,23 @@ In this way we can reduce the proof to show that for each pair of positive real 
 
 Let $\Ss:=g\big(\overline{\Qu}\big)$ and fix values $B\ge A>0$. By the definition of $h$ we know that
 \begin{align*}
-&h^{-1}\big(\set{(A^2,B^2)}\big)=\set[\big]{(x,y): x^2+y^2=A^2,\,y^2+z^2=B^2}\subset\R^2 \, \, \text{ and}\\
-&h^{-1}\big(\set{(B^2,A^2)}\big)=\set[\big]{(x,y): y^2+z^2=A^2,\,x^2+y^2=B^2}\subset\R^2.
+&h^{-1}\big(\set{(A^2,B^2)}\big)=\set[\big]{x^2+y^2=A^2,\,y^2+z^2=B^2}\subset\R^2 \, \, \text{ and}\\
+&h^{-1}\big(\set{(B^2,A^2)}\big)=\set[\big]{y^2+z^2=A^2,\,x^2+y^2=B^2}\subset\R^2.
 \end{align*} 
 Both of them are the intersection of two orthogonal cylinders. Besides, these sets contain, respectively, the boundaries of the warped discs
 \begin{align}
-&\D_1:= \set{(x,y,z): x^2+y^2\le A^2,\,z=\xi_1(x,y)} \, \, \text{ and}\label{d1}\\
-&\D_2:= \set{(x,y,z): y^2+z^2\le A^2,\,x=\xi_2(y,z)},\label{d2}
+&\D_1:= \set{x^2+y^2\le A^2,\,z=\xi_1(x,y)}\subset\R^3 \, \, \text{ and}\label{d1}\\
+&\D_2:= \set{y^2+z^2\le A^2,\,x=\xi_2(y,z)}\subset\R^3,\label{d2}
 \end{align}
 for the continuous and semialgebraic functions
 \begin{align}
-&\xi_1:\R^2\longrightarrow\R,\ (x,y)\longmapsto\sqrt{B^2-\min\{y^2,B^2\}},\label{xi1}\\
-&\xi_2:\R^2\longrightarrow\R,\ (y,z)\longmapsto\sqrt{B^2-\min\{y^2,B^2\}},\label{xi2}
+&\xi_1:\R^2\to\R,\ (x,y)\mapsto\sqrt{B^2-\min\{y^2,B^2\}},\label{xi1}\\
+&\xi_2:\R^2\to\R,\ (y,z)\mapsto\sqrt{B^2-\min\{y^2,B^2\}},\label{xi2}
 \end{align}
 see Figure \ref{fig:homeo}.
 
 %% IMAGEN COMENTADA
-\begin{comment}
+%\begin{comment}
 \begin{figure}[!ht]
 \begin{center}
 \begin{tikzpicture}
@@ -1677,10 +1629,10 @@ domain=-5:5, y domain=-9:9]
           (-5,-9,6)};
 \end{axis}
 \end{tikzpicture}
-\caption{The homeomorphism $\zeta$ for $\xi_1(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$. Notice how it ``flattens'' the warped disc $\D_1$.}\label{fig:homeo}
+\caption[The homeomorphism $\zeta$ for $\xi_1(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$.]{The homeomorphism $\zeta$ for $\xi_1(x,y):=\sqrt{B^2-\min(y^2,B^2)}$ acting on $\R^3$. Notice how it ``flattens'' the warped disc $\D_1$.}\label{fig:homeo}
 \end{center}
 \end{figure}
-\end{comment}
+%\end{comment}
 
 Now it is clear that our aim is to prove the following fact:
 
@@ -1702,7 +1654,6 @@ $$
 \phi_3(\rho,\theta)\!:=\!\rho\sin\theta.
 \end{array}
 $$
-
 Let also $\Rr:=\big[0,+\infty\big)\times\big(0,\tfrac{\pi}{2}\big)$ and let $\overline{\Rr}:=\big[0,+\infty\big)\times\big[0,\tfrac{\pi}{2}\big]$ be its closure.
 
 \vspace{1mm}
@@ -1715,7 +1666,7 @@ $$
 \psi:=(\psi_1,\psi_2):\Rr\to\Qu,\quad(\rho,\theta)\mapsto\left(\frac{\sin\theta}{\cos\theta},\frac{(\cos\theta+\sin\theta+\rho\cos\theta
 \sin\theta)\cos^2\theta}{\sin\theta}\right).
 $$
-Note that $g\circ\psi=\phi|_{\Rr}$. If $\theta\in\big(0,\tfrac{\pi}{2}\big)$ then $\cos\theta,\sin\theta\in(0,1)$, so $\psi$ is well-defined. This together with the fact $\rho\in[0,+\infty)$ implies that $\psi_1,\psi_2$ just attain positive values, so $\psi(\Rr)\subset \Qu\subset \overline{\Qu}$. Thus, $\phi({\Rr})=g(\psi(\Rr))\subset g\big(\overline{\Qu}\big)=\Ss$.
+Note that $g\circ\psi=\phi|_{\Rr}$. If $\theta\in\big(0,\tfrac{\pi}{2}\big)$ then $\cos\theta,\sin\theta\in(0,1)$, so $\psi$ is well-defined. Since $\rho\in[0,+\infty)$ we deduce that $\psi_1,\psi_2$ just attain positive values, so $\psi(\Rr)\subset \Qu\subset \overline{\Qu}$. Thus, $\phi({\Rr})=g(\psi(\Rr))\subset g\big(\overline{\Qu}\big)=\Ss$.
 \qed
 \end{Proof}
 \end{lemma}
@@ -1725,7 +1676,7 @@ Note that $g\circ\psi=\phi|_{\Rr}$. If $\theta\in\big(0,\tfrac{\pi}{2}\big)$ the
 \begin{lemma}\label{phidist}
 For all $(\rho,\theta)\in\overline{\Rr}$ the inequality $\phi_1^2(\rho,\theta)+\phi_3^2(\rho,\theta)\ge\frac{\rho^2}{4}$ holds. Thus,
 \begin{equation}\label{eq:ineqphi}
-\forall (\rho,\theta)\in\overline{\Rr}:\  \text{dist}\big(\phi(\rho,\theta),0\big)\geq\frac{\rho}{2}.
+\forall (\rho,\theta)\in\overline{\Rr}:\  \text{such that dist}\big(\phi(\rho,\theta),0\big)\geq\frac{\rho}{2}.
 \end{equation}
 
 \begin{Proof}
@@ -1791,11 +1742,8 @@ Let $\phi_M=\phi|_{\overline{\Rr}_M}$. Now, identify the points $(0,\theta)$ and
 \caption{Idea of the identification in Construction \ref{quotConstr}.}\label{fig:identify}
 \end{figure}
 
-Consider the canonical projection $\pi_M:\overline{\Rr}_M\longrightarrow\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\longrightarrow\R^3$ such that the following diagram is commutative. 
+Consider the canonical projection $\pi_M:\overline{\Rr}_M\to\tilde{\overline{\Rr}}_M$, which is continuous. Since $\phi_M$ is compatible with $\pi_M$, there exists a continuous map $\tilde{\phi}_M:\tilde{\Rr}_M\to\R^3$ such that the following diagram is commutative:
 
-\vspace{1mm}
-
-In addition $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$ because of Lemma \ref{phiContainsS} and the fact that $\Rr_M\subset\Rr$.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (A0) at (0,1) {$\Rr_M$};
@@ -1816,12 +1764,14 @@ In addition $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss
 
 \end{tikzpicture}
 \end{center}
+\vspace{1mm}
 
+In addition $\tilde{\phi}_M(\tilde{\Rr}_M)=\phi(\Rr_M)\subset\phi(\Rr)\subset\Ss$ because of Lemma \ref{phiContainsS} and the fact that $\Rr_M\subset\Rr$.
 \em
 \end{constr}
 
 %%%% IMAGEN COMENTADA
-\begin{comment}
+%\begin{comment}
 \begin{figure}[!ht]
 \begin{center}
 \resizebox{6.2cm}{5cm}{\begin{tikzpicture}%[background rectangle/.style=
@@ -1870,7 +1820,7 @@ domain=-1.5:2.5, y domain=0:360]
 \caption{Left and right views of $\phi_M(\Rr_M)\subset\Ss$.}\label{pic:surface1}
 \end{center}
 \end{figure}
-\end{comment}
+%\end{comment}
 
 \begin{lemma}\label{RMdisc}
 The set $\tilde{\overline{\Rr}}_M$ is homeomorphic to a disc and its boundary is the set
@@ -1879,7 +1829,7 @@ $$
 $$
 \begin{Proof} Identify $\R^2$ with $\C$ (interchanging the order of the variables $(\rho,\theta)\leadsto(\theta,\rho)$) and consider the continuous map defined as 
 $$
-\mu:\C\longrightarrow\C,\ z:=\theta+{\tt i}\rho\longmapsto w:=u+{\tt i}v=\big(\tfrac{4}{\pi}z-1\big)^2,
+\mu:\C\to\C,\ z:=\theta+{\tt i}\rho\mapsto w:=u+{\tt i}v=\big(\tfrac{4}{\pi}z-1\big)^2,
 $$
 where ${\tt i}$ is the imaginary unit $\sqrt{-1}$. The restriction $\mu|_{\{\rho>0\}}:\{\rho>0\}\to\C\setminus\big([0,+\infty)\times\{0\}\big)$ is a homeomorphism. Now observe that the image of $\overline{\Rr}_M\setminus\{\rho=0\}$ is
 $$
@@ -1940,7 +1890,7 @@ which makes sense considering the identification described in Construction \ref{
 \draw (0.2,2.5) node{$\rho$};
 \end{tikzpicture}
 \end{center}
-\caption{Behavior of the map $\mu:\overline{\Rr}_M\longrightarrow\overline{\Tt}_M$.}\label{fig:Tm}
+\caption{Behavior of the map $\mu:\overline{\Rr}_M\to\overline{\Tt}_M$.}\label{fig:Tm}
 \end{figure}
 
 Following Construction \ref{quotConstr} and since $\theta_1=\tfrac{\pi}{2}-\theta_2$, the map $\lambda:=\mu|_{\overline{\Rr}_M}:\overline{\Rr}_M\to\overline{\Tt}_M$ factors through $\tilde{\overline{\Rr}}_M$ and there exists a continuous map $\tilde{\lambda}:\tilde{\overline{\Rr}}_M\to\overline{\Tt}_M$ such that the following diagram is commutative:
@@ -1974,12 +1924,12 @@ which concludes the proof.
 
 \vspace{1mm}
 
-We are ready to prove  the main result of this section, which will be the key to prove Theorem \ref{openQuad}.
+We are ready to prove the main result of this section, which will be the key to prove Theorem \ref{openQuad}.
 
 \vspace{1mm}
 
 \begin{lemma}\label{mainlemmatop}
-Fix $B\ge A>0$ and consider the warped discs $\D_1$ and $\D_2$ introduced in \eqref{d1} and \eqref{d2}. Then, there exists $M>0$ such that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once both discs $\D_1$ and $\D_2$.
+Fix $B\ge A>0$ and consider the warped discs $\D_1$ and $\D_2$ introduced in \eqref{d1} and \eqref{d2}. Then, there exists $M>0$ such that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\to\R^3$ meets transversally once both discs $\D_1$ and $\D_2$.
 \begin{Proof} First, since $\D_1$ and $\D_2$ are bounded, there exists $M_0>0$ such that 
 $$
 \D_1\cup\D_2\subset\set{(x,y,z):\norm{(x,y,z)}<M_0}\subset\R^3.
@@ -2091,7 +2041,7 @@ so $\zeta_1(p_0)=(2M+\tfrac{\pi}{2}-t_0,0,-B)$. As $\varepsilon<B$, we have $\ze
 
 We conclude $\alpha_1^{-1}\big(\D_1(\varepsilon)\big)=\big(B-\varepsilon,B+\varepsilon\big)$, so $\alpha_1$ meets transversally once $\D_1$. 
 
-Analogously one shows that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\longrightarrow\R^3$ meets transversally once $\D_2$.
+Analogously one shows that the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\to\R^3$ meets transversally once $\D_2$.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2123,7 +2073,7 @@ $$
 
 Proceed as above keeping the same values for $A$ and $\varepsilon$ and using in this case the homeomorphism
 $$
-\zeta_2:\R^3\to\R^3,\ (x,y,z)\longmapsto(z,y,x-\xi_2(z,y)),
+\zeta_2:\R^3\to\R^3,\ (x,y,z)\mapsto(z,y,x-\xi_2(z,y)),
 $$
 where $\xi_2$ is the continuous semialgebraic function introduced in \eqref{xi2}, to prove that $\alpha_2$ meets transversally once the warped disk $\D_2$. This concludes the proof.
 \qed
@@ -2144,7 +2094,7 @@ Now we are ready to prove ($\diamondsuit$) and this way conclude the topological
 \begin{chapter}{Complexity analysis}\label{compChapter}
 
 \begin{section}{Introduction to the computational comparison}\label{5sect1}
-In this chapter we set up the theoretical basis to discuss how ``good'' or how ``bad'' the three polynomial maps $\R^2\to\R^2$ having ${\Qu}$ as image are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards, and using a computer, we will compare the images under the maps $\P$ (chapter 2), $\HH\circ\GG\circ\FF$ (chapter 3) and $\FFF$ (chapter 4) of certain subsets of $\R^2$.
+In this chapter we set up the theoretical basis to discuss how ``good'' or how ``bad'' the three polynomial maps $\R^2\to\R^2$ having ${\Qu}$ as image are. Thus, we first need to clearly specify what ``good'' and ``bad'' means here. Afterwards, and using a computer, we will compare the images under the maps $\P$ (Chapter 2), $\HH\circ\GG\circ\FF$ (Chapter 3) and $\FFF$ (Chapter 4) of certain subsets of $\R^2$.
 
 We will start with some naif grids of integers contained in the square $[-10, 10]\times[-10, 10]$ and in $[-100, 100]\times[-100, 100]$, and some grids in $[-1, 1]\times[-1, 1]$ and $[0, 1]\times[0, 1]$. Later, we will move into more specific sets provided by certain curves, following the ideas of  Section \ref{quadReasons}. Lastly, we will use random sets of points contained, respectively, in the unit disc and in the disc of radius $\rho=100$.
 
@@ -2160,7 +2110,7 @@ One may wonder:
 
 Here the word \textit{easy} means computationally efficient, so we are looking for the map that fills the open quadrant $\Qu$ quicker (in terms of the number of calculations) and the one $f$ such that the image $f(\Ss)$ of suitable subsets $\Ss\subset\R^2$ fill a bigger area.
 
-The answer is that the representation of $\Qu$ as a polynomial image of $\R^2$ is a key step to represent much more sophisticated subsets of $\R^n$ as polynomial or regular images of some $\R^m$. Thus, if we are able to represent $\Qu$ easily we would be able to represent other semialgebraic sets easily too. This is the case, for instance, for the family  of convex polyhedra, their interiors and their complementaries. The reason for this is that for constructing either polynomial or regular maps $f:\R^n\to\R^n$ producing polyhedral images, the first step relies on the construction of a polynomial map whose image is the open orthant $\mathscr{O}:=\{x_1>0,\dots,x_n>0\}$. As we saw in Theorem \ref{openQuadGen} this heavily relies on using polynomial maps on the plane with the half-plane $\H$ and the open quadrant $\Qu$ as images. Afterwards, the strategy for obtaining polynomial maps with convex polyhedral images is usually to start from $\mathscr{O}$, which is the simplest convex polyhedron containing at least one vertex, and add new vertices inductively by composing with adequate either polynomial or regular maps.
+The answer is that the representation of $\Qu$ as a polynomial image of $\R^2$ is a key step to represent much more sophisticated subsets of $\R^n$ as polynomial or regular images of some $\R^m$. Thus, if we are able to represent $\Qu$ easily we would be able to represent other semialgebraic sets easily too. This is the case, for instance, for the family  of convex polyhedra, their interiors and their complementaries. The reason for this is that for constructing either polynomial or regular maps $f:\R^n\to\R^n$ producing polyhedral images, the first step relies on the construction of a polynomial map whose image is the open orthant $\mathscr{O}:=\{x_1>0,\dots,x_n>0\}\subset\R^n$. As we saw in Theorem \ref{openQuadGen} this heavily relies on using polynomial maps on the plane with the half-plane $\H$ and the open quadrant $\Qu$ as images. Afterwards, the strategy for obtaining polynomial maps with convex polyhedral images is usually to start from $\mathscr{O}$, which is the simplest convex polyhedron containing at least one vertex, and add new vertices inductively by composing with suitable either polynomial or regular maps.
 
 That is why the better the constituents of the final map are, the better the final map will be.  Thus, the representation of $\Qu$ as a polynomial image of $\R^2$ is key in this process.	
 \end{section}
@@ -2171,16 +2121,18 @@ That is why the better the constituents of the final map are, the better the fin
 
 We need first to compute the coefficients and the shape of the polynomials we are going to use. Note for instance that the first polynomial map $\P$ defined in \ref{eq:firstMap} transforms $\R^2$ into $\Qu\cup\set{p_1:=(0,1),p_2=(1,0)}$ and then, relying on the proof of Theorem \ref{finSetTh} we manage to ged rid of $p_1$ and $p_2$ by means of a polynomial map (say $H$) that is applied to $\R^2$ before $\P$ acts. Nevertheless the proof of Theorem \ref{finSetTh} depends on the some values $r,a_1,a_2,\dots$; so, how is $H$ defined?
 
+\vspace{1mm}
+
 Fernando and Ueno answered this question in \cite{fu1} where they proved the following Lemma:
 
 \begin{lemma}
-Let $r\in\R\setminus\{0,1\}$ and $S=\set{(0,0),(-1,0)}$. Then, $\R^2\setminus S$ is the image of the polynomial map 
+Let $r\in\R\setminus\{0,1\}$ and $S:=\set{(0,0),(-1,0)}$. Then, $\R^2\setminus S$ is the image of the polynomial map 
 $$
 H=(H_1,H_2):\R^2\to\R^2,\ (x,y)\mapsto\big(xy-r,\ x^2(xy-r)(xy-r+1)+y\big).
 $$	
 \end{lemma}
 
-Here we take $r=-1$ for simplicity. In fact the ``conflictive'' set is the preimage through $\P$ of the set $\set{(0,1),(1,0)}$, namely $\set{(0,-1),(-1,0)}$ and not $\set{(0,0),(-1,0)}$, but a change of coordinates 
+Here we take $r:=-1$ for simplicity. In fact the ``controversial'' set is the preimage through $\P$ of the set $\set{(0,1),(1,0)}$, namely $\set{(0,-1),(-1,0)}$ and not $\set{(0,0),(-1,0)}$, but a change of coordinates 
 $$
 Q:\R^2\to\R^2,\ (x,y)\mapsto(x,y-x-1),
 $$
@@ -2189,7 +2141,7 @@ $$
 g=(g_1, g_2):=\P\circ Q\circ H:\R^2\longrightarrow\R^2.
 $$
 
-We wonder how the full expansion of $g$ looks like, and the result can be observed in Table \ref{tab:firstMap}. In the comparison we will mostly be using the composition $\P\circ Q\circ H$ to get the image of a given point, but we will also do a comparison between that composition and the full expansion as shown in Table \ref{tab:firstMap}.
+We wonder how the full expansion of $g$ looks like, and the result can be observed in Table \ref{tab:firstMap}. In this chapter we will mostly be using the composition $\P\circ Q\circ H$ to get the image of a given point, but we will also do a comparison between that composition and the full expansion as shown in Table \ref{tab:firstMap}.
 
 \begin{table}[ht!]
 \framebox{
@@ -2198,12 +2150,12 @@ We wonder how the full expansion of $g$ looks like, and the result can be observ
 \\[0.2cm]
 {\tiny $g_2(\x,\y) = \x^{16} \y^{12} + 2   (7   \x^{15} - \x^{13} + \x^{12} ) \y^{11} + (89   \x^{14} - 26   \x^{12} + 22   \x^{11} + \x^{10} - 2   \x^{9} + \x^{8} )\y^{10} + 2  (171   \x^{13} - 76   \x^{11} + 54   \x^{10} + 6   \x^{9} - 10   \x^{8} + 4   \x^{7} ) \y^{9} + (893   \x^{12} - 532   \x^{10} + 316   \x^{9} + 64   \x^{8} - 88   \x^{7} + 28   \x^{6} ) \y^{8} + 2   (844   \x^{11} - 628   \x^{9} + 311   \x^{8} + 101   \x^{7} - 114   \x^{6} + 29   \x^{5} )\y^{7} + (2396   \x^{10} - 2140   \x^{8} + 878   \x^{7} + 427   \x^{6} - 396   \x^{5} + 81   \x^{4} ) \y^{6} + 2   (1299   \x^{9} - 1369   \x^{7} + 457   \x^{6} + 326   \x^{5} - 248   \x^{4} + 40   \x^{3} ) \y^{5} + (2148   \x^{8} - 2668   \x^{6} + 698   \x^{5} + 751   \x^{4} - 458   \x^{3} + 55   \x^{2} )\y^{4} + 2   (661   \x^{7} - 976   \x^{5} + 187   \x^{4} + 327   \x^{3} - 151   \x^{2} + 12   \x ) \y^{3} + (573   \x^{6} - 1022   \x^{4} + 126   \x^{3} + 414   \x^{2} - 130   \x + 5 )\y^{2}  + 4   (39   \x^{5} - 86   \x^{3} + 5   \x^{2} + 44   \x - 7 ) \y + ( 20   \x^{4}- 56   \x^{2} + 40)$.}
 \end{tabular}}
-\caption{The first polynomial map}\label{tab:firstMap}
+\caption{The first polynomial map expanded.}\label{tab:firstMap}
 \end{table}
 \end{subsection}
 
 \begin{subsection}{The map from the short proof}
-As for the second map, we recall that it is defined as $f=(f_1, f_2):=\HH\circ\GG\circ\FF$, see its definition in \ref{eq:secondMap}. The full expansion of $f$ can be seen in Table \ref{tab:secondMap}. We will also be doing a comparison between the expanded map and the composition in the next section.
+As for the second map, we recall that it is defined as $f:=(f_1, f_2):=\HH\circ\GG\circ\FF$, see its definition in \ref{eq:secondMap}. The full expansion of $f$ can be seen in Table \ref{tab:secondMap}. We will also be doing a comparison between the expanded map and the composition in the next section.
 
 \begin{table}[ht!]
 \framebox{
@@ -2288,13 +2240,13 @@ As for the second map, we recall that it is defined as $f=(f_1, f_2):=\HH\circ\G
 (\x^6+2\x^4-2\x^2+1).$}
 
 \end{tabular}}
-\caption{The second polynomial map}\label{tab:secondMap}
+\caption{The second polynomial map expanded.}\label{tab:secondMap}
 \end{table}
 \end{subsection}
 
 \begin{subsection}{The map from the topological proof}
 
-Lastly and after such long polynomials, the map from the topological proof defined in \ref{eq:thirdMap} is showed in its expanded form in Table \ref{tab:thirdMap}. Recall that $\FFF = f_2 \circ f_1$ where $f_1\big(\R^2\big) = \overline{\Qu}$, so we will also be testing how $f_2\big(\overline{\Qu}\big)$ behaves.
+Lastly and after such long polynomials, the map from the topological proof defined in \ref{eq:thirdMap} is showed in its expanded form in Table \ref{tab:thirdMap}. Recall that $\FFF=f_2\circ f_1$ where $f_1\big(\R^2\big)=\overline{\Qu}$, so we will also be testing how $f_2\big(\overline{\Qu}\big)$ behaves.
 
 \begin{table}[ht!]
 \begin{center}
@@ -2306,13 +2258,13 @@ Lastly and after such long polynomials, the map from the topological proof defin
 {\tiny $ \FFF_2(\x,\y) = {(\x^{12} + 2   \x^{8} + \x^{6} + \x^{4})} \y^{4}  - 2   {(\x^{8} + \x^{6} + \x^{4} + \x^{2})} \y^{2} + (\x^{4}+ 2   \x^{2} + 1)$.}
 \end{tabular}}
 \end{center}
-\caption{The third polynomial map}\label{tab:thirdMap}
+\caption{The third polynomial map expanded.}\label{tab:thirdMap}
 \end{table}
 \end{subsection}
 
 \begin{subsection}{Optimal algebraic structure of the given polynomial maps}
 
-In this section we show the total degree and the total number of (non-zero) monomials from the three polynomial maps, see Table \ref{tab:degreeMon}. We define the \textit{total degree} of a polynomial map to be the sum of the degrees of its components. For instance $\text{deg}(\FFF)=\text{deg}(\FFF_1)+\text{deg}(\FFF_2)=12+16=28$.
+In this section we calculate the total degree and the total number of (non-zero) monomials from the three polynomial maps, see Table \ref{tab:degreeMon}. Recall that the \textit{total degree} of a polynomial map is the sum of the degrees of its components. For instance $\text{deg}(\FFF)=\text{deg}(\FFF_1)+\text{deg}(\FFF_2)=12+16=28$.
 
 \begin{table}[t]
 \begin{center}
@@ -2320,7 +2272,7 @@ In this section we show the total degree and the total number of (non-zero) mono
 & Total degree & Total number of monomials & Non-escalar complexity\\ \hline \hline
 $g = \P\circ Q \circ H$ & 56 & 167 & 13 \\ \hline
 $f=\HH\circ\GG\circ\FF$ & 72 &  350 & 11\\ \hline
-$\FFF = f_2 \circ f_1$ & 28 & 22 & 25\\	
+$\FFF = f_2 \circ f_1$ & 28 & 22 & 11\\	
 \end{tabular}
 \caption{Total degree, total number of monomials and non-escalar complexity.}\label{tab:degreeMon}
 \end{center}
@@ -2330,30 +2282,27 @@ $\FFF = f_2 \circ f_1$ & 28 & 22 & 25\\
 
 \begin{subsection}{Optimal multiplicative complexity of the given polynomial maps}
 
-When trying to evaluate a polynomial on a certain point in a efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we only compute an upper bound of the number of calculations, because depending on how the product is implemented on a certain programming language this value could be smaller.
+When trying to evaluate a polynomial at a certain point in an efficient way, we can consider the number of non-scalar multiplications that the computer needs to perform to get its image. To do this, we assume that if the same product needs to be computed more than once in the same evaluation, the computer will only do it once. In any case we just compute an upper bound of the number of calculations, because depending on how the product is implemented on a certain programming language this value could be smaller.
 
 For instance consider the first polynomial map $g = \P\circ Q \circ H$:
 \begin{align*}
-&H:\R^2\to\R^2,\ (x,y)\mapsto\big(xy+1,\ x^2(xy+1)(xy+2)+y\big), \\
-&Q:\R^2\to\R^2,\ (x,y)\mapsto(x,y-x-1), \\
-&\P:\R^2\to\R^2,\ (x,y)\mapsto\big((1-x^3y+y-xy^2)^2+x^4y^2, (1-xy+x-x^4y)^2+x^4y^2\big).\\
+&H:\R^2\to\R^2,\ (x,y)\mapsto\big(xy+1,\, x^2(xy+1)(xy+2)+y\big), \\
+&Q:\R^2\to\R^2,\ (x,y)\mapsto(x,\, y-x-1), \\
+&\P:\R^2\to\R^2,\ (x,y)\mapsto\big((1-x^3y+y-xy^2)^2+x^4y^2,\, (1-xy+x-x^4y)^2+x^4y^2\big).\\
 \end{align*}
-Looking at $H$ we see that the different non-scalar products that need to be computed are $xy, x^2, (xy + 1)(xy+2) \text{ and } x^2(xy + 1)(xy+2)$, that makes 4 in total. In a similar way we get 0 for $Q$ and $9$ for $\P$. In total, an upper bound for $g$ is $4 + 0 + 9 = 13$. Similarly, we obtain $4+4+3=11$ for $f=\HH\circ\GG\circ\FF$ rewritten as
+Looking at $H$ we see that the different non-scalar products that need to be computed are $xy, x^2, (xy + 1)(xy+2) \text{ and } x^2(xy + 1)(xy+2)$, that makes 4 in total. In a similar way we get 0 for $Q$ and $9$ for $\P$. In total, an upper bound for $g$ is $4 + 0 + 9 = 13$. Likewise, we obtain $4+4+3=11$ for $f=\HH\circ\GG\circ\FF$ rewritten as
 \begin{align*}
-&\FF:\R^2\to\R^2,\  (x,y)\mapsto((xy-1)^2+x^2,(xy-1)^2+y^2),\\
-&\GG:\R^2\to\R^2,\  (x,y)\mapsto(x,y((xy)^2-4xy+4)+x((xy)^2-2xy+1)),\\
-&\HH:\R^2\to\R^2,\  (x,y)\mapsto(xy(x\cdot(xy)-4x+4+\tfrac{1}{2}y),y),
+&\FF:\R^2\to\R^2,\  (x,y)\mapsto\big((xy-1)^2+x^2,\, (xy-1)^2+y^2\big),\\
+&\GG:\R^2\to\R^2,\  (x,y)\mapsto\big(x,\, y((xy)^2-4xy+4)+x((xy)^2-2xy+1)\big),\\
+&\HH:\R^2\to\R^2,\  (x,y)\mapsto\big(xy(x\cdot(xy)-4x+4+\tfrac{1}{2}y),\, y\big),
 \end{align*}
 
-As for $\FFF$: 
+Recall that we have factorized $\FFF$ as $\FFF=f_2\circ f_1$, where the polynomial maps $f_1, f_2$ are defined as follows:
 \begin{align*}
-\FFF_1(x,y) = &\  x^{4} y^{4}y^4 + 2   {(x^{4}x^2 - x^{2})} y^{4}y^2 + (x^{4}x^4 + x^{4}x^2 - 2   x^{4} - 2   x^{2} + 1) y^{4}\\
-&\  - 2   {(x^{4} - 1)} y^{2} + 1, \\
-\FFF_2(x,y) =&\ {(x^{4}x^4x^4 + 2   x^{4}x^4 + x^{4}x^2 + x^{4})} y^{4}  - 2   {(x^{4}x^4 + x^{4}x^2 + x^{4} + x^{2})} y^{2} \\
-&\ + (x^{4}+ 2   x^{2} + 1).
+&f_1:\R^2\to\R^2,\quad (x,y)\mapsto\big(x^2,\,y^2\big),\\
+&f_2:\R^2\to\R^2,\quad (x,y)\mapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
 \end{align*}
-
-we get $14+11=25$. See Table \ref{tab:degreeMon}.
+Looking at $f_1$ we have two different non-scalar products $x^2,y^2$. On the other hand, for $f_2$, we have $y^2,x^2,xy^2,x^2y,x^2xy^2,xx^2y,xy,(xy^2+x^2y-y-1)^2,(x^3y+xy-x-1)^2$. Thus, we obtain $2+9=11$. See Table \ref{tab:degreeMon}.
 
 \end{subsection}
 
@@ -2363,17 +2312,17 @@ we get $14+11=25$. See Table \ref{tab:degreeMon}.
 
 After all these arguments and explanations, we did a few tests on Sage, in terms of timing and obtaining the resulting regions of $\R^2$. We split this analysis into three cases depending on the chosen domain.
 
-\begin{subsection}{Uniformly distibuted points contained in a square}
+\begin{subsection}{Uniformly distributed points contained in a square}
 
 The tests we performed related to this were:
 \begin{enumerate}[1. ]
-\item \textbf{The set of integers contained in $[-10, 10]\times[-10,10]$}, that is:
+\item \textbf{The set of integers contained in $[-10,10]\times[-10,10]$}, that is:
 $$
-\PP_1 := \set[\big]{(x,y): -10\le x,y\le 10,\ x, y\in \Z} \subset \R^2.
+\PP_1 := \set[\big]{(x,y):-10\le x,y\le 10,\ x, y\in \Z}\subset\R^2.
 $$
-\item \textbf{The set of integers contained in $[-100, 100]\times[-100,100]$}, that is:
+\item \textbf{The set of integers contained in $[-100,100]\times[-100,100]$}, that is:
 $$
-\PP_2 := \set[\big]{(x,y): -100\le x,y\le 100,\ x, y\in \Z} \subset \R^2.
+\PP_2 := \set[\big]{(x,y):-100\le x,y\le 100,\ x,y\in\Z}\subset\R^2.
 $$
 \item \textbf{Grid of $10^6$ points uniformly distributed in $[0, 1]\times[0,1]$} with step $h=\tfrac{1}{999}$:
 $$
@@ -2389,7 +2338,7 @@ $$
 $$
 \item \textbf{Grid of $4\cdot 10^6$ points uniformly distributed in $[-10, 10]\times[-10,10]$} with step $h=\tfrac{20}{1999}$:
 $$
-\PP_6:=\set[\big]{x:x=nh -10,\ 0\le n\le 1999 }\times\set[\big]{y:y=nh-10,\ 0\le n\le 1999 }\subset \R^2.
+\PP_6:=\set[\big]{x:x=nh -10,\ 0\le n\le 1999 }\times\set[\big]{y:y=nh-10,\ 0\le n\le 1999 }\subset\R^2.
 $$
 \end{enumerate}
 
@@ -2467,10 +2416,10 @@ $\PP_6$ & 1633.50 s (\ref{fig:gP6_1}-\ref{fig:gP6_2}) & 1640.01 s (\ref{fig:fP6_
 \includegraphics[width=1\textwidth]{plots/ch5_22_P6prime.png}
 \vspace{0cm}\caption{$\FFF(\PP_6)$.\label{fig:FFFP6_2}}
 \end{subfigure}
-\vspace{0.1cm}\caption{Images of the $4\cdot 10^6$ points from $\PP_6$ through $f, g$ and $\FFF$.\label{fig:P6}}
+\vspace{0.1cm}\caption{Images of the $4\cdot 10^6$ points from $\PP_6$ through $g, f$ and $\FFF$.\label{fig:P6}}
 \end{figure}
 
-In this section we also compare the first and third maps as either a composition or a a fully expanded espression, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
+In this section we also compare the first and third maps as either a composition or a a fully expanded expression, as shown in Table \ref{tab:firstMap} and Table \ref{tab:secondMap}. The results are shown in Tables \ref{tab:expand1} and \ref{tab:expand2}.
 
 \begin{table}[ht!]
 \parbox{.45\linewidth}{
@@ -2501,7 +2450,6 @@ $$
 \PP_7 := \set[\big]{x: x=nh,\ 0\le n\le 999 }\times\set[\big]{y: y=nh,\ 0\le n\le 999 }\subset \R^2.
 $$
 It took 149.99 s for $f_2$ to compute the image of the $10^6$ points from $\PP_7$, which is very close to the 155.09 s and 155.29 s that it took $\FFF$ to compute the image of the $10^6$ points from $\PP_3$ and $\PP_4$ respectively. Note that this makes sense since the only difference between computing the image of a set under $\FFF= f_2\circ f_1$ or $f_2$ is that with $\FFF$ you first compute the image under $f_1$, which should not take a lot of time because of its simplicity, and then you compute the image under $f_2$ of the resulting set.
-% comparar con las imagenes de F(P_3) y F(P_4)
 \end{subsection}
 
 \begin{subsection}{Using families of curves}
@@ -2512,7 +2460,7 @@ $\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the pos
 \end{tabular}
 \end{center}
 \vspace{0.2cm}
-We used in  Chapter 2 certain families of curves whose images approach the axes, namely:
+We used in  Chapter 2 certain families of curves approaching the coordinate axes, namely:
 $$
 \alpha_{\lambda}(s,a_\lambda):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
 \quad \text{ and } \quad
@@ -2538,7 +2486,7 @@ $g\big(\alpha_{\lambda}\big((s,a_\lambda)\big)\big)$ & 398.04 s  \\ \hline
 \\[-1em]
 $g\big(\beta_{\mu}\big((s,b_\mu)\big)\big)$ & 399.02 s \\
 \end{tabular}
-\caption[]{Execution times when computing the image of curves through $g$.}\label{tab:curves1}
+\caption{Execution times when computing the image of curves through $g$.}\label{tab:curves1}
 }
 \hfill
 \parbox{.45\linewidth}{
@@ -2554,7 +2502,7 @@ $f_2\big(\gamma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 141.92 s  \\ \hline
 \\[-1em]
 $f_2\big(\delta_{\mu}\big((s, b_\mu)\big)\big)$ & 143.21 s \\
 \end{tabular}
-\caption[]{Execution times when computing the image of curves through $f_2$.}\label{tab:curves3}
+\caption{Execution times when computing the image of curves through $f_2$.}\label{tab:curves3}
 }
 \end{table}
 
@@ -2564,7 +2512,7 @@ $$
 \quad \text{ and } \quad
 \delta_\mu(s, b_\mu) = \left(s, \frac{1+b_\mu s}{s}\right).
 $$
-The computation times can be seen in Table \ref{tab:curves3}. The images of the curves through $g$ and $f_2$ are shown in Figure \ref{fig:curvesfg}.
+The computation times can be seen in Table \ref{tab:curves3}, we used $\PP_7$ as the domain of these curves. The images of the curves through $g$ and $f_2$ are shown in Figure \ref{fig:curvesfg}. 
 
 \begin{figure}
 \vspace{-0.6cm}
@@ -2575,7 +2523,7 @@ The computation times can be seen in Table \ref{tab:curves3}. The images of the 
 \end{subfigure}
 \begin{subfigure}{.45\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_29_3curves3.png}
-\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves1}}
+\vspace{-0.4cm}\caption{$f_2(\gamma_{\lambda})$ and $f_2(\delta_{\mu})$.\label{fig:3curves1}}
 \end{subfigure}\\[1ex]
 \vspace{-0.2cm}
 	
@@ -2586,7 +2534,7 @@ The computation times can be seen in Table \ref{tab:curves3}. The images of the 
 \end{subfigure}
 \begin{subfigure}{.45\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_30_3curves4.png}
-\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves2}}
+\vspace{-0.4cm}\caption{$f_2(\gamma_{\lambda})$ and $f_2(\delta_{\mu})$.\label{fig:3curves2}}
 \end{subfigure}\\[1ex]
 \vspace{-0.2cm}
 
@@ -2597,22 +2545,22 @@ The computation times can be seen in Table \ref{tab:curves3}. The images of the 
 \end{subfigure}
 \begin{subfigure}{.45\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_30_3curves5.png}
-\vspace{-0.4cm}\caption{$f_2(\alpha_{\lambda})$ and $f_2(\beta_{\mu})$.\label{fig:3curves3}}
+\vspace{-0.4cm}\caption{$f_2(\gamma_{\lambda})$ and $f_2(\delta_{\mu})$.\label{fig:3curves3}}
 \end{subfigure}
-\vspace{-0.1cm}\caption{Images of families of curves for $g$ and $f_2$: $\alpha_{\lambda}$ in orange and $\beta_{\mu}$ in purple.\label{fig:curvesfg}}
+\vspace{-0.1cm}\caption[Images of families of curves for $g$ and $f_2$.]{Images of families of curves: $\alpha_{\lambda}$ and $\gamma_{\lambda}$ in purple and $\beta_{\mu}$ and $\delta_{\mu}$ in orange.\label{fig:curvesfg}}
 \end{figure}
 
 \end{subsection}
 
 \begin{subsection}{Randomly distributed points contained in a disc}
-When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square. However we opted for doing it on the unit disc. The points are generated by means of a random argument $\theta\in[0,2\pi]$ and a random radius; first with $\rho\in[0,1]$, and $\rho\in[0,100]$ afterwards. Then, each point is generated as $(\rho\cos\theta,\rho\sin\theta)$. The result is a subset of $10^5$ points of the disc that presents a higher concentration of points when we get closer to the origin. Of course this is not a problem for our study case. See Figure \ref{fig:disc}. The timing tests are shown in Table \ref{tab:disc}.
+When thinking of the possible domain that the polynomial maps could have, we thought of points randomly distributed on a square. However we opted for doing it on the unit disc. The points are generated by means of a random argument $\theta\in[0,2\pi]$ and a random radius; first with $\rho\in[0,1]$, and $\rho\in[0,100]$ afterwards. Then, each point is generated as $(\rho\cos\theta,\rho\sin\theta)$. The result is a subset of $10^5$ points of the disc that presents a higher concentration of points when we get closer to the origin. Of course this is not a problem for our study case. See Figure \ref{fig:discs}. The timing tests are shown in Table \ref{tab:disc}.
 
 \begin{figure}[ht!]
 \vspace{-0.6cm}
 \hspace{0.1cm}
 \begin{subfigure}{.45\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_34_disc.png}
-\vspace{-0.4cm}\caption{Set of $10^5$ points contained in ${\mathbb D}_1$.\label{fig:disc}}
+\vspace{-0.4cm}\caption{Set of $10^5$ points contained in ${\mathbb D}_1$.\label{fig:discs}}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_35_disc1.png}
@@ -2629,7 +2577,7 @@ When thinking of the possible domain that the polynomial maps could have, we tho
 \includegraphics[width=1\textwidth]{plots/ch5_39_disc3.png}
 \vspace{-0.4cm}\caption{$\FFF({\mathbb D}_1)$.\label{fig:disc3}}
 \end{subfigure}
-\vspace{-0.1cm}\caption{Images of points in ${\mathbb D}_{1}$.\label{fig:discAll}}
+\vspace{-0.1cm}\caption{Images of points in ${\mathbb D}_{1}$ through $g, f$ and $\FFF$.\label{fig:discAll2}}
 \end{figure}
 
 \vspace{0.2cm}
@@ -2641,7 +2589,7 @@ When thinking of the possible domain that the polynomial maps could have, we tho
 ${\mathbb D}_1$ & 131.97 s (\ref{fig:disc1}) & 99.56 s (\ref{fig:disc2}) & 32.02 s (\ref{fig:disc3}) \\ \hline
 ${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
 \end{tabular}
-\caption[Execution times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Execution times of the computation of ramdomly distibuted points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:disc}
+\caption[Execution times of the computation of points contained in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.]{Execution times of the computation of ramdomly distributed points in ${\mathbb D}_{1}$ and ${\mathbb D}_{100}$.}\label{tab:disc}
 \end{center}
 \end{table}
 
@@ -2661,7 +2609,7 @@ All of this could just be considered as an appetizer for finding a polynomial ma
 \end{enumerate}
 \end{problem}
 
-The authors haven't stopped working on the problem, and we present right now some new candidates whose images could be $\Qu$:
+Fernando, Gamboa and Ueno have not stopped working on the problem, and we present right now some new candidates of polynomial maps $\R^2\to\R^2$ whose images ``should be" $\Qu$:
 \begin{align*}
 \cdot\ \mathcal{N}_1:\R^2 &\to R^2, \\
 (x,y)&\mapsto\big(x^4y^4+(x^2y+xy^2-1)^2(y^2+1),\ x^4y^4+(x^2y+xy^2-1)^2(x^2+1)\big),\\
@@ -2676,14 +2624,14 @@ It is remarkable how good their properties are in terms of total degree and numb
 \begin{center}
 \begin{tabular}{c || c | c | c}
 & Total degree & Total number of monomials & Non-escalar complexity\\ \hline \hline
-$\mathcal{N}_1$&16&24&11 \\ \hline
-$\mathcal{N}_2$&16&26&7 \\ \hline
-$\mathcal{N}_3$&20&26&15 \\	
+$\mathcal{N}_1$&16&24&10 \\ \hline
+$\mathcal{N}_2$&16&26&8 \\ \hline
+$\mathcal{N}_3$&20&26&13 \\	
 \end{tabular}
 \caption{Properties of the new maps.}\label{tab:newDegreeMon}
 \end{center}
 \end{table}
-Note that the symmetry of the maps above converts them in good candidates to minimize the upper-bound of the non-escalar complexity. We have used the following pair of families of curves to approach the axes:
+Note that the symmetry of the maps above converts them into good candidates to minimize the upper-bound of the non-escalar complexity. For instance, for $\mathcal{N}_1$ we have $x^2, x^4, y^2, y^4, x^4y^4, x^2y, xy^2, (x^2y+xy^2-1)^2, (x^2y+xy^2-1)^2(y^2+1), (x^2y+xy^2-1)^2(x^2+1)$, which makes 10 in total. Also, note that for $\mathcal{N}_3$ we don't need to compute $x^3$ and $y^3$, which reduces the non-scalar complexity. We have used the following pair of families of curves to approach the axes:
 
 $$
 \sigma_\lambda(s, a_\lambda) = \left(s^2 + a_\lambda s^3,\ \frac{1}{s}\right)
@@ -2706,7 +2654,7 @@ $\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.88 s \\ 
 \\[-1em]
 $\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 153.14 s \\
 \end{tabular}
-\caption[]{Execution times when computing the image of curves through $\mathcal{N}_1$.}\label{tab:curvesNew1}
+\caption{Execution times when computing the image of curves through $\mathcal{N}_1$.}\label{tab:curvesNew1}
 }
 \hfill
 \parbox{.45\linewidth}{
@@ -2722,11 +2670,11 @@ $\mathcal{N}_1\big(\sigma_{\lambda}\big((s, a_\lambda)\big)\big)$ & 148.23 s  \\
 \\[-1em]
 $\mathcal{N}_2\big(\tau_{\mu}\big((s, b_\mu)\big)\big)$ & 148.84 s \\
 \end{tabular}
-\caption[]{Execution times when computing the image of curves through $\mathcal{N}_2$.}\label{tab:curvesNew2}
+\caption{Execution times when computing the image of curves through $\mathcal{N}_2$.}\label{tab:curvesNew2}
 }
 \end{table}
 
-Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes for this family of curves. Even when checking on $[0, 0.1]\times[0, 0.1]$ it fills plenty of area towards the axes. See Figures \ref{fig:4curves1} and \ref{fig:5curves1}.
+Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes for this family of curves. Even when checking on $[0, 0.1]\times[0, 0.1]$ it fills a very dense region towards the axes. See Figures \ref{fig:4curves1} and \ref{fig:5curves1}.
 
 \begin{figure}
 %\vspace{-0.6cm}
@@ -2741,7 +2689,7 @@ Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes 
 \end{subfigure}\\[1ex]
 \vspace{-0.2cm}
 
-\vspace{-0.1cm}\caption{Images of families of curves for $\mathcal{N}_1$ and $\mathcal{N}_2$: $\sigma_{\lambda}$ in green and $\tau_{\mu}$ in blue.\label{fig:curvesfg}}
+\vspace{-0.1cm}\caption[Images of families of curves for $\mathcal{N}_1$ and $\mathcal{N}_2$.]{Images of families of curves for $\mathcal{N}_1$ and $\mathcal{N}_2$: $\sigma_{\lambda}$ in green and $\tau_{\mu}$ in blue.\label{fig:curvesfg2}}
 \end{figure}
 
 \subsection{Comments on further reductions}
@@ -2750,12 +2698,12 @@ Note how good $\mathcal{N}_1$ seems to be on approaching the positive half-axes 
 
 Aside from the optimal algebraic structure and the optimal multiplicative complexity, there is another measurement that could be considered when talking about the complexity of the given polynomials.
 
-It is well know that for a computer it is far way easier to compute multiplications and divisions by powers of 2 than any other number, because that translates into a simple shift in the array of bits. For instance consider the number $20 = 2^4 + 2^2$ expressed in base 2 with 8 bits: $(20)_{10} = (0001\ 0100)_2$. Then, if we want to multiply $20\cdot 4$ the computer can just shift the array two positions (because $4=2^2$) to the left, namely:
+It is well known that for a computer it is far way easier to compute multiplications and divisions by powers of 2 than any other number, because that translates into a simple shift in the array of bits. For instance consider the number $20 = 2^4 + 2^2$ expressed in base 2 with 8 bits: $(20)_{10} = (0001\ 0100)_2$. Then, if we want to multiply $20\cdot 4$ the computer can just shift the array two positions (because $4=2^2$) to the left, namely:
 $$(20 \cdot 4)_{10} = (0101\ 0000)_2 = (80)_{10}.$$
 It is clear that the other way around also works for division, shifting to the right:
 $$(80 / 16)_{10} = (0000\ 1010)_2 = (5)_{10}.$$
 
-This is exactly what scholars do to multiply or divide an integer by a power of $10$; they either add zeros or move the  comma. Computers have had for years logic units that compute this shiftings flawlessly. Thus, we could focus on obtaining a polynomial map that only has powers of 2 as multiplicative factors on its components. Note that the three new maps and the one from the topological proof verify this condition. Indeed, this factor equals 2 for all of them.
+This is exactly what scholars do to multiply or divide an integer by a power of $10$; they either add zeros or move the  comma. Computers have had for years logic units that compute this shiftings flawlessly. Thus, we could focus on obtaining a polynomial map that only has powers of 2 as multiplicative factors on its components. Note that the three new maps and the one from the topological proof satisfy this condition. Indeed, this factor equals 2 for all of them.
 
 \subsubsection{Reduction of multiplications using hash tables and concurrency}
 
@@ -2765,10 +2713,9 @@ Let $f(\x,\y):=(f_1(\x,\y),f_2(\x,\y))$ be any of the maps we were working with 
 
 Let $p:=(x,y)$ be a point of the set of points we are using as a domain. When the programme starts, we would launch both threads. At each step the computation of $f_1(p)$ involves to calculate a non-scalar multiplication (like the examples we just stated) it would look for it on the hash table. If its there, then there is no need to compute the multiplication, just get the value. If the key is not in the hash table, compute it and add a new entry to the hash table with this computation. The thread for $f_2(p)$ would work in the same way. This way each non-scalar multiplication would be computed only once.
 
-The remarkable fact is that this implementation could easily be generalized for computing $f$ when it would be a composition of other maps, say $f=g\circ h$. The programme would act in the same way, starting computing $h(p):=(h_1(p), h_2(p))$ for every $p$ by updating the hash table with each new point $p$. Then, when this phase would be over, we would have to delete the content in the hash table and proceed in the same way for $g(h(p))= g((h_1(p), h_2(p)))$.
+The remarkable fact is that this implementation could easily be generalized for computing $f$ when it would be a composition of other maps, say $f=g\circ h$. The programme would act in the same way, starting computing $h(p):=(h_1(p), h_2(p))$ for every point $p$ by updating the hash table with each new point $p$. Then, when this phase would be over, we would have to delete the content in the hash table and proceed in the same way for $g(h(p))= g((h_1(p), h_2(p)))$.
 
-The only inconvenience would be working with symbolic expressions in Java or C++, which is far way easier with Sage (as far as I know). In any case, this implementation would probably mean a improvement in the execution time, because searching for a key in a (relatively small) hash table would be quicker than re-computing the multiplication. Indeed, searching a value on a hash table requires on average constant time $O(1)$, whereas computing the multiplication of two $n$-digits numbers is for example $O(n^{1.585})$ for Karatsuba's algorithm. If for instance for each point we avoid computing two out of ten monomials, an upper bound for the total new time would be 20\% less than the original time.
-
+The only inconvenience would be working with symbolic expressions in Java or C++, which is far way easier with Sage (as far as I know). In any case, this implementation would probably represent an improvement in the execution time, because searching for a key in a (relatively small) hash table would be quicker than re-computing the multiplication. Indeed, searching a value on a hash table requires on average constant time $O(1)$, whereas computing the multiplication of two $n$-digits numbers is for example $O(n^{1.585})$ for Karatsuba's algorithm. Thus if we are able to avoid computing two out of ten monomials for each point, the new total execution time would be roughly 20\% less than the original time.
 \end{section}
 
 %Pendiente: Añadir consecuencia ---> El interior y el complementario de un ángulo son imágenes polinómicas de R^2 (Tesis Ueno)
@@ -2778,13 +2725,56 @@ The only inconvenience would be working with symbolic expressions in Java or C++
 
 \end{chapter}
 
+\begin{thebibliography}{ABR}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\bibitem[A]{a} F. S. Acton: Numerical Methods That Work, 2\textsuperscript{nd} printing. Washington, DC: Math. Assoc. Amer., (1990). 
+
+\bibitem[ABR]{abr} C. Andradas, L. Br\"ocker, J.M. Ruiz: Constructible sets in real geometry. \em Ergeb. Math. \em{\bf 33}. Berlin, Heidelberg, New York: Springer Verlag, (1996).
+
+\bibitem[BCR]{bcr} J. Bochnak, M. Coste, M.-F. Roy: G\'eom\'etrie alg\'ebrique r\'eelle. \em Ergeb. Math. \em {\bf 12}, Springer-Verlag, Berlin, Heidelberg, New York (1987).
+
+\bibitem[B]{b} M. Berger: Geometry. I. \em Universitext\em. Springer-Verlag, Berlin: (1987).
+
+\bibitem[F]{fe} J.F. Fernando: Polynomial images of $\R^n$. {\em Reelle algebraische und analytische Geometrie}, March, 17$^{\rm th}$ -- 23$^{\rm rd}$ (2002), Oberwolfach.
+
+\bibitem[F1]{f1} J.F. Fernando: On Nash images of Euclidean spaces. Submitted, arXiv:1503.07567.
+
+\bibitem[FG]{fg} J.F. Fernando, J.M. Gamboa: Polynomial images of $\R^n$. {\em J. Pure Appl. Algebra}, {\bf179} (2003), 241--254.
+
+\bibitem[FGU]{fgu} J.F. Fernando, J.M. Gamboa, C. Ueno: The open quadrant problem:
+A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesinos. Departamento de Geometr\'ia y Topolog\'ia. Facultad de CC. Matem\'aticas UCM, (2016), 337--350.
+
+\bibitem[FU]{fu} J.F. Fernando, C. Ueno: A short proof for the open quadrant problem. \textit{Preprint RAAG}. Submitted to MEGA 2015, 8 pages.
+
+\bibitem[FU1]{fu1} J.F. Fernando, C. Ueno: On the open quadrant as a polynomial image of $\R^2$ (revisited).
+
+\bibitem[G]{g} J.M. Gamboa: Algebraic images of the real plane. \textit{Reelle algebraische Geometrie}, June,
+$10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
+
+\bibitem[H]{h} A. Harnack: \"Uber die Vielheiligkeit der ebenen algebraischen Kurven. {\em Math. Ann.} {\bf10} (1876), 189--198.
+
+\bibitem[M]{m} W. Massey: A Basic Course in Algebraic Topology, \emph{Graduate Texts in Mathematics}, \textbf{\text{127}}.
+Springer-Verlag, New York: (1991).
+
+\bibitem[P]{p} S. Pinchuk: A counterexample to the real Jacobian Conjecture, \em Math. Z. \em {\bf 217} (1994), 1--4.
+
+\bibitem[T]{ta} A. Tarski: A decisi\'on method for elementary algebra and geometry. Prepared for publication by J.C.C. Mac Kinsey, Berkeley: (1951).
+
+\bibitem[U]{u} C. Ueno: Im\'agenes polin\'omicas y regulares de espacios eucl\'\i deos. Ph.D. Thesis UCM, (2012).
+
+\bibitem[W]{w} R.J. Walker: Algebraic curves. Berlin, Heidelberg, New York: Springer Verlag, (1978).
+
+\end{thebibliography}
+
+
 \appendix
 \begin{chapter}{Auxiliary definitions and results}\label{AA}
 
 \begin{section}{Real algebraic geometry basics}
 In this section we give a basic insight into the required concepts, definitions and results from real algebraic geometry. They are mostly used on the first chapter.
 
-We begin with some definitions like \emph{real closed field} and \emph{semialgebraic set}. The \emph{Transfer Principle} allows us to move our results from $\R$ to an arbitrary real closed field $R$. We also give an overview of the \emph{Zariski topology}, in order to talk about concepts like closure or \emph{reducibility} in this topology. Finally, after defining other notions as \emph{proper maps} and \emph{germ Nash half-branch curves}, we finish the section recalling \emph{Puiseux series}, since this is the nature of the solutions of the equation $\Delta_v(x)=0$ in the first proof of Theorem \ref{openQuad}.
+We begin with some definitions like \emph{real closed field} and \emph{semialgebraic set}. The \emph{Transfer Principle} allows us to move our results from $\R$ to an arbitrary real closed field $R$. We also give an overview of the \emph{Zariski topology}, in order to talk about concepts like closure or \emph{reducibility} in this topology. Finally, after defining other notions as \emph{proper maps} and \emph{germ Nash half-branch curves}, we finish the section recalling \emph{Puiseux series}, since this is the nature of the solutions of the equation $\Delta_v({\tt x})=0$ in the first proof of Theorem \ref{openQuad}.
 \begin{definition}\label{realCField}
 	A \em real closed field \em is an ordered field $R$ such that $R(\sqrt{-1})$ is an algebraically closed field. There exist many characterizations of real closed fields. A very enlightening one is the following: $R$ is a real closed field if it is an ordered field that shares with the field $\R$ of real numbers its properties of the first-order language of ordered fields. 
 \end{definition}
@@ -2804,7 +2794,7 @@ Indeed, \hyperref[tarskiSeidenberg]{Tarski-Seidenberg Theorem} admits a useful f
 	\end{aligned}
 	\right.
 	\end{equation*}
-It is easily seen that finite unions and intersections of semialgebraic sets are semialgebraic sets too. In addition, the complementary set of a semialgebraic set is also a semialgebraic set. The easy proof of these facts can be studied in \cite{bcr}, Ch.2.
+It is easily seen that finite unions and intersections of semialgebraic sets are semialgebraic sets too. In addition, the complementary set of a semialgebraic set is also a semialgebraic set. The easy proof of these facts can be studied in \cite[Ch.2]{bcr}.
 	
 	
 (ii) A map $f:S\to T$ between semialgebraic subsets $S\subset R^n$ and $T\subset R^m$ is \em semialgebraic \em if its graph is a semialgebraic subset of $R^{m+n}$.  \end{definitions}
@@ -2823,7 +2813,7 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 (iii) An algebraic subset $X\subset K^n$ is said to be \em reducible \em if there exist algebraic subsets $Y\subsetneq X$ and  $Z\subsetneq X$ such that $X=Y\cup Z$. If $X$ is not reducible it is said to be  \em irreducible. \em 
 \end{definition}
 
-\begin{definition}\label{pureDim} (i) Let $S\subset\R^n$ be a semialgebraic set and $p\in S$. The \em local dimension of $S$ at $p$, \em denoted $\dim(S_p)$, is the largest non-negative integer $d$ such that for every open ball $B$ centered at $p$ the intersection $S\cap B$ contains a semialgebraic subset semialgebraically homeomorphic to the cube $[0,1]^d$.
+\begin{definition}\label{pureDim} (i) Let $R$ be a real closed field and let $S\subset R^n$ be a semialgebraic set. The \em local dimension of $S$ at a point $p\in S$, \em denoted $\dim(S_p)$, is the largest non-negative integer $d$ such that for every open ball $B$ centered at $p$ the intersection $S\cap B$ contains a semialgebraic subset semialgebraically homeomorphic to the cube $[0,1]^d$.
 
 	It is said that $S$ is \em pure dimensional \em if $\dim(S_p)=\dim(S_q)$ for every pair of points $p,q\in S$.
 \end{definition}
@@ -2843,8 +2833,7 @@ It is easily seen that finite unions and intersections of semialgebraic sets are
 	
 	(ii) A map $f:=(f_1,\dots,f_m):U\to\R^m$ is a \em Nash map \em if each coordinate $f_i:U\to\R$ is a Nash function. 
 	
-	(iii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\eps>0$ the intersection $B_{\eps}\cap\Gamma\setminus\{a\}$, % Aqui no sería p en vez de a?
-where $B_{\eps}\subset\R^n$ is the open ball of radius $\eps$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
+	(iii) Let $\Gamma\subset\R^n$ be an algebraic curve and $p\in\Gamma$. For every small enough $\eps>0$ the intersection $B_{\eps}\cap\Gamma\setminus\{p\}$, where $B_{\eps}\subset\R^n$ is the open ball of radius $\eps$ centered at the point $p$, has finitely many connected components $C_1,\dots,C_k$. Each $C_i$ is semialgebraically homeomorphic to the interval $(0,1]$ and in fact for $i=1,\dots,k$ there exists a Nash homeomorphism  $f_i:[0,1]\to C_i\cup\{p\}$, with $f_i(0)=p$.
 
 Indeed, this result is a particular case of the local conic structure theorem of semialgebraic sets, \cite[IX.3.6]{bcr}. 
 	
@@ -2860,13 +2849,13 @@ The first proof of Theorem \ref{openQuad} requires frequently to check whether a
 
 Sturm's method is used to compute the number of different real roots of a polynomial in a given interval. Note that it is an algebraic method that doesn't rely on approximations.
 
-\begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and let $f\in\R[{\tt t}]$. The \emph{Sturm sequence} (or \emph{Sturm chain}) of $f$ is the finite sequence of polynomials $(f_0,f_1,\dots,f_k)$ defined as follows: 
+\begin{definitions}\label{sturmSeq} (i) Let $R$ be a real closed field and let $f\in R[{\tt t}]$. The \emph{Sturm sequence} (or \emph{Sturm chain}) of $f$ is the finite sequence of polynomials $(f_0,f_1,\dots,f_k)$ defined as follows: 
 \begin{equation*}
 \begin{aligned}
 f_0&:=f\\
 f_1&:=f'\\
 &\dots\\
-f_i&:=f_{i-1}q_i-f_{i-2}, \text{ with }q_{i}\in R[{\tt x}] \text{ and } \text{deg}(f_{i})<\text{deg}(f_{i-1}) \text{ for } i=2\dots,k.\\
+f_i&:=f_{i-1}q_i-f_{i-2}, \text{ with }q_{i}\in R[{\tt x}] \text{ and } \text{deg}(f_{i})<\text{deg}(f_{i-1}) \text{ for } i=2,\dots,k.\\
 \end{aligned}
 \end{equation*}
 Then, by Euclid's Algorithm, there is an integer $k$ satisfying $f_k=\text{gcd}(f,f')$.
@@ -2928,14 +2917,58 @@ $$
 \end{enumerate}
 \em
 \end{proposition}
-
+\end{section}
 A possible implementation for this algorithm is shown in Appendix \ref{lagSec}, using Python.
+
+\begin{section}{Fundamental group}\label{fundgroup} 
+
+Let us recall, for the sake of completeness, the notions of \emph{path} and \emph{path concatenation}. Also, we recall the notion of \emph{fundamental group} of a (path connected) topological space.
+
+\vspace{1mm}
+
+\begin{definitions}\label{pathDefs}
+(i) Let $X$ be a topological space. A continuous map $\alpha:[a,b]\to X$, where $[a,b]\subset\R$ is a closed interval is a \emph{path} in $X$. If $\alpha(a)=\alpha(b)=x_0\in X$, we say that $\alpha$ is a \emph{loop} with base point $x_0$. In such a case, $\alpha$ may be viewed as a map whose domain is the quotient space $[a,b]/\!\sim$ obtained by identifying the end points of $[a,b]$. Notice that $[a,b]/\!\sim$ is homeomorphic to the circumference $\mathbb{S}^1:=\set{x^2+y^2=1}\subset\R^2$. After a linear change of variables we may assume, if necessary, that $[a,b]=[0,1]$.
+
+\vspace{1mm}
+
+(ii) Given two paths $\alpha:[0,1]\to X$ and $\beta:[0,1]\to X$ such that  $\alpha(1)=\beta(0)$ the \em concatenation \em (also called \em product \em) of $\alpha$ and $\beta$ is defined as follows:
+$$
+\alpha*\beta:[0,1]\to X,\ t\mapsto
+\left\{\begin{array}{ll}
+\alpha(2t) &\text{ if } 0\leq t\leq\tfrac{1}{2},\\
+\beta(2t-1) &\text{ if } \tfrac{1}{2}\leq t\leq1.
+\end{array}
+\right.
+$$
+The idea under this definition is clear. We use $\alpha$ in the ``first part of the path", but the speed must be double of the original one to reach the point $\alpha(1)$ at $t:=\tfrac{1}{2}$. This explains the definition of the first part of the new path. We must use $\beta$ for the second part. Necessarily $(\alpha*\beta)\big(\tfrac{1}{2}\big)=\beta(0)$ and $(\alpha*\beta)(1)=\beta(1)$. To do that, we use the line that joints the points $p:=\big(\tfrac{1}{2},0\big)$ and $q:=(1,1)$, that is $\gamma(t):=2t-1$. Of course this is not at all the only way to construct a path joining $p$ and $q$, but seems to be the simplest one.
+
+It is easily checked that the concatenation of loops enjoys the associative property. Besides, fixed $x_0\in X$, the constant loop $e_{x_0}:[0,1]\to X,\, t\mapsto x_0$ satisfies the equality $e_{x_0}*\alpha=\alpha=\alpha*e_{x_0}$ for every loop $\alpha$ in $X$ of basis $x_0$. In addition, given a loop $\alpha$ in $X$ the loop $\alpha^{-1}:[0,1]\to X, \, t\mapsto\alpha(1-t)$ that travels the same curve as $\alpha$ but in the opposite direction satisfies $\alpha*\alpha^{-1}=\alpha^{-1}*\alpha=e_{x_0}$.
+
+\vspace{1mm}
+
+(iii) Let $I:=[0,1]\subset\R$ and let $X,Y$ be two path-connected topological spaces. A \emph{homotopy} is a continuous map $H: X\times I\to Y$. We associate to $H$ the family of continuous maps $\{H_s:X\to Y,\ x\mapsto H(x,s)\}_{s\in I}$, and it is said that the maps $H_0:X\to Y$ and $g:=H_1:X\to Y$ are \em homotopic. \em We denote this with $f\overset{H}{\simeq}g$. If, in addition, $g$ is constant we say that $f$ is \emph{null-homotopic}.
+
+\vspace{1mm} 
+
+(iv) Given a path-connected topological space $X$ and a point $x_0\in X$ the \emph{fundamental group of $X$ at the base point $x_0$} is the quotient space of loops of base $x_0$ modulo the ``homotopy relation'', and it is denoted $\pi_1(X,x_0)$. If $\alpha$ is a loop with base point $x_0$, then it represents an element of $\pi_1(X,x_0)$ denoted with $[\alpha]$. The concatenation of loops is compatible with the homotopy relation and endows $\pi_1(X,x_0)$ with an structure of group.
+
+\vspace{1mm}
+
+(v) We impose $X$ to be path connected to be sure that the fundamental groups $\pi_1(X,x_0)$ and $\pi_1(X,x_1)$ corresponding to two distinct points $x_0$ and $x_1$ in $X$ are isomorphic. Indeed, if $\gamma$ is a path in $X$ that connects $x_0$ and $x_1$ we associate to each loop $\alpha$ with base $x_0$ the loop of base $x_1$ defined as the product $\gamma\cdot\alpha\cdot\gamma^{-1}$. This construction is compatible with the homotopy relation, so it induces a homomorphism $\pi_1(X,x_0)\to\pi_1(X,x_1)$. This is in fact an isomorphism because we can associate to every loop $\beta$ with base $x_1$ the loop of base $x_0$ defined as the product $\gamma^{-1}\cdot\beta\cdot\gamma$. This is why it is usual to denote $\pi_1(X)$ the fundamental group of $X$ without any reference to the base point $x_0$. 
+\end{definitions}
+
+\vspace{1mm}
+
+(vi) A path connected space $X$ is said to be \em simply connected \em if its fundamental group is trivial, that is, all loops are null-homotopic. Intuitively this means that all loops in $X$ are contractible to a point.
+
+
+\end{section}
+
 
 %Furthermore, this iterative formula works with any polynomial, not just with the ones described by equation \em \ref{eq:lagPol}. \em 
 %{\bf El algoritmo, tal y como se describe, parece fuertemente ligado al hecho de que $f$ tenga una ra\'iz, tal vez compleja, de multiplicidad $n-1$. Por eso no entiendo qu\'e significa que la f\'ormula funciona para polinomios cualesquiera!!!}
-
-\end{section}
 \end{chapter}
+
 
 \begin{chapter}{Python code}\label{BB}
 \begin{section}{Laguerre's Method}\label{lagSec}
@@ -2944,7 +2977,9 @@ A possible implementation for this algorithm is shown in Appendix \ref{lagSec}, 
 
 \begin{section}{Examples}\label{exLagSec}
 
-\begin{center}\pythonexternal{../Laguerre/polyExample.py}	\end{center}
+\begin{center}
+\pythonexternal{../Laguerre/polyExample.py}	
+\end{center}
 
 \vspace{0.4cm}
 Output for the given examples:
@@ -2989,6 +3024,8 @@ Roots are:
 \end{chapter}
 
 \begin{chapter}{Sage code}\label{CC}
+All the computations performed in this Appendix were done with a server provided by the Faculty of Mathematics of the Complutense University of Madrid (UCM): \href{https://turing.mat.ucm.es:8080/}{link to website}.
+
 \begin{section}{Computations related to Chapter 1}
 Graphs from Example \ref{introExample} (ii).
 \begin{sage}
@@ -3074,13 +3111,13 @@ show('F(beta) =');      show(F(*beta).simplify_full())
 show('G(beta) =');      show(G(*beta).simplify_full())
 \end{sage}
 
-Now we proceed with the computations performed in the first proof of Theorem \ref{OpenQuad}.
+Now we proceed with the computations performed in the first proof of Theorem \ref{openQuad}.
 
 \textbf{Step 1:}
 
 Roots of $\G = v$ in $y$: $\ y^+(x, v),\ y^-(x, v)$.
 
-We can see that the denominator only cancels in 0. This is checked with Python (Appendix \ref{BB}). {\tt roots} function returns the roots with its multiplicity:
+We can see that the denominator only cancels in 0. This is checked with Python (Appendix \ref{BB}). The method {\tt roots} returns the roots with its multiplicity:
 \begin{sage}
 var('v')
 y_1, y_2 = solve(G-v, y)
@@ -3163,8 +3200,8 @@ show(gamma_2_aux)
 
 And the limit is:
 \begin{sage}
-show('lim de gamma+ cuando x -> 0 es: ', lim(gamma_1_aux, x = 0))
-show('lim de gamma- cuando x -> 0 es: ', lim(gamma_2_aux, x = 0))
+show('lim de gamma+ cuando x -> 0 es: ',lim(gamma_1_aux, x = 0))
+show('lim de gamma- cuando x -> 0 es: ',lim(gamma_2_aux, x = 0))
 \end{sage}
 
 Now we are going to see how the numerator looks like for $\gamma^+ _v$ and $\gamma^- _v$ when $x:=0$.
@@ -3201,7 +3238,7 @@ gammas = [plot(gamma_1_num(x, c)/gamma_den(x, c), xmin=-10, xmax=10, ymin=0, yma
 animate(gammas)
 \end{sage}
 
-We proceed to study know the map
+We proceed to study now the map
 $$v(x) = \frac{{\left(x + 1\right)^2} x^{2}}{{\left(x^{3} + 1\right)}^{2} + x^{2}}.$$
 \begin{sage}
 uve(x) = (x**2 * (x + 1)**2) / (x**2 + (x**3 + 1)**2)
@@ -3234,14 +3271,14 @@ show('Delta(x, 0.28^2) = ', Delta(x, 0.28**2).expand())
 plot(Delta(x, 0.28**2), xmin=-3, xmax=0, ymin=0, ymax=0.2)
 \end{sage}
 
-Idea of what we want to proof in \textbf{Step 4}.
+Idea of what we want to prove in \textbf{Step 4}.
 \begin{sage}
 gamma_what(x) = F(x, y_2(x, 0.1)).simplify_full()
 idea = plot(gamma_what, (x, -4, 0),ymin=0,ymax=3.5,color='green',legend_label='$\gamma^-(x)$',ticks=[[0],[0]]) +\
     text("]",(-1.16,0), fontsize=20, color='purple') +\
     text("<",(-4,-0.004), fontsize=20, color='purple') +\
     text("$N_v$",(-1.15,-0.25),fontsize=15,color='purple') +\
-    line([(-4,-0.004), (-1.15, 0)], thickness=2, color='purple') +\
+    line([(-4,-0.004),(-1.15, 0)],thickness=2,color='purple') +\
     line([(-1.14,gamma_what(-1.14)), (-1.14, 0)], thickness=1, color='purple', linestyle='--') +\
     circle((-1.14,gamma_what(-1.14)), 0.03, fill=True, rgbcolor='purple') +\
     line([(-1.14,gamma_what(-1.14)), (0, gamma_what(-1.14))], thickness=1, color='purple', linestyle='--') +\
@@ -3276,7 +3313,7 @@ N_delta.set_legend_options(loc=(0.8, 0.1), font_size=18, borderpad=0.4, shadow=F
 N_delta.save('ch1_13_comp.svg')
 \end{sage}
 
-Now we check that $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive for $w \in (0, 0.28)$ (or in $v \in (0, 0.28^2)$).
+Now we check that $\Delta(N_{w^2}, w^2)$ and $\Delta(\delta_{w^2}, w^2)$ are positive for $w\in(0, 0.28)$, that is $v\in (0, 0.28^2)$.
 \begin{sage}
 Delta_N_delta = plot(Delta(N, v),(x,0,0.28**2),ymin=0,ymax=15,color='blue',legend_label='$\Delta(N_{v},\ v)$') +\
     plot(Delta(delta, v)/v**(5/2), (x, 0, 0.28**2), ymin=0, ymax=15, color='green', legend_label='$\Delta(\delta_{v},\ v)/v^{5/2}$', figsize=7, fontsize=13)
@@ -3361,7 +3398,7 @@ h_2(w) = C(delta(w**2)).simplify().expand()
 And check that the maps $$L(w) = \frac{w^2h_2f_1 - f_2h_1}{w^2}, \quad g_1(w) , \quad K(w) = \frac{-g_2}{w^3}$$
 are positive for $w \in (0, 0.28)$.
 \begin{sage}
-L(w) = ((w**2 * h_2 * f_1 - f_2 * h_1) / w**4).simplify().expand()
+L(w) = ((w**2*h_2*f_1 - f_2*h_1) / w**4).simplify().expand()
 L_plot = plot(L, (x, 0, 0.28), ymin=0, ymax=1, rgbcolor=(0,1,0), legend_label='$L(w)$',fontsize=18,thickness=2)
 L_plot.axes_labels(['$w$', ' '])
 L_plot.set_legend_options(loc=(0.75, 0.9), font_size=25, borderpad=0.4)
@@ -3460,15 +3497,15 @@ t_array_2 = np.linspace(1, 5, 120)
 
 Then, compute the light blue lines from Figure \ref{fig:Bvert}:
 \begin{sage}
-slice_vert_B_1 = [line([(x_0, x_0), (x_0, 5)], color='lightblue') for x_0 in t_array_1]
+slice_vert_B_1 = [line([(x_0, x_0), (x_0, 5)],color='lightblue') for x_0 in t_array_1]
 slice_vert_B_2 = [line([(x_0, 1 / x_0), (x_0, 5)], color='lightblue') for x_0 in t_array_2]
 \end{sage}
 
 And draw the whole picture:
 \begin{sage}
 slice_vert_B = sum(slice_vert_B_1) + sum(slice_vert_B_2) +\
-    line([(1/3, 1/3), (1/3, 5)], color='green', thickness=1.5) + \
-    line([(1/3, 1/3), (1/3, 0)], color='green', linestyle='-.') +\
+    line([(1/3, 1/3), (1/3, 5)],color='green',thickness=1.5)+ \
+    line([(1/3, 1/3), (1/3, 0)],color='green',linestyle='-.')+\
     line([(3.25, 1/3.25), (3.25, 5)], color='red', thickness=1.5) +\
     line([(3.25, 1/3.25), (3.25, 0)], color='red', linestyle='-.') +\
     line([(0, 0), (1, 1)]) +\
@@ -3490,9 +3527,9 @@ slice_hor_B_2 = [line([(0, y_0), (5, y_0)], color='lightblue') for y_0 in t_arra
 And the whole picture:
 \begin{sage}
 slice_hor_B = sum(slice_hor_B_0) + sum(slice_hor_B_1) + sum(slice_hor_B_2) +\
-    line([(0, 3.25), (5, 3.25)], color='green', thickness=1.5) + \
+    line([(0, 3.25), (5, 3.25)], color='green',thickness=1.5)+ \
     line([(0, 0.6), (0.6, 0.6)], color='red', thickness=1.5) +\
-    line([(1/0.6, 0.6), (5, 0.6)], color='red', thickness=1.5) +\
+    line([(1/0.6, 0.6), (5, 0.6)], color='red', thickness=1.5)+\
     line([(0, 0), (1, 1)]) +\
     plot(1/x, (x, 1, 5), aspect_ratio=1) +\
     text('$y_0$', (-0.2, 3.3), fontsize=20,color='green')+\
@@ -3505,9 +3542,7 @@ show(slice_hor_B)
 \end{section}
 
 \begin{section}{Computations related to Chapter 5}
-We need to import {\tt numpy} and define the polynomials we will be using. 
-
-First we define the polynomial maps from the first proof.
+We need to import {\tt numpy} and define the polynomials we will be using. We define first the polynomial maps from the first proof.
 Note that the final map is $P(Q(H(\x, \y)))$, but we obtain it as the expanded composition, defined as {\tt P(G(H))}, and as a fully expanded composition, which is {\tt P\_aux}.
 \begin{sage}
 Q(x, y) = (x, y - x - 1)
@@ -3526,15 +3561,18 @@ Now, the ones from the second one: the short proof.
 \begin{sage}
 FF_1(x, y) = (x*y - 1)**2 + x**2
 FF_2(x, y) = (x*y - 1)**2 + y**2
-FF(x, y) = (FF_1, FF_2); show('FF = (FF_1, FF_2): R^2 -> R^2'); show(FF)
+FF(x, y) = (FF_1, FF_2)
+show('FF = (FF_1, FF_2): R^2 -> R^2'); show(FF)
 
 GG_1(x, y) = x
 GG_2(x, y) = y * (x*y - 2)**2 + x * (x*y - 1)**2
-GG(x, y) = (GG_1, GG_2); show('GG = (GG_1, GG_2): R^2 -> R^2'); show(GG)
+GG(x, y) = (GG_1, GG_2)
+show('GG = (GG_1, GG_2): R^2 -> R^2'); show(GG)
 
 HH_1(x, y) = x * (x*y - 2)**2 + 1/2*x*y**2
 HH_2(x, y) = y
-HH(x, y) = (HH_1, HH_2); show('HH = (HH_1, HH_2): R^2 -> R^2'); show(HH)
+HH(x, y) = (HH_1, HH_2)
+show('HH = (HH_1, HH_2): R^2 -> R^2'); show(HH)
 \end{sage}
 And we define {\tt ff} to be the full expansion of the composition, grouping on the $y$ variable:
 \begin{sage}
@@ -3937,7 +3975,7 @@ time f_2gamma = [f_2(*k) for k in gammazeroTen]
 time f_2delta = [f_2(*k) for k in deltazeroTen]
 \end{sage}
 
-Plots of $F(\gamma)$ and $F(\delta)$:
+Plots of $F(\gamma_\lambda)$ and $F(\delta_\mu)$:
 \begin{sage}
 myplot = line(f_2gamma, color='purple', axes_labels=['$x$', '$y$']) +\
     line(f_2delta,color='orange',axes_labels=['$x$','$y$'])
@@ -3975,8 +4013,10 @@ circle_list = []
 for i in range(0,100000):
     rho = RealField().random_element(0,1)
     theta = RealField().random_element(0,2*pi)
-    circle_cloud = circle_cloud + [point((rho*cos(theta), rho*sin(theta)))]
-    circle_list = circle_list + [(rho*cos(theta), rho*sin(theta))]
+    circle_cloud = circle_cloud + [point((rho*cos(theta), 
+	rho*sin(theta)))]
+    circle_list = circle_list + [(rho*cos(theta), 
+	rho*sin(theta))]
 \end{sage}
 
 Plot it:
@@ -4027,8 +4067,10 @@ circle_list = []
 for i in range(0,100000):
     rho = RealField().random_element(0,100)
     theta = RealField().random_element(0,2*pi)
-    circle_cloud = circle_cloud + [point((rho*cos(theta), rho*sin(theta)))]
-    circle_list = circle_list + [(rho*cos(theta), rho*sin(theta))]
+    circle_cloud = circle_cloud + [point((rho*cos(theta), 
+	rho*sin(theta)))]
+    circle_list = circle_list + [(rho*cos(theta), 
+	rho*sin(theta))]
 \end{sage}
 
 Image through $g$:
@@ -4096,7 +4138,7 @@ time sigmaminusTenTen = [sigma(*k) for k in minusTenTen]
 time tauminusTenTen = [tau(*k) for k in minusTenTen]
 \end{sage}
 
-Plots of the curves $\sigma$ and $\tau$ for $(s,a)\in [-10,10]\times[-10,10]$ and 1000 points on each side:
+Plots of the curves $\sigma_\lambda$ and $\tau_\mu$ for $(s,a)\in [-10,10]\times[-10,10]$ and 1000 points on each side:
 \begin{sage}
 myplot = line(sigmaminusTenTen, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
     line(tauminusTenTen, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
@@ -4110,7 +4152,7 @@ time newMap_1sigma = [newMap_1(*k) for k in sigmaminusTenTen]
 time newMap_1tau = [newMap_1(*k) for k in tauminusTenTen]
 \end{sage}
 
-Plots of $\mathcal{N}_1(\sigma)$ and $\mathcal{N}_1(\tau)$:
+Plots of $\mathcal{N}_1(\sigma_\lambda)$ and $\mathcal{N}_1(\tau_\mu)$:
 \begin{sage}
 myplot = line(newMap_1sigma, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
     line(newMap_1tau, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
@@ -4130,7 +4172,7 @@ time newMap_2sigma = [newMap_2(*k) for k in sigmaminusTenTen]
 time newMap_2tau = [newMap_2(*k) for k in tauminusTenTen]
 \end{sage}
 
-Plots of $\mathcal{N}_2(\sigma)$ and $\mathcal{N}_2(\tau)$:
+Plots of $\mathcal{N}_2(\sigma_\lambda)$ and $\mathcal{N}_2(\tau_\mu)$:
 \begin{sage}
 myplot = line(newMap_2sigma, rgbcolor=(0,0.8,0.2), axes_labels=['$x$', '$y$']) +\
     line(newMap_2tau, rgbcolor=(0,0.4,1), axes_labels=['$x$', '$y$'])
@@ -4181,7 +4223,7 @@ show(expand(FFF[1]).collect(y))
 First new map $\mathcal{N}_1$:
 \begin{itemize}
 \item Total degree: 16.
-\item Total number of monomials: 24 .
+\item Total number of monomials: 24.
 \end{itemize}
 \begin{sage}
 show(expand(newMap_1[0]).collect(y))
@@ -4211,56 +4253,5 @@ show(expand(newMap_3[1]).collect(y))
 \end{section}
 
 \end{chapter}
-
-\begin{thebibliography}{ABR}
-
-\bibitem[ABR]{abr} C. Andradas, L. Br\"ocker, J.M. Ruiz: Constructible 
-sets in real geometry. \em Ergeb. Math. \em{\bf 33}. Berlin, Heidelberg, 
-New York: Springer Verlag, (1996).
-
-\bibitem[BCR]{bcr} J. Bochnak, M. Coste, M.-F. Roy: G\'eom\'etrie
-alg\'ebrique r\'eelle. \em Ergeb. Math. \em {\bf 12}, Springer-Verlag,
-Berlin, Heidelberg, New York (1987).
-
-\bibitem[B]{b} M. Berger: Geometry. I. \em Universitext\em. Springer-Verlag, Berlin: 1987.
-
-\bibitem[F]{fe} J.F. Fernando: Polynomial images of $\R^n$. {\em Reelle algebraische und analytische Geometrie}, March, 17$^{\rm th}$ -- 23$^{\rm rd}$ (2002), Oberwolfach.
-
-\bibitem[F1]{f1} J.F. Fernando: On Nash images of Euclidean spaces. Submitted, arXiv:1503.07567.
-
-\bibitem[FG]{fg} J.F. Fernando, J.M. Gamboa: Polynomial images of $\R^n$. {\em J. Pure Appl. Algebra}, {\bf179} (2003), 241--254.
-
-
-\bibitem[FGU]{fgu} J.F. Fernando, J.M. Gamboa, C. Ueno: The open quadrant problem:
-A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesinos. Departamento de Geometr\'ia y Topolog\'ia. Facultad de CC. Matem\'aticas UCM, pp. 337-350, (2016).
-
-\bibitem[FU]{fu} J.F. Fernando, C. Ueno: A short proof for the open quadrant problem.
-\textit{Preprint RAAG} (2014, submitted to MEGA 2015), 8 pages.
-
-\bibitem[G]{g} J.M. Gamboa: Algebraic images of the real plane. \textit{Reelle algebraische Geometrie}, June,
-$10^{\text{th}}-16^{\text{th}}$ (1990), Oberwolfach.
-
-\bibitem[H]{h} A. Harnack: \"Uber die Vielheiligkeit der ebenen algebraischen Kurven. {\em Math. Ann.} {\bf10} (1876), 189--198.
-
-\bibitem[P]{p} S. Pinchuk: A counterexample to the real Jacobian Conjecture, \em Math. Z.
-\em {\bf 217} (1994), 1--4.
-
-\bibitem[T]{ta} A. Tarski: A decisi\'on method for elementary algebra and geometry. Prepared for publication by J.C.C. Mac Kinsey, Berkeley: 1951.
-
-\bibitem[U]{u} C. Ueno: Im\'agenes polin\'omicas y regulares de espacios eucl\'\i deos. {\em Ph.D. Thesis UCM} (2012).
-
-\bibitem[W]{w} R.J. Walker: \em Algebraic curves. \em Berlin, Heidelberg, 
-New York: Springer Verlag, (1978).
-
-\bibitem[M]{m} W. Massey: A Basic Course in Algebraic Topology, \emph{Graduate Texts in Mathematics}, \textbf{\text{127}}.
-Springer-Verlag, New York: 1991.
-
-\bibitem[FU1]{fu1} J.F. Fernando, C. Ueno: On the open quadrant as a polynomial image of $\R^2$ (revisited).
-
-\bibitem[A]{a} F. S. Acton: \textit{Numerical Methods That Work}, 2\textsuperscript{nd} printing. Washington, DC: Math. Assoc. Amer., 1990. 
-
-
-\end{thebibliography}
-
 
 \end{document}
