@@ -1,27 +1,6 @@
 \documentclass{beamer}
 
-%\setbeamertemplate{theorems}[numbered]
 \usepackage{iipr_beamer}
-\usetheme{Madrid}
-
-\makeatletter
-\setbeamertemplate{footline}
-{
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertsection
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertsubsection
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{1em}
-    \insertframenumber{} / \inserttotalframenumber\hspace*{3ex} 
-  \end{beamercolorbox}}%
-  \vskip0pt%
-}
-\makeatother
 
 \title{\large{\textsc{Complexity Analysis of Polynomial Algorithms}}}
 \subtitle{\textsc{Final Degree Project}}
@@ -42,27 +21,6 @@ Ignacio Iker Prado Rujas}
 }
 \date{July 13\textsuperscript{th}, 2016}
 
-\setbeamertemplate{blocks}[rounded][shadow=true]
-\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
-\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white!40!black,right=black]
-\beamertemplatenavigationsymbolsempty %Supress navigation bar
-
-\newcommand{\beginbackup}{
-   \newcounter{framenumbervorappendix}
-   \setcounter{framenumbervorappendix}{\value{framenumber}}
-}
-\newcommand{\backupend}{
-   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
-   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
-}
-
-
-%\usefonttheme{professionalfonts} % using non standard fonts for beamer
-\usefonttheme{serif}
-
-\setbeamercolor{block title}{bg=black!10!blue!90} % Color of the block
-\setbeamertemplate{section in toc shaded}[default][70] %Shaded table of contents
-
 \begin{document}
 
 \frame{\titlepage}
@@ -75,7 +33,7 @@ Ignacio Iker Prado Rujas}
 
 \subsection{The problem}
 \begin{frame}
-\frametitle{Introduction to polynomial images of $R^n$}
+\frametitle{The problem and its origin}
 $\cdot$ Let $R$ be a real closed field.\vspace{0.3cm}
 
 \begin{block}{Theorem (Tarski-Seidenberg, 1951)}
@@ -311,21 +269,21 @@ Note that $\FFF = f_2 \circ f_1$, so we have that $\FFF\big(\R^2\big) = \Qu$.
 \subsection{Some new candidates}
 \begin{frame}
 \frametitle{Some new candidates}
-$\star$ Polynomial maps $\R^2\to\R^2$ whose images ``should be" $\Qu$:
+$\star$ New polynomial maps $\R^2\to\R^2$ whose images ``should be" $\Qu$:
 
 \begin{align*}
-\cdot\ \mathcal{N}_1(x,y):=\big(&x^4y^4+(x^2y+xy^2-1)^2(y^2+1),\\
-&x^4y^4+(x^2y+xy^2-1)^2(x^2+1)\big).
+\cdot\ \mathcal{N}_1(\x,\y):=\big(&\x^4\y^4+(\x^2\y+\x\y^2-1)^2(\y^2+1),\\
+&\x^4\y^4+(\x^2\y+\x\y^2-1)^2(\x^2+1)\big).
 \end{align*}
 
 \begin{align*}
-\cdot\ \mathcal{N}_2(x,y):=\big(&x^2y^2+(x^2y+xy^2-1)^2(y^2+1),\\
-&x^2y^2+(x^2y+xy^2-1)^2(x^2+1)\big).
+\cdot\ \mathcal{N}_2(\x,\y):=\big(&\x^2\y^2+(\x^2\y+\x\y^2-1)^2(\y^2+1),\\
+&\x^2\y^2+(\x^2\y+\x\y^2-1)^2(\x^2+1)\big).
 \end{align*}
 
 \begin{align*}
-\cdot\ \mathcal{N}_3(x,y):=\big(&x^6y^4+(x^2y+xy^2-1)^2(y^2+1),\\
-&x^4y^6+(x^2y+xy^2-1)^2(x^2+1)\big).
+\cdot\ \mathcal{N}_3(\x,\y):=\big(&\x^6\y^4+(\x^2\y+\x\y^2-1)^2(\y^2+1),\\
+&\x^4\y^6+(\x^2\y+\x\y^2-1)^2(\x^2+1)\big).
 \end{align*}
 
 \end{frame}
@@ -347,7 +305,7 @@ $\star$ \textbf{Optimal multiplicative complexity:} Minimum number of non-scalar
 & Total degree & \begin{tabular}[c]{@{}c@{}}Total number\\of monomials\end{tabular} & \begin{tabular}[c]{@{}c@{}}Non-escalar\\complexity\end{tabular}\\ \hline \hline
 $g = \P\circ Q \circ H$ & 56 & 167 & 13 \\ \hline
 $f=\HH\circ\GG\circ\FF$ & 72 &  350 & 11\\ \hline
-$\FFF = f_2 \circ f_1$ & 28 & 22 & 11\\ \hline	
+$\FFF = f_2 \circ f_1$ & 28 & 22 & 11\\ \hline \hline
 $\mathcal{N}_1$&16&24&10 \\ \hline
 $\mathcal{N}_2$&16&26&8 \\ \hline
 $\mathcal{N}_3$&20&26&13 \\	
@@ -393,7 +351,7 @@ $\PP_6\! \leadsto\! [-10, 10]^2$ & 1633.50 s & 1640.01 s & 625.11 s \\
 \end{frame}
 
 \begin{frame}
-\frametitle{Uniformly distributed points in $[-10, 10] \times [-10, 10]$}
+\frametitle{Grid of $4\cdot 10^6$ points in $[-10, 10] \times [-10, 10]$}
 
 \begin{figure}
 \vspace{-0.2cm}
@@ -404,7 +362,7 @@ $\PP_6\! \leadsto\! [-10, 10]^2$ & 1633.50 s & 1640.01 s & 625.11 s \\
 \hspace{0.8cm}
 \begin{subfigure}{.38\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_20_P6prime.png}
-\vspace{-0.1cm}\caption{$g(\PP_6)\leadsto 1640.01$ s.}
+\vspace{-0.1cm}\caption{$f(\PP_6)\leadsto 1640.01$ s.}
 \end{subfigure}\\[1ex]
 
 %\vspace{-0.1cm}
