@@ -91,7 +91,7 @@ Let $n\ge 2$. Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the open 
 \end{block} 
 \vspace{0.4cm}
 
-\begin{block}{Theorem 1.11}
+\begin{block}{Theorem 1.11 (`Open quadrant $\Qu$ problem')}
 The open quadrant $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$.
 \end{block}
 \end{frame}
@@ -103,6 +103,37 @@ The open quadrant $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$.
 \end{frame} 
 
 \subsection{The first proof: $g:=\P\circ Q\circ H$}
+\begin{frame}
+\frametitle{The first proof: $g:=\P\circ Q\circ H$}
+$\star$ If $f:\R^2\to\R^2$ verifies that $f\big(\R^2\big)=\Qu$ then:
+\begin{center}
+\begin{tabular}{rr}
+$\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad \quad$ ($\clubsuit$)
+\end{tabular}
+\end{center}
+
+$\star$ To verify ($\clubsuit$) we approach the positive half-axes with certain families of curves:
+$$
+\alpha_{\lambda}(s):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
+\quad \text{ and } \quad
+\beta_{\mu}(s):=\left(\frac{1+b_{\mu }s}{s},s^{3}\right).
+$$
+
+$\star$ The map $\P := (\F, \G)$ defined as:
+\begin{equation*}\label{eq:firstMap}
+\boxed{
+\begin{aligned}
+\F({\tt x},{\tt y})&:=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2, \\
+\G({\tt x},{\tt y})&:=(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2, \\
+\end{aligned}
+}
+\end{equation*}
+behaves well along those curves, namely:
+$$
+\lim_{s\rightarrow 0} \P(\alpha_{\lambda}(s))=(\lambda^2,0)\qquad \text{and} \qquad \lim_{s\rightarrow 0} \P(\beta_{\mu}(s))=(0,\mu^2).
+$$
+\end{frame}
+
 \begin{frame}
 \frametitle{The first proof: $g:=\P\circ Q\circ H$} 
 $\star$ The map $H:\R^2\to\R^2$ transforms $\R^2$ in $\R^2\setminus \set{(0,0),(-1,0)}$:
@@ -211,6 +242,37 @@ $$
 \end{frame}
 
 \subsection{The topological proof: $\FFF=f_2\circ f_1$}
+\begin{frame}
+\frametitle{The topological proof: $\FFF=f_2\circ f_1$}
+$\star$ The map $\FFF:= (\FFF_1, \FFF_2):\R^2\to\R^2$ defined as:
+\begin{equation*}\label{eq:thirdMap}
+\boxed{
+\begin{aligned}
+\FFF_1({\tt x}, {\tt y}) := ({\tt x}^2{\tt y}^4+{\tt x}^4{\tt y}^2-{\tt y}^2-1)^2+{\tt x}^6{\tt y}^4,\\
+\FFF_2(\x, \y) := ({\tt x}^6{\tt y}^2+{\tt x}^2{\tt y}^2-{\tt x}^2-1)^2+{\tt x}^6{\tt y}^4,
+\end{aligned}
+}
+\end{equation*}
+can be expressed as $\FFF = f_2 \circ f_1$, with:
+
+\begin{align*}
+&f_1:\R^2\to\R^2,\quad (x,y)\mapsto\big(x^2,\,y^2\big),\\
+&f_2:\R^2\to\R^2,\quad (x,y)\mapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
+\end{align*}
+
+$\star$ The map $f_1(\x,\y):=\big(\x^2,\,\y^2\big)$ verifies $f_1\big(\R^2\big)=\overline{\Qu}:=\set{x\ge 0,y\ge 0}$,
+so given $a,b>0$, we must provide $x,y\ge0$ such that $f_2(x,y) = (a,b)$, or:
+\begin{equation}\label{eq:systemF}
+\left\{
+\begin{aligned}
+f_{2,1}(x,y)=a\\
+f_{2,2}(x,y)=b\\
+\end{aligned}
+\right.
+\end{equation}
+
+\end{frame}
+
 \begin{frame}
 \frametitle{The topological proof: $\FFF=f_2\circ f_1$} 
 $\star$ The map $f_1(\x,\y):=\big(\x^2,\,\y^2\big)$ verifies $f_1\big(\R^2\big)=\overline{\Qu}:=\set{x\ge 0,y\ge 0}$.
@@ -334,8 +396,8 @@ $\PP_6\! \leadsto\! [-10, 10]^2$ & 1633.50 s & 1640.01 s & 625.11 s \\
 \begin{figure}
 \vspace{-0.25cm}
 \begin{subfigure}{.32\linewidth}\centering
-\includegraphics[width=1\textwidth]{plots/ch5_08_P4prime.png}
-\caption{$g(\PP_4)$.}
+\includegraphics[width=1\textwidth]{plots/ch5_04_P3.png}
+\caption{$g(\PP_3)$.}
 \end{subfigure}
 \begin{subfigure}{.32\linewidth}\centering
 \includegraphics[width=1\textwidth]{plots/ch5_05_P3.png}
