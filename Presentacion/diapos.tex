@@ -1,6 +1,7 @@
 \documentclass{beamer}
 
 \usepackage{iipr_beamer}
+\usepackage{animate}
 
 \title{\large{\textsc{Complexity Analysis of Polynomial Algorithms}}}
 \subtitle{\textsc{Final Degree Project}}
@@ -91,7 +92,7 @@ Let $n\ge 2$. Given independent linear forms $h_1,\dots,h_r$ of $R^n$, the open 
 \end{block} 
 \vspace{0.4cm}
 
-\begin{block}{Theorem 1.11 (`Open quadrant $\Qu$ problem')}
+\begin{block}{Theorem 1.11 (Open quadrant $\Qu$ problem)}
 The open quadrant $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$.
 \end{block}
 \end{frame}
@@ -105,14 +106,15 @@ The open quadrant $\Qu:=\{x>0,y>0\}$ is a polynomial image of $R^2$.
 \subsection{The first proof: $g:=\P\circ Q\circ H$}
 \begin{frame}
 \frametitle{The first proof: $g:=\P\circ Q\circ H$}
-$\star$ If $f:\R^2\to\R^2$ verifies that $f\big(\R^2\big)=\Qu$ then:
+$\star$ If $f:\R^2\to\R^2$ verifies that $f\big(\R^2\big)=\Qu$ then: \vspace{-0.25cm}
 \begin{center}
 \begin{tabular}{rr}
-$\qquad \qquad\quad$ \fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\quad \quad$ ($\clubsuit$)
+\fbox{\textit{The closure of its image must contain the positive half-axes.}} & $\ $ ($\clubsuit$)
 \end{tabular}
 \end{center}
+\vspace{0.2cm}
 
-$\star$ To verify ($\clubsuit$) we approach the positive half-axes with certain families of curves:
+$\star$ To verify ($\clubsuit$) we approach the positive half-axes with certain families of curves: \vspace{-0.1cm}
 $$
 \alpha_{\lambda}(s):=\left(s,\frac{1+a_{\lambda }s}{s}\right)
 \quad \text{ and } \quad
@@ -134,30 +136,60 @@ $$
 $$
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		GIFS
+%\begin{comment}
+\begin{frame}
+\frametitle{Maps $y^+(\x,v)$ and $y^-(\x,v)$ from the proof for $v\in[0,5]$}
+\vspace{-0.3cm}
+\begin{center}
+%\animategraphics[loop,totalheight=8cm]{12}{prueba-}{0}{99}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{21}{i=0+1}{
+	\includegraphics{gifs/yes-\i.png}
+	}
+	\newframe*
+	\multiframe{51}{i=20+1}{
+	\includegraphics{gifs/yes-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Maps $\gamma_v^+(\x)$ and $\gamma_v^-(\x)$ from the proof for $v\in[0,5]$}
+\vspace{-0.3cm}
+\begin{center}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{20}{i=1+1}{
+	\includegraphics{gifs/gammas-\i.png}
+	}
+	\newframe*
+	\multiframe{69}{i=20+1}{
+	\includegraphics{gifs/gammas-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \frametitle{The first proof: $g:=\P\circ Q\circ H$} 
 $\star$ The map $H:\R^2\to\R^2$ transforms $\R^2$ in $\R^2\setminus \set{(0,0),(-1,0)}$:
 $$
 H(\x,\y) := \big(\x\y+1,\ \x^2(\x\y+1)(\x\y+2)+\y\big).
-$$	
- 
+$$
+\vspace{0.01cm}
 
 $\star$ The map $Q:\R^2\to\R^2$ maps $(0,0) \mapsto (0,-1)$ and $(-1,0) \mapsto (-1,0)$: 
 $$
 Q(\x,\y)= (\x,\y-\x-1).
 $$
- 
+\vspace{0.01cm}
 
-$\star$ The map $\P := (\F, \G)$ transforms $\R^2$ into $\Qu \sqcup \set{(1,0),(0,1)}$ and $\P^{-1}\big(\set{(1,0),(0,1)}\big) = \set{(0,-1),(-1,0)}$:
-\begin{equation*}\label{eq:firstMap}
-\boxed{
-\begin{aligned}
-\F({\tt x},{\tt y})&:=(1-{\tt x}^3{\tt y}+{\tt y}-{\tt x}{\tt y}^2)^2+({\tt x}^2{\tt y})^2, \\
-\G({\tt x},{\tt y})&:=(1-{\tt x}{\tt y}+{\tt x}-{\tt x}^4{\tt y})^2+({\tt x}^2{\tt y})^2. \\
-\end{aligned}
-}
-\end{equation*}
- 
+$\star$ The map $\P := (\F, \G)$ transforms $\R^2$ into $\Qu \sqcup \set{(1,0),(0,1)}$ and $\P^{-1}\big(\set{(1,0),(0,1)}\big) = \set{(0,-1),(-1,0)}$.
+\vspace{0.5cm}
 
 $\star$ Then $g\big(\R^2\big) = \Qu$, where:
 $$
@@ -254,26 +286,25 @@ $\star$ The map $\FFF:= (\FFF_1, \FFF_2):\R^2\to\R^2$ defined as:
 }
 \end{equation*}
 can be expressed as $\FFF = f_2 \circ f_1$, with:
-
 \begin{align*}
-&f_1:\R^2\to\R^2,\quad (x,y)\mapsto\big(x^2,\,y^2\big),\\
-&f_2:\R^2\to\R^2,\quad (x,y)\mapsto\big((xy^2+x^2y-y-1)^2+x^3y^2,\,(x^3y+xy-x-1)^2+x^3y^2\big).
+&f_1(\x,\y):=\big(\x^2,\,\y^2\big),\\
+&f_2(\x,\y):=\big((\x\y^2+\x^2\y-\y-1)^2+\x^3\y^2,\,(\x^3\y+\x\y-\x-1)^2+\x^3\y^2\big).
 \end{align*}
 
-$\star$ The map $f_1(\x,\y):=\big(\x^2,\,\y^2\big)$ verifies $f_1\big(\R^2\big)=\overline{\Qu}:=\set{x\ge 0,y\ge 0}$,
-so given $a,b>0$, we must provide $x,y\ge0$ such that $f_2(x,y) = (a,b)$, or:
-\begin{equation}\label{eq:systemF}
+$\star$ The map $f_1(\x,\y)$ verifies $f_1\big(\R^2\big)=\overline{\Qu}:=\set{x\ge 0,y\ge 0}$,
+so given $a,b>0$, we must provide $x,y\ge0$ such that $f_2(x,y) = (a,b)$, namely:
+\begin{equation*}
 \left\{
 \begin{aligned}
-f_{2,1}(x,y)=a\\
-f_{2,2}(x,y)=b\\
+f_{2,1}(x,y)=a,\\
+f_{2,2}(x,y)=b.\\
 \end{aligned}
 \right.
-\end{equation}
+\end{equation*}
 
 \end{frame}
 
-\begin{frame}
+\begin{comment}
 \frametitle{The topological proof: $\FFF=f_2\circ f_1$} 
 $\star$ The map $f_1(\x,\y):=\big(\x^2,\,\y^2\big)$ verifies $f_1\big(\R^2\big)=\overline{\Qu}:=\set{x\ge 0,y\ge 0}$.
 \vspace{0.5cm}
@@ -296,7 +327,7 @@ $\star$ The map $\FFF:= (\FFF_1, \FFF_2):\R^2\to\R^2$ defined as:
 }
 \end{equation*}
 Note that $\FFF = f_2 \circ f_1$, so we have that $\FFF\big(\R^2\big) = \Qu$.
-\end{frame}
+\end{comment}
 
 \begin{frame}
 \frametitle{The topological proof: The key step}
@@ -413,7 +444,7 @@ $\PP_6\! \leadsto\! [-10, 10]^2$ & 1633.50 s & 1640.01 s & 625.11 s \\
 \end{frame}
 
 \begin{frame}
-\frametitle{Grid of $4\cdot 10^6$ points in $[-10, 10] \times [-10, 10]$}
+\frametitle{Grid of $4\cdot 10^6$ points in $[-10, 10] \times [-10, 10]$: $g,f,\FFF$}
 
 \begin{figure}
 \vspace{-0.2cm}
@@ -441,13 +472,41 @@ $\PP_6\! \leadsto\! [-10, 10]^2$ & 1633.50 s & 1640.01 s & 625.11 s \\
 \end{frame}
 
 \begin{frame}
+\frametitle{Grid of $4\cdot 10^6$ points in $[-10, 10] \times [-10, 10]$: $\mathcal{N}_1, \mathcal{N}_2, \mathcal{N}_3$}
+
+\begin{figure}
+\vspace{-0.2cm}
+\begin{subfigure}{.38\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_new1_P6.png}
+\vspace{-0.1cm}\caption{$\mathcal{N}_1(\PP_6)\leadsto 610.06$ s.}
+\end{subfigure}
+\hspace{0.8cm}
+\begin{subfigure}{.38\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_new1_P6prime.png}
+\vspace{-0.1cm}\caption{$\mathcal{N}_1(\PP_6)\leadsto 610.06$ s.}
+\end{subfigure}\\[1ex]
+
+%\vspace{-0.1cm}
+\begin{subfigure}{.38\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_new2_P6.png}
+\vspace{-0.1cm}\caption{$\mathcal{N}_2(\PP_6)\leadsto 624.18$ s.}
+\end{subfigure}
+\hspace{0.8cm}
+\begin{subfigure}{.38\linewidth}\centering
+\includegraphics[width=1\textwidth]{plots/ch5_new3_P6.png}
+\vspace{-0.1cm}\caption{$\mathcal{N}_3(\PP_6)\leadsto 615.09$ s.}
+\end{subfigure}
+\end{figure}
+\end{frame}
+
+\begin{frame}
 \frametitle{Randomly distributed points contained in a disc}
 \begin{table}[ht!]
 \begin{center}
-\begin{tabular}{c || c | c | c}
-& $g = \P\circ Q \circ H$ & $f=\HH\circ\GG\circ\FF$ & $\FFF$ \\ \hline \hline
-${\mathbb D}_1$ & 131.97 s & 99.56 s & 32.02 s \\ \hline
-${\mathbb D}_{100}$ & 131.62 s & 100.84 s & 32.36 s \\
+\begin{tabular}{c || c | c | c | c | c | c}
+& $g\! =\! \P\!\circ\! Q \!\circ\! H$ & $f\!=\!\HH\!\circ\!\GG\!\circ\!\FF$ & $\FFF$ & $\mathcal{N}_1$ & $\mathcal{N}_2$ & $\mathcal{N}_3$ \\ \hline \hline
+${\mathbb D}_1$ & 131.97 s & 99.56 s & 32.02 s  & 39.61 s & 39.31 s & 39.13 s \\ \hline
+$\!{\mathbb D}_{100}\!$ & 131.62 s & 100.84 s & 32.36 s & 39.80 s& 38.61 s & 39.78 s \\
 \end{tabular}
 \end{center}
 \end{table}
