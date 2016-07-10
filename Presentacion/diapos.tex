@@ -63,16 +63,16 @@ Characterize the semialgebraic subsets of $R^n$ that are polynomial images of so
 \item $(0,+\infty)$ is the image of $f:\R^2\to\R,\, (x,y)\mapsto (xy-1)^2+y^2.$    
 \vspace{0.3cm}
 
-\item $S:=\set{x^2+y^2>1}\subset R^2$ \textbf{is not} a polynomial image of $R^2$.  
+\item $S:=\set{x^2+y^2>1}\subset \R^2$ \textbf{is not} a polynomial image of $\R^2$.
 \vspace{0.3cm}
 
 \item $\H:=\set{y>0}\subset\R^2$ is the image of the polynomial map $$\R^2\to\R^2,\, (x,y)\mapsto \big(y(xy-1),(xy-1)^2+x^2\big).$$  
 \vspace{-0.4cm}
 
-\item $S_1:=\set{xy<1}\subset R^2$ and $S_2:=\set{xy>1,x>0}\subset R^2$ \textbf{are not} polynomial images of $R^2$.  
+\item $S_1:=\set{xy<1}\subset \R^2$ and $S_2:=\set{xy>1,x>0}\subset \R^2$ \textbf{are not} polynomial images of $\R^2$.
 \vspace{0.3cm}
 
-\item $S_3:=R^2\setminus\set{(0,0)}$ is the image of the polynomial map $$\R^2\to\R^2,\, (x,y)\mapsto \big(xy-1,(xy-1)x^2-y\big).$$
+\item $S_3:=\R^2\setminus\set{(0,0)}$ is the image of the polynomial map $$\R^2\to\R^2,\, (x,y)\mapsto \big(xy-1,(xy-1)x^2-y\big).$$
 %\vspace{0.2cm}
 
 \end{enumerate}
@@ -136,43 +136,6 @@ $$
 $$
 \end{frame}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		GIFS
-%\begin{comment}
-\begin{frame}
-\frametitle{Maps $y^+(\x,v)$ and $y^-(\x,v)$ from the proof for $v\in[0,5]$}
-\vspace{-0.3cm}
-\begin{center}
-%\animategraphics[loop,totalheight=8cm]{12}{prueba-}{0}{99}
-\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
-	\multiframe{21}{i=0+1}{
-	\includegraphics{gifs/yes-\i.png}
-	}
-	\newframe*
-	\multiframe{51}{i=20+1}{
-	\includegraphics{gifs/yes-\i.png}
-	}
-\end{animateinline}
-\end{center}
-\end{frame}
-
-\begin{frame}
-\frametitle{Maps $\gamma_v^+(\x)$ and $\gamma_v^-(\x)$ from the proof for $v\in[0,5]$}
-\vspace{-0.3cm}
-\begin{center}
-\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
-	\multiframe{20}{i=1+1}{
-	\includegraphics{gifs/gammas-\i.png}
-	}
-	\newframe*
-	\multiframe{69}{i=20+1}{
-	\includegraphics{gifs/gammas-\i.png}
-	}
-\end{animateinline}
-\end{center}
-\end{frame}
-%\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{The first proof: $g:=\P\circ Q\circ H$} 
@@ -332,22 +295,43 @@ Note that $\FFF = f_2 \circ f_1$, so we have that $\FFF\big(\R^2\big) = \Qu$.
 \begin{frame}
 \frametitle{The topological proof: The key step}
 
+$\star$ $f_2=h\circ g$, where $g:\overline{\Qu}\to\R^3,\ h:\R^3\to\R^2$ and:% \vspace{-0.2cm}
+\begin{align*}
+g(\x,\y)&:=\big(\x\y^2+\x^2\y-\y-1,\,\x^{3/2}\y,\,\x^3\y+\x\y-\x-1\big),\\
+h(\x,\y,\z)&:=\big(\x^2+\y^2,\,\y^2+\z^2\big).
+\end{align*}\vspace{0.1cm}
+
+\vspace{-0.75cm} 
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{center}The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_1$.
-\end{center}\begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=4cm]{plots/ch3_02_B2.png}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[height=4cm]{plots/ch3_02_B2.png}};
+\path ($(img.north west)!0.25!(img.north east)$)|-coordinate(c1)($(img.south east)!0.55!(img.north east)$);
+\path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c2)($(img.south east)!0.45!(img.north east)$);
+\draw (c1) node {{$\D_1$}};
+\draw (c2) node {{$\phi_M(\Rr_M)$}};
+\end{tikzpicture}
 \end{center}
-\end{figure}
+\vspace{-0.6cm}
+\begin{center}
+$\partial\D_1$ meets the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$, where $\phi_M(\Rr_M) \subset g(\overline{\Qu})$.
+\end{center}
 \end{column}
 \begin{column}{0.5\textwidth}
-\begin{center}The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_2$.
-\end{center}\begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=4cm]{plots/ch3_01_A2.png}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[height=4cm]{plots/ch3_01_A2.png}};
+\path ($(img.north west)!0.47!(img.north east)$)|-coordinate(c1)($(img.south east)!0.25!(img.north east)$);
+\path ($(img.north west)!0.45!(img.north east)$)|-coordinate(c2)($(img.south east)!0.5!(img.north east)$);
+\draw (c1) node {{$\D_2$}};
+\draw (c2) node {{$\phi_M(\Rr_M)$}};
+\end{tikzpicture}
 \end{center}
-\end{figure}
+\vspace{-0.6cm}
+\begin{center}
+$\partial\D_2$ meets the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$, where $\phi_M(\Rr_M) \subset g(\overline{\Qu})$.
+\end{center}
 \end{column}
 \end{columns}
 
@@ -386,11 +370,19 @@ $\star$ New polynomial maps $\R^2\to\R^2$ whose images ``should be" $\Qu$:
 \begin{frame}
 \frametitle{Measurements of the complexity}
 
-$\star$ \textbf{Optimal algebraic structure:} Minimum total degree and sparseness (minimum number of monomials).
-\vspace{0.4cm} 
+$\star$ \textbf{Optimal algebraic structure:}
+\vspace{0.1cm}
 
-$\star$ \textbf{Optimal multiplicative complexity:} Minimum number of non-scalar products.
-\vspace{0.4cm}
+$\ \ \cdot$ Total degree.
+
+$\ \ \cdot$ Total number of monomials (sparseness).
+\vspace{0.3cm} 
+
+$\star$ \textbf{Optimal multiplicative complexity:} 
+\vspace{0.1cm}
+
+$\ \ \cdot$ Minimum number of non-scalar products.
+\vspace{0.3cm}
 
 \begin{table}[t]
 \begin{center}
@@ -636,13 +628,12 @@ A topological proof.  A mathematical tribute to Professor Jos\'e Mar\'ia Montesi
 \vskip0pt%
 }
 
-%% TO DO: Meter animacion de las gammas y/o de las y^+, y^-
 \begin{frame}
 \frametitle{The first proof: $g:=\P\circ Q\circ H$}
-$\star$ $\Qu \subset \P(\R^2) \leadsto$ Fix $v>0$ and proof that $\F\big(\{\G=v\}\big) \supset(0,+\infty)$: 
+$\star$ $\Qu \subset \P(\R^2) \leadsto$ Fix $v>0$ and prove that $\F\big(\{\G=v\}\big) \supset(0,+\infty)$: 
 \vspace{0.4cm}
 
-$\cdot $ \textbf{Step 1:}  Parametrization of the curve $\{\G-v=0\}$. Define $\gamma_v^+(\x, v):=\F(\x,y^+(\x,v))\text{ and }\gamma_v^-(\x, v):=\F(\x,y^-(\x,v)) \leadsto$ \vspace{-0.1cm}
+$\cdot $ \textbf{Step 1:}  Solve $\G-v=0$ for $y \leadsto$ two solutions: $y^+(\x, v)$ and $y^-(\x, v)$. Define $\gamma_v^+(\x, v):=\F(\x,y^+(\x,v))\text{ and }\gamma_v^-(\x, v):=\F(\x,y^-(\x,v)) \leadsto$ \vspace{-0.1cm}
 $$
 (0,+\infty)\overset{?}{\subset}\text{im}(\gamma_v^+)\cup\text{im}(\gamma_v^-).
 $$ 
@@ -661,6 +652,42 @@ $\cdot $ \textbf{Step 4:} When $0<v<0.28^2$ we have $(0,+\infty)\subset\text{im}
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		GIFS
+%\begin{comment}
+\begin{frame}
+\frametitle{Maps $y^+(\x,v)$ and $y^-(\x,v)$ from the proof for $v\in[0,5]$}
+\vspace{-0.3cm}
+\begin{center}
+%\animategraphics[loop,totalheight=8cm]{12}{prueba-}{0}{99}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{21}{i=0+1}{
+	\includegraphics{gifs/yes-\i.png}
+	}
+	\newframe*
+	\multiframe{51}{i=20+1}{
+	\includegraphics{gifs/yes-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Maps $\gamma_v^+(\x)$ and $\gamma_v^-(\x)$ from the proof for $v\in[0,5]$}
+\vspace{-0.3cm}
+\begin{center}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{20}{i=1+1}{
+	\includegraphics{gifs/gammas-\i.png}
+	}
+	\newframe*
+	\multiframe{69}{i=20+1}{
+	\includegraphics{gifs/gammas-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{The short proof: The first lemma}
@@ -849,28 +876,90 @@ $\cdot$ \textbf{Step 4:} For fixed values $B\ge A>0$: $\partial\D_1\cap\Ss \ne \
 \end{frame}
 
 \begin{frame}
-\frametitle{The topological proof: \textbf{Step 4}}
+\frametitle{The topological proof: The key step}
 
+$\star$ $f_2=h\circ g$, where $g:\overline{\Qu}\to\R^3,\ h:\R^3\to\R^2$ and:% \vspace{-0.2cm}
+\begin{align*}
+g(\x,\y)&:=\big(\x\y^2+\x^2\y-\y-1,\,\x^{3/2}\y,\,\x^3\y+\x\y-\x-1\big),\\
+h(\x,\y,\z)&:=\big(\x^2+\y^2,\,\y^2+\z^2\big).
+\end{align*}\vspace{0.1cm}
+
+\vspace{-0.75cm} 
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{center}The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_1$.
-\end{center}\begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=4cm]{plots/ch3_02_B2.png}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[height=4cm]{plots/ch3_02_B2.png}};
+\path ($(img.north west)!0.25!(img.north east)$)|-coordinate(c1)($(img.south east)!0.55!(img.north east)$);
+\path ($(img.north west)!0.6!(img.north east)$)|-coordinate(c2)($(img.south east)!0.45!(img.north east)$);
+\draw (c1) node {{$\D_1$}};
+\draw (c2) node {{$\phi_M(\Rr_M)$}};
+\end{tikzpicture}
 \end{center}
-\end{figure}
+\vspace{-0.6cm}
+\begin{center}
+$\partial\D_1$ meets the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$, where $\phi_M(\Rr_M) \subset g(\overline{\Qu})$.
+\end{center}
 \end{column}
 \begin{column}{0.5\textwidth}
-\begin{center}The boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$ meets transversally once $\D_2$.
-\end{center}\begin{figure}[!ht]
 \begin{center}
-\includegraphics[height=4cm]{plots/ch3_01_A2.png}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (img)at (0,0) {\includegraphics[height=4cm]{plots/ch3_01_A2.png}};
+\path ($(img.north west)!0.47!(img.north east)$)|-coordinate(c1)($(img.south east)!0.25!(img.north east)$);
+\path ($(img.north west)!0.45!(img.north east)$)|-coordinate(c2)($(img.south east)!0.5!(img.north east)$);
+\draw (c1) node {{$\D_2$}};
+\draw (c2) node {{$\phi_M(\Rr_M)$}};
+\end{tikzpicture}
 \end{center}
-\end{figure}
+\vspace{-0.6cm}
+\begin{center}
+$\partial\D_2$ meets the boundary map $\partial\tilde{\phi}_M:\partial\tilde{\overline{\Rr}}_M\rightarrow\R^3$, where $\phi_M(\Rr_M) \subset g(\overline{\Qu})$.
+\end{center}
 \end{column}
 \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		GIFS CURVAS
+%\begin{comment}
+\begin{frame}
+\frametitle{The family of curves for the $g$: $\alpha_\lambda(s)$ and $\beta_\mu(s)$}
+\vspace{-0.3cm}
+\begin{center}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{40}{i=0+1}{
+	\includegraphics{gifs/alpbet-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The family of curves for the $f_2$: $\gamma_\lambda(s)$ and $\delta_\mu(s)$}
+\vspace{-0.3cm}
+\begin{center}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{34}{i=0+1}{
+	\includegraphics{gifs/gamdel-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The family of curves for the $\mathcal{N}_1$ and $\mathcal{N}_2$: $\sigma_\lambda(s)$ and $\tau_\mu(s)$}
+\vspace{-0.3cm}
+\begin{center}
+\begin{animateinline}[autoplay,totalheight=8cm,loop]{12}
+	\multiframe{80 }{i=0+1}{
+	\includegraphics{gifs/sigtau-\i.png}
+	}
+\end{animateinline}
+\end{center}
+\end{frame}
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \backupend
 
 \end{document}
